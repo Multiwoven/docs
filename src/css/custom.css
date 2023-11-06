@@ -111,5 +111,66 @@ body {
   padding-left: calc(1rem - 4px);  /* Adjust padding to account for border */
 }
 
+.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module {
+  display: none !important;
+}
+
+.navbar a {
+  font-weight: 600;
+}
+
+/* Table base style */
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* subtle shadow */
+}
+
+.table-custom thead tr {
+  background-color: #f8f8f8; /* light grey background for header */
+  color: #333; /* darker font color for contrast */
+  text-align: left;
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 12px 15px;
+  border: 1px solid #eaeaea; /* subtle border color */
+}
+
+/* Zebra Stripes, removed for a more clean look */
+/* .table-custom tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+} */
+
+/* Subtle hover effect */
+.table-custom tbody tr:hover {
+  background-color: #f1f1f1; /* light hover background */
+}
+
+/* Removing last-of-type and active-row styles for a more uniform appearance */
+
+/* Responsive style */
+@media screen and (max-width: 600px) {
+  .table-custom thead {
+    display: none; /* Hide headers on small screens */
+  }
+  .table-custom tbody td {
+    display: block;
+    text-align: center;
+  }
+  .table-custom tbody td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  /* Remove border style for cleaner look on mobile */
+  .table-custom tbody td:last-child {
+    border-bottom: none;
+  }
+}
 
 
