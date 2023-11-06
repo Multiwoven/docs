@@ -2,17 +2,21 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 /* Heading and Text styles */
 .markdown h1 {
-  @apply text-4xl font-bold mt-8 mb-4;
+  @apply text-4xl font-extrabold mt-8 mb-4;
 }
 
 .markdown h2 {
-  @apply text-3xl font-semibold mt-7 mb-3;
+  @apply text-3xl font-extrabold mt-7 mb-3;
 }
 
 .markdown h3 {
-  @apply text-2xl font-medium mt-6 mb-2.5;
+  @apply text-2xl font-bold mt-6 mb-2.5;
 }
 
 .markdown p {
@@ -24,7 +28,7 @@
 }
 
 .markdown a {
-  @apply text-e63d2d underline transition-colors duration-300;  /* Multiwoven color for links */
+  @apply text-e63d2d no-underline font-semibold transition-colors duration-300;
 }
 
 .markdown a:hover {
@@ -54,19 +58,58 @@
 }
 
 /* Navbar styles */
-.navbar {
-  @apply bg-light-gray;  /* Light gray for navbar */
+.navbar a {
+  @apply font-bold;  /* Made navbar links bold */
 }
 
-.navbar a:hover {
-  @apply text-e63d2d;  /* Multiwoven color for navbar link hover */
+.menu {
+  font-weight: var(--ifm-font-weight-semibold);
+  overflow-x: hidden;
 }
 
-/* Sidebar styles */
-.sidebar {
-  @apply bg-light-gray;  /* Light gray for sidebar */
+.menu__list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
 }
 
-.sidebar .active, .sidebar:hover {
-  @apply text-e63d2d bg-opacity-10;  /* Multiwoven color for active/hover sidebar items */
+/* Non-top level menus */
+.menu__list .menu__list {
+  margin-left: var(--ifm-menu-link-padding-horizontal);
 }
+
+.menu__list-item:not(:first-child) {
+  margin-top: 0.25rem;
+}
+
+.menu__list-item--collapsed .menu__list {
+  height: 0;
+  overflow: hidden;
+}
+
+.menu__link {
+  border-radius: 0.25rem;
+  color: #666;  /* subtle text color */
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.25;
+  padding: 0.5rem 1rem;  /* Increased padding for better appearance */
+  transition: all var(--ifm-transition-fast) ease-in-out;
+}
+
+.menu__link:hover {
+  background: rgba(230, 61, 45, 0.1);  /* Subtle hover effect using Multiwoven theme color */
+  color: #e63d2d;  /* Multiwoven theme color for hover text */
+}
+
+
+
+.menu__link--active {
+  color: #e63d2d;  /* Multiwoven theme color for active text */
+  font-weight: bold;
+  border-left: 4px solid #e63d2d;  /* left border for active link */
+  padding-left: calc(1rem - 4px);  /* Adjust padding to account for border */
+}
+
+
+
