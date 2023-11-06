@@ -20,7 +20,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          // routeBasePath: '/docs/getting-started/introduction', // This makes the docs appear at the root
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
@@ -56,6 +55,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.png',
+          href: '/docs/start-here'
         },
         items: [
           {to: '/docs/start-here', label: 'Docs', position: 'left'},
