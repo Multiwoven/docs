@@ -5,7 +5,7 @@ title: Start here
 
 # Overview
 
-**Multiwoven** is a cutting-edge platform designed to streamline the connection between data warehouses and customer engagement tools, enhancing your business's data capabilities. Engage with our easy-to-navigate documentation to get detailed insights on our sources, destinations, and more, or delve into one of our key topics for a deeper understanding of Multiwoven's features.
+**Multiwoven** is a modern data activation platform designed to streamline the connection between data warehouses and customer engagement tools, enhancing your business's data capabilities. Engage with our easy-to-navigate documentation to get detailed insights on our sources, destinations, and more, or delve into one of our key topics for a deeper understanding of Multiwoven's features.
 
 ![Alt text for the image](/img/dashboard.png)
 

@@ -102,8 +102,6 @@ body {
   color: #e63d2d;  /* Multiwoven theme color for hover text */
 }
 
-
-
 .menu__link--active {
   color: #e63d2d;  /* Multiwoven theme color for active text */
   font-weight: bold;
