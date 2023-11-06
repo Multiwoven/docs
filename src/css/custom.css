@@ -1,3 +1,72 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Heading and Text styles */
+.markdown h1 {
+  @apply text-4xl font-bold mt-8 mb-4;
+}
+
+.markdown h2 {
+  @apply text-3xl font-semibold mt-7 mb-3;
+}
+
+.markdown h3 {
+  @apply text-2xl font-medium mt-6 mb-2.5;
+}
+
+.markdown p {
+  @apply text-base leading-7 my-4;
+}
+
+.markdown pre {
+  @apply bg-gray-800 text-white p-4 rounded-md;
+}
+
+.markdown a {
+  @apply text-e63d2d underline transition-colors duration-300;  /* Multiwoven color for links */
+}
+
+.markdown a:hover {
+    @apply text-e63d2d opacity-80;
+}  
+
+.markdown li {
+  @apply my-2;
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-e63d2d pl-4 italic;  /* Multiwoven color for blockquote border */
+}
+
+@media (min-width: 768px) {
+  .markdown h1 {
+    @apply text-5xl;
+  }
+
+  .markdown h2 {
+    @apply text-4xl;
+  }
+
+  .markdown h3 {
+    @apply text-3xl;
+  }
+}
+
+/* Navbar styles */
+.navbar {
+  @apply bg-light-gray;  /* Light gray for navbar */
+}
+
+.navbar a:hover {
+  @apply text-e63d2d;  /* Multiwoven color for navbar link hover */
+}
+
+/* Sidebar styles */
+.sidebar {
+  @apply bg-light-gray;  /* Light gray for sidebar */
+}
+
+.sidebar .active, .sidebar:hover {
+  @apply text-e63d2d bg-opacity-10;  /* Multiwoven color for active/hover sidebar items */
+}
