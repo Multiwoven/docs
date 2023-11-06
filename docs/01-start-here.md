@@ -49,6 +49,8 @@ This is a tip.
 
 Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./start-here).
 
+----
+
 ### 🤝 Assistance
 
 Our support team is ready to help you with any queries. Reach out to us at [support@multiwoven.com](mailto:support@multiwoven.com) or connect through our live chat service.

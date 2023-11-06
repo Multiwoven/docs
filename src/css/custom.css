@@ -109,10 +109,6 @@ body {
   padding-left: calc(1rem - 4px);  /* Adjust padding to account for border */
 }
 
-.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-next-theme-IconExternalLink-styles-module {
-  display: none !important;
-}
-
 .navbar a {
   font-weight: 600;
 }
