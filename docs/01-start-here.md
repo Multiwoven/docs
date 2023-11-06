@@ -47,7 +47,7 @@ This is a tip.
 
 ### 🚀 Changelog
 
-Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./changelog).
+Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./start-here).
 
 ### 🤝 Assistance
 

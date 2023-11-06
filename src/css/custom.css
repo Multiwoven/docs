@@ -130,7 +130,7 @@ body {
 }
 
 .table-custom thead tr {
-  background-color: #f8f8f8; /* light grey background for header */
+  background-color: #F9FAFB; /* light grey background for header */
   color: #333; /* darker font color for contrast */
   text-align: left;
 }
