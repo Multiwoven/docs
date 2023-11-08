@@ -10,40 +10,15 @@ title: Start here
 ![Alt text for the image](/img/dashboard.png)
 
 
-### Key Features
+## Key Features
 
-<table class="table-custom">
-    <thead>
-        <tr>
-            <th>Syncs</th>
-            <th>Audiences</th>
-            <th>Models & Entities</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Core to our platform, syncs allow for seamless data flow between sources and destinations. Discover more about sync configurations and schedules.</td>
-                <td>Leverage data segmentation without the need for SQL. The Audience Hub empowers targeted campaigns through intuitive visual exploration.</td>
-                <td>Setting up your data correctly is the foundation. Learn to model your data using SQL, dbt, Looker, and other tools.</td>
-            </tr>
-        <tr>
-            <th>Observability</th>
-            <th>Security & Privacy</th>
-            <th>Developers</th>
-        </tr>
-        <tr>
-            <td>Gain insights into data flow and maintain automation efficiency with our comprehensive logs, alerts, and integration tracking.</td>
-            <td>Your data’s security is our top priority. Learn about Multiwoven's architecture designed for maximum data protection.</td>
-            <td>Extend Multiwoven's capabilities by building custom integrations, managing via API, and connecting through git.</td>
-        </tr>
-    </tbody>
-</table>
+| Syncs | Audiences | Models and Entities |
+| --- | --- | --- |
+| Core to our platform, syncs allow for seamless data flow between sources and destinations. Discover more about sync configurations and schedules. | Leverage data segmentation without the need for SQL. The Audience Hub empowers targeted campaigns through intuitive visual exploration. | Setting up your data correctly is the foundation. Learn to model your data using SQL, dbt, Looker, and other tools. |
 
-:::tip
-
-This is a tip.
-
-:::
+| Observability | Security & Privacy | Developers |
+| --- | --- | --- |
+| Gain insights into data flow and maintain automation efficiency with our comprehensive logs, alerts, and integration tracking. | Your data’s security is our top priority. Learn about Multiwoven's architecture designed for maximum data protection. | Extend Multiwoven's capabilities by building custom integrations, managing via API, and connecting through git. |
 
 ### 🚀 Changelog
 

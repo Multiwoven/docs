@@ -58,7 +58,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           href: '/docs/start-here'
         },
         items: [
-          {to: '/docs/start-here', label: 'Docs', position: 'left'},
+          {to: 'https://multiwoven.com', label: 'About Multiwoven', position: 'left'},
+          {to: 'https://multiwoven.com', label: 'Tutorials', position: 'left'},
+          {href: 'https://multiwoven.readme.io', label: 'API Reference', position: 'left'},
           // {href: 'https://multiwoven.readme.io', label: 'API documentation', position: 'left'},
           // {href: 'https://multiwoven.com', label: 'API Reference', position: 'left'},
           // {to: '/blog', label: 'Blog', position: 'left'},
