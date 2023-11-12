@@ -61,10 +61,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             to: '/docs/start-here',
             className: 'guides-top-header',
           },
-          {
-            label: 'REST API',
-            to: '/api/',
-          },
+          // {
+          //   label: 'REST API',
+          //   to: '/api/',
+          // },
         ],
       },
       prism: {
