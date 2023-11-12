@@ -12,11 +12,11 @@ title: Start here
 
 ## Key Features
 
-| Syncs | Audiences | Models and Entities |
+| **Syncs** | **Audiences** | **Models and Entities** |
 | --- | --- | --- |
 | Core to our platform, syncs allow for seamless data flow between sources and destinations. Discover more about sync configurations and schedules. | Leverage data segmentation without the need for SQL. The Audience Hub empowers targeted campaigns through intuitive visual exploration. | Setting up your data correctly is the foundation. Learn to model your data using SQL, dbt, Looker, and other tools. |
 
-| Observability | Security & Privacy | Developers |
+| **Observability** | **Security & Privacy** | **Developers** |
 | --- | --- | --- |
 | Gain insights into data flow and maintain automation efficiency with our comprehensive logs, alerts, and integration tracking. | Your data’s security is our top priority. Learn about Multiwoven's architecture designed for maximum data protection. | Extend Multiwoven's capabilities by building custom integrations, managing via API, and connecting through git. |
 

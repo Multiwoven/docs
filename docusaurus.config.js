@@ -24,14 +24,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // Please change this to your repo.
           editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
-        },
+        blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/api-reference.css'),
+          ],
         },
       }),
     ],
@@ -51,71 +49,24 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         ],
       ],
       navbar: {
-        title: '',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.png',
-          href: '/docs/start-here'
+          href: '/docs/start-here',
+          src: '/logo/light.png',
+          srcDark: '/logo/dark.png',
+          alt: 'Multiwoven Docs',
         },
         items: [
-          {to: 'https://multiwoven.com', label: 'About Multiwoven', position: 'left'},
-          {to: 'https://multiwoven.com', label: 'Tutorials', position: 'left'},
-          {href: 'https://multiwoven.readme.io', label: 'API Reference', position: 'left'},
-          // {href: 'https://multiwoven.readme.io', label: 'API documentation', position: 'left'},
-          // {href: 'https://multiwoven.com', label: 'API Reference', position: 'left'},
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          // {
-          //   href: 'https://github.com/facebook/docusaurus',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            label: 'Docs',
+            to: '/docs/start-here',
+            className: 'guides-top-header',
+          },
+          {
+            label: 'REST API',
+            to: '/api/',
+          },
         ],
       },
-      // footer: {
-      //   style: 'light',
-      //   links: [
-      //     {
-      //       title: 'Docs',
-      //       items: [
-      //         {
-      //           label: 'Docs',
-      //           to: '/docs/getting-started/introduction',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       title: 'Community',
-      //       items: [
-      //         {
-      //           label: 'Stack Overflow',
-      //           href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //         },
-      //         {
-      //           label: 'Discord',
-      //           href: 'https://discordapp.com/invite/docusaurus',
-      //         },
-      //         {
-      //           label: 'Twitter',
-      //           href: 'https://twitter.com/docusaurus',
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       title: 'More',
-      //       items: [
-      //         {
-      //           label: 'Blog',
-      //           to: '/blog',
-      //         },
-      //         {
-      //           label: 'GitHub',
-      //           href: 'https://github.com/facebook/docusaurus',
-      //         },
-      //       ],
-      //     },
-      //   ],
-      //   copyright: `Copyright © ${new Date().getFullYear()} Multiwoven, Inc. Built with Docusaurus.`,
-      // },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
