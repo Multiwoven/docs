@@ -23,22 +23,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
   presets: [
     [
-      '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      "docusaurus-preset-openapi",
+      /** @type {import('docusaurus-preset-openapi').Options} */
+      {
+        api: {
+          path: "./swagger.yaml",
+          routeBasePath: "/api",
+        },
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/docs",
         },
-        blog: false,
         theme: {
-          customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('./src/css/api-reference.css'),
-          ],
+          customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 
@@ -68,10 +67,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             to: '/docs/start-here',
             className: 'guides-top-header',
           },
-          // {
-          //   label: 'REST API',
-          //   to: '/api/',
-          // },
+          {
+            label: 'API Documentation',
+            to: '/api',
+          },
         ],
       },
       prism: {
