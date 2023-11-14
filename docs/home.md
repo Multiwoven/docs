@@ -45,28 +45,10 @@ select * from users limit 100;
 ```
 
 ```ruby
-res = client.send({
-    message => {
-        to => {
-          "email" => "email@example.com",
-        },
-        content: => {
-          "title" => "Welcome!",
-          "body" => "Thanks for signing up, {{name}}",
-        },
-        data: => { #any data you want to pass to the content or message template
-          "name" => "Nuxt.js Enthusiasts",
-        },
-        routing: => { #any data you want to pass to the content or message template
-          "method" => "single",
-          "channels" => ["email"],
-        },
-    },
-  })
-  puts res.code # the HTTP response code
-  puts res.message_id # if the code is 200, this will be the Courier message ID for this notification
-rescue Courier::CourierAPIError => re #error sent from from the API
-  puts re.message
+class Abc
+  def woo
+    puts "Hello"
+  end
 end
 ```
 
