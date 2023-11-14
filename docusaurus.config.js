@@ -27,13 +27,13 @@ const codeTheme = require("./src/theme/codeTheme");
       "docusaurus-preset-openapi",
       /** @type {import('docusaurus-preset-openapi').Options} */
       {
-        api: {
-          path: "./swagger.yaml",
-          routeBasePath: "/api",
-        },
         docs: {
           routeBasePath: '/', // Serve docs at the site's root
           sidebarPath: require.resolve("./sidebars.js"),
+        },
+        api: {
+          path: "./swagger.yaml",
+          routeBasePath: "/api",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
