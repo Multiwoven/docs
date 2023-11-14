@@ -1,5 +1,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const codeTheme = require("./src/theme/codeTheme");
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -31,8 +32,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           routeBasePath: "/api",
         },
         docs: {
+          routeBasePath: '/', // Serve docs at the site's root
           sidebarPath: require.resolve("./sidebars.js"),
-          routeBasePath: "/docs",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -56,15 +57,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       ],
       navbar: {
         logo: {
-          href: '/docs/start-here',
+          href: '/',
           src: '/logo/light.png',
           srcDark: '/logo/dark.png',
           alt: 'Multiwoven Docs',
         },
         items: [
           {
-            label: 'Docs',
-            to: '/docs/start-here',
+            label: 'Home',
+            to: '/',
             className: 'guides-top-header',
           },
           {
@@ -74,8 +75,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         ],
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: codeTheme,
+        additionalLanguages: ["sql","ruby", "php", "java"],
       },
     }),
 });
