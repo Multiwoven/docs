@@ -91,7 +91,7 @@ Switching the template to the JSONNET editor cannot be undone.
 
 ### Changelog
 
-Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./start-here).
+Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./).
 
 ----
 
