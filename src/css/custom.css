@@ -179,7 +179,9 @@ strong {
 }
 
 .markdown h1:first-child {
-  --ifm-h1-font-size: 20px;
+  --ifm-h1-font-size: 28px;
+  font-weight: 900;
+  color: rgb(var(--gray-900));
 }
 
 .markdown > h2 {

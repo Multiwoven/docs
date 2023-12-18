@@ -9,7 +9,7 @@ description: "Docs, tutorials, API reference, quickstart guides, and code snippe
 import { CardList } from "@site/src/components/CardList";
 import { Card } from "@site/src/components/Card";
 
-# Welcome to the Multiwoven Docs
+# Welcome to the Multiwoven
 
 **Multiwoven** is a modern data activation platform designed to streamline the connection between data warehouses and customer engagement tools, enhancing your business's data capabilities.
 
