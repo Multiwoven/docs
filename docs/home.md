@@ -31,46 +31,6 @@ Engage with our easy-to-navigate documentation to get detailed insights on our s
   </Card>
 </CardList>
 
-### Home
-
-| Left Aligned | Center Aligned | Right Aligned |
-|:-------------|:--------------:|--------------:|
-| content 1    |   content 2    |    content 3  |
-| content 4    |   content 5    |    content 6  |
-
-> Explore our guides and examples to integrate Multiwoven
-
-```sql
-select * from users limit 100;
-```
-
-```ruby
-class Abc
-  def woo
-    puts "Hello"
-  end
-end
-```
-
-```json
-{
-    "a": "b",
-    "c": "d"
-}
-```
-
-:::info
-
-Edits you make to an automation template will not apply retroactively to any recipients or lists already added to an automation run.
-
-:::
-
-:::caution Can't Undo
-
-Switching the template to the JSONNET editor cannot be undone.
-
-:::
-
 ### Changelog
 
 Stay updated with the latest enhancements and fixes in Multiwoven by visiting our [product changelog](./).
