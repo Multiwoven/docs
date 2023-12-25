@@ -1,33 +1,44 @@
-# Website
+# Multiwoven Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+## Getting Started
 
-### Installation
+### Prerequisites
 
-```
-$ yarn
-```
+- [Node.js](https://nodejs.org/en/) version >= 12.13.0 or above (which can be checked by running `node -v`).
+- [Yarn](https://yarnpkg.com/) version >= 1.5 (which can be checked by running `yarn --version`).
 
-### Local Development
+### Setup
 
-```
-$ yarn start
-```
+1. **Fork the repository**: Click on the 'Fork' button at the top right corner of this page.
+2. **Clone your fork**: Run `git clone git@github.com:Multiwoven/docs.git`
+3. **Navigate to the directory**: `cd docs`
+4. **Install dependencies**: Run `yarn install`
+5. **Start the development server**: Run `yarn start`
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This will start a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+## Contributing
 
-```
-$ yarn build
-```
+We welcome all contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) file to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to the project.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### Creating a New Document
 
-### Deployment
+1. **Add a new markdown file** in the `docs` directory.
+2. **Add your document's ID** to the sidebar in `sidebars.js`.
+3. **Write your content**: Use Markdown to format your document.
 
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
+### Submitting a Pull Request
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+1. **Push your changes** to your fork.
+2. **Create a pull request**: Describe the changes you've made and submit it to our repository.
+
+## Publishing
+
+The site is published automatically through our CI/CD pipeline whenever changes are merged into the `main` branch.
+
+## Support
+
+If you need help or have questions, feel free to reach out to us:
+- [GitHub Issues](link-to-your-repo-issues)
+- [Discord/Slack Channel](link-to-your-chat-channel)
+- [Email](hello@multiwoven.com)
