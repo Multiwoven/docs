@@ -7,12 +7,12 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
+    "primary": "#EB524C",
     "light": "#07C983",
-    "dark": "#0D9373",
+    "dark": "#731447",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#5383EC",
+      "to": "#5383EC"
     }
   },
   "topbarLinks": [
@@ -23,7 +23,7 @@
   ],
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://app.multiwoven.com"
   },
   "tabs": [
     {
@@ -51,11 +51,38 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "Sources",
+      "pages": ["sources/redshift","sources/snowflake","sources/bquery","sources/databricks"]
+    },
+    {
+      "group": "Destinations",
+      "pages": [
+        {
+          "group": "Marketing",
+          "icon": "sparkles",
+          "pages": ["destinations/marketing/facebook"]
+        },
+        {
+          "group": "Sales",
+          "icon": "building-columns",
+          "pages": ["destinations/sales/salesforce"]
+        }
+      ]
+    },
+    {
+      "group": "Models",
+      "pages": ["models/overview"]
+    },
+    {
+      "group": "Syncs",
+      "pages": ["syncs/overview"]
+    },
+    {
+      "group": "Audiences",
+      "pages": ["audiences/overview"]
     },
     {
       "group": "API Documentation",
@@ -71,8 +98,8 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
+    "twitter": "https://twitter.com/multiwoven",
+    "github": "https://github.com/Multiwoven",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
   }
 }
