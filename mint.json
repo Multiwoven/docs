@@ -51,7 +51,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction"]
+      "pages": ["get-started/introduction","get-started/core-concepts","get-started/quickstart"]
     },
     {
       "group": "Sources",
@@ -61,22 +61,38 @@
       "group": "Destinations",
       "pages": [
         {
-          "group": "Marketing",
-          "icon": "sparkles",
+          "group": "CRM",
+          "icon": "users",
           "pages": [
-            "destinations/marketing/facebook",
-            "destinations/marketing/braze",
-            "destinations/marketing/klaviyo",
-            "destinations/marketing/clevertap"
+            "destinations/crm/salesforce",
+            "destinations/crm/hubspot",
+            "destinations/crm/zoho"
           ]
         },
         {
-          "group": "Sales",
-          "icon": "building-columns",
+          "group": "Marketing Automation",
+          "icon": "sparkles",
           "pages": [
-            "destinations/sales/salesforce",
-            "destinations/sales/hubspot",
-            "destinations/sales/zoho"
+            "destinations/marketing-automation/braze",
+            "destinations/marketing-automation/clevertap",
+            "destinations/marketing-automation/klaviyo"
+          ]
+        },
+        {
+          "group": "Adtech",
+          "icon": "bullhorn",
+          "pages": [
+            "destinations/adtech/facebook-ads",
+            "destinations/adtech/google-ads"
+          ]
+        },
+        {
+          "group": "Analytics",
+          "icon": "chart-bar",
+          "pages": [
+            "destinations/analytics/google-analytics",
+            "destinations/analytics/mixpanel",
+            "destinations/analytics/amplitude"
           ]
         }
       ]
