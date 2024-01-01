@@ -5,7 +5,7 @@
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.jpg",
   "colors": {
     "primary": "#EB524C",
     "light": "#07C983",
@@ -95,6 +95,23 @@
         "api-reference/authentication/signup",
         "api-reference/authentication/verify-code"
       ]
+    },
+    {
+      "group": "Workspaces",
+      "pages": [
+        "api-reference/workspaces/get-workspaces",
+        "api-reference/workspaces/create-workspace",
+        "api-reference/workspaces/update-workspace",
+        "api-reference/workspaces/delete-workspace"
+      ]
+    },
+    {
+      "group": "Security & Compliance",
+      "pages": ["security-and-compliance/security"]
+    },
+    {
+      "group": "FAQs",
+      "pages": ["faqs/questions"]
     }
   ],
   "footerSocials": {
