@@ -109,7 +109,7 @@
       "group": "Workspace users",
       "pages": [
         "api-reference/workspace-users/add-user-to-workspace",
-        "api-reference/workspace-users/update-user-from-workspace",
+        "api-reference/workspace-users/update-workspace-user-role",
         "api-reference/workspace-users/remove-user-from-workspace"
       ]
     },
