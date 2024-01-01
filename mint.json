@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Multiwoven",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@multiwoven.com"
     }
   ],
   "topbarCtaButton": {
@@ -33,9 +33,9 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "Github Repo",
+      "icon": "github",
+      "url": "https://github.com/Multiwoven/multiwoven"
     },
     {
       "name": "Community",
@@ -43,8 +43,8 @@
       "url": "https://mintlify.com/community"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
+      "name": "Get instant help",
+      "icon": "discord",
       "url": "https://mintlify.com/blog"
     }
   ],
@@ -63,12 +63,21 @@
         {
           "group": "Marketing",
           "icon": "sparkles",
-          "pages": ["destinations/marketing/facebook"]
+          "pages": [
+            "destinations/marketing/facebook",
+            "destinations/marketing/braze",
+            "destinations/marketing/klaviyo",
+            "destinations/marketing/clevertap"
+          ]
         },
         {
           "group": "Sales",
           "icon": "building-columns",
-          "pages": ["destinations/sales/salesforce"]
+          "pages": [
+            "destinations/sales/salesforce",
+            "destinations/sales/hubspot",
+            "destinations/sales/zoho"
+          ]
         }
       ]
     },
@@ -125,6 +134,6 @@
   "footerSocials": {
     "twitter": "https://twitter.com/multiwoven",
     "github": "https://github.com/Multiwoven",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/multiwoven"
   }
 }
