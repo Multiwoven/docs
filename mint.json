@@ -33,7 +33,7 @@
   ],
   "anchors": [
     {
-      "name": "Github Repo",
+      "name": "GitHub",
       "icon": "github",
       "url": "https://github.com/Multiwoven/multiwoven"
     },
@@ -51,7 +51,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction","get-started/core-concepts","get-started/quickstart"]
+      "pages": ["get-started/introduction","get-started/core-concepts","get-started/integrations"]
     },
     {
       "group": "Sources",
@@ -94,7 +94,32 @@
             "destinations/analytics/mixpanel",
             "destinations/analytics/amplitude"
           ]
+        },
+        {
+          "group": "Customer Support",
+          "icon": "headset",
+          "pages": [
+            "destinations/customer-support/zendesk",
+            "destinations/customer-support/intercom"
+          ]
+        },
+        {
+          "group": "Team Collaboration",
+          "icon": "sparkle",
+          "pages": [
+            "destinations/team-collaboration/slack",
+            "destinations/team-collaboration/microsoft-teams"
+          ]
+        },
+        {
+          "group": "E-Commerce",
+          "icon": "shop",
+          "pages": [
+            "destinations/e-commerce/shopify",
+            "destinations/e-commerce/facebook-product-catalog"
+          ]
         }
+
       ]
     },
     {
