@@ -144,10 +144,10 @@
         "api-reference/authentication/login",
         "api-reference/authentication/signup",
         "api-reference/authentication/verify_code",
-        "api-reference/authentication/logout",
+        "api-reference/authentication/resend_verification",
         "api-reference/authentication/forgot_password",
         "api-reference/authentication/reset_password",
-        "api-reference/authentication/resend_verification"
+        "api-reference/authentication/logout"
       ]
     },
     {

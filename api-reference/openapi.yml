@@ -88,12 +88,43 @@ paths:
           description: User already exists
 
   "/api/v1/verify_code":
+      post:
+        summary: Verify User Code
+        tags:
+        - Authentication
+        description: |
+          This endpoint verifies the confirmation code sent to a user's email.
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    format: email
+                    example: john@example.com
+                  confirmation_code:
+                    type: string
+                    example: "295604"
+        responses:
+          '200':
+            description: Code verification successful
+          '400':
+            description: Invalid request or code
+          '401':
+            description: Unauthorized - Incorrect code or email
+          '500':
+            description: Internal Server Error
+            
+  "/api/v1/resend_verification":
     post:
-      summary: Verify User Code
+      summary: Resend Verification Code
       tags:
       - Authentication
       description: |
-        This endpoint verifies the confirmation code sent to a user's email.
+        This endpoint allows users to request a new account verification code if the original code is lost or expired.
       requestBody:
         required: true
         content:
@@ -105,61 +136,39 @@ paths:
                   type: string
                   format: email
                   example: john@example.com
-                confirmation_code:
-                  type: string
-                  example: "295604"
       responses:
         '200':
-          description: Code verification successful
+          description: Verification code resent
         '400':
-          description: Invalid request or code
-        '401':
-          description: Unauthorized - Incorrect code or email
-        '500':
-          description: Internal Server Error
-
-  "/api/v1/logout":
-    delete:
-      summary: User Logout
-      tags:
-      - Authentication
-      security:
-      - bearerAuth: []
-      description: |
-        This endpoint allows users to log out of their account. It revokes the JWT token, ensuring the user is securely logged out.
-      responses:
-        '200':
-          description: Logout successful
-        '401':
-          description: Unauthorized - JWT token is invalid or expired
+          description: Invalid email or user not found
         '500':
           description: Internal Server Error
 
   "/api/v1/forgot_password":
-    post:
-      summary: Forgot Password
-      tags:
-      - Authentication
-      description: |
-        This endpoint allows users to request a password reset link if they have forgotten their password.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: john@example.com
-      responses:
-        '200':
-          description: Password reset instructions sent
-        '404':
-          description: Email not found
-        '500':
-          description: Internal Server Error
+        post:
+          summary: Forgot Password
+          tags:
+          - Authentication
+          description: |
+            This endpoint allows users to request a password reset link if they have forgotten their password.
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                      example: john@example.com
+          responses:
+            '200':
+              description: Password reset instructions sent
+            '404':
+              description: Email not found
+            '500':
+              description: Internal Server Error
 
   "/api/v1/reset_password":
     post:
@@ -193,33 +202,24 @@ paths:
           description: Invalid token or password mismatch
         '500':
           description: Internal Server Error
-          
-  "/api/v1/resend_verification":
-  post:
-    summary: Resend Verification Code
-    tags:
-    - Authentication
-    description: |
-      This endpoint allows users to request a new account verification code if the original code is lost or expired.
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              email:
-                type: string
-                format: email
-                example: john@example.com
-    responses:
-      '200':
-        description: Verification code resent
-      '400':
-        description: Invalid email or user not found
-      '500':
-        description: Internal Server Error
-        
+
+  "/api/v1/logout":
+      delete:
+        summary: User Logout
+        tags:
+        - Authentication
+        security:
+        - bearerAuth: []
+        description: |
+          This endpoint allows users to log out of their account. It revokes the JWT token, ensuring the user is securely logged out.
+        responses:
+          '200':
+            description: Logout successful
+          '401':
+            description: Unauthorized - JWT token is invalid or expired
+          '500':
+            description: Internal Server Error
+              
 # Workspaces
   "/api/v1/workspaces":
     get:
