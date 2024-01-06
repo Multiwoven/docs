@@ -115,6 +115,104 @@ paths:
           description: Unauthorized - Incorrect code or email
         '500':
           description: Internal Server Error
+  "/api/v1/logout":
+    delete:
+      summary: User Logout
+      tags:
+      - Authentication
+      security:
+      - bearerAuth: []
+      description: |
+        This endpoint allows users to log out of their account. It revokes the JWT token, ensuring the user is securely logged out.
+      responses:
+        '200':
+          description: Logout successful
+        '401':
+          description: Unauthorized - JWT token is invalid or expired
+        '500':
+          description: Internal Server Error
+  "/api/v1/forgot_password":
+    post:
+      summary: Forgot Password
+      tags:
+      - Authentication
+      description: |
+        This endpoint allows users to request a password reset link if they have forgotten their password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: john@example.com
+      responses:
+        '200':
+          description: Password reset instructions sent
+        '404':
+          description: Email not found
+        '500':
+          description: Internal Server Error
+  "/api/v1/reset_password":
+    post:
+      summary: Reset Password
+      tags:
+      - Authentication
+      description: |
+        This endpoint allows users to reset their password using a reset token received via email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reset_password_token:
+                  type: string
+                  example: "token12345"
+                password:
+                  type: string
+                  format: password
+                  example: newpassword
+                password_confirmation:
+                  type: string
+                  format: password
+                  example: newpassword
+      responses:
+        '200':
+          description: Password successfully reset
+        '400':
+          description: Invalid token or password mismatch
+        '500':
+          description: Internal Server Error
+  "/api/v1/resend_verification":
+  post:
+    summary: Resend Verification Code
+    tags:
+    - Authentication
+    description: |
+      This endpoint allows users to request a new account verification code if the original code is lost or expired.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                example: john@example.com
+    responses:
+      '200':
+        description: Verification code resent
+      '400':
+        description: Invalid email or user not found
+      '500':
+        description: Internal Server Error
 
 # Workspaces
   "/api/v1/workspaces":
