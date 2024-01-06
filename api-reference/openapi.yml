@@ -52,6 +52,7 @@ paths:
           description: Unauthorized - Incorrect credentials
         '500':
           description: Internal Server Error
+        
   "/api/v1/signup":
     post:
       summary: User Signup
@@ -85,6 +86,7 @@ paths:
           description: Invalid input
         '409':
           description: User already exists
+
   "/api/v1/verify_code":
     post:
       summary: Verify User Code
@@ -115,6 +117,7 @@ paths:
           description: Unauthorized - Incorrect code or email
         '500':
           description: Internal Server Error
+
   "/api/v1/logout":
     delete:
       summary: User Logout
@@ -131,6 +134,7 @@ paths:
           description: Unauthorized - JWT token is invalid or expired
         '500':
           description: Internal Server Error
+
   "/api/v1/forgot_password":
     post:
       summary: Forgot Password
@@ -156,6 +160,7 @@ paths:
           description: Email not found
         '500':
           description: Internal Server Error
+
   "/api/v1/reset_password":
     post:
       summary: Reset Password
@@ -188,6 +193,7 @@ paths:
           description: Invalid token or password mismatch
         '500':
           description: Internal Server Error
+          
   "/api/v1/resend_verification":
   post:
     summary: Resend Verification Code
@@ -213,7 +219,7 @@ paths:
         description: Invalid email or user not found
       '500':
         description: Internal Server Error
-
+        
 # Workspaces
   "/api/v1/workspaces":
     get:
