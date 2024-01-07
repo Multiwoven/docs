@@ -67,6 +67,12 @@ paths:
             schema:
               type: object
               properties:
+                name:
+                  type: string
+                  example: john
+                company_name:
+                  type: string
+                  example: multiwoven
                 email:
                   type: string
                   format: email
