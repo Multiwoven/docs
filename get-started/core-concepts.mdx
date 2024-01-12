@@ -1,5 +1,84 @@
 ---
 title: Core Concepts
-description: 'Learn about the core concepts of Multiwoven'
+description: 'A Comprehensive Understanding of Multiwoven’s Key Functionalities'
 icon: 'building-columns'
+
 ---
+
+# Understanding the Core Concepts
+
+Discover the power of Multiwoven, an open-source data activation platform that effortlessly connects data from multiple sources to your business applications and developer tools. Unleashing the full potential of your data team, Multiwoven saves valuable engineering time and guarantees a unified and impactful flow of data across all your business teams. In this comprehensive guide, we will unravel the key concepts of Multiwoven, equipping you with the knowledge to seamlessly incorporate and leverage this platform in your organization.
+
+## Sources: The Foundation of Data
+
+### Overview
+In Multiwoven, 'Sources' are the starting points of your data journey. These include:
+
+- **Data Warehouses**: For example, Snowflake, Google BigQuery
+- **Databases and Files**: Including traditional databases, CSV files, SFTP
+
+### Adding a Source
+To integrate a source with Multiwoven, navigate to the Sources overview page and select 'Add source'.
+
+## Destinations: Where Data Finds Value
+
+### Overview
+'Destinations' in Multiwoven are the endpoints where data is sent and utilized. They encompass:
+
+- **CRM Systems**: Like Salesforce
+- **Advertising Platforms**: Such as Google Ads
+- **Marketing and Support Tools**: HubSpot, Zendesk, etc.
+
+### Integrating a Destination
+Add a destination by going to the Destinations page and clicking 'Add destination'.
+
+## Models: Shaping Your Data
+
+### Overview
+'Models' in Multiwoven determine the data you wish to sync from a source. They can be defined through:
+
+- **SQL Editor**: For customized queries
+- **Visual Table Selector**: For intuitive interface
+- **Existing dbt Models or Looker Looks**: Leveraging pre-built models
+- **Customer Studio**: Multiwoven’s no-code solution for defining data cohorts
+
+### Importance of a Unique Primary Key
+Every model must have a unique primary key to ensure each data entry is distinct, crucial for data tracking and updating.
+
+## Syncs: Customizing Data Flow
+
+### Overview
+'Syncs' in Multiwoven control how data from a model is presented in a destination. Key features include:
+
+- **Multiple Syncs from One Model**: Ensuring consistent data across different business tools
+- **Configurable Sync Modes**: Upsert, insert, update, etc.
+- **Scheduling Options**: Automatic or manual trigger for syncs
+
+### Ensuring Data Consistency
+For multiple object types to a single destination, distinct syncs are required for each type.
+
+## Dealing with Duplicated Records
+
+### Overview
+Multiwoven uses the primary key to prevent duplicates during syncs. Duplicated records are flagged as errors and can be monitored for resolution.
+
+## Change Data Capture (CDC): Efficient Data Sync
+
+### Overview
+CDC in Multiwoven ensures only necessary data updates are sent to destinations, thereby optimizing the syncing process.
+
+### How It Works
+- **Comparison with Previous Data**: Multiwoven compares new data with the last sync.
+- **Identifying Changes**: New, changed, or deleted records are identified.
+- **Efficient Syncing**: Only the altered data is sent to the destination.
+
+### CDC Variants
+Multiwoven employs a difference-based CDC, crucial for data warehouses, unlike traditional ETL tools.
+
+## FAQs
+
+### What if I Alter My Model?
+Changes in your model configuration impact the sync process, particularly for SaaS destinations. Only the mapped columns in your sync configurations are tracked for changes.
+
+### How Does Multiwoven Handle Data Type Changes?
+If a data type changes in your model, Multiwoven treats it as a row change in the next sync.

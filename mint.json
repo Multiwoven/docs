@@ -29,6 +29,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Developer Guides",
+      "url": "guides"
     }
   ],
   "anchors": [
@@ -137,6 +141,10 @@
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Developer Guides",
+      "pages": ["guides/introduction"]
     },
     {
       "group": "Authentication",
