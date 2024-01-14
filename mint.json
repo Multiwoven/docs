@@ -17,8 +17,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hello@multiwoven.com"
+      "name": "Book a Demo",
+      "url": "https://blog.multiwoven.com"
     }
   ],
   "topbarCtaButton": {
@@ -50,12 +50,17 @@
       "name": "Get instant help",
       "icon": "discord",
       "url": "https://mintlify.com/blog"
+    },
+    {
+      "name": "FAQs",
+      "icon": "bullseye-pointer",
+      "url": "faqs"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction","get-started/core-concepts","get-started/integrations"]
+      "pages": ["get-started/introduction","get-started/reverse-etl","get-started/core-concepts","get-started/integrations"]
     },
     {
       "group": "Sources",
@@ -145,18 +150,6 @@
     {
       "group": "Developer Guides",
       "pages": ["guides/introduction"]
-    },
-    {
-      "group": "Authentication",
-      "pages": [
-        "api-reference/authentication/login",
-        "api-reference/authentication/signup",
-        "api-reference/authentication/verify_code",
-        "api-reference/authentication/resend_verification",
-        "api-reference/authentication/forgot_password",
-        "api-reference/authentication/reset_password",
-        "api-reference/authentication/logout"
-      ]
     },
     {
       "group": "Workspaces",

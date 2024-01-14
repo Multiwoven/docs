@@ -2,3 +2,43 @@
 title: 'Overview'
 description: ''
 ---
+
+### Introduction
+
+In Multiwoven, **Models** are designed to define and organize data, simplifying the process of querying from various sources.
+
+To create a new model in Multiwoven, follow these steps:
+
+- **Navigate to Models Page**: Access the platform and go to the 'Models' section.
+
+- **Model Creation**: Click on the `Add model` button to create a new model.
+
+- **Select Data Source**: Choose from the list of data sources you have already configured in Multiwoven.
+
+### Choose Modeling Method
+
+<Tabs>
+  <Tab title="SQL Editor">
+    For detailed and custom query writing.
+  </Tab>
+  <Tab title="Table Selector">
+    For a straightforward, visual approach to model building.
+  </Tab>
+  <Tab title="dbt Tools">
+    Ideal for advanced data transformation, leveraging the dbt framework.
+  </Tab>
+</Tabs>
+
+### Unique Primary Key Requirement
+
+- **Essential Configuration**:
+    Every model in Multiwoven must be configured with a unique primary key.
+    This primary key is pivotal for uniquely identifying each record in your dataset.
+
+- **Configuring the Primary Key**:
+  - During the final step of model creation, select a column that holds unique values from your dataset.
+  - Ensuring the uniqueness of this primary key is crucial for the integrity and accuracy of data synchronization.
+
+- **Importance of a Unique Key**:
+  - A unique primary key is essential for effectively managing data synchronization.
+  - It enables the system to track and sync only the new or updated data to the designated destinations, ensuring data consistency and reducing redundancy.
