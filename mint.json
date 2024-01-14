@@ -60,7 +60,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction","get-started/reverse-etl","get-started/core-concepts","get-started/integrations"]
+      "pages": ["get-started/introduction","get-started/core-concepts","get-started/integrations"]
     },
     {
       "group": "Sources",
