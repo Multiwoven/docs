@@ -63,6 +63,14 @@
       "pages": ["get-started/introduction","get-started/core-concepts","get-started/integrations"]
     },
     {
+      "group": "Models",
+      "pages": ["models/overview"]
+    },
+    {
+      "group": "Syncs",
+      "pages": ["syncs/overview"]
+    },
+    {
       "group": "Sources",
       "pages": ["sources/redshift","sources/snowflake","sources/bquery","sources/databricks"]
     },
@@ -130,14 +138,6 @@
         }
 
       ]
-    },
-    {
-      "group": "Models",
-      "pages": ["models/overview"]
-    },
-    {
-      "group": "Syncs",
-      "pages": ["syncs/overview"]
     },
     {
       "group": "Audiences",
