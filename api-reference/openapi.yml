@@ -3,18 +3,250 @@ openapi: 3.0.1
 info:
   title: MultiWoven API
   version: 1.0.0
-  description: |
-    **The MultiWoven Management API** offers a robust solution for managing the virtual pet store's resources. It encapsulates a wide range of functionalities, from user authentication processes (signup, login, and code verification) to comprehensive management of workspaces.
+paths:
+  "/api/v1/models":
+    get:
+      summary: Lists all models
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            query:
+                              type: string
+                            query-type:
+                              type: string
+                            created-at:
+                              type: string
+                              format: date-time
+                            updated-at:
+                              type: string
+                              format: date-time
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                      first:
+                        type: string
+                      prev:
+                        type: string
+                      next:
+                        type: string
+                      last:
+                        type: string
+    post:
+      summary: Creates a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: Model created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          query:
+                            type: string
+                          query-type:
+                            type: string
+                          created-at:
+                            type: string
+                            format: date-time
+                          updated-at:
+                            type: string
+                            format: date-time
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: object
+                  properties:
+                    connector_id:
+                      type: integer
+                    name:
+                      type: string
+                    query:
+                      type: string
+                    query_type:
+                      type: string
+                  required:
+                  - connector_id
+                  - name
+                  - query
+                  - query_type
 
-    _Key Features:_
-    - **User Authentication**: Secure endpoints for user signup, login, and confirmation code verification.
-    - **Workspace Management**: Robust management of workspaces, including creation, modification, and deletion functionalities.
-    - **Scalable Architecture**: Designed to cater to the growing needs of the pet store, ensuring high availability and performance.
-    - **Security**: Implements best practices in security, ensuring safe transactions and data protection.
+  "/api/v1/models/{id}":
+    get:
+      summary: Retrieves a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          query:
+                            type: string
+                          query-type:
+                            type: string
+                          created-at:
+                            type: string
+                            format: date-time
+                          updated-at:
+                            type: string
+                            format: date-time
+    put:
+      summary: Updates a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Model updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          query:
+                            type: string
+                          query-type:
+                            type: string
+                          created-at:
+                            type: string
+                            format: date-time
+                          updated-at:
+                            type: string
+                            format: date-time
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: object
+                  properties:
+                    connector_id:
+                      type: integer
+                    name:
+                      type: string
+                    query:
+                      type: string
+                    query_type:
+                      type: string
+                  required:
+                  - connector_id
+                  - name
+                  - query
+                  - query_type
+    delete:
+      summary: Deletes a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Model deleted
 
-    The API follows RESTful principles, providing a clear, intuitive way for developers to interact with our system. All endpoints return JSON-formatted responses and adhere to standard HTTP response codes for ease of use and understanding.
-
-paths:             
   # Workspaces
   "/api/v1/workspaces":
     get:

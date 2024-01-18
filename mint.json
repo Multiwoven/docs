@@ -152,20 +152,13 @@
       "pages": ["guides/introduction"]
     },
     {
-      "group": "Workspaces",
+      "group": "Models",
       "pages": [
-        "api-reference/workspaces/get-workspaces",
-        "api-reference/workspaces/create-workspace",
-        "api-reference/workspaces/update-workspace",
-        "api-reference/workspaces/delete-workspace"
-      ]
-    },
-    {
-      "group": "Workspace users",
-      "pages": [
-        "api-reference/workspace-users/add-user-to-workspace",
-        "api-reference/workspace-users/update-workspace-user-role",
-        "api-reference/workspace-users/remove-user-from-workspace"
+        "api-reference/models/create-model",
+        "api-reference/models/update-model",
+        "api-reference/models/delete-model",
+        "api-reference/models/get-model",
+        "api-reference/models/get-all-models"
       ]
     },
     {
