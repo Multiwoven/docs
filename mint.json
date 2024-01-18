@@ -162,23 +162,6 @@
       ]
     },
     {
-      "group": "Workspaces",
-      "pages": [
-        "api-reference/workspaces/get-workspaces",
-        "api-reference/workspaces/create-workspace",
-        "api-reference/workspaces/update-workspace",
-        "api-reference/workspaces/delete-workspace"
-      ]
-    },
-    {
-      "group": "Workspace users",
-      "pages": [
-        "api-reference/workspace-users/add-user-to-workspace",
-        "api-reference/workspace-users/update-workspace-user-role",
-        "api-reference/workspace-users/remove-user-from-workspace"
-      ]
-    },
-    {
       "group": "Security & Compliance",
       "pages": ["security-and-compliance/security"]
     },
