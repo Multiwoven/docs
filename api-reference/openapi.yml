@@ -14,7 +14,101 @@ info:
 
     The API follows RESTful principles, providing a clear, intuitive way for developers to interact with our system. All endpoints return JSON-formatted responses and adhere to standard HTTP response codes for ease of use and understanding.
 
-paths:             
+paths:
+  "/api/v1/models":
+    get:
+      summary: Lists all models
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Models retrieved
+    post:
+      summary: Creates a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: Model created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
+              required:
+              - name
+
+  "/api/v1/models/{id}":
+    get:
+      summary: Retrieves a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Model retrieved
+    put:
+      summary: Updates a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Model updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+    delete:
+      summary: Deletes a model
+      tags:
+      - Models
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Model deleted
+
   # Workspaces
   "/api/v1/workspaces":
     get:

@@ -152,6 +152,16 @@
       "pages": ["guides/introduction"]
     },
     {
+      "group": "Models",
+      "pages": [
+        "api-reference/models/create-model",
+        "api-reference/models/update-model",
+        "api-reference/models/delete-model",
+        "api-reference/models/get-model",
+        "api-reference/models/get-all-models"
+      ]
+    },
+    {
       "group": "Workspaces",
       "pages": [
         "api-reference/workspaces/get-workspaces",
