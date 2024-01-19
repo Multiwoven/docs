@@ -170,7 +170,8 @@
         "api-reference/connectors/list_connectors",
         "api-reference/connectors/get_connector",
         "api-reference/connectors/update_connector",
-        "api-reference/connectors/delete_connector"
+        "api-reference/connectors/delete_connector",
+        "api-reference/connectors/discover"
       ]
     },
     {

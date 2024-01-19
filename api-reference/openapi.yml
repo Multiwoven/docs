@@ -657,6 +657,65 @@ paths:
       responses:
         '204':
           description: No content, indicating successful deletion
+  "/api/v1/connectors/{id}/discover":
+    get:
+      summary: Discovers catalog information for a specified connector
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique ID of the connector
+      responses:
+        '200':
+          description: Catalog information for the connector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          connector_id:
+                            type: integer
+                          workspace_id:
+                            type: integer
+                          catalog:
+                            type: object
+                            properties:
+                              streams:
+                                type: array
+                                description: "Array of stream objects, varying based on connector ID."
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    action:
+                                      type: string
+                                    json_schema:
+                                      type: object
+                                      additionalProperties: true
+                                    url:
+                                      type: string
+                                    request_method:
+                                      type: string
+                          catalog_hash:
+                            type: string
+                additionalProperties: false
 components:
   securitySchemes:
     bearerAuth:
