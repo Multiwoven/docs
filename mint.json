@@ -160,7 +160,8 @@
       "group": "Connector Definitions",
       "pages": [
         "api-reference/connector_definitions/connector_definitions",
-        "api-reference/connector_definitions/connector_definition"
+        "api-reference/connector_definitions/connector_definition",
+        "api-reference/connector_definitions/check_connection"
       ]
     },
     {

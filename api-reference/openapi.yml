@@ -375,6 +375,48 @@ paths:
                         type: string
                 additionalProperties: true
 
+  "/api/v1/connector_definitions/check_connection":
+    post:
+      summary: Checks the connection for a specified connector definition
+      tags:
+      - Connector Definitions
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - source
+                    - destination
+                name:
+                  type: string
+                connection_spec:
+                  type: object
+                  description: "Generic connection specification structure. Specifics depend on the connector type."
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Connection check successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    enum:
+                      - success
+                      - failure
+                  details:
+                    type: string
+                additionalProperties: false
+
   /api/v1/connectors:
     post:
       summary: Creates a connector
