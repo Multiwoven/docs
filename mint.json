@@ -47,11 +47,6 @@
       "url": "https://mintlify.com/community"
     },
     {
-      "name": "Get instant help",
-      "icon": "discord",
-      "url": "https://mintlify.com/blog"
-    },
-    {
       "name": "FAQs",
       "icon": "bullseye-pointer",
       "url": "faqs"
@@ -159,6 +154,19 @@
         "api-reference/models/delete-model",
         "api-reference/models/get-model",
         "api-reference/models/get-all-models"
+      ]
+    },
+    {
+      "group": "Connector Definitions",
+      "pages": [
+        "api-reference/connector_definitions/connector_definitions",
+        "api-reference/connector_definitions/connector_definition"
+      ]
+    },
+    {
+      "group": "Connectors",
+      "pages": [
+        "api-reference/connectors/create_connector"
       ]
     },
     {

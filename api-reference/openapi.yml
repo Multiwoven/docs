@@ -248,6 +248,206 @@ paths:
         '204':
           description: Model deleted
 
+  "/api/v1/connector_definitions":
+    get:
+      summary: Retrieve connector definitions based on type
+      tags:
+        - Connector Definitions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector (source or destination)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                    connector_subtype:
+                      type: string
+                    documentation_url:
+                      type: string
+                    github_issue_label:
+                      type: string
+                    icon:
+                      type: string
+                    license:
+                      type: string
+                    release_stage:
+                      type: string
+                    support_level:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                    connector_spec:
+                      type: object
+                      properties:
+                        documentation_url:
+                          type: string
+                        connection_specification:
+                          type: object
+                          additionalProperties: true
+
+  "/api/v1/connector_definitions/{connector_name}":
+    get:
+      summary: Retrieve specific connector definition based on its name
+      tags:
+        - Connector Definitions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: connector_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the connector
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector (source or destination)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  connector_type:
+                    type: string
+                  connector_subtype:
+                    type: string
+                  documentation_url:
+                    type: string
+                  github_issue_label:
+                    type: string
+                  icon:
+                    type: string
+                  license:
+                    type: string
+                  release_stage:
+                    type: string
+                  support_level:
+                    type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  connector_spec:
+                    type: object
+                    properties:
+                      documentation_url:
+                        type: string
+                      connection_specification:
+                        type: object
+                        additionalProperties: true
+                      supports_normalization:
+                        type: boolean
+                      supports_dbt:
+                        type: boolean
+                      stream_type:
+                        type: string
+                additionalProperties: true
+
+  /api/v1/connectors:
+    post:
+      summary: Creates a connector
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                      enum:
+                        - source
+                        - destination
+                    connector_name:
+                      type: string
+                    configuration:
+                      type: object
+                      description: "Configuration details for the connector. Structure depends on the connector definition."
+                      additionalProperties: true
+                  required:
+                  - name
+                  - connector_type
+                  - connector_name
+                  - configuration
+      responses:
+        '201':
+          description: Connector created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          connector_type:
+                            type: string
+                          workspace_id:
+                            type: integer
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          configuration:
+                            type: object
+                            description: "Specific configuration of the created connector."
+                            additionalProperties: true
+                          connector_name:
+                            type: string
+                          icon:
+                            type: string
 components:
   securitySchemes:
     bearerAuth:
