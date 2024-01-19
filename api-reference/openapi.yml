@@ -448,6 +448,215 @@ paths:
                             type: string
                           icon:
                             type: string
+    get:
+      summary: Lists all connectors
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: A list of connectors
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            connector_type:
+                              type: string
+                            workspace_id:
+                              type: integer
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                            configuration:
+                              type: object
+                              description: "Generic configuration for the connector. Structure varies based on the connector_type."
+                              additionalProperties: true
+                            connector_name:
+                              type: string
+                            icon:
+                              type: string
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                      first:
+                        type: string
+                      prev:
+                        type: string
+                      next:
+                        type: string
+                      last:
+                        type: string
+                additionalProperties: false
+  /api/v1/connectors/{id}:
+    get:
+      summary: Retrieves a specific connector by ID
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique ID of the connector
+      responses:
+        '200':
+          description: A single connector object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          connector_type:
+                            type: string
+                          workspace_id:
+                            type: integer
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          configuration:
+                            type: object
+                            description: "Generic configuration for the connector. Structure varies based on the connector_type."
+                            additionalProperties: true
+                          connector_name:
+                            type: string
+                          icon:
+                            type: string
+                additionalProperties: false
+    put:
+      summary: Updates a specific connector by ID
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique ID of the connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                      enum:
+                        - source
+                        - destination
+                    configuration:
+                      type: object
+                      description: "Generic configuration structure. Specifics depend on the connector type."
+                      additionalProperties: true
+                    connector_name:
+                      type: string
+                  required:
+                    - name
+                    - connector_type
+                    - configuration
+                    - connector_name
+      responses:
+        '200':
+          description: Connector updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          connector_type:
+                            type: string
+                          workspace_id:
+                            type: integer
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          configuration:
+                            type: object
+                            description: "Specific configuration of the updated connector."
+                            additionalProperties: true
+                          connector_name:
+                            type: string
+                          icon:
+                            type: string
+                additionalProperties: false
+    delete:
+      summary: Deletes a specific connector by ID
+      tags:
+      - Connectors
+      security:
+      - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique ID of the connector
+      responses:
+        '204':
+          description: No content, indicating successful deletion
 components:
   securitySchemes:
     bearerAuth:

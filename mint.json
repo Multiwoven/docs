@@ -166,7 +166,11 @@
     {
       "group": "Connectors",
       "pages": [
-        "api-reference/connectors/create_connector"
+        "api-reference/connectors/create_connector",
+        "api-reference/connectors/list_connectors",
+        "api-reference/connectors/get_connector",
+        "api-reference/connectors/update_connector",
+        "api-reference/connectors/delete_connector"
       ]
     },
     {
