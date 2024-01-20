@@ -184,6 +184,11 @@
       "pages": ["faqs/questions"]
     }
   ],
+  "analytics": {
+    "mixpanel": {
+        "projectToken": "d974300ed237cbb9d04fc9d55cf319cd"
+    }
+  },
   "footerSocials": {
     "twitter": "https://twitter.com/multiwoven",
     "github": "https://github.com/Multiwoven",
