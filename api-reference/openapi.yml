@@ -248,6 +248,31 @@ paths:
         '204':
           description: Model deleted
 
+  "/api/v1/models/{id}/preview":
+    get:
+      summary: Preview model data
+      tags:
+        - Models
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the model to preview
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: An array of generic JSON objects representing the preview data.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+
   "/api/v1/connector_definitions":
     get:
       summary: Retrieve connector definitions based on type

@@ -153,7 +153,8 @@
         "api-reference/models/update-model",
         "api-reference/models/delete-model",
         "api-reference/models/get-model",
-        "api-reference/models/get-all-models"
+        "api-reference/models/get-all-models",
+        "api-reference/models/preview-model"
       ]
     },
     {
