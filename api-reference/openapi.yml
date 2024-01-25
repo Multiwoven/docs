@@ -248,31 +248,6 @@ paths:
         '204':
           description: Model deleted
 
-  "/api/v1/models/{id}/preview":
-    get:
-      summary: Preview model data
-      tags:
-        - Models
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the model to preview
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: An array of generic JSON objects representing the preview data.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  additionalProperties: true
-
   "/api/v1/connector_definitions":
     get:
       summary: Retrieve connector definitions based on type
@@ -783,6 +758,40 @@ paths:
                           catalog_hash:
                             type: string
                 additionalProperties: false
+  "/api/v1/connectors/{id}/query_source":
+    post:
+      summary: Query your source data
+      tags:
+        - Connectors
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the connector to query
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: SQL query to be executed
+      responses:
+        '200':
+          description: An array of generic JSON objects representing the preview data.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
 components:
   securitySchemes:
     bearerAuth:
