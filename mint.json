@@ -59,7 +59,17 @@
     },
     {
       "group": "Models",
-      "pages": ["models/overview"]
+      "pages": ["models/overview",
+      {
+        "group": "Modelling Methods",
+        "icon": "table",
+        "pages": [
+          "models/modelling-methods/sql",
+          "models/modelling-methods/dbt",
+          "models/modelling-methods/table-visualization"
+        ]
+      }
+    ]
     },
     {
       "group": "Syncs",
