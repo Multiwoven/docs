@@ -40,6 +40,10 @@ paths:
                               type: string
                             query_type:
                               type: string
+                            primary_key:
+                              type: string
+                            connector_id:
+                              type: integer
                             created_at:
                               type: string
                               format: date-time
@@ -92,6 +96,10 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          primary_key:
+                            type: string
+                          connector_id:
+                            type: integer
                           created_at:
                             type: string
                             format: date-time
@@ -107,14 +115,18 @@ paths:
                 model:
                   type: object
                   properties:
-                    connector_id:
-                      type: integer
                     name:
+                      type: string
+                    description:
                       type: string
                     query:
                       type: string
                     query_type:
                       type: string
+                    primary_key:
+                      type: string
+                    connector_id:
+                      type: integer
                   required:
                   - connector_id
                   - name
@@ -160,6 +172,10 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          primary_key:
+                            type: string
+                          connector_id:
+                            type: integer
                           created_at:
                             type: string
                             format: date-time
@@ -204,6 +220,10 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          primary_key:
+                            type: string
+                          connector_id:
+                            type: integer
                           created_at:
                             type: string
                             format: date-time
@@ -219,14 +239,18 @@ paths:
                 model:
                   type: object
                   properties:
-                    connector_id:
-                      type: integer
                     name:
+                      type: string
+                    description:
                       type: string
                     query:
                       type: string
                     query_type:
                       type: string
+                    primary_key:
+                      type: string
+                    connector_id:
+                      type: integer
                   required:
                   - connector_id
                   - name
