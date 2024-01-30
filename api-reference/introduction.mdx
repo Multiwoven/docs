@@ -1,33 +1,78 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: ''
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Welcome to the MultiWoven API documentation! You can use our API to access all the features of the MultiWoven platform. 
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+The MultiWoven API uses a JWT-based authentication mechanism. To access the API, you need a valid JWT token which should be included in the header of your requests. This ensures that your interactions with the API are secure and authenticated.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+```text
+--header 'Authorization: Bearer <YOUR_JWT_TOKEN>'
 ```
+
+<Warning>It is advised to keep your JWT token safe and not share it with anyone. If you think your token has been compromised, you can generate a new token from the MultiWoven dashboard.</Warning>
+
+## API Endpoints
+
+The MultiWoven API is organized around REST. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+
+### Base URL
+
+The base URL for all API requests is `https://api.multiwoven.com/v1/`.
+
+### API Reference
+
+The API reference contains a list of all the endpoints available in the MultiWoven API. You can also use the navigation bar on the left to browse through the different endpoints.
+
+<CardGroup cols={2}>
+  <Card title="Models" icon="square-1">
+    Models are the core of the MultiWoven API. They represent the different entities in the MultiWoven platform.
+  </Card>
+  <Card title="Connectors" icon="square-2">
+  Connectors help connect various data warehouse sources or destinations to the MultiWoven platform.
+  </Card>
+  <Card title="Syncs" icon="square-3">
+  Syncs help you sync data between different data warehouse sources and destinations.
+  </Card>
+  <Card title="Audiences" icon="square-4">
+  Audiences allow you to send targeted customer segments from data sources to various destinations.
+  </Card>
+</CardGroup>
+
+## Pagination
+
+Requests that return multiple items will be paginated to 100 items by default. You can specify further pages with the `page` parameter. You can also set a custom page size up to 100 with the `page_size` parameter.
+
+```text
+https://api.multiwoven.com/v1/models?page=2&page_size=50
+```
+
+## Rate Limiting
+
+The MultiWoven API is rate limited to 100 requests per minute. If you exceed this limit, you will receive a `429 Too Many Requests` response.
+
+## Errors
+
+The MultiWoven API uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success, codes in the `4xx` range indicate an error that failed given the information provided, and codes in the `5xx` range indicate an error with MultiWoven's servers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

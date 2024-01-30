@@ -1,0 +1,102 @@
+---
+title: 'Architecture Overview of Multiwoven'
+description: ''
+---
+
+## Introduction
+
+Multiwoven is an open-source Reverse ETL platform, enabling users to seamlessly integrate data from various sources like Snowflake, Redshift, and BigQuery, and load it into their business tools like Salesforce, Hubspot, and Zendesk. Multiwoven's architecture is designed to be highly scalable and flexible, allowing for easy extensibility and adaptability. The platform is built using cutting-edge technologies, ensuring reliability and efficiency in data operations.
+
+## Architecture
+
+Multiwoven's architecture is divided into four main components: the **backend**, **frontend**, **integrations**, and **data pipelines**.
+
+### Backend: The Control Plane `multiwoven-server`
+
+At the heart of Multiwoven's architecture is its backend service, known as `multiwoven-server`. This crucial component acts as the control plane, expertly handling user management, Role-Based Access Control (RBAC), REST APIs, and intricate business logic. Developed using Ruby on Rails, `multiwoven-server` ensures a reliable, secure, and flexible foundation, essential for the effective functioning of the platform.
+
+### Frontend: User Interface
+
+Multiwoven's frontend is a ReactJS application that provides a user-friendly interface for users to manage their data pipelines. The frontend is designed to be intuitive and easy to use, allowing users to seamlessly create, edit, and monitor their data pipelines.
+
+### Integrations: The `multiwoven-integrations` Ruby GEM
+
+Multiwoven's integrations are built using the `multiwoven-integrations` Ruby GEM. This GEM provides a simple, yet powerful way to integrate with various data sources and business tools. The GEM is designed to be highly extensible, allowing users to easily add new integrations.
+
+### Data Pipelines and Worker Logic: Leveraging Temporal
+
+Multiwoven's data pipelines and worker logic are built using Temporal. Temporal is a distributed, scalable, and fault-tolerant orchestration engine that allows users to build resilient applications. Temporal is designed to be highly extensible, allowing users to easily add new workflows. 
+
+## Technologies
+
+### Frameworks
+
+- **Ruby on Rails:**
+
+- **Typescript:**
+
+- **ReactJS:**
+
+
+## Database & Workers
+
+- **PostgreSQL:**
+
+- **Temporal:**
+
+- **Redis:**
+
+## Deployment
+
+- **Docker:**
+
+- **Kubernetes:**
+
+- **Helm:**
+
+## Monitoring
+
+- **Prometheus:**
+
+- **Grafana:**
+
+## CI/CD
+
+- **Github Actions:**
+
+## Testing
+
+- **RSpec:**
+
+- **Cypress:**
+
+## Documentation
+
+- **Storybook:**
+
+- **Swagger:**
+
+## License
+
+Multiwoven is licensed under the AGPLv3 License. See [LICENSE](https://github.com/Multiwoven/multiwoven/blob/main/LICENSE) for the full license text.
+
+## Contributing
+
+We welcome contributions from the community. Please see [CONTRIBUTING.md](https://github.com/Multiwoven/multiwoven)
+
+## Security
+
+Multiwoven takes security seriously. If you believe you have found a security vulnerability, please responsibly disclose by contacting us at [Hello](mailto:hello@multiwoven.com).
+
+### SOC 2 Type 2
+
+Multiwoven is SOC 2 Type 2 compliant. This certification ensures that Multiwoven's information security practices, policies, procedures, and operations meet the SOC 2 standards for security, availability, and confidentiality.
+
+### CCPA
+
+Multiwoven is CCPA compliant. This certification ensures that Multiwoven's data privacy practices meet the CCPA standards for data privacy and protection.
+
+## Support
+
+For any questions or concerns, please contact us at [Hello](mailto:hello@multiwoven.com).
+

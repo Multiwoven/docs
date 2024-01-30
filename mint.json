@@ -33,6 +33,10 @@
     {
       "name": "Developer Guides",
       "url": "guides"
+    },
+    {
+      "name": "Architecture",
+      "url": "architecture"
     }
   ],
   "anchors": [
@@ -155,6 +159,10 @@
     {
       "group": "Developer Guides",
       "pages": ["guides/introduction"]
+    },
+    {
+      "group": "Architecture",
+      "pages": ["architecture/introduction"]
     },
     {
       "group": "Models",
