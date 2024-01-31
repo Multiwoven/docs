@@ -10,8 +10,7 @@ description: ''
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-<Tip>**Note**: if you are using mac or windows, you will need to install [Docker Desktop](https://www.docker.com/products/docker-desktop) instead of just docker. Docker Desktop includes both docker and docker-compose.</Tip>
-
+<Tip>**Note**: if you are using Mac or Windows, you will need to install [Docker Desktop](https://www.docker.com/products/docker-desktop) instead of just docker. Docker Desktop includes both docker and docker-compose.</Tip>
 
 Verify that you have the correct versions installed:
 
@@ -73,6 +72,21 @@ docker-compose exec multiwoven-server bundle exec rspec
 ```
 
 ## Troubleshooting
+
+To cleanup all images and containers, run the following commands:
+
+```bash
+docker rmi -f $(docker images -q)
+docker rm -f $(docker ps -a -q)
+```
+
+prune all unused images, containers, networks and volumes
+
+<Warning>**Danger:** This will remove all unused images, containers, networks and volumes.</Warning>
+
+```bash
+docker system prune -a
+```
 
 Please open a new issue at [https://github.com/Multiwoven/multiwoven/issues](https://github.com/Multiwoven/multiwoven/issues) if you run into any issues or join our [Slack]() to chat with us.
     

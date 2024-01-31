@@ -33,6 +33,10 @@
     {
       "name": "Deployment & Architecture Guide",
       "url": "guides"
+    },
+    {
+      "name": "Community & Support",
+      "url": "community-support"
     }
   ],
   "anchors": [
@@ -161,13 +165,32 @@
     {
       "group": "Deploy Locally",
       "pages": [
-        "guides/setup/docker-compose-dev"
+        "guides/setup/docker-compose-dev",
+        "guides/setup/environment-variables"
       ]
     },
     {
       "group": "Self-hosting Multiwoven",
       "pages": [
-        "guides/setup/docker-compose"
+        "guides/setup/docker-compose",
+        "guides/setup/helm",
+        "guides/setup/ec2",
+        "guides/setup/ecs",
+        "guides/setup/eks",
+        "guides/setup/gke",
+        "guides/setup/gce",
+        "guides/setup/aks",
+        "guides/setup/avm",        
+        "guides/setup/dod",
+        "guides/setup/dok",
+        "guides/setup/heroku",
+        "guides/setup/openshift"
+      ]
+    },
+    {
+      "group": "Community & Support",
+      "pages": [
+        "community-support/introduction"
       ]
     },
     {
