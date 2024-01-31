@@ -190,7 +190,14 @@
     {
       "group": "Community & Support",
       "pages": [
-        "community-support/introduction"
+        "community-support/overview"
+      ]
+    },
+    {
+      "group": "Contributing Guide",
+      "pages": [
+        "community-support/contribution",
+        "community-support/slack-conduct"
       ]
     },
     {
