@@ -31,12 +31,8 @@
       "url": "api-reference"
     },
     {
-      "name": "Developer Guides",
+      "name": "Deployment & Architecture Guide",
       "url": "guides"
-    },
-    {
-      "name": "Architecture",
-      "url": "architecture"
     }
   ],
   "anchors": [
@@ -157,12 +153,22 @@
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "Developer Guides",
-      "pages": ["guides/introduction"]
+      "group": "Architecture",
+      "pages": [
+        "guides/architecture/introduction"
+      ]
     },
     {
-      "group": "Architecture",
-      "pages": ["architecture/introduction"]
+      "group": "Deploy Locally",
+      "pages": [
+        "guides/setup/docker-compose-dev"
+      ]
+    },
+    {
+      "group": "Self-hosting Multiwoven",
+      "pages": [
+        "guides/setup/docker-compose"
+      ]
     },
     {
       "group": "Models",
