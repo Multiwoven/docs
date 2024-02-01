@@ -816,6 +816,343 @@ paths:
                 items:
                   type: object
                   additionalProperties: true
+  "/api/v1/syncs":
+    get:
+      summary: List all sync operations
+      operationId: listSyncs
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page[number]
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Page number for pagination
+        - name: page[size]
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Number of items per page for pagination
+      responses:
+        '200':
+          description: A list of sync operations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          enum: [syncs]
+                        attributes:
+                          type: object
+                          properties:
+                            source_id:
+                              type: integer
+                            destination_id:
+                              type: integer
+                            model_id:
+                              type: integer
+                            configuration:
+                              type: object
+                              additionalProperties: true
+                            schedule_type:
+                              type: string
+                              enum: [automated]
+                            sync_mode:
+                              type: string
+                              enum: [full_refresh]
+                            sync_interval:
+                              type: integer
+                            sync_interval_unit:
+                              type: string
+                              enum: [minutes]
+                            stream_name:
+                              type: string
+                            status:
+                              type: string
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        format: uri
+                      first:
+                        type: string
+                        format: uri
+                      prev:
+                        type: string
+                        format: uri
+                      next:
+                        type: string
+                        format: uri
+                      last:
+                        type: string
+                        format: uri
+                required:
+                  - data
+                  - links
+    post:
+      summary: Create a new sync operation
+      operationId: createSync
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sync:
+                  type: object
+                  properties:
+                    source_id:
+                      type: integer
+                    destination_id:
+                      type: integer
+                    model_id:
+                      type: integer
+                    schedule_type:
+                      type: string
+                      enum: [automated]
+                    configuration:
+                      type: object
+                      additionalProperties: true
+                    stream_name:
+                      type: string
+                    sync_mode:
+                      type: string
+                      enum: [full_refresh]
+                    sync_interval:
+                      type: integer
+                    sync_interval_unit:
+                      type: string
+                      enum: [minutes]
+                  required:
+                    - source_id
+                    - destination_id
+                    - model_id
+                    - schedule_type
+                    - configuration
+                    - stream_name
+                    - sync_mode
+                    - sync_interval
+                    - sync_interval_unit
+      responses:
+        '200':
+          description: Sync operation created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum: [syncs]
+                  attributes:
+                    type: object
+                    properties:
+                      source_id:
+                        type: integer
+                      destination_id:
+                        type: integer
+                      model_id:
+                        type: integer
+                      configuration:
+                        type: object
+                        additionalProperties: true
+                      schedule_type:
+                        type: string
+                        enum: [automated]
+                      sync_mode:
+                        type: string
+                        enum: [full_refresh]
+                      sync_interval:
+                        type: integer
+                      sync_interval_unit:
+                        type: string
+                        enum: [minutes]
+                      stream_name:
+                        type: string
+                      status:
+                        type: string
+  "/api/v1/syncs/{id}":
+    get:
+      summary: Show details of a specific sync operation
+      operationId: showSync
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sync details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum: [syncs]
+                  attributes:
+                    type: object
+                    properties:
+                      source_id:
+                        type: integer
+                      destination_id:
+                        type: integer
+                      model_id:
+                        type: integer
+                      configuration:
+                        type: object
+                        additionalProperties: true
+                      schedule_type:
+                        type: string
+                        enum: [automated]
+                      sync_mode:
+                        type: string
+                        enum: [full_refresh]
+                      sync_interval:
+                        type: integer
+                      sync_interval_unit:
+                        type: string
+                        enum: [minutes]
+                      stream_name:
+                        type: string
+                      status:
+                        type: string
+
+    put:
+      summary: Update a specific sync operation
+      operationId: updateSync
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sync:
+                  type: object
+                  properties:
+                    source_id:
+                      type: integer
+                    destination_id:
+                      type: integer
+                    model_id:
+                      type: integer
+                    schedule_type:
+                      type: string
+                    configuration:
+                      type: object
+                      additionalProperties: true
+                    stream_name:
+                      type: string
+                    sync_mode:
+                      type: string
+                    sync_interval:
+                      type: integer
+                    sync_interval_unit:
+                      type: string
+      responses:
+        '200':
+          description: Sync operation updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                        enum: [syncs]
+                      attributes:
+                        type: object
+                        properties:
+                          source_id:
+                            type: integer
+                          destination_id:
+                            type: integer
+                          model_id:
+                            type: integer
+                          configuration:
+                            type: object
+                            additionalProperties: true
+                          schedule_type:
+                            type: string
+                            enum: [automated]
+                          sync_mode:
+                            type: string
+                            enum: [full_refresh]
+                          sync_interval:
+                            type: integer
+                          sync_interval_unit:
+                            type: string
+                            enum: [minutes]
+                          stream_name:
+                            type: string
+                          status:
+                            type: string
+    delete:
+      summary: Delete a specific sync operation
+      operationId: deleteSync
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the sync operation to delete
+      responses:
+        '204':
+          description: No content, indicating the sync operation was successfully deleted
 components:
   securitySchemes:
     bearerAuth:

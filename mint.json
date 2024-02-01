@@ -46,9 +46,9 @@
       "url": "https://github.com/Multiwoven/multiwoven"
     },
     {
-      "name": "Community",
+      "name": "Slack Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
     },
     {
       "name": "FAQs",
@@ -228,6 +228,16 @@
         "api-reference/connectors/delete_connector",
         "api-reference/connectors/discover",
         "api-reference/connectors/query_source"
+      ]
+    },
+    {
+      "group": "Syncs",
+      "pages": [
+        "api-reference/syncs/get_syncs",
+        "api-reference/syncs/create_sync",
+        "api-reference/syncs/show_sync",
+        "api-reference/syncs/update_sync",
+        "api-reference/syncs/delete_sync"
       ]
     },
     {
