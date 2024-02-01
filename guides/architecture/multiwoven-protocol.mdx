@@ -1,0 +1,117 @@
+---
+title: 'Multiwoven protocol'
+description: ''
+---
+
+       
+### Introduction 
+
+Multiwoven [protocol](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L4) defines a set of interfaces for building connectors. Connectors can be implemented independent of our server application, this protocol allows developers to create connectors without requiring in-depth knowledge of our core platform.
+
+
+### Concepts
+
+**Source** - A source in business data storage typically refers to data warehouses like Snowflake, AWS Redshift and Google BigQuery, as well as databases. 
+
+**Destination** - A destination is a tool or third party service where source data is sent and utilised, often by end-users. It includes CRM systems, ad platforms, marketing automation, and support tools.
+
+**Stream** - A Stream defines the structure and metadata of a resource, such as a database table, REST API resource, or data stream, outlining how users can interact with it using query or request. 
+
+**Cataloge** - A Catalog is a collection of Streams detailing the data within a data store represented by a Source/Destination eg: Catalog = Schema, Streams = List[Tables]
+
+**Model** - Models specify the data to be extracted from a source
+
+**Sync** - A Sync sets the rules for data transfer from a chosen source to a destination
+
+
+### Interfaces
+
+The output of each method in the interface is encapsulated in an [MultiwovenMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L170), serving as an envelope for the message's return value. These are omitted in interface explanations for sake of simplicity. 
+
+
+#### Common
+
+1.  ```connector_spec() -> ConnectorSpecification```
+
+Description - [connector_spec](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L10) returns information about how the connector can be configured
+
+Input - ```None``` 
+
+Output - [ConnectorSpecification](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L49)
+
+2. ```meta_data() -> Hash```
+
+Description - [meta_data](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L17) returns information about how the connector can be shown in the multiwoven ui eg: icon, labels etc.
+
+Input - ```None``` 
+
+Output - ```Hash```. Sample hash can be found [here](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/source/bigquery/config/meta.json)
+
+3. ```check_connection(connection_config) -> ConnectionStatus```
+
+Description: The [check_connection](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L21) method verifies if a given configuration allows successful connection and access to necessary resources for a source/destination, such as confirming Snowflake database connectivity with provided credentials. It returns a success response if successful or a failure response with an error message in case of issues like incorrect passwords
+
+Input - ```Hash```
+
+Output - [ConnectionStatus](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L37)
+
+4. ```discover(connection_config) -> Catalog```
+
+Description: The [discover](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L26) method identifies and outlines the data structure in a source/destination. Eg: Given a valid configuration for a Snowflake source, the discover method returns a list of accessible tables, formatted as streams.
+
+Input - ```Hash``` 
+
+Output -  [Catalog](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L121)
+
+
+#### Source 
+
+[Source](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/source_connector.rb) implements the following interface methods including the common methods. 
+
+
+```
+connector_spec() -> ConnectorSpecification
+meta_data() -> Hash
+check_connection(connection_config) -> ConnectionStatus
+discover(connection_config)  -> Catalog
+read(SyncConfig) ->Array[RecordMessage]
+```
+
+
+1. ```read(SyncConfig) ->Array[RecordMessage]```
+
+Description -The [read](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/source_connector.rb#L6) method extracts data from a data store and outputs it as RecordMessages.
+
+Input - [SyncConfig](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L132)
+
+Output - List[[RecordMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L93)]
+
+
+#### Destination 
+
+[Destination](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb) implements the following interface methods including the common methods. 
+
+
+```
+connector_spec() -> ConnectorSpecification
+meta_data() -> Hash
+check_connection(connection_config) -> ConnectionStatus
+discover(connection_config)  -> Catalog
+write(SyncConfig,Array[records]) -> TrackingMessage
+```
+
+
+1. ```write(SyncConfig,Array[records]) -> TrackingMessage```
+
+Description -The [write](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb#L6C11-L6C40) method loads data to destinations. 
+
+Input - ```Array[Record]``` 
+
+Output - [TrackingMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L157)
+
+Note: Complete multiwoven protocol models can be found [here](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb)
+
+
+### Acknowledgements 
+
+We've been significantly influenced by the [Airbyte protocol](https://github.com/airbytehq/airbyte-protocol), and their design choices greatly accelerated our project's development.
