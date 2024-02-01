@@ -160,7 +160,8 @@
       "group": "Architecture",
       "pages": [
         "guides/architecture/introduction",
-        "guides/architecture/multiwoven-protocol"
+        "guides/architecture/multiwoven-protocol",
+        "guides/architecture/technical-stack"
       ]
     },
     {
