@@ -3,3 +3,61 @@ title: 'Google Big Query'
 description: ''
 icon: 'google'
 ---
+
+## Connect Multiwoven to BigQuery
+
+This guide will help you configure the BigQuery Connector in Multiwoven to access and use your BigQuery data.
+
+### Prerequisites
+
+Before you begin, you'll need to:
+
+* Set up a service account with the necessary permissions in BigQuery.
+* Enable the BigQuery API for your Google Cloud project.
+* Know the location of your BigQuery dataset(s).
+
+### Steps
+
+1. **Enable BigQuery API and Locate Dataset(s):**
+
+   - Log in to the Google Developers Console: [https://console.cloud.google.com/apis/dashboard](https://console.cloud.google.com/apis/dashboard).
+   - If you don't have a project, create one.
+   - Enable the BigQuery API for your project: [https://console.cloud.google.com/flows/enableapi?apiid=bigquery&_ga=2.71379221.724057513.1673650275-1611021579.1664923822&_gac=1.213641504.1673650813.EAIaIQobChMIt9GagtPF_AIVkgB9Ch331QRREAAYASAAEgJfrfD_BwE](https://console.cloud.google.com/flows/enableapi?apiid=bigquery&_ga=2.71379221.724057513.1673650275-1611021579.1664923822&_gac=1.213641504.1673650813.EAIaIQobChMIt9GagtPF_AIVkgB9Ch331QRREAAYASAAEgJfrfD_BwE).
+   - Copy your Project ID.
+   - Find the Project ID and Dataset ID of your BigQuery datasets. You can find this by querying the `INFORMATION_SCHEMA.SCHEMATA` view or by visiting the Google Cloud web console.
+
+2. **Create a Service Account:**
+
+   - Follow the instructions in our Google Cloud Provider (GCP) documentation: [https://cloud.google.com/iam/docs/service-accounts-create](https://cloud.google.com/iam/docs/service-accounts-create) to create a service account.
+
+3. **Grant Access:**
+
+   - In the Google Cloud web console, navigate to the [IAM](https://console.cloud.google.com/iam-admin/iam?supportedpurview=project,folder,organizationId) & Admin section and select IAM.
+   - Find your service account and click on edit.
+   - Go to the "Assign Roles" tab and click "Add another role".
+   - Search and select the "BigQuery User" and "BigQuery Data Viewer" roles.
+   - Click "Save".
+
+4. **Download JSON Key File:**
+
+   - In the Google Cloud web console, navigate to the [IAM page](https://console.cloud.google.com/iam-admin/iam?supportedpurview=project,folder,organizationId) & Admin section and select IAM.
+   - Find your service account and click on it.
+   - Go to the "Keys" tab and click "Add Key".
+   - Select "Create new key" and choose JSON format.
+   - Click "Download".
+
+### Authentication
+
+Authentication is supported via the following:
+
+- **Dataset ID and JSON Key File**
+
+  - **Dataset ID:** The ID of the dataset within Google BigQuery that you want to access. This can be found in Step 1.
+  - **JSON Key File:** The JSON key file containing the authentication credentials for your service account.
+
+### Supported sync modes 
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
