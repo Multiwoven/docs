@@ -59,7 +59,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction","get-started/core-concepts","get-started/integrations"]
+      "pages": ["get-started/introduction","get-started/core-concepts"]
     },
     {
       "group": "Models",
