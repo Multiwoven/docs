@@ -47,6 +47,13 @@ cp .env.example .env
 docker-compose build
 ```
 
+<Tip>Note: The default build architecture is for **x86_64**. If you are using **arm64** architecture, you will need to run the below command to build the images for arm64.</Tip>
+
+```bash
+TARGETARCH=arm64 docker-compose
+```
+
+```bash
 5. Start the containers
 
 ```bash

@@ -11,11 +11,17 @@ Multiwoven uses the following environment variables for both the client and serv
 
 ```RAILS_ENV``` - Rails Environment (development, test, production)
 
+```UI_HOST``` - Hostname for UI service. Default is **localhost:8000**
+
+```API_HOST``` - Hostname for API service. Default to **localhost:3000**
+
 ```DB_HOST``` - Database Host
 
 ```DB_USERNAME``` - Database Username
 
 ```DB_PASSWORD``` - Database Password
+
+## SMTP Configuration
 
 ```SMTP_HOST``` - SMTP Host
 
@@ -27,11 +33,7 @@ Multiwoven uses the following environment variables for both the client and serv
 
 ```SMTP_PASSWORD``` - SMTP Password
 
-## Optional Variables
-
-```NEW_RELIC_KEY``` - New Relic Key
-
-## Sync Variables
+## Sync Configuration
 
 ```SYNC_EXTRACTOR_BATCH_SIZE``` - Sync Extractor Batch Size
 
@@ -41,7 +43,7 @@ Multiwoven uses the following environment variables for both the client and serv
 
 ```SYNC_LOADER_THREAD_POOL_SIZE``` - Sync Loader Thread Pool Size
 
-## Temporal Variables
+## Temporal Configuration
 
 ```TEMPORAL_VERSION``` - Temporal Version
 
@@ -74,5 +76,7 @@ Multiwoven uses the following environment variables for both the client and serv
 ```TEMPORAL_WORKFLOW_THREAD_POOL_SIZE``` - Temporal Workflow Thread Pool Size
 
 
+## Optional Variables
 
+```NEW_RELIC_KEY``` - New Relic Key
 

@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Multiwoven",
   "logo": {
-    "dark": "/logo/dark.png",
-    "light": "/logo/light.png"
+    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1707386367/Multiwoven/Docs/Multiwoven_Docs_-_Logo_qcnzgy.svg",
+    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1707386367/Multiwoven/Docs/Multiwoven_Docs_-_Logo_qcnzgy.svg"
   },
   "favicon": "/favicon.jpg",
   "colors": {
@@ -17,13 +17,13 @@
   },
   "topbarLinks": [
     {
-      "name": "Book a Demo",
-      "url": "https://blog.multiwoven.com"
+      "name": "GitHub",
+      "url": "https://github.com/Multiwoven/multiwoven"
     }
   ],
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://app.multiwoven.com"
+    "name": "Join the Community",
+    "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
   },
   "tabs": [
     {
@@ -251,11 +251,6 @@
       "pages": ["faqs/questions"]
     }
   ],
-  "analytics": {
-    "mixpanel": {
-        "projectToken": "d974300ed237cbb9d04fc9d55cf319cd"
-    }
-  },
   "footerSocials": {
     "twitter": "https://twitter.com/multiwoven",
     "github": "https://github.com/Multiwoven",
