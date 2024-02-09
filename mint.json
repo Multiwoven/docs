@@ -1,7 +1,10 @@
 {
   "$schema": "https://mintlify.com/schema.json",
+  "feedback": {
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
   "name": "Multiwoven",
-  "feedback.thumbsRating": true,
   "logo": {
     "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1707386367/Multiwoven/Docs/Multiwoven_Docs_-_Logo_qcnzgy.svg",
     "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1707386367/Multiwoven/Docs/Multiwoven_Docs_-_Logo_qcnzgy.svg"
