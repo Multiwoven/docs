@@ -7,15 +7,30 @@ icon: 'building-columns'
 
 # Understanding the Core Concepts
 
-Discover the power of Multiwoven, an open-source data activation platform that effortlessly connects data from multiple sources to your business applications and developer tools. Unleashing the full potential of your data team, Multiwoven saves valuable engineering time and guarantees a unified and impactful flow of data across all your business teams. In this comprehensive guide, we will unravel the key concepts of Multiwoven, equipping you with the knowledge to seamlessly incorporate and leverage this platform in your organization.
+Multiwoven platform is built on a few core concepts that are essential to understand in order to use the platform effectively. This guide will help you understand these concepts and how they work together.
+
+<img
+  className="block dark:hidden"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531725/Multiwoven/Docs/Core_Concepts_e21fqb.png"
+  alt="Hero Light"
+/>
+
 
 ## Sources: The Foundation of Data
 
 ### Overview
-In Multiwoven, 'Sources' are the starting points of your data journey. These include:
+Sources are the starting points of your data journey. It's where all your data is stored and where Multiwoven pulls data from.
 
-- **Data Warehouses**: For example, Snowflake, Google BigQuery
-- **Databases and Files**: Including traditional databases, CSV files, SFTP
+<img
+  className="block dark:hidden"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531725/Multiwoven/Docs/Sources_mpzdhn.png"
+  alt="Hero Light"
+/>
+
+These can be:
+- **Data Warehouses**: For example, `Snowflake` `Google BigQuery` and `Amazon Redshift`
+- **Databases and Files**: Including traditional databases, `CSV files`, `SFTP`
+
 
 ### Adding a Source
 To integrate a source with Multiwoven, navigate to the Sources overview page and select 'Add source'.
@@ -23,11 +38,19 @@ To integrate a source with Multiwoven, navigate to the Sources overview page and
 ## Destinations: Where Data Finds Value
 
 ### Overview
-'Destinations' in Multiwoven are the endpoints where data is sent and utilized. They encompass:
 
-- **CRM Systems**: Like Salesforce
-- **Advertising Platforms**: Such as Google Ads
-- **Marketing and Support Tools**: HubSpot, Zendesk, etc.
+'Destinations' in Multiwoven are business tools where you want to send your data stored in sources. 
+
+<img
+  className="block dark:hidden"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531725/Multiwoven/Docs/Destinations_imdf2a.png"
+  alt="Hero Light"
+/>
+
+These can be:
+- **CRM Systems**: Like Salesforce, HubSpot, etc.
+- **Advertising Platforms**: Such as Google Ads, Facebook Ads, etc.
+- **Marketing Tools**: Braze and Klaviyo, for example
 
 ### Integrating a Destination
 Add a destination by going to the Destinations page and clicking 'Add destination'.
@@ -35,12 +58,19 @@ Add a destination by going to the Destinations page and clicking 'Add destinatio
 ## Models: Shaping Your Data
 
 ### Overview
-'Models' in Multiwoven determine the data you wish to sync from a source. They can be defined through:
+'Models' in Multiwoven determine the data you wish to sync from a source to a destination. They are the building blocks of your data pipeline.
+
+<img
+  className="block dark:hidden"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531724/Multiwoven/Docs/Models_jc5m4m.png"
+  alt="Hero Light"
+/>
+
+They can be defined through:
 
 - **SQL Editor**: For customized queries
 - **Visual Table Selector**: For intuitive interface
 - **Existing dbt Models or Looker Looks**: Leveraging pre-built models
-- **Customer Studio**: Multiwoven’s no-code solution for defining data cohorts
 
 ### Importance of a Unique Primary Key
 Every model must have a unique primary key to ensure each data entry is distinct, crucial for data tracking and updating.
@@ -48,37 +78,25 @@ Every model must have a unique primary key to ensure each data entry is distinct
 ## Syncs: Customizing Data Flow
 
 ### Overview
-'Syncs' in Multiwoven control how data from a model is presented in a destination. Key features include:
+'Syncs' in Multiwoven helps you move data from sources to destinations. They help you in mapping the data from your models to the destination.
 
-- **Multiple Syncs from One Model**: Ensuring consistent data across different business tools
-- **Configurable Sync Modes**: Upsert, insert, update, etc.
-- **Scheduling Options**: Automatic or manual trigger for syncs
+<img
+  className="block dark:hidden"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531723/Multiwoven/Docs/Syncs_rwxmvt.png"
+  alt="Hero Light"
+/>
 
-### Ensuring Data Consistency
-For multiple object types to a single destination, distinct syncs are required for each type.
-
-## Dealing with Duplicated Records
-
-### Overview
-Multiwoven uses the primary key to prevent duplicates during syncs. Duplicated records are flagged as errors and can be monitored for resolution.
-
-## Change Data Capture (CDC): Efficient Data Sync
-
-### Overview
-CDC in Multiwoven ensures only necessary data updates are sent to destinations, thereby optimizing the syncing process.
-
-### How It Works
-- **Comparison with Previous Data**: Multiwoven compares new data with the last sync.
-- **Identifying Changes**: New, changed, or deleted records are identified.
-- **Efficient Syncing**: Only the altered data is sent to the destination.
-
-### CDC Variants
-Multiwoven employs a difference-based CDC, crucial for data warehouses, unlike traditional ETL tools.
+There are two types of syncs:
+- **Full Refresh Sync**: All data is synced from the source to the destination.
+- **Incremental Sync**: Only the new or updated data is synced.
 
 ## FAQs
 
 ### What if I Alter My Model?
 Changes in your model configuration impact the sync process, particularly for SaaS destinations. Only the mapped columns in your sync configurations are tracked for changes.
 
-### How Does Multiwoven Handle Data Type Changes?
-If a data type changes in your model, Multiwoven treats it as a row change in the next sync.
+### What Happens When I Delete a Model?
+If you delete a model, all syncs associated with it are also deleted. However, the source and destination configurations remain intact.
+
+### Can I Sync Data from Multiple Sources to a Single Destination?
+Yes, you can sync data from multiple sources to a single destination. You can create multiple syncs for each source and map them to the same destination.
