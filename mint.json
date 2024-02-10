@@ -53,11 +53,6 @@
       "name": "Slack Community",
       "icon": "slack",
       "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
-    },
-    {
-      "name": "FAQs",
-      "icon": "bullseye-pointer",
-      "url": "faqs"
     }
   ],
   "navigation": [
@@ -69,12 +64,12 @@
       "group": "Models",
       "pages": ["models/overview",
       {
-        "group": "Modelling Methods",
+        "group": "Modeling Methods",
         "icon": "table",
         "pages": [
-          "models/modelling-methods/sql",
-          "models/modelling-methods/dbt",
-          "models/modelling-methods/table-visualization"
+          "models/modeling-methods/sql",
+          "models/modeling-methods/dbt",
+          "models/modeling-methods/table-visualization"
         ]
       }
     ]
@@ -85,11 +80,12 @@
     },
     {
       "group": "Sources",
-      "pages": ["sources/redshift","sources/snowflake","sources/bquery","sources/databricks"]
+      "pages": ["sources/overview","sources/redshift","sources/snowflake","sources/bquery","sources/databricks"]
     },
     {
       "group": "Destinations",
       "pages": [
+        "destinations/overview",
         {
           "group": "CRM",
           "icon": "users",
