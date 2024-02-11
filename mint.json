@@ -26,7 +26,7 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Join the Community",
+    "name": "Join Slack",
     "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
   },
   "tabs": [
@@ -35,7 +35,7 @@
       "url": "api-reference"
     },
     {
-      "name": "Deployment & Architecture Guide",
+      "name": "Deployment & Architecture",
       "url": "guides"
     },
     {
@@ -50,7 +50,7 @@
       "url": "https://github.com/Multiwoven/multiwoven"
     },
     {
-      "name": "Slack Community",
+      "name": "Join Slack",
       "icon": "slack",
       "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
     }
@@ -63,16 +63,9 @@
     {
       "group": "Models",
       "pages": ["models/overview",
-      {
-        "group": "Modeling Methods",
-        "icon": "table",
-        "pages": [
-          "models/modeling-methods/sql",
-          "models/modeling-methods/dbt",
-          "models/modeling-methods/table-visualization"
-        ]
-      }
-    ]
+      "models/sql",
+          "models/dbt",
+          "models/table-visualization"]
     },
     {
       "group": "Syncs",
