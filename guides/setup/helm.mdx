@@ -3,8 +3,39 @@ title: 'Helm Charts	'
 description: ''
 ---
 
+## Installing Helm
 
-## Two step installation
+Helm, the Kubernetes package manager, can be installed via pre-built binary releases, script, or through package managers. Choose the method that best suits your OS and preferences.
+
+## From Binary Releases
+1. Download the desired version from Helm's [releases page](https://github.com/helm/helm/releases).
+2. Unpack the archive.
+3. Move the `helm` binary to your desired location (e.g., `/usr/local/bin`).
+
+## Through Package Managers
+
+### Mac 
+
+``` brew install helm ```
+
+### Windows
+
+```choco install kubernetes-helm```
+
+``` scoop install helm ```
+
+### From Apt (Debian/Ubuntu)
+
+```
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
+
+
+## TLDR; Install Multiwoven via helm 
 
 ```
 helm repo add multiwoven https://multiwoven.github.io/helm-charts
