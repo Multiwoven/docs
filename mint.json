@@ -191,6 +191,7 @@
     {
       "group": "Contributing Guide",
       "pages": [
+        "community-support/commit-message-guidelines",
         "community-support/contribution",
         "community-support/slack-conduct"
       ]
