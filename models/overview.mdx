@@ -3,47 +3,92 @@ title: 'Overview'
 description: ''
 ---
 
-### Introduction
+## Introduction
 
-In Multiwoven, **Models** are designed to define and organize data, simplifying the process of querying from various sources.
-
+In Multiwoven, **Models** are designed to define and organize data, simplifying the process of querying from various sources. 
 <img
   className="block"
   src="https://res.cloudinary.com/dspflukeu/image/upload/v1707531724/Multiwoven/Docs/Models_jc5m4m.png"
   alt="Hero Light"
 />
 
-### Model Creation
+This guide outlines the process of creating a model, from selecting a data source to defining the model using various methods such as SQL queries, table selectors, or dbt models.
 
-To create a new model in Multiwoven, follow these steps:
+## Understanding the Model Creation Process
 
-- **Navigate to Models Page**: Access the platform and go to the `Models` section.
+Creating a model in Multiwoven involves a series of steps designed to streamline the organization of your data for efficient querying. This overview will guide you through each step of the process.
 
-- **Model Creation**: Click on the `Add model` button to create a new model.
+### Step 1: Navigate to the Models Section
 
-- **Select Data Source**: Choose from the `list of data sources` you have already configured in Multiwoven.
+To start defining a model:
 
-- **Select a Modeling Method**: Choose from the available modeling methods to create your model. `SQL Editor` `Table Selector` and `dbt` Tools are the available options.
+1. Access the Multiwoven dashboard.
+2. Look for the "Define" menu on the sidebar and click on the `Models` section.
 
-- **Configure Primary Key**: Select a column that holds unique values from your dataset to configure the `primary key`.
+*Placeholder for screenshot: Navigating to Models Section*
 
-- **Save Model**: Click on the `Save` button to save the model.
+### Step 2: Add a New Model
 
-### Choose Modeling Method
+Within the Models section:
 
-<Tabs>
-  <Tab title="SQL Editor">
-    For detailed and custom query writing.
-  </Tab>
-  <Tab title="Table Selector">
-    For a straightforward, visual approach to model building.
-  </Tab>
-  <Tab title="dbt Tools">
-    Ideal for advanced data transformation, leveraging the dbt framework.
-  </Tab>
-</Tabs>
+1. Click on the `Add Model` button to initiate the model creation process.
 
-### Unique Primary Key Requirement
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066240/Multiwoven/Docs/models/image_5_ud7q2w.png"
+  alt="Hero Light"
+/>
+
+### Step 3: Select a Data Source
+
+1. Choose from the list of existing connected data warehouse sources. This source will be the foundation for your model.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066638/Multiwoven/Docs/models/image_6_krkxp5.png"
+  alt="Hero Light"
+/>
+
+### Step 4: Select a Modeling Method
+
+Based on your requirements, select one of the following modeling methods:
+
+1. **SQL Query**: Define your model directly using an SQL query.
+2. **Table Selector**: For a straightforward, visual approach to model building.
+3. **dbt Model**: Ideal for advanced data transformation, leveraging the dbt framework.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066637/Multiwoven/Docs/models/image_7_bhyi24.png"
+  alt="Hero Light"
+/>
+
+### Step 5: Define Your Model
+
+If you selected the SQL Query method:
+
+1. Write your SQL query in the provided field.
+2. Use the `Run Query` option to preview the results and ensure accuracy.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066459/Multiwoven/Docs/models/image_8_sy7n0f.png"
+  alt="Hero Light"
+/>
+
+### Step 6: Finalize Your Model
+
+Complete the model setup by:
+
+1. Adding a name and a brief description for your model. This helps in identifying and managing your models within Multiwoven.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066496/Multiwoven/Docs/models/image_9_vkgq1a.png"
+  alt="Hero Light"
+/>
+
+#### Unique Primary Key Requirement
 
 - **Essential Configuration**:
     Every model in Multiwoven must be configured with a unique primary key.
@@ -57,3 +102,5 @@ To create a new model in Multiwoven, follow these steps:
 - **Importance of a Unique Key**:
   - A unique primary key is essential for effectively managing data synchronization.
   - It enables the system to track and sync only the new or updated data to the designated destinations, ensuring data consistency and reducing redundancy.
+
+After completing these steps, your model will be set up and ready to use in Multiwoven.
