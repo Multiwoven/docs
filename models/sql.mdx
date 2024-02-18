@@ -6,6 +6,7 @@ description: "SQL Editor for Data Modeling in Multiwoven"
 ## Overview
 
 Multiwoven's SQL Editor allows you to define and manage your data models directly through SQL queries. This powerful tool supports native SQL commands compatible with your data warehouse, enabling you to seamlessly model your data.
+
 ## Creating a Model with the SQL Editor
 ### Starting with a Query
 
@@ -18,10 +19,7 @@ SELECT * FROM sales_data.customers
 
 ### Previewing Your Data
 
-Click the 'Preview' button to review the first 100 rows of your data. This step ensures the query fetches the expected data. After verifying, proceed by clicking 'Continue'.
-
-### Model Preview 
-- For saving a query expected to return results later, refer to the section on 'Saving a Model with Future Data'.
+Click the `Preview` button to review the first 100 rows of your data. This step ensures the query fetches the expected data. After verifying, proceed by clicking `Continue`.
 
 <Tip>**Important Note:**  The model cannot be saved if the query is incorrect or yields no results.</Tip>
 
@@ -30,18 +28,17 @@ Click the 'Preview' button to review the first 100 rows of your data. This step 
 Finalize your model by:
 - Naming the model descriptively.
 - Choosing a column as the Primary Key.
-- Optionally, organizing your model within a specific folder.
 
 ### Completing the Setup
 
-Finish your model setup by clicking the 'Finish' button.
+Finish your model setup by clicking the `Finish` button.
 
 ## Unique Primary Key Requirement
 
 Every model requires a unique primary key. If no unique column exists, consider:
 - Removing duplicate rows.
 - Creating a composite column for the primary key.
-- Remember to initiate a full resync if the primary key is altered.
+
 ## Handling Duplicate Data
 
 To filter duplicates, use a `GROUP BY` clause in your SQL query. For instance:
@@ -51,7 +48,6 @@ SELECT *
 FROM customer_data
 GROUP BY unique_identifier_column
 ```
-
 
 ## Composite Primary Keys
 
@@ -65,7 +61,6 @@ SELECT customer_id,
 FROM sales_data
 ```
 
-
 ## Saving a Model Without Current Results
 
 To save a model expected to have future data:
@@ -75,9 +70,8 @@ UNION ALL
 SELECT NULL, NULL, NULL
 ```
 
-
-
 Add this to your query to include a dummy row, ensuring the model can be saved.
+
 ## Excluding Rows with Null Values
 
 To exclude rows with null values:
@@ -87,7 +81,5 @@ SELECT *
 FROM your_dataset
 WHERE important_column1 IS NOT NULL AND important_column2 IS NOT NULL
 ```
-
-
 
 Replace `important_column1`, `important_column2`, etc., with your relevant column names.

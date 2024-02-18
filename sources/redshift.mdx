@@ -57,4 +57,15 @@ After a successful connection test:
 1. Assign a name and a brief description to your Redshift source. This helps in identifying and managing your source within Multiwoven.
 2. Click `Save` to complete the setup process.
 
+### Step 6: Configure Redshift User Permissions
+
+<Note>It is recommended to create a dedicated user with read-only access to the tables you want to query. Ensure that the new user has the necessary permissions to access the required tables and views.</Note>
+    
+    ```sql
+    CREATE USER multiwoven PASSWORD 'password';
+    GRANT USAGE ON SCHEMA public TO multiwoven;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO multiwoven;
+    ```
+
+
 Your Amazon Redshift data warehouse is now connected to Multiwoven. You can now start creating models and running queries on your Redshift data.
