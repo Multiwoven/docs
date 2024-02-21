@@ -6,69 +6,66 @@ icon: 'aws'
 
 ## Overview
 
-Multiwoven provides an intuitive interface for integrating data from your Amazon Redshift data warehouse to various downstream platforms. While most configurations are done via the Multiwoven interface, you'll need to gather specific details from Redshift such as your host, port, database name, and access credentials.
+Amazon Redshift connector is built on top of JDBC and is based on the [Redshift JDBC driver](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-jdbc-connection.html). It allows you to connect to your Redshift data warehouse and extract data for further processing and analysis.
 
-To enable communication between Multiwoven and your warehouse, you should whitelist Multiwoven's IP addresses. Please refer to our networking documentation to identify the IPs to whitelist.
+## Prerequisites
 
-## Connection Configuration
+Before proceeding, ensure you have the necessary Redshift credentials available, including the endpoint (host), port, database name, user, and password. You might also need appropriate permissions to create connections and execute queries within your Redshift cluster.
 
-To initiate the integration:
-1. Navigate to the **Sources** section in the dashboard.
-2. Click on the **Add Source** option.
-3. From the available options, choose **Amazon Redshift** and follow the ensuing steps.
+## Step-by-Step Guide to Connect Amazon Redshift
 
-### Choose Connection Method
+### Step 1: Navigate to the Sources Section
 
-Multiwoven offers two connection types:
-1. Direct connection over the public internet.
-2. Connection through an SSH tunnel.
+Begin by accessing your Multiwoven dashboard. From there:
 
-While data is securely encrypted via TLS during transit, a direct connection suffices for most scenarios. If your Redshift is hosted on a private network or a Virtual Private Cloud (VPC), you may need the SSH tunnel.
+1. Click on the Setup menu found on the sidebar.
+2. Select the `Sources` section to proceed.
 
-### Configuring Your Source
+### Step 2: Add Redshift as a New Source
 
-Input the following mandatory details:
+Within the Sources section:
 
-- **Host**: You can determine the hostname or IP of your Redshift cluster from the Redshift console. Head over to the `Clusters` section and select your specific cluster. The `Endpoint` string provides the necessary details, sans the port and database name.
-  
-- **Port**: By default, Redshift's port is set to 5439. However, you might have a different setting. This can also be verified under the `Clusters` section in the `Properties` tab.
-  
-- **Database**: Typically, a Redshift cluster contains a single database. This name can be found in the same location as the port number.
+1. Find and click on the `Add Source` button.
+2. From the list of data warehouse options, select **Amazon Redshift**.
 
-### Credential Details
+### Step 3: Enter Redshift Credentials
 
-Provide the following:
+You will be prompted to enter the credentials for your Redshift cluster. This includes:
 
-- **User**: This could be your personal Redshift credentials or a specific user designated for Multiwoven. Ensure this user has, at the very least, read permissions for the data you aim to synchronize.
-  
-- **Password**: (Optional) This pertains to the aforementioned user.
+**`Endpoint (Host)`** The URL of your Redshift cluster endpoint.
 
-### Validate Your Connection
+**`Port`** The port number used by your Redshift cluster (default is 5439).
 
-Upon setting up a new source, Multiwoven performs several checks to validate:
+**`Database Name`** The name of the database you wish to connect.
 
-- Network accessibility.
-- Credentials for Redshift.
-- Permissions to list and access schemas and tables.
+**`User`** Your Redshift username.
 
-It's worth noting that some connections might initially fail due to time constraints. But once the connection is firm, subsequent tasks should execute faster. If a test fails initially, it's advisable to retest. This can be achieved by selecting the **Test** option again.
+**`Password`** Your Redshift password.
 
-In case tests fail repeatedly even after ensuring correct credentials, please contact our support team for assistance.
+<Warning>Make sure to enter these details accurately to ensure a successful connection.</Warning>
 
-## Subsequent Actions
+### Step 4: Test the Connection
 
-After successful validation of the source configuration, the primary setup is done. The next phase involves defining the precise data you wish to extract from Amazon Redshift.
+Before finalizing the connection:
 
-With the Amazon Redshift source, Multiwoven supports:
+Click on the `Test Connection` button. This step verifies that Multiwoven can successfully connect to your Redshift cluster with the provided credentials.
 
-- Direct SQL queries.
-- Visual table selectors.
-- Existing dbt models.
-- Predefined Looker Looks.
-- Sigma workbooks.
+### Step 5: Finalize Your Redshift Source Connection
 
-For a comprehensive analysis, you might contemplate storing synchronization logs in Redshift, allowing you to utilize Redshift over the Multiwoven infrastructure. For additional insights on this feature, refer to our warehouse synchronization logs documentation.
+After a successful connection test:
 
-## Tips & Troubleshooting
+1. Assign a name and a brief description to your Redshift source. This helps in identifying and managing your source within Multiwoven.
+2. Click `Save` to complete the setup process.
 
-Should you come across any issues or have queries that aren't addressed here, feel free to reach out to our support team. We're always here to assist.
+### Step 6: Configure Redshift User Permissions
+
+<Note>It is recommended to create a dedicated user with read-only access to the tables you want to query. Ensure that the new user has the necessary permissions to access the required tables and views.</Note>
+    
+    ```sql
+    CREATE USER multiwoven PASSWORD 'password';
+    GRANT USAGE ON SCHEMA public TO multiwoven;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO multiwoven;
+    ```
+
+
+Your Amazon Redshift data warehouse is now connected to Multiwoven. You can now start creating models and running queries on your Redshift data.
