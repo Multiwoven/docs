@@ -73,6 +73,22 @@ REDIS_PASSWORD=your_redis_password
 
 Open your web browser and navigate to `http://<your_ec2_public_ip>:8000` (replace `<your_ec2_public_ip>` with your EC2 instance's public IP address). You should now see the Multiwoven UI.
 
+**6. Stopping Multiwoven:**
+
+To stop Multiwoven, navigate to the `multiwoven` directory and run.
+
+```bash
+docker-compose down
+```
+
+**7. Upgrading Multiwoven:**
+    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
+
+    ```bash
+    docker-compose pull && docker-compose up -d
+    ```
+    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
+
 **Additional Notes:**
 
 * Depending on your security group configuration, you might need to open port 8000 (Multiwoven UI) for inbound traffic.

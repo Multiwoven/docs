@@ -68,11 +68,31 @@ REDIS_PASSWORD=your_redis_password
 
 **5. Run Multiwoven with Docker Compose:**
 
-1. **Start Multiwoven:** Navigate to the `multiwoven` directory and run `docker-compose up -d`. This will start all Multiwoven services in the background, including the Multiwoven UI.
+**Start Multiwoven:** Navigate to the `multiwoven` directory and run.
+    
+    ```bash
+    docker-compose up -d
+    ```
 
 **6. Accessing Multiwoven UI:**
 
 Open your web browser and navigate to `http://<external_ip_address>:8000` (replace `<external_ip_address>` with your instance's IP address). You should now see the Multiwoven UI.
+
+**7. Stopping Multiwoven:**
+
+To stop Multiwoven, navigate to the `multiwoven` directory and run.
+
+```bash
+docker-compose down
+```
+
+**8. Upgrading Multiwoven:**
+    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
+
+    ```bash
+    docker-compose pull && docker-compose up -d
+    ```
+    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
 
 **Additional Notes:**
 
