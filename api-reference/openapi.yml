@@ -1153,6 +1153,86 @@ paths:
       responses:
         '204':
           description: No content, indicating the sync operation was successfully deleted
+  "/api/v1/reports":
+    get:
+      summary: Get report data based on given type
+      operationId: getReports
+      tags:
+        - Reports
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - workspace_activity
+          description: Type of the report to query.
+        - name: metric
+          in: query
+          schema:
+            type: string
+            enum:
+              - sync_run_triggered
+              - total_sync_run_rows
+              - all
+          description: Specific metric of interest in the report.
+        - name: connector_id
+          in: query
+          schema:
+            type: integer
+          description: ID of the connector.
+        - name: time_period
+          in: query
+          schema:
+            type: string
+            enum:
+              - one_week
+              - one_day
+          description: Time period for the report.
+      responses:
+        '200':
+          description: Successfully retrieved report data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sync_run_triggered:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            time_slice:
+                              type: string
+                              format: date-time
+                              example: '2024-02-19T06:25:00.000Z'
+                            total_count:
+                              type: integer
+                            failed_count:
+                              type: integer
+                            success_count:
+                              type: integer
+                      total_sync_run_rows:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            time_slice:
+                              type: string
+                              format: date-time
+                              example: '2024-02-19T12:20:00.000Z'
+                            total_count:
+                              type: integer
+                            failed_count:
+                              type: integer
+                            success_count:
+                              type: integer
+        '400':
+          description: Validation error occurred.
 components:
   securitySchemes:
     bearerAuth:

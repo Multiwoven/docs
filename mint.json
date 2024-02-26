@@ -238,6 +238,12 @@
       ]
     },
     {
+      "group": "Reports",
+      "pages": [
+        "api-reference/reports/get_report"
+      ]
+    },
+    {
       "group": "Security & Compliance",
       "pages": ["security-and-compliance/security"]
     },
