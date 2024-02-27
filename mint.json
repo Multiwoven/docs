@@ -58,14 +58,16 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction","get-started/core-concepts"]
+      "pages": ["get-started/introduction", "get-started/core-concepts"]
     },
     {
       "group": "Models",
-      "pages": ["models/overview",
-      "models/sql",
-          "models/dbt",
-          "models/table-visualization"]
+      "pages": [
+        "models/overview",
+        "models/sql",
+        "models/dbt",
+        "models/table-visualization"
+      ]
     },
     {
       "group": "Syncs",
@@ -73,7 +75,13 @@
     },
     {
       "group": "Sources",
-      "pages": ["sources/overview","sources/redshift","sources/snowflake","sources/bquery","sources/databricks"]
+      "pages": [
+        "sources/overview",
+        "sources/redshift",
+        "sources/snowflake",
+        "sources/bquery",
+        "sources/databricks"
+      ]
     },
     {
       "group": "Destinations",
@@ -138,7 +146,6 @@
             "destinations/e-commerce/facebook-product-catalog"
           ]
         }
-
       ]
     },
     {
@@ -175,7 +182,7 @@
         "guides/setup/gke",
         "guides/setup/gce",
         "guides/setup/aks",
-        "guides/setup/avm",        
+        "guides/setup/avm",
         "guides/setup/dod",
         "guides/setup/dok",
         "guides/setup/heroku",
@@ -184,9 +191,7 @@
     },
     {
       "group": "Community & Support",
-      "pages": [
-        "community-support/overview"
-      ]
+      "pages": ["community-support/overview"]
     },
     {
       "group": "Contributing Guide",
@@ -234,14 +239,13 @@
         "api-reference/syncs/create_sync",
         "api-reference/syncs/show_sync",
         "api-reference/syncs/update_sync",
-        "api-reference/syncs/delete_sync"
+        "api-reference/syncs/delete_sync",
+        "api-reference/syncs/sync_configuration"
       ]
     },
     {
       "group": "Reports",
-      "pages": [
-        "api-reference/reports/get_report"
-      ]
+      "pages": ["api-reference/reports/get_report"]
     },
     {
       "group": "Security & Compliance",
