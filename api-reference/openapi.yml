@@ -3,17 +3,17 @@ info:
   title: MultiWoven API
   version: 1.0.0
 servers:
-- url: https://api.multiwoven.com
+  - url: https://api.multiwoven.com
 paths:
   "/api/v1/models":
     get:
       summary: Lists all models
       tags:
-      - Models
+        - Models
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
@@ -66,12 +66,12 @@ paths:
     post:
       summary: Creates a model
       tags:
-      - Models
+        - Models
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters: []
       responses:
-        '201':
+        "201":
           description: Model created
           content:
             application/json:
@@ -128,26 +128,26 @@ paths:
                     connector_id:
                       type: integer
                   required:
-                  - connector_id
-                  - name
-                  - query
-                  - query_type
+                    - connector_id
+                    - name
+                    - query
+                    - query_type
 
   "/api/v1/models/{id}":
     get:
       summary: Retrieves a model
       tags:
-      - Models
+        - Models
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
-        '200':
+        "200":
           description: Successful operation
           content:
             application/json:
@@ -185,17 +185,17 @@ paths:
     put:
       summary: Updates a model
       tags:
-      - Models
+        - Models
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
-        '200':
+        "200":
           description: Model updated
           content:
             application/json:
@@ -252,24 +252,24 @@ paths:
                     connector_id:
                       type: integer
                   required:
-                  - connector_id
-                  - name
-                  - query
-                  - query_type
+                    - connector_id
+                    - name
+                    - query
+                    - query_type
     delete:
       summary: Deletes a model
       tags:
-      - Models
+        - Models
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
-        '204':
+        "204":
           description: Model deleted
 
   "/api/v1/connector_definitions":
@@ -290,7 +290,7 @@ paths:
               - destination
           description: Type of the connector (source or destination)
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -354,7 +354,7 @@ paths:
               - destination
           description: Type of the connector (source or destination)
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -403,9 +403,9 @@ paths:
     post:
       summary: Checks the connection for a specified connector definition
       tags:
-      - Connector Definitions
+        - Connector Definitions
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -425,7 +425,7 @@ paths:
                   description: "Generic connection specification structure. Specifics depend on the connector type."
                   additionalProperties: true
       responses:
-        '200':
+        "200":
           description: Connection check successful
           content:
             application/json:
@@ -445,9 +445,9 @@ paths:
     post:
       summary: Creates a connector
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -472,12 +472,12 @@ paths:
                       description: "Configuration details for the connector. Structure depends on the connector definition."
                       additionalProperties: true
                   required:
-                  - name
-                  - connector_type
-                  - connector_name
-                  - configuration
+                    - name
+                    - connector_type
+                    - connector_name
+                    - configuration
       responses:
-        '201':
+        "201":
           description: Connector created
           content:
             application/json:
@@ -517,11 +517,11 @@ paths:
     get:
       summary: Lists all connectors
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       responses:
-        '200':
+        "200":
           description: A list of connectors
           content:
             application/json:
@@ -578,9 +578,9 @@ paths:
     get:
       summary: Retrieves a specific connector by ID
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -589,7 +589,7 @@ paths:
             type: string
           description: Unique ID of the connector
       responses:
-        '200':
+        "200":
           description: A single connector object
           content:
             application/json:
@@ -630,9 +630,9 @@ paths:
     put:
       summary: Updates a specific connector by ID
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -669,7 +669,7 @@ paths:
                     - configuration
                     - connector_name
       responses:
-        '200':
+        "200":
           description: Connector updated successfully
           content:
             application/json:
@@ -710,9 +710,9 @@ paths:
     delete:
       summary: Deletes a specific connector by ID
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -721,15 +721,15 @@ paths:
             type: string
           description: Unique ID of the connector
       responses:
-        '204':
+        "204":
           description: No content, indicating successful deletion
   "/api/v1/connectors/{id}/discover":
     get:
       summary: Discovers catalog information for a specified connector
       tags:
-      - Connectors
+        - Connectors
       security:
-      - bearerAuth: []
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
@@ -738,7 +738,7 @@ paths:
             type: string
           description: Unique ID of the connector
       responses:
-        '200':
+        "200":
           description: Catalog information for the connector
           content:
             application/json:
@@ -807,7 +807,7 @@ paths:
                   type: string
                   description: SQL query to be executed
       responses:
-        '200':
+        "200":
           description: An array of generic JSON objects representing the preview data.
           content:
             application/json:
@@ -838,7 +838,7 @@ paths:
             type: integer
           description: Number of items per page for pagination
       responses:
-        '200':
+        "200":
           description: A list of sync operations
           content:
             application/json:
@@ -953,7 +953,7 @@ paths:
                     - sync_interval
                     - sync_interval_unit
       responses:
-        '200':
+        "200":
           description: Sync operation created successfully
           content:
             application/json:
@@ -1007,7 +1007,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Sync details retrieved successfully
           content:
             application/json:
@@ -1090,7 +1090,7 @@ paths:
                     sync_interval_unit:
                       type: string
       responses:
-        '200':
+        "200":
           description: Sync operation updated successfully
           content:
             application/json:
@@ -1151,16 +1151,16 @@ paths:
             type: string
           description: The ID of the sync operation to delete
       responses:
-        '204':
+        "204":
           description: No content, indicating the sync operation was successfully deleted
   "/api/v1/syncs/configurations":
-    get: 
+    get:
       summary: Get report data based on given type
-      operationId: getReports
+      operationId: getConfigurations
       tags:
         - Syncs
       responses:
-        '200':
+        "200":
           description: Successfully retrieved report data.
           content:
             application/json:
@@ -1304,11 +1304,15 @@ paths:
               - total_sync_run_rows
               - all
           description: Specific metric of interest in the report.
-        - name: connector_id
+        - name: connector_ids
           in: query
           schema:
-            type: integer
-          description: ID of the connector.
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+          description: IDs of the connectors.
         - name: time_period
           in: query
           schema:
@@ -1318,7 +1322,7 @@ paths:
               - one_day
           description: Time period for the report.
       responses:
-        '200':
+        "200":
           description: Successfully retrieved report data.
           content:
             application/json:
@@ -1336,7 +1340,7 @@ paths:
                             time_slice:
                               type: string
                               format: date-time
-                              example: '2024-02-19T06:25:00.000Z'
+                              example: "2024-02-19T06:25:00.000Z"
                             total_count:
                               type: integer
                             failed_count:
@@ -1351,14 +1355,14 @@ paths:
                             time_slice:
                               type: string
                               format: date-time
-                              example: '2024-02-19T12:20:00.000Z'
+                              example: "2024-02-19T12:20:00.000Z"
                             total_count:
                               type: integer
                             failed_count:
                               type: integer
                             success_count:
                               type: integer
-        '400':
+        "400":
           description: Validation error occurred.
 components:
   securitySchemes:
