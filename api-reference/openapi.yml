@@ -1153,10 +1153,137 @@ paths:
       responses:
         '204':
           description: No content, indicating the sync operation was successfully deleted
+  "/api/v1/syncs/configurations":
+    get: 
+      summary: Get report data based on given type
+      operationId: getReports
+      tags:
+        - Syncs
+      responses:
+        '200':
+          description: Successfully retrieved report data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: Data object containing configuration details.
+                    properties:
+                      configurations:
+                        type: object
+                        description: Configuration details.
+                        properties:
+                          catalog_mapping_types:
+                            type: object
+                            description: Mapping types for catalog data.
+                            properties:
+                              standard:
+                                type: string
+                                description: Details for standard mapping type (currently empty).
+                              static:
+                                type: object
+                                description: Details for static mapping type.
+                                properties:
+                                  string:
+                                    type: object
+                                    description: Details for string type within static mapping.
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Data type for string field.
+                                        enum:
+                                          - string
+                                      description:
+                                        type: string
+                                        description: Description of the string field.
+                                  number:
+                                    type: object
+                                    description: Details for number type within static mapping.
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Data type for number field.
+                                        enum:
+                                          - float
+                                      description:
+                                        type: string
+                                        description: Description of the number field.
+                                  boolean:
+                                    type: object
+                                    description: Details for boolean type within static mapping.
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Data type for boolean field.
+                                        enum:
+                                          - boolean
+                                      description:
+                                        type: string
+                                        description: Description of the boolean field.
+                                  null:
+                                    type: object
+                                    description: Details for null type within static mapping.
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Data type for null field.
+                                        enum:
+                                          - null
+                                      description:
+                                        type: string
+                                        description: Description of the null field.
+                              template:
+                                type: object
+                                description: Details for template mapping type.
+                                properties:
+                                  variable:
+                                    type: object
+                                    description: Details for variables within template mapping.
+                                    properties:
+                                      current_timestamp:
+                                        type: object
+                                        description: Details for current_timestamp variable.
+                                        properties:
+                                          type:
+                                            type: string
+                                            description: Data type for current_timestamp variable.
+                                            enum:
+                                              - datetime
+                                          description:
+                                            type: string
+                                            description: Description of the current_timestamp variable.
+                                          value:
+                                            type: string
+                                            description: Expression to generate current timestamp.
+                                  filter:
+                                    type: object
+                                    description: Details for filters within template mapping.
+                                    properties:
+                                      cast:
+                                        type: object
+                                        description: Details for cast filter.
+                                        properties:
+                                          description:
+                                            type: string
+                                            description: Description of the cast filter.
+                                          value:
+                                            type: string
+                                            description: Expression to cast value to specified type.
+                                      regex_replace:
+                                        type: object
+                                        description: Details for regex_replace filter.
+                                        properties:
+                                          description:
+                                            type: string
+                                            description: Description of the regex_replace filter.
+                                          value:
+                                            type: string
+                                            description: Expression to perform regex replace operation.
   "/api/v1/reports":
     get:
       summary: Get report data based on given type
-      operationId: getReports
       tags:
         - Reports
       parameters:
