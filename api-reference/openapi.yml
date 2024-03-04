@@ -1364,6 +1364,229 @@ paths:
                               type: integer
         "400":
           description: Validation error occurred.
+  "/api/v1/syncs/{sync_id}/sync_runs":
+    get:
+      summary: List sync runs for a specific sync
+      description: Retrieves a list of sync runs for a specific sync, optionally filtered by status.
+      operationId: getSyncRuns
+      tags:
+        - SyncRuns
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The ID of the sync to list runs for.
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Optional status to filter the sync runs by.
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+      responses:
+        "200":
+          description: A JSON array of sync runs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            sync_id:
+                              type: integer
+                            status:
+                              type: string
+                            started_at:
+                              type: string
+                              format: date-time
+                            finished_at:
+                              type: string
+                              format: date-time
+                            duration:
+                              type: number
+                              format: float
+                            total_query_rows:
+                              type: integer
+                            total_rows:
+                              type: integer
+                            successful_rows:
+                              type: integer
+                            failed_rows:
+                              type: integer
+                            error:
+                              type: string
+                              nullable: true
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        format: uri
+                      first:
+                        type: string
+                        format: uri
+                      prev:
+                        type: string
+                        format: uri
+                        nullable: true
+                      next:
+                        type: string
+                        format: uri
+                        nullable: true
+                      last:
+                        type: string
+                        format: uri
+        "404":
+          description: Sync not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sync not found"
+                  status:
+                    type: string
+                    example: "not_found"
+  "/api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}/sync_records":
+    get:
+      summary: List sync records for a specific sync run
+      description: Retrieves a list of sync records for a specific sync run, optionally filtered by status.
+      operationId: getSyncRecords
+      tags:
+        - SyncRecords
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The ID of the sync to list records for.
+        - name: sync_run_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: The ID of the sync run to list records for.
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Optional status to filter the sync records by.
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Page number for pagination.
+      responses:
+        "200":
+          description: A JSON array of sync records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                          example: "sync_records"
+                        attributes:
+                          type: object
+                          properties:
+                            sync_id:
+                              type: integer
+                            sync_run_id:
+                              type: integer
+                            record:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                state:
+                                  type: string
+                                last_name:
+                                  type: string
+                                first_name:
+                                  type: string
+                                phone_number:
+                                  type: integer
+                                email_address:
+                                  type: string
+                            status:
+                              type: string
+                            action:
+                              type: string
+                            error:
+                              type: string
+                              nullable: true
+                            created_at:
+                              type: string
+                              format: date-time
+                            updated_at:
+                              type: string
+                              format: date-time
+                  links:
+                    type: object
+                    properties:
+                      self:
+                        type: string
+                        format: uri
+                      first:
+                        type: string
+                        format: uri
+                      prev:
+                        type: string
+                        nullable: true
+                        format: uri
+                      next:
+                        type: string
+                        nullable: true
+                        format: uri
+                      last:
+                        type: string
+                        format: uri
+        "404":
+          description: SyncRun not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "SyncRun not found"
+                  status:
+                    type: string
+                    example: "not_found"
 components:
   securitySchemes:
     bearerAuth:
