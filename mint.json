@@ -80,7 +80,8 @@
         "sources/redshift",
         "sources/snowflake",
         "sources/bquery",
-        "sources/databricks"
+        "sources/databricks",
+        "sources/postgresql"
       ]
     },
     {
