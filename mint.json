@@ -171,7 +171,8 @@
       "pages": [
         "guides/architecture/introduction",
         "guides/architecture/multiwoven-protocol",
-        "guides/architecture/technical-stack"
+        "guides/architecture/technical-stack",
+        "guides/architecture/sync-states"
       ]
     },
     {
