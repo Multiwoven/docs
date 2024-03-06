@@ -3,28 +3,21 @@ title: 'Sync States'
 description: ''
 ---
 
-import Alert from '@components/Alert';
 
 # Overview
 
-This technical specification outlines the process for managing and tracking synchronization (sync) operations between various sources (e.g., BigQuery, PostgreSQL) and destinations (e.g., Slack, Facebook, Klaviyo). Sync operations play a crucial role in ensuring data is consistently and accurately transferred and updated across disparate platforms or services.
+This document details the states and transitions of sync operations, organizing the sync process into specific statuses and run states. These categories are vital for managing data flow during sync operations, ensuring successful and efficient execution.
 
 ## Sync Status Definitions
 
 Each sync run operation can be in one of the following states, which represent the sync run's current status:
 
-- **Healthy**
-  A state indicating the successful completion of a recent sync run operation without any issues.
-
-- **Disabled**
-  Indicates that the sync operation has been manually turned off and will not run until re-enabled.
-
-- **Pending**
-  Assigned immediately after a sync is set up, signaling that while the configuration is complete, no sync runs have been initiated.
-
-- **Failed**
-  Denotes a sync operation that encountered an error, preventing successful completion.
-
+| State     | Description                                                                                       |
+|-----------|---------------------------------------------------------------------------------------------------|
+| **Healthy**   | A state indicating the successful completion of a recent sync run operation without any issues.   |
+| **Disabled**  | Indicates that the sync operation has been manually turned off and will not run until re-enabled. |
+| **Pending**   | Assigned immediately after a sync is set up, signaling that no sync runs have been initiated yet. |
+| **Failed**    | Denotes a sync operation that encountered an error, preventing successful completion.             |
 
 > **Note:** Ensure that sync configurations are regularly reviewed to prevent prolonged periods in the Disabled or Failed states.
 
@@ -39,19 +32,16 @@ The following describes the allowed transitions between the sync states:
 
 ## Sync Run Status Definitions
 
-- **Started**: Indicates that the sync operation has begun. This status serves as the initial state of a new sync run operation after being triggered.
+| Status          | Description                                                                                                                                                   |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Started**     | Indicates that the sync operation has begun. This status serves as the initial state of a new sync run operation after being triggered.                       |
+| **Querying**    | The sync is currently querying a source with its associated model to retrieve the latest data. This involves moving data to a temporary table called "SyncRecord". |
+| **Queued**      | Indicates the sync is scheduled for execution, following the successful transfer of source data to the "SyncRecord" table. This marks the completion of the preparation phase, with the sync now ready to transmit data to the destination as per system scheduling and resource availability. |
+| **In Progress** | The sync is actively transferring data from the "SyncRecord" table to the destination. This phase marks the actual update or insertion of data into the destination database, reflecting the final step of the sync process. |
+| **Success**     | The sync run is completed successfully without any issues.                                                                                                    |
+| **Paused**      | Indicates a temporary interruption occurred while transferring data from the "SyncRecord" table to the destination. The sync is paused but designed to automatically resume in a subsequent run, ensuring continuity of the sync process. |
+| **Aborted/Failed** | The sync has encountered an error that prevents it from completing successfully.                                                                               |
 
-- **Querying**: The sync is currently querying a source with its associated model to retrieve the latest data. This involves moving data to a temporary table called "SyncRecord".
-
-- **Queued**: Indicates the sync is scheduled for execution, following the successful transfer of source data to the "SyncRecord" table. This marks the completion of the preparation phase, with the sync now ready to transmit data to the destination as per system scheduling and resource availability.
-
-- **In Progress**: The sync is actively transferring data from the "SyncRecord" table to the destination. This phase marks the actual update or insertion of data into the destination database, reflecting the final step of the sync process.
-
-- **Success**: The sync run is completed successfully without any issues.
-
-- **Paused**: Indicates a temporary interruption occurred while transferring data from the "SyncRecord" table to the destination. The sync is paused but designed to automatically resume in a subsequent run, ensuring continuity of the sync process.
-
-- **Aborted/Failed**: The sync has encountered an error that prevents it from completing successfully.
 
 ### Sync Run State Transitions
 
