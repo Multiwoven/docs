@@ -1,0 +1,77 @@
+---
+title: "Google Sheets - Service Account"
+description: "Google Sheets serves as an effective reverse ETL destination, enabling real-time data synchronization from data warehouses to a collaborative, user-friendly spreadsheet environment. It democratizes data access, allowing stakeholders to analyze, share, and act on insights without specialized skills. The platform supports automation and customization, enhancing decision-making and operational efficiency. Google Sheets transforms complex data into actionable intelligence, fostering a data-driven culture across organizations."
+icon: "google"
+---
+
+<Warning>
+Google Sheets is equipped with specific data capacity constraints, which, when exceeded, can lead to synchronization issues. Here's a concise overview of these limitations:
+
+- **Cell Limit**: A Google Sheets document is capped at `10 million` cells, which can be spread across one or multiple sheets. Once this limit is reached, no additional data can be added, either in the form of new rows or columns.
+- **Character Limit per Cell**: Each cell in Google Sheets can contain up to `50,000` characters. It's crucial to consider this when syncing data that includes fields with lengthy text.
+- **Column Limit**: A single worksheet within Google Sheets is limited to `18,278` columns.
+- **Worksheet Limit**: There is a cap of `200` worksheets within a single Google Sheets spreadsheet.
+
+Given these restrictions, Google Sheets is recommended primarily for smaller, non-critical data engagements.
+It may not be the optimal choice for handling expansive data operations due to its potential for sync failures upon reaching these imposed limits.
+
+</Warning>
+
+## Connector Configuration and Credential Retrieval Guide
+
+### Prerequisite Requirements
+
+Before initiating the Google Sheet connector setup, ensure you have an created or access an [Google cloud account](https://console.cloud.google.com).
+
+### Destination Setup
+
+<Accordion title="Set up the Service Account Key" icon="key">
+
+  <Steps>
+    <Step title="Create a Service Account">
+      - Navigate to the [Service Accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts) page in your Google Cloud console.
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246065/Multiwoven/connectors/google-sheets-service-account/service-account.png" />
+        </Frame>
+      - Choose an existing project or create a new one.
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246116/Multiwoven/connectors/google-sheets-service-account/service-account-form.png" />
+        </Frame>
+      - Click + Create service account, enter its name and description, then click Create and Continue.
+      - Assign appropriate permissions, recommending the Editor role, then click Continue.
+    </Step>
+    <Step title="Generate a Key">
+      - Access the [API Console > Credentials](https://console.cloud.google.com/apis/credentials) page, select your service account's email.
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246147/Multiwoven/connectors/google-sheets-service-account/credentials.png" />
+        </Frame>
+      - In the Keys tab, click + Add key and select Create new key.
+      - Choose JSON as the Key type to download your authentication JSON key file. Click Continue.
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246195/Multiwoven/connectors/google-sheets-service-account/create-credentials.png" />
+        </Frame>
+    </Step>
+    <Step title="Enable the Google Sheets API">
+      - Navigate to the [API Console > Library](https://console.cloud.google.com/apis/library) page. 
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246418/Multiwoven/connectors/google-sheets-service-account/api-library.png" />
+        </Frame>
+      - Verify that the correct project is selected at the top. 
+      - Find and select the Google Sheets API.
+      - Click ENABLE.
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246457/Multiwoven/connectors/google-sheets-service-account/update-google-sheets-api.png" />
+        </Frame>
+    </Step>
+    <Step title="Spreadsheet Access">
+      - If your spreadsheet is link-accessible, no extra steps are needed.
+      - If not, [grant your service account](https://support.google.com/a/answer/60781?hl=en&sjid=11618327295115173982-AP) access to your spreadsheet.
+    </Step>
+    <Step title="Output Schema">
+      - Each worksheet becomes a separate source-connector stream in Multiwoven.
+      - Data is coerced to string format; nested structures need further processing for analysis.
+      - Multiwoven replicates text via Grid Sheets only; charts and images aren't supported.
+    </Step>
+
+  </Steps>
+</Accordion>
