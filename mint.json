@@ -58,10 +58,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "get-started/introduction",
-        "get-started/core-concepts"
-      ]
+      "pages": ["get-started/introduction", "get-started/core-concepts"]
     },
     {
       "group": "Models",
@@ -74,9 +71,7 @@
     },
     {
       "group": "Syncs",
-      "pages": [
-        "syncs/overview"
-      ]
+      "pages": ["syncs/overview"]
     },
     {
       "group": "Sources",
@@ -156,22 +151,19 @@
           "group": "Productivity Tools",
           "icon": "clock",
           "pages": [
-            "destinations/productivity-tools/airtable"
+            "destinations/productivity-tools/airtable",
+            "destinations/productivity-tools/google-sheets"
           ]
         }
       ]
     },
     {
       "group": "Audiences",
-      "pages": [
-        "audiences/overview"
-      ]
+      "pages": ["audiences/overview"]
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Architecture",
@@ -209,9 +201,7 @@
     },
     {
       "group": "Community & Support",
-      "pages": [
-        "community-support/overview"
-      ]
+      "pages": ["community-support/overview"]
     },
     {
       "group": "Contributing Guide",
@@ -265,33 +255,23 @@
     },
     {
       "group": "Sync Runs",
-      "pages": [
-        "api-reference/sync_runs/get_sync_runs"
-      ]
+      "pages": ["api-reference/sync_runs/get_sync_runs"]
     },
     {
       "group": "Sync Records",
-      "pages": [
-        "api-reference/sync_records/get_sync_records"
-      ]
+      "pages": ["api-reference/sync_records/get_sync_records"]
     },
     {
       "group": "Reports",
-      "pages": [
-        "api-reference/reports/get_report"
-      ]
+      "pages": ["api-reference/reports/get_report"]
     },
     {
       "group": "Security & Compliance",
-      "pages": [
-        "security-and-compliance/security"
-      ]
+      "pages": ["security-and-compliance/security"]
     },
     {
       "group": "FAQs",
-      "pages": [
-        "faqs/questions"
-      ]
+      "pages": ["faqs/questions"]
     }
   ],
   "footerSocials": {
