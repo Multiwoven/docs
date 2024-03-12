@@ -151,6 +151,13 @@
             "destinations/e-commerce/shopify",
             "destinations/e-commerce/facebook-product-catalog"
           ]
+        },
+        {
+          "group": "Productivity Tools",
+          "icon": "clock",
+          "pages": [
+            "destinations/productivity-tools/airtable"
+          ]
         }
       ]
     },
