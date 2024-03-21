@@ -255,7 +255,10 @@
     },
     {
       "group": "Sync Runs",
-      "pages": ["api-reference/sync_runs/get_sync_runs"]
+      "pages": [
+        "api-reference/sync_runs/get_sync_runs",
+        "api-reference/sync_runs/get_sync_run"
+      ]
     },
     {
       "group": "Sync Records",
