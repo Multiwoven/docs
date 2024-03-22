@@ -74,6 +74,13 @@
       "pages": ["syncs/overview"]
     },
     {
+      "group": "Sync Modes",
+      "pages": [
+        "sync-modes/full-refresh",
+        "sync-modes/incremental"
+      ]
+    },
+    {
       "group": "Sources",
       "pages": [
         "sources/overview",
