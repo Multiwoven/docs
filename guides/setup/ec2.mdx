@@ -49,9 +49,15 @@ curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/d
 ```
 2. **Download the `.env` file:**  
 ```
-curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env
-```
-3. **Create and Configure `.env` File:** Rename `multiwoven/.env.example` to `.env`. This file holds environment variables for various services. Replace the placeholders with your own values, including:
+curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
+
+4. Rename the file .env.production to .env and update the environment variables if required.
+
+```bash
+mv .env.production .env
+``````
+
+5. **Configure `.env`, This file holds environment variables for various services. Replace the placeholders with your own values, including:
     * `DB_PASSWORD` and `DB_USERNAME` for your PostgreSQL database
     * `REDIS_PASSWORD` for your Redis server
     * (Optional) Additional environment variables specific to your Multiwoven configuration
@@ -87,9 +93,11 @@ docker-compose down
     ```bash
     docker-compose pull && docker-compose up -d
     ```
-    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
 
 **Additional Notes:**
+
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
 
 * Depending on your security group configuration, you might need to open port 8000 (Multiwoven UI) for inbound traffic.
 * For production deployments, consider using a reverse proxy (e.g., Nginx) and a domain name with SSL/TLS certificates for secure access to the Multiwoven UI.
