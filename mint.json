@@ -164,9 +164,9 @@
         },
         {
           "group": "File Storage",
-          "icon": "file",
+          "icon": "folder",
           "pages": [
-            "destinations/file-storage/sftp"
+            "destinations/file-storage/"
           ]
         }
       ]
