@@ -166,7 +166,14 @@
           "group": "File Storage",
           "icon": "folder",
           "pages": [
-            "destinations/file-storage/"
+            "destinations/file-storage/sftp"
+          ]
+        },
+        {
+          "group": "Database",
+          "icon": "database",
+          "pages": [
+            "destinations/database/postgresql"
           ]
         }
       ]
