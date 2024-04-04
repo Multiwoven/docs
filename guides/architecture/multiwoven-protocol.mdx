@@ -1,60 +1,59 @@
 ---
-title: 'Multiwoven Protocol'
-description: ''
+title: "Multiwoven Protocol"
+description: ""
 ---
-       
-### Introduction 
+
+### Introduction
 
 Multiwoven [protocol](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L4) defines a set of interfaces for building connectors. Connectors can be implemented independent of our server application, this protocol allows developers to create connectors without requiring in-depth knowledge of our core platform.
 
-
 ### Concepts
 
-**[Source](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L66)** - A source in business data storage typically refers to data warehouses like Snowflake, AWS Redshift and Google BigQuery, as well as databases. 
+**[Source](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L66)** - A source in business data storage typically refers to data warehouses like Snowflake, AWS Redshift and Google BigQuery, as well as databases.
 
 **[Destination](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L66)** - A destination is a tool or third party service where source data is sent and utilised, often by end-users. It includes CRM systems, ad platforms, marketing automation, and support tools.
 
-**[Stream](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L105
-)** - A Stream defines the structure and metadata of a resource, such as a database table, REST API resource, or data stream, outlining how users can interact with it using query or request.
+**[Stream](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L105)** - A Stream defines the structure and metadata of a resource, such as a database table, REST API resource, or data stream, outlining how users can interact with it using query or request.
 
-***Fields***
+**_Fields_**
 
-| Field                               | Description                                                                                                                       |
-|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| `name`                              | A string representing the name of the stream.                                                                                     |
-| `action` (optional)                 | Defines the action associated with the stream, e.g., "create", "update", or "delete".                                             |
-| `json_schema`                       | A hash representing the JSON schema of the stream.                                                                                |
-| `supported_sync_modes` (optional)   | An array of supported synchronization modes for the stream.                                                                       |
-| `source_defined_cursor` (optional)  | A boolean indicating whether the source has defined a cursor for the stream.                                                      |
-| `default_cursor_field` (optional)   | An array of strings representing the default cursor field(s) for the stream.                                                      |
+| Field                                   | Description                                                                                                                       |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                  | A string representing the name of the stream.                                                                                     |
+| `action` (optional)                     | Defines the action associated with the stream, e.g., "create", "update", or "delete".                                             |
+| `json_schema`                           | A hash representing the JSON schema of the stream.                                                                                |
+| `supported_sync_modes` (optional)       | An array of supported synchronization modes for the stream.                                                                       |
+| `source_defined_cursor` (optional)      | A boolean indicating whether the source has defined a cursor for the stream.                                                      |
+| `default_cursor_field` (optional)       | An array of strings representing the default cursor field(s) for the stream.                                                      |
 | `source_defined_primary_key` (optional) | An array of arrays of strings representing the source-defined primary key(s) for the stream.                                      |
-| `namespace` (optional)              | A string representing the namespace of the stream.                                                                                |
-| `url` (optional)                    | A string representing the URL of the API stream.                                                                                  |
-| `request_method` (optional)         | A string representing the request method (e.g., "GET", "POST") for the API stream.                                                |
-| `batch_support`                     | A boolean indicating whether the stream supports batching.                                                                        |
-| `batch_size`                        | An integer representing the batch size for the stream.                                                                            |
-| `request_rate_limit`                | An integer value, specifying the maximum number of requests that can be made to the user data API within a given time limit unit. |
-| `request_rate_limit_unit`           | A string value indicating the unit of time for the rate limit.                                                                    |
-| `request_rate_concurrency`          | An integer value which limits the number of concurrent requests.                                                                  |
-
+| `namespace` (optional)                  | A string representing the namespace of the stream.                                                                                |
+| `url` (optional)                        | A string representing the URL of the API stream.                                                                                  |
+| `request_method` (optional)             | A string representing the request method (e.g., "GET", "POST") for the API stream.                                                |
+| `batch_support`                         | A boolean indicating whether the stream supports batching.                                                                        |
+| `batch_size`                            | An integer representing the batch size for the stream.                                                                            |
+| `request_rate_limit`                    | An integer value, specifying the maximum number of requests that can be made to the user data API within a given time limit unit. |
+| `request_rate_limit_unit`               | A string value indicating the unit of time for the rate limit.                                                                    |
+| `request_rate_concurrency`              | An integer value which limits the number of concurrent requests.                                                                  |
 
 **[Catalog](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L123)** - A Catalog is a collection of Streams detailing the data within a data store represented by a Source/Destination eg: Catalog = Schema, Streams = List[Tables]
-***Fields***
+**_Fields_**
 
+| Field                      | Description                                                                                                                                                                                                                         |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `streams`                  | An array of Streams detailing the data within the data store. This encapsulates various data streams available for synchronization or processing, each potentially with its own schema, sync modes, and other configurations.       |
+| `request_rate_limit`       | An integer value, specifying the maximum number of requests that can be made to the user data API within a given time limit unit. This serves to prevent overloading the system by limiting the rate at which requests can be made. |
+| `request_rate_limit_unit`  | A string value indicating the unit of time for the rate limit, such as "minute" or "second". This defines the time window in which the `request_rate_limit` applies.                                                                |
+| `request_rate_concurrency` | An integer value which limits the number of concurrent requests that can be made. This is used to control the load on the system by restricting how many requests can be processed at the same time.                                |
+| `schema_mode `             | A string value that identifies the schema handling mode for the connector. Supported values include **static, dynamic, and schemaless**. This parameter is crucial for determining how the connector handles data schema.           |
 
-| Field                           | Description                                                                                                                                                                                                                     |
-|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `streams`                       | An array of Streams detailing the data within the data store. This encapsulates various data streams available for synchronization or processing, each potentially with its own schema, sync modes, and other configurations.    |
-| `request_rate_limit`            | An integer value, specifying the maximum number of requests that can be made to the user data API within a given time limit unit. This serves to prevent overloading the system by limiting the rate at which requests can be made. |
-| `request_rate_limit_unit`       | A string value indicating the unit of time for the rate limit, such as "minute" or "second". This defines the time window in which the `request_rate_limit` applies.                                                            |
-| `request_rate_concurrency`      | An integer value which limits the number of concurrent requests that can be made. This is used to control the load on the system by restricting how many requests can be processed at the same time.                             |
-
-
-<Note> Rate limit specified in catalog will applied to stream if there is no stream specific rate limit is defined. </Note>
-
+<Note>
+  {" "}
+  Rate limit specified in catalog will applied to stream if there is no stream specific
+  rate limit is defined.{" "}
+</Note>
 
 **[Model](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L86)** - Models specify the data to be extracted from a source
-***Fields***
+**_Fields_**
 
 - `name` (optional): A string representing the name of the model.
 - `query`: A string representing the query used to extract data from the source.
@@ -63,7 +62,7 @@ Multiwoven [protocol](https://github.com/Multiwoven/multiwoven-integrations/blob
 
 **[Sync](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L134)** - A Sync sets the rules for data transfer from a chosen source to a destination
 
-***Fields***
+**_Fields_**
 
 - `source`: The source connector from which data is transferred.
 - `destination`: The destination connector where data is transferred.
@@ -73,51 +72,47 @@ Multiwoven [protocol](https://github.com/Multiwoven/multiwoven-integrations/blob
 - `cursor_field` (optional): The field used as a cursor for incremental data transfer.
 - `destination_sync_mode`: The synchronization mode at the destination.
 
-
 ### Interfaces
 
-The output of each method in the interface is encapsulated in an [MultiwovenMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L170), serving as an envelope for the message's return value. These are omitted in interface explanations for sake of simplicity. 
-
+The output of each method in the interface is encapsulated in an [MultiwovenMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L170), serving as an envelope for the message's return value. These are omitted in interface explanations for sake of simplicity.
 
 #### Common
 
-1.  ```connector_spec() -> ConnectorSpecification```
+1.  `connector_spec() -> ConnectorSpecification`
 
 Description - [connector_spec](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L10) returns information about how the connector can be configured
 
-Input - ```None``` 
+Input - `None`
 
 Output - [ConnectorSpecification](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L49)
 
-2. ```meta_data() -> Hash```
+2. `meta_data() -> Hash`
 
 Description - [meta_data](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L17) returns information about how the connector can be shown in the multiwoven ui eg: icon, labels etc.
 
-Input - ```None``` 
+Input - `None`
 
-Output - ```Hash```. Sample hash can be found [here](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/source/bigquery/config/meta.json)
+Output - `Hash`. Sample hash can be found [here](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/source/bigquery/config/meta.json)
 
-3. ```check_connection(connection_config) -> ConnectionStatus```
+3. `check_connection(connection_config) -> ConnectionStatus`
 
 Description: The [check_connection](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L21) method verifies if a given configuration allows successful connection and access to necessary resources for a source/destination, such as confirming Snowflake database connectivity with provided credentials. It returns a success response if successful or a failure response with an error message in case of issues like incorrect passwords
 
-Input - ```Hash```
+Input - `Hash`
 
 Output - [ConnectionStatus](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L37)
 
-4. ```discover(connection_config) -> Catalog```
+4. `discover(connection_config) -> Catalog`
 
 Description: The [discover](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/base_connector.rb#L26) method identifies and outlines the data structure in a source/destination. Eg: Given a valid configuration for a Snowflake source, the discover method returns a list of accessible tables, formatted as streams.
 
-Input - ```Hash``` 
+Input - `Hash`
 
-Output -  [Catalog](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L121)
+Output - [Catalog](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L121)
 
+#### Source
 
-#### Source 
-
-[Source](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/source_connector.rb) implements the following interface methods including the common methods. 
-
+[Source](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/source_connector.rb) implements the following interface methods including the common methods.
 
 ```
 connector_spec() -> ConnectorSpecification
@@ -127,8 +122,7 @@ discover(connection_config)  -> Catalog
 read(SyncConfig) ->Array[RecordMessage]
 ```
 
-
-1. ```read(SyncConfig) ->Array[RecordMessage]```
+1. `read(SyncConfig) ->Array[RecordMessage]`
 
 Description -The [read](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/source_connector.rb#L6) method extracts data from a data store and outputs it as RecordMessages.
 
@@ -136,11 +130,9 @@ Input - [SyncConfig](https://github.com/Multiwoven/multiwoven-integrations/blob/
 
 Output - List[[RecordMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L93)]
 
+#### Destination
 
-#### Destination 
-
-[Destination](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb) implements the following interface methods including the common methods. 
-
+[Destination](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb) implements the following interface methods including the common methods.
 
 ```
 connector_spec() -> ConnectorSpecification
@@ -150,18 +142,16 @@ discover(connection_config)  -> Catalog
 write(SyncConfig,Array[records]) -> TrackingMessage
 ```
 
+1. `write(SyncConfig,Array[records]) -> TrackingMessage`
 
-1. ```write(SyncConfig,Array[records]) -> TrackingMessage```
+Description -The [write](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb#L6C11-L6C40) method loads data to destinations.
 
-Description -The [write](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/core/destination_connector.rb#L6C11-L6C40) method loads data to destinations. 
-
-Input - ```Array[Record]``` 
+Input - `Array[Record]`
 
 Output - [TrackingMessage](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L157)
 
 Note: Complete multiwoven protocol models can be found [here](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb)
 
-
-### Acknowledgements 
+### Acknowledgements
 
 We've been significantly influenced by the [Airbyte protocol](https://github.com/airbytehq/airbyte-protocol), and their design choices greatly accelerated our project's development.
