@@ -465,8 +465,6 @@ paths:
                       enum:
                         - source
                         - destination
-                    query_type:
-                      type: string
                     connector_name:
                       type: string
                     configuration:
@@ -659,8 +657,6 @@ paths:
                       enum:
                         - source
                         - destination
-                    query_type:
-                      type: string
                     configuration:
                       type: object
                       description: "Generic configuration structure. Specifics depend on the connector type."
