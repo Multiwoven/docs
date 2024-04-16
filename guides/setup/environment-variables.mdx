@@ -1,91 +1,104 @@
 ---
-title: 'Environment Variables'
-description: ''
+title: "Environment Variables"
+description: ""
 ---
 
 Multiwoven uses the following environment variables for both the client and server:
 
-<Note>If you have any questions about these variables, please contact us at <a href="mailto:hello@multiwoven.com">Hello Multiwoven</a> or join our <a href="https://multiwoven.slack.com">Slack Community</a>.</Note>
+<Note>
+  If you have any questions about these variables, please contact us at{" "}
+  <a href="mailto:hello@multiwoven.com">Hello Multiwoven</a> or join our{" "}
+  <a href="https://multiwoven.slack.com">Slack Community</a>.
+</Note>
 
 ## Required Variables
 
-```RAILS_ENV``` - Rails Environment (development, test, production)
+`RAILS_ENV` - Rails Environment (development, test, production)
 
-```UI_HOST``` - Hostname for UI service. Default is **localhost:8000**
+`UI_HOST` - Hostname for UI service. Default is **localhost:8000**
 
-```API_HOST``` - Hostname for API service. Default to **localhost:3000**
+`API_HOST` - Hostname for API service. Default to **localhost:3000**
 
-```DB_HOST``` - Database Host
+`DB_HOST` - Database Host
 
-```DB_USERNAME``` - Database Username
+`DB_USERNAME` - Database Username
 
-```DB_PASSWORD``` - Database Password
+`DB_PASSWORD` - Database Password
 
 ## SMTP Configuration
 
-```SMTP_HOST``` - SMTP Host
+`SMTP_HOST` - This variable represents the host name of the SMTP server that the application will connect to for sending emails. The default configuration for SMTP_HOST is set to `multiwoven.com`, indicating the server host.
 
-```SMTP_ADDRESS``` - SMTP Address
+`SMTP_ADDRESS` - This environment variable specifies the server address where the SMTP service is hosted, critical for establishing a connection with the email server. Depending on the service provider, this address will vary. Here are examples of SMTP server addresses for some popular email providers:
 
-```SMTP_PORT``` - SMTP Port
+- Gmail: smtp.gmail.com - This is the server address for Google's Gmail service, allowing applications to send emails through Gmail's SMTP server.
+- Outlook: smtp-mail.outlook.com - This address is used for Microsoft's Outlook email service, enabling applications to send emails through Outlook's SMTP server.
+- Yahoo Mail: smtp.mail.yahoo.com - This address is used for Yahoo's SMTP server when configuring applications to send emails via Yahoo Mail.
+- AWS SES: _._.amazonaws.com - This address format is used for AWS SES (Simple Email Service) SMTP servers when configuring applications to send emails via AWS SES. The specific region address should be used as shown in [here](https://docs.aws.amazon.com/general/latest/gr/ses.html)
+- Custom SMTP Server: mail.yourdomain.com - For custom SMTP servers, typically hosted by organizations or specialized email service providers, the SMTP address is specific to the domain or provider hosting the service.
 
-```SMTP_USERNAME``` - SMTP Username
+  `SMTP_PORT` - This indicates the port number on which the SMTP server listens. The default configuration for SMTP_PORT is set to 587, which is commonly used for SMTP with TLS/SSL.
 
-```SMTP_PASSWORD``` - SMTP Password
+`SMTP_USERNAME` - This environment variable specifies the username required to authenticate with the SMTP server. This username could be an email address or a specific account identifier, depending on the requirements of the SMTP service provider being used (such as Gmail, Outlook, etc.). The username is essential for logging into the SMTP server to send emails. It is kept as an environment variable to maintain security and flexibility, allowing changes without code modification.
+
+`SMTP_PASSWORD` - Similar to the username, this environment variable holds the password associated with the SMTP_USERNAME for authentication purposes. The password is critical for verifying the user's identity to the SMTP server, enabling the secure sending of emails. It is defined as an environment variable to ensure that sensitive credentials are not hard-coded into the application's source code, thereby protecting against unauthorized access and making it easy to update credentials securely.
+
+`SMTP_SENDER_EMAIL` - This variable specifies the email address that appears as the sender in the emails sent by the application.
+
+`BRAND_NAME` - This variable is used to customize the 'From' name in the emails sent from the application, allowing a personalized touch. It is set to **BRAND NAME**, which appears alongside the sender email address in outgoing emails.
 
 ## Sync Configuration
 
-```SYNC_EXTRACTOR_BATCH_SIZE``` - Sync Extractor Batch Size
+`SYNC_EXTRACTOR_BATCH_SIZE` - Sync Extractor Batch Size
 
-```SYNC_LOADER_BATCH_SIZE``` - Sync Loader Batch Size
+`SYNC_LOADER_BATCH_SIZE` - Sync Loader Batch Size
 
-```SYNC_EXTRACTOR_THREAD_POOL_SIZE``` - Sync Extractor Thread Pool Size
+`SYNC_EXTRACTOR_THREAD_POOL_SIZE` - Sync Extractor Thread Pool Size
 
-```SYNC_LOADER_THREAD_POOL_SIZE``` - Sync Loader Thread Pool Size
+`SYNC_LOADER_THREAD_POOL_SIZE` - Sync Loader Thread Pool Size
 
 ## Temporal Configuration
 
-```TEMPORAL_VERSION``` - Temporal Version
+`TEMPORAL_VERSION` - Temporal Version
 
-```TEMPORAL_UI_VERSION``` - Temporal UI Version
+`TEMPORAL_UI_VERSION` - Temporal UI Version
 
-```TEMPORAL_HOST``` - Temporal Host
+`TEMPORAL_HOST` - Temporal Host
 
-```TEMPORAL_PORT``` - Temporal Port
+`TEMPORAL_PORT` - Temporal Port
 
-```TEMPORAL_ROOT_CERT``` - Temporal Root Certificate
+`TEMPORAL_ROOT_CERT` - Temporal Root Certificate
 
-```TEMPORAL_CLIENT_KEY``` - Temporal Client Key
+`TEMPORAL_CLIENT_KEY` - Temporal Client Key
 
-```TEMPORAL_CLIENT_CHAIN``` - Temporal Client Chain
+`TEMPORAL_CLIENT_CHAIN` - Temporal Client Chain
 
-```TEMPORAL_POSTGRESQL_VERSION``` - Temporal Postgres Version
+`TEMPORAL_POSTGRESQL_VERSION` - Temporal Postgres Version
 
-```TEMPORAL_POSTGRES_PASSWORD``` - Temporal Postgres Password
+`TEMPORAL_POSTGRES_PASSWORD` - Temporal Postgres Password
 
-```TEMPORAL_POSTGRES_USER``` - Temporal Postgres User
+`TEMPORAL_POSTGRES_USER` - Temporal Postgres User
 
-```TEMPORAL_POSTGRES_DEFAULT_PORT``` - Temporal Postgres Default Port
+`TEMPORAL_POSTGRES_DEFAULT_PORT` - Temporal Postgres Default Port
 
-```TEMPORAL_NAMESPACE``` - Temporal Namespace
+`TEMPORAL_NAMESPACE` - Temporal Namespace
 
-```TEMPORAL_TASK_QUEUE``` - Temporal Task Queue
+`TEMPORAL_TASK_QUEUE` - Temporal Task Queue
 
-```TEMPORAL_ACTIVITY_THREAD_POOL_SIZE``` - Temporal Activity Thread Pool Size
+`TEMPORAL_ACTIVITY_THREAD_POOL_SIZE` - Temporal Activity Thread Pool Size
 
-```TEMPORAL_WORKFLOW_THREAD_POOL_SIZE``` - Temporal Workflow Thread Pool Size
+`TEMPORAL_WORKFLOW_THREAD_POOL_SIZE` - Temporal Workflow Thread Pool Size
 
 ## Community Edition Configuration
 
-```VITE_BRAND_NAME``` - Community Brand Name
+`VITE_BRAND_NAME` - Community Brand Name
 
-```VITE_BRAND_LOGO``` - Community Logo Link
+`VITE_BRAND_LOGO` - Community Logo Link
 
-```VITE_BRAND_COLOR``` - Community Theme Color
+`VITE_BRAND_COLOR` - Community Theme Color
 
-```VITE_BRAND_HOVER_COLOR``` - Community Theme Color On Hover
+`VITE_BRAND_HOVER_COLOR` - Community Theme Color On Hover
 
 ## Optional Variables
 
-```NEW_RELIC_KEY``` - New Relic Key
-
+`NEW_RELIC_KEY` - New Relic Key
