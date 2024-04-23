@@ -75,10 +75,7 @@
     },
     {
       "group": "Sync Modes",
-      "pages": [
-        "sync-modes/full-refresh",
-        "sync-modes/incremental"
-      ]
+      "pages": ["sync-modes/full-refresh", "sync-modes/incremental"]
     },
     {
       "group": "Sources",
@@ -155,6 +152,11 @@
           ]
         },
         {
+          "group": "Payment",
+          "icon": "credit-card",
+          "pages": ["destinations/payment/stripe"]
+        },
+        {
           "group": "Productivity Tools",
           "icon": "clock",
           "pages": [
@@ -165,16 +167,12 @@
         {
           "group": "File Storage",
           "icon": "folder",
-          "pages": [
-            "destinations/file-storage/sftp"
-          ]
+          "pages": ["destinations/file-storage/sftp"]
         },
         {
           "group": "Database",
           "icon": "database",
-          "pages": [
-            "destinations/database/postgresql"
-          ]
+          "pages": ["destinations/database/postgresql"]
         }
       ]
     },
