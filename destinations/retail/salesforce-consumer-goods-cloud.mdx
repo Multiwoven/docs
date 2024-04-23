@@ -1,0 +1,87 @@
+---
+title: "Salesforce Consumer Goods Cloud"
+description: ""
+icon: "salesforce"
+---
+
+## Overview
+
+Salesforce Consumer Goods Cloud is a specialized CRM platform designed to help companies in the consumer goods industry manage their operations more efficiently.
+It provides tools to optimize route-to-market strategies, increase sales performance, and enhance field execution.
+This cloud-based solution leverages Salesforce's robust capabilities to deliver data-driven insights, streamline inventory and order management, and foster closer relationships with retailers and customers.
+
+### Key Features:
+
+- **Retail Execution**: Manage store visits, ensure product availability, and optimize shelf placement.
+- **Sales Planning and Operations**: Create and manage sales plans that align with company goals.
+- **Trade Promotion Management**: Plan, execute, and analyze promotional activities to maximize ROI.
+- **Field Team Management**: Enable field reps with tools and data to improve productivity and effectiveness.
+
+## Connector Configuration and Credential Retrieval Guide
+
+### Prerequisite Requirements
+
+When setting up an integration between Salesforce Consumer Goods Cloud and Multiwoven, certain credentials are required to authenticate and establish a secure connection. Below is a brief description of each credential needed:
+
+- **Username**: The Salesforce username used to log in.
+- **Password**: The password associated with the Salesforce username.
+- **Host**: The URL of your Salesforce instance (e.g., https://login.salesforce.com).
+- **Security Token**: An additional security key that is appended to your password for API access from untrusted networks.
+- **Client ID** and **Client Secret**: These are part of the OAuth credentials required for authenticating an application with Salesforce.
+  They are obtained when you set up a new "Connected App" in Salesforce for integrating with external applications. You may refer our [Salesforce CRM docs](https://docs.multiwoven.com/destinations/crm/salesforce#destination-setup) for further details.
+
+### Setting Up Security Token in Salesforce
+
+<AccordionGroup>
+  <Accordion title="Steps to Retrieve or Reset a Salesforce Security Token" icon="salesforce" defaultOpen="true">
+    <Steps>
+      <Step title="Sign In">
+        Log in to your Salesforce account.
+      </Step>
+      <Step title="Settings">
+        Navigate to Settings or My Settings by first clicking on My Profile and then clicking **Settings** under the Personal Information section.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/settings.png" />
+        </Frame>
+      </Step>
+      <Step title="Quick Find">
+        Once inside the Settings page click on the Quick Find box and type "Reset My Security Token" to quickly navigate to the option.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/reset.png" />
+        </Frame>
+      </Step>
+      <Step title="Reset My Security Token">
+        Click on Reset My Security Token under the Personal section. Salesforce will send the new security token to the email address associated with your account.
+        If you do not see the option to reset the security token, it may be because your organization uses Single Sign-On (SSO) or has IP restrictions that negate the need for a token.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/security-token.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>
+
+<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+
+| Mode             | Supported (Yes/No/Coming soon) |
+| ---------------- | ------------------------------ |
+| Incremental sync | Yes                            |
+| Full refresh     | Coming soon                    |
+
+</Accordion>
+
+<Accordion title="Supported Streams"  defaultOpen="true">
+
+| Stream      | Supported (Yes/No/Coming soon) |
+| ----------- | ------------------------------ |
+| Account     | Yes                            |
+| User        | Yes                            |
+| Visit       | Yes                            |
+| RetailStore | Yes                            |
+| RecordType  | Yes                            |
+
+</Accordion>

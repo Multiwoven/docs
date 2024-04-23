@@ -85,7 +85,8 @@
         "sources/snowflake",
         "sources/bquery",
         "sources/databricks",
-        "sources/postgresql"
+        "sources/postgresql",
+        "sources/salesforce-consumer-goods-cloud"
       ]
     },
     {
@@ -155,6 +156,11 @@
           "group": "Payment",
           "icon": "credit-card",
           "pages": ["destinations/payment/stripe"]
+        },
+        {
+          "group": "Retail",
+          "icon": "shop",
+          "pages": ["destinations/retail/salesforce-consumer-goods-cloud"]
         },
         {
           "group": "Productivity Tools",
