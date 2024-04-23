@@ -878,6 +878,10 @@ paths:
                             sync_interval_unit:
                               type: string
                               enum: [minutes]
+                            cron_expression:
+                              type: string
+                            cursor_field:
+                              type: string 
                             stream_name:
                               type: string
                             status:
@@ -942,6 +946,8 @@ paths:
                     sync_interval_unit:
                       type: string
                       enum: [minutes]
+                    cron_expression:
+                      type: string
                     cursor_field:
                       type: string 
                   required:
@@ -990,12 +996,14 @@ paths:
                       sync_interval_unit:
                         type: string
                         enum: [minutes]
+                      cron_expression:
+                        type: string
+                      cursor_field:
+                        type: string 
                       stream_name:
                         type: string
                       status:
                         type: string
-                      cursor_field:
-                        type: string 
   "/api/v1/syncs/{id}":
     get:
       summary: Show details of a specific sync operation
@@ -1046,6 +1054,10 @@ paths:
                       sync_interval_unit:
                         type: string
                         enum: [minutes]
+                      cron_expression:
+                        type: string
+                      cursor_field:
+                        type: string 
                       stream_name:
                         type: string
                       status:
@@ -1093,6 +1105,8 @@ paths:
                       type: integer
                     sync_interval_unit:
                       type: string
+                    cron_expression:
+                      type: string
       responses:
         "200":
           description: Sync operation updated successfully
@@ -1136,6 +1150,10 @@ paths:
                           sync_interval_unit:
                             type: string
                             enum: [minutes]
+                          cron_expression:
+                            type: string
+                          cursor_field:
+                            type: string 
                           stream_name:
                             type: string
                           status:
@@ -1432,6 +1450,8 @@ paths:
                               type: number
                               format: float
                             total_query_rows:
+                              type: integer
+                            skipped_rows:
                               type: integer
                             total_rows:
                               type: integer
