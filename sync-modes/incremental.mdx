@@ -3,53 +3,134 @@ title: "Incremental"
 description: "Incremental sync only transfer new or updated data, minimizing data transfer"
 ---
 
-
 ### Overview
+
 Incremental syncing involves transferring only new or updated data, thus avoiding duplication of previously replicated data. This is achieved through deduplication using a unique primary key specified in the model. For initial syncs, it functions like a full refresh since all data is considered new.
 
-
 ### Example
-
 
 ### Initial State
 
 Suppose the following records already exist in our source:
 
 | Name             | Plan     | Updated At |
-|------------------|----------|------------|
+| ---------------- | -------- | ---------- |
 | Charles Beaumont | freemium | 6789       |
 | Eleanor Villiers | freemium | 6790       |
-
 
 ### First sync
 
 In this sync, the delta contains an updated record for Charles:
 
 | Name             | Plan     | Updated At |
-|------------------|----------|------------|
+| ---------------- | -------- | ---------- |
 | Charles Beaumont | freemium | 6791       |
 
 After this incremental sync, the data in the warehouse would now be:
 
 | Name             | Plan     | Updated At |
-|------------------|----------|------------|
+| ---------------- | -------- | ---------- |
 | Charles Beaumont | freemium | 6791       |
 | Eleanor Villiers | freemium | 6790       |
-
 
 ### Second sync
 
 Let's assume in the next delta both customers have upgraded to a paid plan:
 
 | Name             | Plan | Updated At |
-|------------------|------|------------|
+| ---------------- | ---- | ---------- |
 | Charles Beaumont | paid | 6795       |
 | Eleanor Villiers | paid | 6795       |
-
 
 The final data at the destination after this update will be:
 
 | Name             | Plan | Updated At |
-|------------------|------|------------|
+| ---------------- | ---- | ---------- |
 | Charles Beaumont | paid | 6795       |
 | Eleanor Villiers | paid | 6795       |
+
+### Incremental Sync with Cursor Field
+
+Default Incremental Sync fetches all records from the source system and transfers only the new or updated ones to the destination. However, to optimize data transfer and reduce the number of duplicate fetches from the source, we implemented Incremental Sync with Cursor Field for those sources that support cursor fields
+
+#### Cursor Field
+
+A Cursor Field must be clearly defined within the dataset schema. It is identified based on its suitability for comparison and tracking changes over time.
+
+- It serves as a marker to identify modified or added records since the previous sync.
+- It facilitates efficient data retrieval by enabling the source to resume from where it left off during the last synchronization.
+
+Note: Currently, only date fields are supported as Cursor Fields.
+
+####
+
+#### Sync Run 1
+
+During the first sync run with the cursor field 'UpdatedAt', suppose we have the following data:
+cursor field UpdatedAt value is 2024-04-20 10:00:00
+
+| Name             | Plan | Update dAt          |
+| ---------------- | ---- | ------------------- |
+| Charles Beaumont | free | 2024-04-20 10:00:00 |
+| Eleanor Villiers | free | 2024-04-20 11:00:00 |
+
+During this sync run, both Charles Beaumont's and Eleanor Villiers' records would meet the criteria since they both have an 'UpdatedAt' timestamp equal to '2024-04-20 10:00:00' or later. So, during the first sync run, both records would indeed be considered and fetched.
+
+##### Query
+
+```sql
+SELECT * FROM source_table
+WHERE updated_at >= '2024-04-20 10:00:00';
+```
+
+#### Sync Run 2
+
+Now cursor field UpdatedAt value is 2024-04-20 11:00:00
+Suppose after some time, there are further updates in the source data:
+
+| Name             | Plan | Updated At          |
+| ---------------- | ---- | ------------------- |
+| Charles Beaumont | free | 2024-04-20 10:00:00 |
+| Eleanor Villiers | paid | 2024-04-21 10:00:00 |
+
+During the second sync run with the same cursor field, only the records for Eleanor Villiers with 'Updated At' timestamp after the last sync would be fetched, ensuring minimal data transfer.
+
+##### Query
+
+```sql
+SELECT * FROM source_table
+WHERE updated_at >= '2024-04-20 11:00:00';
+```
+
+#### Sync Run 3
+
+If there are additional updates in the source data:
+Now cursor field UpdatedAt value is 2024-04-21 10:00:00
+
+| Name             | Plan | Updated At          |
+| ---------------- | ---- | ------------------- |
+| Charles Beaumont | paid | 2024-04-22 08:00:00 |
+| Eleanor Villiers | pro  | 2024-04-22 09:00:00 |
+
+During the third sync run with the same cursor field, only the records for Charles Beaumont and Eleanor Villiers with 'Updated At' timestamp after the last sync would be fetched, continuing the process of minimal data transfer.
+
+##### Query
+
+```sql
+SELECT * FROM source_table
+WHERE updated_at >= '2024-04-21 10:00:00 ';
+```
+
+### Handling Ambiguity and Inclusive Cursors
+
+When syncing data incrementally, we ensure at least one delivery. Limited cursor field granularity may cause sources to resend previously sent data. For example, if a cursor only tracks dates, distinguishing new from old data on the same day becomes unclear.
+
+#### Scenario
+
+Imagine sales transactions with a cursor field `transaction_date`. If we sync on April 1st and later sync on the same day, distinguishing new transactions becomes ambiguous. To mitigate this, we guarantee at least one delivery, allowing sources to resend data as needed.
+
+### Known Limitations
+
+Modifications to underlying records without updating the cursor field may result in updated records not being picked up by the Incremental sync as expected.
+
+Edit or remove of cursor field can mess up tracking data changes, causing issues and data loss. So Don't change or remove the cursor field to keep sync smooth and reliable.
