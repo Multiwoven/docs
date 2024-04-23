@@ -946,6 +946,8 @@ paths:
                     sync_interval_unit:
                       type: string
                       enum: [minutes]
+                    cursor_field:
+                      type: string 
                   required:
                     - source_id
                     - destination_id
@@ -996,6 +998,8 @@ paths:
                         type: string
                       status:
                         type: string
+                      cursor_field:
+                        type: string 
   "/api/v1/syncs/{id}":
     get:
       summary: Show details of a specific sync operation
