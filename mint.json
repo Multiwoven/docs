@@ -75,7 +75,7 @@
     },
     {
       "group": "Sync Modes",
-      "pages": ["sync-modes/full-refresh", "sync-modes/incremental"]
+      "pages": ["sync-modes/full-refresh", "sync-modes/incremental", "sync-modes/cursor-incremental"]
     },
     {
       "group": "Sources",
