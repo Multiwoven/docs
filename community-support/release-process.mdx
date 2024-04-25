@@ -1,190 +1,42 @@
 ---
-title: "Release process"
-icon: ""
+title: "Release Process"
+icon: "code-branch"
 ---
 
-Multiwoven is using the [git-flow ](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)workflow for managing git branches. Git flow repository operations are done using a git extension called [gitflow](https://github.com/nvie/gitflow). Installation instructions for gitflow can be found [here](https://github.com/nvie/gitflow/wiki/Installation)
+The release process at Multiwoven is fully automated through GitHub Actions.
 
+<AccordionGroup>
+  <Accordion title="Automation Stages" icon="github" defaultOpen="true">
+  Here's an overview of our automation stages, each facilitated by specific GitHub Actions:
+    <Steps>
+      <Step title="Weekly Release Workflow">
+        - **Action**: [Release Workflow](https://github.com/Multiwoven/multiwoven/actions/workflows/release.yaml)
+        - **Description**: Every Tuesday, a new release is automatically generated with a minor version tag (e.g., v0.4.0) following semantic versioning rules. This process also creates a pull request (PR) for release notes that summarize the changes in the new version.
+        - **Additional Triggers**: The same workflow can be manually triggered to create a patch version (e.g., v0.4.1 for quick fixes) or a major version (e.g., v1.0.0 for significant architectural changes). This is done using the workflow dispatch feature in GitHub Actions.
 
-## Gitflow 101
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/manual_kyjtne.png" />
+        </Frame>
+      </Step>
+      <Step title="Automated Release Notes on Merge">
+        - **Action**: [Create Release Note on Merge](https://github.com/Multiwoven/multiwoven/actions/workflows/create-release-notes.yaml)
+        - **Description**: When the release notes PR is merged, it triggers the creation of a new release with detailed [release notes](https://github.com/Multiwoven/multiwoven/releases/tag/v0.4.0) on GitHub.
+      </Step>
+      <Step title="Docker Image Releases">
+        - **Description**: Docker images need to be manually released based on the newly created tags from the GitHub Actions.
+        - **Actions**:
+          - [Build and push Multiwoven server docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/server-docker-hub-push-tags.yaml): This action handles the server-side Docker image push to docker hub with tag as latest and the new release tag i.e **v0.4.0**
 
+              <Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/docker-server_ujdnap.png" />
+              </Frame>
+          - [Build and push Multiwoven UI docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/ui-docker-hub-push-tags.yaml): This action handles the user interface Docker image  to docker hub with tag as latest and the new release tag i.e **v0.4.0**
 
-#### 1. A develop branch is created from main
+              <Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027593/Multiwoven/Docs/release-process/docker-ui_sjo8nv.png" />
+              </Frame>
+      </Step>
+    </Steps>
 
-Without the git-flow extensions
-
-```
-git branch develop
-git push -u origin develop
-```
-
-When using git flow extension 
-
-
-```
-$ git flow init
-
-Initialized empty Git repository in ~/project/.git/
-No branches exist yet. Base branches must be created now.
-Branch name for production releases: [main]
-Branch name for "next release" development: [develop]
-
-How to name your supporting branch prefixes?
-Feature branches? [feature/]
-Release branches? [release/]
-Hotfix branches? [hotfix/]
-Support branches? [support/]
-Version tag prefix? []
-
-$ git branch
-* develop
- main
-```
-
-#### 2. Feature branches are created from develop
-
-##### Create a feature branch
-
-Without the git-flow extensions
-
-```
-git checkout develop
-git checkout -b feature_branch
-```
-
-
-When using git flow extension 
-
-```
-git flow feature start feature_branch
-```
-
-##### Merging feature branch to develop
-
-Without the git-flow extensions
-
-```
-git checkout develop
-git merge feature_branch
-```
-
-
-When using git flow extension 
-
-```
-git flow feature finish feature_branch
-```
-
-#### 3. A release branch is created from develop
-
-
-##### Create a release branch 
-
-Without the git-flow extensions
-
-```
-git checkout develop
-git checkout -b release/0.1.0
-```
-
-When using git flow extension 
-
-```
-git flow release start 0.1.0
-Switched to a new branch 'release/0.1.0'
-```
-
-##### Merging release branch to main
-
-Without the git-flow extensions
-
-```
-git checkout main
-git merge release/0.1.0
-```
-
-
-When using git flow extension
-
-
-```
-git flow release finish '0.1.0'
-```
-
-#### 4. If an issue in main is detected a hotfix branch is created from main
-
-
-##### Create hotfix branch
-
-Without the git-flow extensions
-
-```
-git checkout main
-git checkout -b hotfix_branch
-```
-
-
-When using git flow extension
-
-```
-git flow hotfix start hotfix_branch
-```
-
-##### Merge hotfix branch to main and develop
-
-Without the git-flow extensions
-
-```
-git checkout main
-git merge hotfix_branch
-git checkout develop
-git merge hotfix_branch
-git branch -D hotfix_branch
-```
-When using git flow extension
-
-```
-$ git flow hotfix finish hotfix_branch
-```
-
-## Release process 
-
-#### 1. Pull the latest develop branch and master branch in your local machine.
-
-```
-git checkout master
-git pull
-git checkout develop
-git pull
-git fetch --tag
-```
-
-#### 2. Create feature branch from develop with the relevant release version 
-
-```
-git flow release start '0.0.1-beta'
-```
-
-#### 3. Add any last minute changes to release branch 
-
-#### 4. Merge release branch back to main and develop
-
-```
-git flow release finish '0.0.1-beta'
-```
-#### 5. Push master branch, develop branch and the tags
-
-```
-# Push develop
-git checkout develop
-git push --no-verify
-
-# Push master
-git checkout master
-git push --no-verify
-
-# Push tags
-git checkout develop
-git push --tags --no-verify
-```
-#### 6. Publish release notes - TODO
+  </Accordion>
+</AccordionGroup>
