@@ -121,6 +121,7 @@ helm delete multiwoven
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `multiwovenPostgresql.enabled`               | Whether or not to deploy PostgreSQL.                          | `true`                           | 
 | `multiwovenPostgresql.image.repository`      | Docker image repository for PostgreSQL.                       | `postgres`                       |
 | `multiwovenPostgresql.image.tag`             | Docker image tag for PostgreSQL.                              | `13`                             |
 | `multiwovenPostgresql.resources.limits.cpu`  | CPU resource limits for PostgreSQL pod.                       | `1`                              |
