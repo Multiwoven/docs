@@ -26,21 +26,32 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Join Slack",
-    "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
+    "name": "Log in",
+    "url": "https://app.squared.ai"
+  },
+  "primaryTab": {
+    "name": "Home"
   },
   "tabs": [
+    {
+      "name": "Guides",
+      "url": "guides"
+    },
+    {
+      "name": "Developer Tools",
+      "url": "api-reference"
+    },
     {
       "name": "Open Source",
       "url": "open-source"
     },
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Troubleshooting",
+      "url": "open-source"
     },
     {
-      "name": "Community & Support",
-      "url": "community-support"
+      "name": "Releases",
+      "url": "open-source"
     }
   ],
   "anchors": [
@@ -49,142 +60,161 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/welcome","get-started/core-concepts"]
+      "pages": ["home/welcome"]
+    },
+    {
+      "group": "Guides",
+      "pages": ["guides/core-concepts"]
     },
     {
       "group": "Open Source",
       "pages": ["open-source/introduction"]
     },
     {
-      "group": "Models",
+      "group": "Data Activation",
       "pages": [
-        "models/overview",
-        "models/sql",
-        "models/dbt",
-        "models/table-visualization"
-      ]
-    },
-    {
-      "group": "Syncs",
-      "pages": ["syncs/overview"]
-    },
-    {
-      "group": "Sync Modes",
-      "pages": ["sync-modes/full-refresh", "sync-modes/incremental", "sync-modes/cursor-incremental"]
-    },
-    {
-      "group": "Sources",
-      "pages": [
-        "sources/overview",
-        "sources/redshift",
-        "sources/snowflake",
-        "sources/bquery",
-        "sources/databricks",
-        "sources/postgresql",
-        "sources/salesforce-consumer-goods-cloud"
-      ]
-    },
-    {
-      "group": "Destinations",
-      "pages": [
-        "destinations/overview",
         {
-          "group": "CRM",
+          "group": "Models",
+          "icon": "database",
+          "pages": [
+            "guides/data-activation/models/overview",
+            "guides/data-activation/models/sql",
+            "guides/data-activation/models/dbt",
+            "guides/data-activation/models/table-visualization"
+          ]
+        },
+        {
+          "group": "Syncs",
           "icon": "users",
           "pages": [
-            "destinations/crm/salesforce",
-            "destinations/crm/hubspot",
-            "destinations/crm/zoho"
+            "guides/data-activation/syncs/overview",
+            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
           ]
-        },
-        {
-          "group": "Marketing Automation",
-          "icon": "sparkles",
-          "pages": [
-            "destinations/marketing-automation/braze",
-            "destinations/marketing-automation/clevertap",
-            "destinations/marketing-automation/klaviyo"
-          ]
-        },
-        {
-          "group": "Adtech",
-          "icon": "bullhorn",
-          "pages": [
-            "destinations/adtech/facebook-ads",
-            "destinations/adtech/google-ads"
-          ]
-        },
-        {
-          "group": "Analytics",
-          "icon": "chart-bar",
-          "pages": [
-            "destinations/analytics/google-analytics",
-            "destinations/analytics/mixpanel",
-            "destinations/analytics/amplitude"
-          ]
-        },
-        {
-          "group": "Customer Support",
-          "icon": "headset",
-          "pages": [
-            "destinations/customer-support/zendesk",
-            "destinations/customer-support/intercom"
-          ]
-        },
-        {
-          "group": "Team Collaboration",
-          "icon": "sparkle",
-          "pages": [
-            "destinations/team-collaboration/slack",
-            "destinations/team-collaboration/microsoft-teams"
-          ]
-        },
-        {
-          "group": "E-Commerce",
-          "icon": "shop",
-          "pages": [
-            "destinations/e-commerce/shopify",
-            "destinations/e-commerce/facebook-product-catalog"
-          ]
-        },
-        {
-          "group": "Payment",
-          "icon": "credit-card",
-          "pages": ["destinations/payment/stripe"]
-        },
-        {
-          "group": "Retail",
-          "icon": "shop",
-          "pages": ["destinations/retail/salesforce-consumer-goods-cloud"]
-        },
-        {
-          "group": "Productivity Tools",
-          "icon": "clock",
-          "pages": [
-            "destinations/productivity-tools/airtable",
-            "destinations/productivity-tools/google-sheets"
-          ]
-        },
-        {
-          "group": "File Storage",
-          "icon": "folder",
-          "pages": ["destinations/file-storage/sftp"]
-        },
-        {
-          "group": "Database",
-          "icon": "database",
-          "pages": ["destinations/database/postgresql"]
         }
       ]
     },
+
     {
-      "group": "Audiences",
-      "pages": ["audiences/overview"]
+      "group": "Data Integration",
+      "pages": [
+        {
+          "group": "Sources",
+          "icon": "users",
+          "pages": [
+            "guides/data-integration/sources/redshift",
+            "guides/data-integration/sources/snowflake",
+            "guides/data-integration/sources/bquery",
+            "guides/data-integration/sources/databricks",
+            "guides/data-integration/sources/postgresql",
+            "guides/data-integration/sources/salesforce-consumer-goods-cloud"
+          ]
+        },
+        {
+          "group": "Destinations",
+          "icon": "users",
+          "pages": [
+            "data-integration/destinations/crm/salesforce",
+            "guides/data-integration/destinations/crm/hubspot",
+            "guides/data-integration/destinations/crm/zoho",
+            "guides/data-integration/destinations/marketing-automation/braze",
+            "guides/data-integration/destinations/marketing-automation/clevertap",
+            "guides/data-integration/destinations/marketing-automation/klaviyo",
+            "guides/data-integration/destinations/adtech/facebook-ads",
+            "guides/data-integration/destinations/adtech/google-ads",
+            "guides/data-integration/destinations/analytics/google-analytics",
+            "guides/data-integration/destinations/analytics/mixpanel",
+            "guides/data-integration/destinations/analytics/amplitude",
+            "guides/data-integration/destinations/customer-support/zendesk",
+            "guides/data-integration/destinations/customer-support/intercom",
+            "guides/data-integration/destinations/team-collaboration/slack",
+            "guides/data-integration/destinations/team-collaboration/microsoft-teams",
+            "guides/data-integration/destinations/e-commerce/shopify",
+            "guides/data-integration/destinations/e-commerce/facebook-product-catalog",
+            "guides/data-integration/destinations/payment/stripe",
+            "guides/data-integration/destinations/retail/salesforce-consumer-goods-cloud",
+            "guides/data-integration/destinations/productivity-tools/airtable",
+            "guides/data-integration/destinations/productivity-tools/google-sheets",
+            "guides/data-integration/destinations/file-storage/sftp",
+            "guides/data-integration/destinations/database/postgresql"
+
+          ]
+        }
+      ]
     },
+    
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "group": "AI & ML Integrations",
+      "pages": ["guides/ai-ml-integration/audiences/overview"]
     },
+
+    {
+      "group": "Workspace Management",
+      "pages": ["guides/workspace-management/overview"]
+    },
+
+    {
+      "group": "REST API",
+      "pages": [
+        "api-reference/introduction",
+        {
+          "group": "Models",
+          "pages": [
+            "api-reference/models/create-model",
+            "api-reference/models/update-model",
+            "api-reference/models/delete-model",
+            "api-reference/models/get-model",
+            "api-reference/models/get-all-models"
+          ]
+        },
+        {
+          "group": "Connector Definitions",
+          "pages": [
+            "api-reference/connector_definitions/connector_definitions",
+            "api-reference/connector_definitions/connector_definition",
+            "api-reference/connector_definitions/check_connection"
+          ]
+        },
+        {
+          "group": "Connectors",
+          "pages": [
+            "api-reference/connectors/create_connector",
+            "api-reference/connectors/list_connectors",
+            "api-reference/connectors/get_connector",
+            "api-reference/connectors/update_connector",
+            "api-reference/connectors/delete_connector",
+            "api-reference/connectors/discover",
+            "api-reference/connectors/query_source"
+          ]
+        },
+        {
+          "group": "Syncs",
+          "pages": [
+            "api-reference/syncs/get_syncs",
+            "api-reference/syncs/create_sync",
+            "api-reference/syncs/show_sync",
+            "api-reference/syncs/update_sync",
+            "api-reference/syncs/delete_sync",
+            "api-reference/syncs/sync_configuration"
+          ]
+        },
+        {
+          "group": "Sync Runs",
+          "pages": [
+            "api-reference/sync_runs/get_sync_runs",
+            "api-reference/sync_runs/get_sync_run"
+          ]
+        },
+        {
+          "group": "Sync Records",
+          "pages": ["api-reference/sync_records/get_sync_records"]
+        },
+        {
+          "group": "Reports",
+          "pages": ["api-reference/reports/get_report"]
+        }
+      ]
+    },
+   
     {
       "group": "Architecture",
       "pages": [
@@ -195,28 +225,35 @@
       ]
     },
     {
-      "group": "Deploy Locally",
+      "group": "Deployment",
       "pages": [
-        "open-source/guides/setup/docker-compose-dev",
-        "open-source/guides/setup/environment-variables"
-      ]
-    },
-    {
-      "group": "Self-hosting Multiwoven",
-      "pages": [
-        "open-source/guides/setup/docker-compose",
-        "open-source/guides/setup/helm",
-        "open-source/guides/setup/ec2",
-        "open-source/guides/setup/ecs",
-        "open-source/guides/setup/eks",
-        "open-source/uides/setup/gke",
-        "open-source/guides/setup/gce",
-        "open-source/guides/setup/aks",
-        "open-source/guides/setup/avm",
-        "open-source/guides/setup/dod",
-        "open-source/guides/setup/dok",
-        "open-source/guides/setup/heroku",
-        "open-source/guides/setup/openshift"
+        "open-source/guides/setup/environment-variables",
+        {
+          "group": "Deploy Locally",
+          "icon": "",
+          "pages": [
+            "open-source/guides/setup/docker-compose-dev"
+          ]
+        },
+        {
+          "group": "Production Deployment",
+          "icon": "",
+          "pages": [
+            "open-source/guides/setup/docker-compose",
+            "open-source/guides/setup/helm",
+            "open-source/guides/setup/ec2",
+            "open-source/guides/setup/ecs",
+            "open-source/guides/setup/eks",
+            "open-source/uides/setup/gke",
+            "open-source/guides/setup/gce",
+            "open-source/guides/setup/aks",
+            "open-source/guides/setup/avm",
+            "open-source/guides/setup/dod",
+            "open-source/guides/setup/dok",
+            "open-source/guides/setup/heroku",
+            "open-source/guides/setup/openshift"
+          ]
+        }
       ]
     },
     {
@@ -233,68 +270,12 @@
       ]
     },
     {
-      "group": "Models",
-      "pages": [
-        "api-reference/models/create-model",
-        "api-reference/models/update-model",
-        "api-reference/models/delete-model",
-        "api-reference/models/get-model",
-        "api-reference/models/get-all-models"
-      ]
-    },
-    {
-      "group": "Connector Definitions",
-      "pages": [
-        "api-reference/connector_definitions/connector_definitions",
-        "api-reference/connector_definitions/connector_definition",
-        "api-reference/connector_definitions/check_connection"
-      ]
-    },
-    {
-      "group": "Connectors",
-      "pages": [
-        "api-reference/connectors/create_connector",
-        "api-reference/connectors/list_connectors",
-        "api-reference/connectors/get_connector",
-        "api-reference/connectors/update_connector",
-        "api-reference/connectors/delete_connector",
-        "api-reference/connectors/discover",
-        "api-reference/connectors/query_source"
-      ]
-    },
-    {
-      "group": "Syncs",
-      "pages": [
-        "api-reference/syncs/get_syncs",
-        "api-reference/syncs/create_sync",
-        "api-reference/syncs/show_sync",
-        "api-reference/syncs/update_sync",
-        "api-reference/syncs/delete_sync",
-        "api-reference/syncs/sync_configuration"
-      ]
-    },
-    {
-      "group": "Sync Runs",
-      "pages": [
-        "api-reference/sync_runs/get_sync_runs",
-        "api-reference/sync_runs/get_sync_run"
-      ]
-    },
-    {
-      "group": "Sync Records",
-      "pages": ["api-reference/sync_records/get_sync_records"]
-    },
-    {
-      "group": "Reports",
-      "pages": ["api-reference/reports/get_report"]
-    },
-    {
       "group": "Security & Compliance",
-      "pages": ["security-and-compliance/security"]
+      "pages": ["guides/security-and-compliance/security"]
     },
     {
       "group": "FAQs",
-      "pages": ["faqs/questions"]
+      "pages": ["guides/faqs/questions"]
     }
   ],
   "footerSocials": {
