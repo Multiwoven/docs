@@ -155,6 +155,7 @@ helm delete multiwoven
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
 | `multiwovenWorker.args`                      | Command arguments for the Multiwoven worker.                  | See value                        |
+| `multiwovenWorker.healthPort`                | The port in which the health check endpoint is exposed.       | `4567`                           |
 | `multiwovenWorker.image.repository`          | Docker image repository for Multiwoven worker.                | `multiwoven/multiwoven-server`   |
 | `multiwovenWorker.image.tag`                 | Docker image tag for Multiwoven worker.                       | `latest`                         |
 | `multiwovenWorker.resources.limits.cpu`      | CPU resource limits for Multiwoven worker pod.                | `1`                              |
