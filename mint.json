@@ -31,12 +31,12 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Open Source",
+      "url": "open-source"
     },
     {
-      "name": "Deployment & Architecture",
-      "url": "guides"
+      "name": "API Reference",
+      "url": "api-reference"
     },
     {
       "name": "Community & Support",
@@ -44,21 +44,16 @@
     }
   ],
   "anchors": [
-    {
-      "name": "GitHub",
-      "icon": "github",
-      "url": "https://github.com/Multiwoven/multiwoven"
-    },
-    {
-      "name": "Join Slack",
-      "icon": "slack",
-      "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
-    }
+ 
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction", "get-started/core-concepts"]
+      "pages": ["get-started/welcome","get-started/core-concepts"]
+    },
+    {
+      "group": "Open Source",
+      "pages": ["open-source/introduction"]
     },
     {
       "group": "Models",
@@ -193,48 +188,48 @@
     {
       "group": "Architecture",
       "pages": [
-        "guides/architecture/introduction",
-        "guides/architecture/multiwoven-protocol",
-        "guides/architecture/technical-stack",
-        "guides/architecture/sync-states"
+        "open-source/guides/architecture/introduction",
+        "open-source/guides/architecture/multiwoven-protocol",
+        "open-source/guides/architecture/technical-stack",
+        "open-source/guides/architecture/sync-states"
       ]
     },
     {
       "group": "Deploy Locally",
       "pages": [
-        "guides/setup/docker-compose-dev",
-        "guides/setup/environment-variables"
+        "open-source/guides/setup/docker-compose-dev",
+        "open-source/guides/setup/environment-variables"
       ]
     },
     {
       "group": "Self-hosting Multiwoven",
       "pages": [
-        "guides/setup/docker-compose",
-        "guides/setup/helm",
-        "guides/setup/ec2",
-        "guides/setup/ecs",
-        "guides/setup/eks",
-        "guides/setup/gke",
-        "guides/setup/gce",
-        "guides/setup/aks",
-        "guides/setup/avm",
-        "guides/setup/dod",
-        "guides/setup/dok",
-        "guides/setup/heroku",
-        "guides/setup/openshift"
+        "open-source/guides/setup/docker-compose",
+        "open-source/guides/setup/helm",
+        "open-source/guides/setup/ec2",
+        "open-source/guides/setup/ecs",
+        "open-source/guides/setup/eks",
+        "open-source/uides/setup/gke",
+        "open-source/guides/setup/gce",
+        "open-source/guides/setup/aks",
+        "open-source/guides/setup/avm",
+        "open-source/guides/setup/dod",
+        "open-source/guides/setup/dok",
+        "open-source/guides/setup/heroku",
+        "open-source/guides/setup/openshift"
       ]
     },
     {
       "group": "Community & Support",
-      "pages": ["community-support/overview"]
+      "pages": ["open-source/community-support/overview"]
     },
     {
       "group": "Contributing Guide",
       "pages": [
-        "community-support/release-process",
-        "community-support/commit-message-guidelines",
-        "community-support/contribution",
-        "community-support/slack-conduct"
+        "open-source/community-support/release-process",
+        "open-source/community-support/commit-message-guidelines",
+        "open-source/community-support/contribution",
+        "open-source/community-support/slack-conduct"
       ]
     },
     {
@@ -303,8 +298,7 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/multiwoven",
-    "github": "https://github.com/Multiwoven",
+    "github": "https://www.linkedin.com/company/aisquaredinc",
     "linkedin": "https://www.linkedin.com/company/multiwoven"
   }
 }
