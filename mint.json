@@ -6,8 +6,8 @@
   },
   "name": "Multiwoven",
   "logo": {
-    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1707541878/Multiwoven/Docs/Multiwoven_Docs_-_Logo_-_Dark_rxjmqm.svg",
-    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1707531611/Multiwoven/Docs/Multiwoven_Docs_-_Logo_ie5dpe.svg"
+    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755522/AIS/aisquared_docs_-_logo_-_dark_d5iv0a.svg",
+    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755523/AIS/aisquared_docs_-_logo_-_light_uprxct.svg"
   },
   "favicon": "/favicon.jpg",
   "colors": {
@@ -113,7 +113,7 @@
           "group": "Destinations",
           "icon": "users",
           "pages": [
-            "data-integration/destinations/crm/salesforce",
+            "guides/data-integration/destinations/crm/salesforce",
             "guides/data-integration/destinations/crm/hubspot",
             "guides/data-integration/destinations/crm/zoho",
             "guides/data-integration/destinations/marketing-automation/braze",
@@ -244,7 +244,7 @@
             "open-source/guides/setup/ec2",
             "open-source/guides/setup/ecs",
             "open-source/guides/setup/eks",
-            "open-source/uides/setup/gke",
+            "open-source/guides/setup/gke",
             "open-source/guides/setup/gce",
             "open-source/guides/setup/aks",
             "open-source/guides/setup/avm",
