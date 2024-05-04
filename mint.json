@@ -9,14 +9,14 @@
     "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755522/AIS/aisquared_docs_-_logo_-_dark_d5iv0a.svg",
     "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755523/AIS/aisquared_docs_-_logo_-_light_uprxct.svg"
   },
-  "favicon": "/favicon.jpg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#F5433D",
-    "light": "#F5433D",
-    "dark": "#F5433D",
+    "primary": "#00249c",
+    "light": "#00249c",
+    "dark": "#00249c",
     "anchors": {
-      "from": "#0E54BD",
-      "to": "#0E54BD"
+      "from": "#00249c",
+      "to": "#00249c"
     }
   },
   "topbarLinks": [
@@ -51,7 +51,7 @@
     },
     {
       "name": "Releases",
-      "url": "open-source"
+      "url": "release-notes"
     }
   ],
   "anchors": [
@@ -69,6 +69,10 @@
     {
       "group": "Open Source",
       "pages": ["open-source/introduction"]
+    },
+    {
+      "group": "Release Notes",
+      "pages": ["release-notes/2024"]
     },
     {
       "group": "Data Activation",
