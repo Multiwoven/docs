@@ -12,7 +12,7 @@
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#00249c",
-    "light": "#00249c",
+    "light": "#ffffff",
     "dark": "#00249c",
     "anchors": {
       "from": "#00249c",
@@ -21,12 +21,12 @@
   },
   "topbarLinks": [
     {
-      "name": "GitHub",
-      "url": "https://github.com/Multiwoven/multiwoven"
+      "name": "Book a Demo",
+      "url": "https://squared.ai"
     }
   ],
   "topbarCtaButton": {
-    "name": "Log in",
+    "name": "Back to App",
     "url": "https://app.squared.ai"
   },
   "primaryTab": {
@@ -46,8 +46,12 @@
       "url": "open-source"
     },
     {
+      "name": "Help & Resources",
+      "url": "help-and-resources"
+    },
+    {
       "name": "Troubleshooting",
-      "url": "open-source"
+      "url": "troubleshooting"
     },
     {
       "name": "Releases",
@@ -71,8 +75,16 @@
       "pages": ["open-source/introduction"]
     },
     {
+      "group": "Help & Resources",
+      "pages": ["help-and-resources/overview"]
+    },
+    {
       "group": "Release Notes",
       "pages": ["release-notes/2024"]
+    },
+    {
+      "group": "Troubleshooting",
+      "pages": ["troubleshooting/overview"]
     },
     {
       "group": "Data Activation",
@@ -279,7 +291,7 @@
     },
     {
       "group": "FAQs",
-      "pages": ["guides/faqs/questions"]
+      "pages": ["help-and-resources/faqs/questions"]
     }
   ],
   "footerSocials": {
