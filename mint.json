@@ -91,7 +91,7 @@
       "pages": [
         {
           "group": "Models",
-          "icon": "database",
+          "icon": "table",
           "pages": [
             "guides/data-activation/models/overview",
             "guides/data-activation/models/sql",
@@ -101,7 +101,7 @@
         },
         {
           "group": "Syncs",
-          "icon": "users",
+          "icon": "retweet",
           "pages": [
             "guides/data-activation/syncs/overview",
             "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
@@ -115,7 +115,7 @@
       "pages": [
         {
           "group": "Sources",
-          "icon": "users",
+          "icon": "database",
           "pages": [
             "guides/data-integration/sources/redshift",
             "guides/data-integration/sources/snowflake",
@@ -127,7 +127,7 @@
         },
         {
           "group": "Destinations",
-          "icon": "users",
+          "icon": "grid",
           "pages": [
             "guides/data-integration/destinations/crm/salesforce",
             "guides/data-integration/destinations/crm/hubspot",
@@ -160,7 +160,7 @@
     
     {
       "group": "AI & ML Integrations",
-      "pages": ["guides/ai-ml-integration/audiences/overview"]
+      "pages": ["guides/ai-ml-integration/overview"]
     },
 
     {
