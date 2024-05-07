@@ -1,0 +1,143 @@
+---
+title: 'Docker'
+description: 'Deploying Multiwoven using Docker'
+---
+
+Below steps will guide you through deploying Multiwoven on a server using Docker Compose. We require PostgreSQL database to store meta data for Multiwoven. We will use Docker Compose to deploy Multiwoven and PostgreSQL.
+
+<Tip>Note: If you are setting up Multiwoven on your local machine, you can skip this section and refer to [Local Setup](/guides/setup/docker-compose-dev) section.</Tip>
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+<Info> All our Docker images are available in x86_64 architecture, make sure your server supports x86_64 architecture.</Info>
+
+## Deployment options
+
+Multiwoven can be deployed using two different options for PostgreSQL database.
+
+<Tabs>
+  <Tab title="In-built PostgreSQL">
+
+  1. Create a new directory for Multiwoven and navigate to it.
+
+    ```bash
+    mkdir multiwoven
+    cd multiwoven
+    ```
+    2. Download the production `docker-compose.yml` file from the following link.
+    
+    ```bash
+    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
+    ```
+
+    3. Download the `.env.production` file from the following link.
+    
+    ```bash
+    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
+    ```
+
+    4. Rename the file .env.production to .env and update the environment variables if required.
+    
+    ```bash
+    mv .env.production .env
+    ```
+    
+    5. Start the Multiwoven using the following command.
+    
+    ```bash
+    docker-compose up -d
+    ```
+
+    6. Stopping Multiwoven
+
+    To stop the Multiwoven, use the following command.
+
+    ```bash
+    docker-compose down
+    ```
+
+    7. Upgrading Multiwoven
+
+    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
+
+    ```bash
+    docker-compose pull && docker-compose up -d
+    ```
+    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
+
+  </Tab>
+  <Tab title="Cloud PostgreSQL">
+    
+    1. Create a new directory for Multiwoven and navigate to it.
+    
+        ```bash
+        mkdir multiwoven
+        cd multiwoven
+        ```
+        2. Download the production `docker-compose.yml` file from the following link.
+        
+        ```bash
+        curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose-cloud-postgres.yaml
+        ```
+        3. Rename the file .env.production to .env and update the **PostgreSQL** environment variables.
+
+        ```DB_HOST``` - Database Host
+
+        ```DB_USERNAME``` - Database Username
+
+        ```DB_PASSWORD``` - Database Password
+
+        The default port for PostgreSQL is 5432. If you are using a different port, update the ```DB_PORT``` environment variable.
+        
+        ```bash
+        mv .env.production .env
+        ```
+        
+        4. Start the Multiwoven using the following command.
+        
+        ```bash
+        docker-compose up -d
+        ```
+  </Tab>
+</Tabs>
+
+## Accessing Multiwoven
+
+Once the Multiwoven is up and running, you can access it using the following URL and port.
+
+Multiwoven Server URL:
+
+```http
+http://<server-ip>:3000
+```
+
+Multiwoven UI Service:
+
+```http
+http://<server-ip>:8000
+```
+
+<Info>If you are using a custom domain you can update the `API_HOST` and `UI_HOST` environment variable in the `.env` file.</Info>
+
+### Important considerations
+
+- Make sure to update the environment variables in the `.env` file before starting the Multiwoven.
+
+- Make sure to take regular **backups** of the PostgreSQL database.
+
+To restore the backup, you can use the following command.
+
+```bash
+cat dump.sql | docker exec -i --user postgres <postgres-container-name> psql -U postgres
+```
+
+- If you are using a custom domain, make sure to update the `API_HOST` and `UI_HOST` environment variables in the `.env` file.
+
+
+
+
+
+

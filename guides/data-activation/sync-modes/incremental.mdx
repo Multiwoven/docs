@@ -1,0 +1,50 @@
+---
+title: "Incremental"
+description: "Incremental sync only transfer new or updated data, minimizing data transfer"
+---
+
+### Overview
+
+Incremental syncing involves transferring only new or updated data, thus avoiding duplication of previously replicated data. This is achieved through deduplication using a unique primary key specified in the model. For initial syncs, it functions like a full refresh since all data is considered new.
+
+### Example
+
+### Initial State
+
+Suppose the following records already exist in our source:
+
+| Name             | Plan     | Updated At |
+| ---------------- | -------- | ---------- |
+| Charles Beaumont | freemium | 6789       |
+| Eleanor Villiers | freemium | 6790       |
+
+### First sync
+
+In this sync, the delta contains an updated record for Charles:
+
+| Name             | Plan     | Updated At |
+| ---------------- | -------- | ---------- |
+| Charles Beaumont | freemium | 6791       |
+
+After this incremental sync, the data in the warehouse would now be:
+
+| Name             | Plan     | Updated At |
+| ---------------- | -------- | ---------- |
+| Charles Beaumont | freemium | 6791       |
+| Eleanor Villiers | freemium | 6790       |
+
+### Second sync
+
+Let's assume in the next delta both customers have upgraded to a paid plan:
+
+| Name             | Plan | Updated At |
+| ---------------- | ---- | ---------- |
+| Charles Beaumont | paid | 6795       |
+| Eleanor Villiers | paid | 6795       |
+
+The final data at the destination after this update will be:
+
+| Name             | Plan | Updated At |
+| ---------------- | ---- | ---------- |
+| Charles Beaumont | paid | 6795       |
+| Eleanor Villiers | paid | 6795       |

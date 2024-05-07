@@ -1,0 +1,101 @@
+---
+title: 'Docker'
+description: ''
+---
+
+<Warning>**WARNING** The following guide is intended for developers to set-up Multiwoven locally. If you are a user, please refer to the [Self-Hosted](/guides/setup/docker-compose) guide.</Warning>
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+<Tip>**Note**: if you are using Mac or Windows, you will need to install [Docker Desktop](https://www.docker.com/products/docker-desktop) instead of just docker. Docker Desktop includes both docker and docker-compose.</Tip>
+
+Verify that you have the correct versions installed:
+
+```bash
+docker --version
+docker-compose --version
+```
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone git@github.com:Multiwoven/multiwoven.git
+```
+
+2. Navigate to the `multiwoven` directory
+
+```bash
+cd multiwoven
+```
+
+3. Initialize .env file
+
+```bash
+cp .env.example .env
+```
+
+<Tip>**Note**: Refer to the [Environment Variables](/guides/setup/environment-variables) section for details on the ENV variables used in the Docker environment.</Tip>
+
+4. Build docker images
+    
+```bash
+docker-compose build
+```
+
+<Tip>Note: The default build architecture is for **x86_64**. If you are using **arm64** architecture, you will need to run the below command to build the images for arm64.</Tip>
+
+```bash
+TARGETARCH=arm64 docker-compose
+```
+
+5. Start the containers
+
+```bash
+docker-compose up
+```
+
+6. Stop the containers
+
+```bash
+docker-compose down
+```
+
+## Usage
+
+Once the containers are running, you can access the ```Multiwoven UI``` at [http://localhost:8000](http://localhost:8000).
+
+The ```multiwoven API``` is available at [http://localhost:3000/api/v1](http://localhost:3000/api/v1).
+
+## Running Tests
+
+1. Running the complete test suite on the multiwoven server
+
+```bash
+docker-compose exec multiwoven-server bundle exec rspec
+```
+
+## Troubleshooting
+
+To cleanup all images and containers, run the following commands:
+
+```bash
+docker rmi -f $(docker images -q)
+docker rm -f $(docker ps -a -q)
+```
+
+prune all unused images, containers, networks and volumes
+
+<Warning>**Danger:** This will remove all unused images, containers, networks and volumes.</Warning>
+
+```bash
+docker system prune -a
+```
+
+Please open a new issue at [https://github.com/Multiwoven/multiwoven/issues](https://github.com/Multiwoven/multiwoven/issues) if you run into any issues or join our [Slack]() to chat with us.
+    
+

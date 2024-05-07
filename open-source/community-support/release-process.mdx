@@ -1,0 +1,41 @@
+---
+title: "Release Process"
+---
+
+The release process at Multiwoven is fully automated through GitHub Actions.
+
+<AccordionGroup>
+  <Accordion title="Automation Stages" icon="github" defaultOpen="true">
+  Here's an overview of our automation stages, each facilitated by specific GitHub Actions:
+    <Steps>
+      <Step title="Weekly Release Workflow">
+        - **Action**: [Release Workflow](https://github.com/Multiwoven/multiwoven/actions/workflows/release.yaml)
+        - **Description**: Every Tuesday, a new release is automatically generated with a minor version tag (e.g., v0.4.0) following semantic versioning rules. This process also creates a pull request (PR) for release notes that summarize the changes in the new version.
+        - **Additional Triggers**: The same workflow can be manually triggered to create a patch version (e.g., v0.4.1 for quick fixes) or a major version (e.g., v1.0.0 for significant architectural changes). This is done using the workflow dispatch feature in GitHub Actions.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/manual_kyjtne.png" />
+        </Frame>
+      </Step>
+      <Step title="Automated Release Notes on Merge">
+        - **Action**: [Create Release Note on Merge](https://github.com/Multiwoven/multiwoven/actions/workflows/create-release-notes.yaml)
+        - **Description**: When the release notes PR is merged, it triggers the creation of a new release with detailed [release notes](https://github.com/Multiwoven/multiwoven/releases/tag/v0.4.0) on GitHub.
+      </Step>
+      <Step title="Docker Image Releases">
+        - **Description**: Docker images need to be manually released based on the newly created tags from the GitHub Actions.
+        - **Actions**:
+          - [Build and push Multiwoven server docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/server-docker-hub-push-tags.yaml): This action handles the server-side Docker image push to docker hub with tag as latest and the new release tag i.e **v0.4.0**
+
+              <Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/docker-server_ujdnap.png" />
+              </Frame>
+          - [Build and push Multiwoven UI docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/ui-docker-hub-push-tags.yaml): This action handles the user interface Docker image  to docker hub with tag as latest and the new release tag i.e **v0.4.0**
+
+              <Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027593/Multiwoven/Docs/release-process/docker-ui_sjo8nv.png" />
+              </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>

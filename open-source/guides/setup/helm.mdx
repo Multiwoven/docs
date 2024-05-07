@@ -1,0 +1,205 @@
+---
+title: 'Helm Charts	'
+description: ''
+---
+
+## Installing Helm
+
+Helm, the Kubernetes package manager, can be installed via pre-built binary releases, script, or through package managers. Choose the method that best suits your OS and preferences.
+
+## From Binary Releases
+1. Download the desired version from Helm's [releases page](https://github.com/helm/helm/releases).
+2. Unpack the archive.
+3. Move the `helm` binary to your desired location (e.g., `/usr/local/bin`).
+
+## Through Package Managers
+
+### Mac 
+
+``` brew install helm ```
+
+### Windows
+
+```choco install kubernetes-helm```
+
+``` scoop install helm ```
+
+### From Apt (Debian/Ubuntu)
+
+```
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
+
+
+## TLDR; Install Multiwoven via helm 
+
+```
+helm repo add multiwoven https://multiwoven.github.io/helm-charts
+helm install multiwoven multiwoven/multiwoven
+```
+
+## Prerequisites
+
+- Kubernetes 1.16+
+- Helm 3.1.0+
+
+
+## Installing the chart
+
+To install the chart with the release name `multiwoven`:
+
+```console
+$ helm install multiwoven multiwoven/multiwoven
+```
+
+## Uninstalling the chart
+
+To uninstall/delete the `multiwoven` deployment:
+
+```console
+helm delete multiwoven
+```
+
+> **Note**: Persistent volumes are not deleted automatically. They need to be removed manually.
+
+
+## Parameters
+
+
+# Multiwoven Helm Configuration
+
+## General Configuration
+
+- **kubernetesClusterDomain**: The domain used within the Kubernetes cluster.
+  - Default: `cluster.local`
+- **kubernetesNamespace**: The Kubernetes namespace for deployment.
+  - Default: `multiwoven`
+
+## Multiwoven Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `multiwovenConfig.apiHost`                   | Hostname for the API service.                                 | `api.multiwoven.com`             |
+| `multiwovenConfig.dbHost`                    | Hostname for the PostgreSQL database service.                | `multiwoven-postgresql`          |
+| `multiwovenConfig.dbPassword`                | Password for the database user.                              | `password`                       |
+| `multiwovenConfig.dbPort`                    | Port on which the database service is running.               | `5432`                           |
+| `multiwovenConfig.dbUsername`                | Username for the database.                                   | `multiwoven`                     |
+| `multiwovenConfig.newRelicKey`               | New Relic License Key.                                       | `yourkey`                        |
+| `multiwovenConfig.railsEnv`                  | Rails environment setting.                                   | `development`                    |
+| `multiwovenConfig.smtpAddress`               | SMTP server address.                                         | `smtp.yourdomain.com`            |
+| `multiwovenConfig.smtpHost`                  | SMTP server host.                                            | `yourdomain.com`                 |
+| `multiwovenConfig.smtpPassword`              | SMTP server password.                                        | `yourpassword`                   |
+| `multiwovenConfig.smtpPort`                  | SMTP server port.                                            | `587`                            |
+| `multiwovenConfig.smtpUsername`              | SMTP server username.                                        | `yourusername`                   |
+| `multiwovenConfig.snowflakeDriverPath`       | Path to the Snowflake ODBC driver.                           | `/usr/lib/snowflake/odbc/lib/libSnowflake.so` |
+| `multiwovenConfig.syncExtractorBatchSize`    | Batch size for the sync extractor.                           | `1000`                           |
+| `multiwovenConfig.syncExtractorThreadPoolSize` | Thread pool size for the sync extractor.                    | `10`                             |
+| `multiwovenConfig.syncLoaderBatchSize`       | Batch size for the sync loader.                              | `1000`                           |
+| `multiwovenConfig.syncLoaderThreadPoolSize`  | Thread pool size for the sync loader.                        | `10`                             |
+| `multiwovenConfig.temporalActivityThreadPoolSize` | Thread pool size for Temporal activities.                 | `20`                             |
+| `multiwovenConfig.temporalClientChain`       | Path to Temporal client chain certificate.                   | `/certs/temporal.chain.pem`      |
+| `multiwovenConfig.temporalClientKey`         | Path to Temporal client key.                                 | `/certs/temporal.key`            |
+| `multiwovenConfig.temporalHost`              | Hostname for Temporal service.                               | `multiwoven-temporal`            |
+| `multiwovenConfig.temporalNamespace`         | Namespace for Temporal service.                              | `multiwoven-dev`                 |
+| `multiwovenConfig.temporalPort`              | Port for Temporal service.                                   | `7233`                           |
+| `multiwovenConfig.temporalPostgresDefaultPort` | Default port for Temporal's PostgreSQL database.           | `5432`                           |
+| `multiwovenConfig.temporalPostgresPassword`  | Password for Temporal's PostgreSQL database.                 | `password`                       |
+| `multiwovenConfig.temporalPostgresUser`      | Username for Temporal's PostgreSQL database.                 | `multiwoven`                     |
+| `multiwovenConfig.temporalPostgresqlVersion` | PostgreSQL version for Temporal.                             | `13`                             |
+| `multiwovenConfig.temporalRootCert`          | Path to Temporal root certificate.                           | `/certs/temporal.pem`            |
+| `multiwovenConfig.temporalTaskQueue`         | Task queue for Temporal workflows.                           | `sync-dev`                       |
+| `multiwovenConfig.temporalUiVersion`         | Version of Temporal UI.                                      | `2.23.2`                         |
+| `multiwovenConfig.temporalVersion`           | Version of Temporal service.                                 | `1.22.4`                         |
+| `multiwovenConfig.temporalWorkflowThreadPoolSize` | Thread pool size for Temporal workflows.                   | `10`                             |
+| `multiwovenConfig.uiHost`               | UI host for the application interface.                       | `app.multiwoven.com`            |
+
+## Multiwoven PostgreSQL Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `multiwovenPostgresql.enabled`               | Whether or not to deploy PostgreSQL.                          | `true`                           | 
+| `multiwovenPostgresql.image.repository`      | Docker image repository for PostgreSQL.                       | `postgres`                       |
+| `multiwovenPostgresql.image.tag`             | Docker image tag for PostgreSQL.                              | `13`                             |
+| `multiwovenPostgresql.resources.limits.cpu`  | CPU resource limits for PostgreSQL pod.                       | `1`                              |
+| `multiwovenPostgresql.resources.limits.memory` | Memory resource limits for PostgreSQL pod.                   | `2Gi`                            |
+| `multiwovenPostgresql.resources.requests.cpu` | CPU resource requests for PostgreSQL pod.                    | `500m`                           |
+| `multiwovenPostgresql.resources.requests.memory` | Memory resource requests for PostgreSQL pod.                | `1Gi`                            |
+| `multiwovenPostgresql.ports.name`            | Port name for PostgreSQL service.                             | `postgres`                       |
+| `multiwovenPostgresql.ports.port`            | Port number for PostgreSQL service.                           | `5432`                           |
+| `multiwovenPostgresql.ports.targetPort`      | Target port for PostgreSQL service within the pod.            | `5432`                           |
+| `multiwovenPostgresql.replicas`              | Number of PostgreSQL pod replicas.                            | `1`                              |
+| `multiwovenPostgresql.type`                  | Service type for PostgreSQL.                                  | `ClusterIP`                      |
+
+## Multiwoven Server Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `multiwovenServer.image.repository`          | Docker image repository for Multiwoven server.                | `multiwoven/multiwoven-server`   |
+| `multiwovenServer.image.tag`                 | Docker image tag for Multiwoven server.                       | `latest`                         |
+| `multiwovenServer.resources.limits.cpu`      | CPU resource limits for Multiwoven server pod.                | `2`                              |
+| `multiwovenServer.resources.limits.memory`   | Memory resource limits for Multiwoven server pod.             | `2Gi`                            |
+| `multiwovenServer.resources.requests.cpu`    | CPU resource requests for Multiwoven server pod.              | `1`                              |
+| `multiwovenServer.resources.requests.memory` | Memory resource requests for Multiwoven server pod.           | `1Gi`                            |
+| `multiwovenServer.ports.name`                | Port name for Multiwoven server service.                      | `3000`                           |
+| `multiwovenServer.ports.port`                | Port number for Multiwoven server service.                    | `3000`                           |
+| `multiwovenServer.ports.targetPort`          | Target port for Multiwoven server service within the pod.     | `3000`                           |
+| `multiwovenServer.replicas`                  | Number of Multiwoven server pod replicas.                     | `1`                              |
+| `multiwovenServer.type`                      | Service type for Multiwoven server.                           | `ClusterIP`                      |
+
+## Multiwoven Worker Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `multiwovenWorker.args`                      | Command arguments for the Multiwoven worker.                  | See value                        |
+| `multiwovenWorker.healthPort`                | The port in which the health check endpoint is exposed.       | `4567`                           |
+| `multiwovenWorker.image.repository`          | Docker image repository for Multiwoven worker.                | `multiwoven/multiwoven-server`   |
+| `multiwovenWorker.image.tag`                 | Docker image tag for Multiwoven worker.                       | `latest`                         |
+| `multiwovenWorker.resources.limits.cpu`      | CPU resource limits for Multiwoven worker pod.                | `1`                              |
+| `multiwovenWorker.resources.limits.memory`   | Memory resource limits for Multiwoven worker pod.             | `1Gi`                            |
+| `multiwovenWorker.resources.requests.cpu`    | CPU resource requests for Multiwoven worker pod.              | `500m`                           |
+| `multiwovenWorker.resources.requests.memory` | Memory resource requests for Multiwoven worker pod.           | `512Mi`                          |
+| `multiwovenWorker.replicas`                  | Number of Multiwoven worker pod replicas.                     | `1`                              |
+
+## Persistent Volume Claim (PVC)
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `pvc.storageRequest`                         | Storage request size for the PVC.                             | `100Mi`                          |
+
+## Temporal Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------  | -------------------------------------------- | 
+| `temporal.enabled`                            | Whether or not to deploy Temporal and Temporal UI service.    | `true`                           |
+| `temporal.ports.name`                         | Port name for Temporal service.                               | `7233`                           |
+| `temporal.ports.port`                         | Port number for Temporal service.                             | `7233`                           |
+| `temporal.ports.targetPort`                   | Target port for Temporal service within the pod.              | `7233`                           |
+| `temporal.replicas`                           | Number of Temporal service pod replicas.                      | `1`                              |
+| `temporal.temporal.env.db`                    | Database type for Temporal.                                   | `postgresql`                     |
+| `temporal.temporal.image.repository`          | Docker image repository for Temporal.                         | `temporalio/auto-setup`          |
+| `temporal.temporal.image.tag`                 | Docker image tag for Temporal.                                | `1.22.4`                         |
+| `temporal.temporal.resources.limits.cpu`      | CPU resource limits for Temporal pod.                         | `1`                              |
+| `temporal.temporal.resources.limits.memory`   | Memory resource limits for Temporal pod.                      | `2Gi`                            |
+| `temporal.temporal.resources.requests.cpu`    | CPU resource requests for Temporal pod.                       | `500m`                           |
+| `temporal.temporal.resources.requests.memory` | Memory resource requests for Temporal pod.                    | `1Gi`                            |
+| `temporal.type`                               | Service type for Temporal.                                    | `ClusterIP`                      |
+
+## Temporal UI Configuration
+
+| Parameter                                    | Description                                                   | Default                          |
+| -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
+| `temporalUi.ports.name`                      | Port name for Temporal UI service.                            | `8080`                           |
+| `temporalUi.ports.port`                      | Port number for Temporal UI service.                          | `8080`                           |
+| `temporalUi.ports.targetPort`                | Target port for Temporal UI service within the pod.           | `8080`                           |
+| `temporalUi.replicas`                        | Number of Temporal UI service pod replicas.                   | `1`                              |
+| `temporalUi.temporalUi.env.temporalAddress`  | Temporal service address for UI.                              | `multiwoven-temporal:7233`       |
+| `temporalUi.temporalUi.env.temporalCorsOrigins` | Allowed CORS origins for Temporal UI.                       | `http://localhost:3000`          |
+| `temporalUi.temporalUi.env.temporalUiPort`   | Port for Temporal UI service.                                 | `8080`                           |
+| `temporalUi.temporalUi.image.repository`     | Docker image repository for Temporal UI.                      | `temporalio/ui`                  |
+| `temporalUi.temporalUi.image.tag`            | Docker image tag for Temporal UI.                             | `2.22.3`                         |
+| `temporalUi.type`                            | Service type for Temporal UI.                                 | `ClusterIP`                      |
+

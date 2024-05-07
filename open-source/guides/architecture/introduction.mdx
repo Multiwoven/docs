@@ -1,0 +1,20 @@
+---
+title: "Architecture Overview"
+description: ""
+---
+
+Multiwoven is structured into two primary components: the server and the connectors.
+
+The server delivers all the essential horizontal services needed for configuring and executing data movement tasks, such as the[ User Interface](https://github.com/Multiwoven/multiwoven-ui), [API](https://github.com/Multiwoven/multiwoven-server), Job Scheduling, etc., and is organised as a collection of microservices.
+
+Connectors are developed within the [multiwoven-integrations](https://github.com/Multiwoven/multiwoven-integrations) Ruby gem, which pushes and pulls data to and from various sources and destinations. These connectors are constructed following the [Multiwoven Protocol](https://docs.multiwoven.com/guides/architecture/multiwoven-protocol), which outlines the interface for transferring data between a source and a destination.
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1706791257/dev%20docs%20assets/Screenshot_2024-02-01_at_5.50.40_PM_qj6ikq.png" />
+</Frame>
+
+1. [Multiwoven-UI](https://github.com/Multiwoven/multiwoven-ui) - User interface to interact with [ multiwoven-server](https://github.com/Multiwoven/multiwoven-server).
+2. [Multiwoven-Server](https://github.com/Multiwoven/multiwoven-server) - Multiwoven’s control plane. All operations in Multiwoven such as creating sources, destinations, connections, managing configurations, etc., are configured and invoked from the server.
+3. Database: Stores all connector/sync information.
+4. [Temporal ](https://temporal.io/)- Orchestrates the the sync workflows.
+5. Multiwoven-Workers - The worker connects to a source connector, pulls the data, and writes it to a destination. The workers' code resides in the [ multiwoven-server](https://github.com/Multiwoven/multiwoven-server) repo.
