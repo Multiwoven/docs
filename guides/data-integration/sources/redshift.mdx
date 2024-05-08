@@ -15,7 +15,7 @@ Before proceeding, ensure you have the necessary Redshift credentials available,
 
 ### Step 1: Navigate to the Sources Section
 
-Begin by accessing your Multiwoven dashboard. From there:
+Begin by accessing your AI Squared dashboard. From there:
 
 1. Click on the Setup menu found on the sidebar.
 2. Select the `Sources` section to proceed.
@@ -47,13 +47,13 @@ You will be prompted to enter the credentials for your Redshift cluster. This in
 
 Before finalizing the connection:
 
-Click on the `Test Connection` button. This step verifies that Multiwoven can successfully connect to your Redshift cluster with the provided credentials.
+Click on the `Test Connection` button. This step verifies that AI Squared can successfully connect to your Redshift cluster with the provided credentials.
 
 ### Step 5: Finalize Your Redshift Source Connection
 
 After a successful connection test:
 
-1. Assign a name and a brief description to your Redshift source. This helps in identifying and managing your source within Multiwoven.
+1. Assign a name and a brief description to your Redshift source. This helps in identifying and managing your source within AI Squared.
 2. Click `Save` to complete the setup process.
 
 ### Step 6: Configure Redshift User Permissions
@@ -61,10 +61,10 @@ After a successful connection test:
 <Note>It is recommended to create a dedicated user with read-only access to the tables you want to query. Ensure that the new user has the necessary permissions to access the required tables and views.</Note>
     
     ```sql
-    CREATE USER multiwoven PASSWORD 'password';
-    GRANT USAGE ON SCHEMA public TO multiwoven;
-    GRANT SELECT ON ALL TABLES IN SCHEMA public TO multiwoven;
+    CREATE USER aisquared PASSWORD 'password';
+    GRANT USAGE ON SCHEMA public TO aisquared;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO aisquared;
     ```
 
 
-Your Amazon Redshift data warehouse is now connected to Multiwoven. You can now start creating models and running queries on your Redshift data.
+Your Amazon Redshift data warehouse is now connected to AI Squared. You can now start creating models and running queries on your Redshift data.

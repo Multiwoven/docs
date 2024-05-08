@@ -1,9 +1,9 @@
 openapi: 3.0.1
 info:
-  title: MultiWoven API
+  title: AI Squared API
   version: 1.0.0
 servers:
-  - url: https://api.multiwoven.com
+  - url: https://api.squared.ai
 paths:
   "/api/v1/models":
     get:
