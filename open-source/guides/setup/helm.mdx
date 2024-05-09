@@ -197,6 +197,11 @@ helm delete multiwoven
 | `temporalUi.ports.targetPort`                | Target port for Temporal UI service within the pod.           | `8080`                           |
 | `temporalUi.replicas`                        | Number of Temporal UI service pod replicas.                   | `1`                              |
 | `temporalUi.temporalUi.env.temporalAddress`  | Temporal service address for UI.                              | `multiwoven-temporal:7233`       |
+| `temporalUi.temporalUi.env.temporalAuthCallbackUrl` | Authentication/authorization callback URL.             |                                  |
+| `temporalUi.temporalUi.env.temporalAuthClientId` | Authentication/authorization client ID.                   |                                  |
+| `temporalUi.temporalUi.env.temporalAuthClientSecret` | Authentication/authorization client secret.           |                                  |
+| `temporalUi.temporalUi.env.temporalAuthEnabled` | Enable or disable authentication/authorization for Temporal UI. | `false`                     |
+| `temporalUi.temporalUi.env.temporalAuthProviderUrl` | Authentication/authorization OIDC provider URL.        |                                  |
 | `temporalUi.temporalUi.env.temporalCorsOrigins` | Allowed CORS origins for Temporal UI.                       | `http://localhost:3000`          |
 | `temporalUi.temporalUi.env.temporalUiPort`   | Port for Temporal UI service.                                 | `8080`                           |
 | `temporalUi.temporalUi.image.repository`     | Docker image repository for Temporal UI.                      | `temporalio/ui`                  |
