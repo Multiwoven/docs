@@ -4,307 +4,298 @@
     "suggestEdit": true,
     "thumbsRating": true
   },
-  "name": "Multiwoven",
+  "name": "AI Squared",
   "logo": {
-    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1707541878/Multiwoven/Docs/Multiwoven_Docs_-_Logo_-_Dark_rxjmqm.svg",
-    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1707531611/Multiwoven/Docs/Multiwoven_Docs_-_Logo_ie5dpe.svg"
+    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755522/AIS/aisquared_docs_-_logo_-_dark_d5iv0a.svg",
+    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755523/AIS/aisquared_docs_-_logo_-_light_uprxct.svg"
   },
-  "favicon": "/favicon.jpg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#F5433D",
-    "light": "#F5433D",
-    "dark": "#F5433D",
+    "primary": "#00249c",
+    "light": "#ffffff",
+    "dark": "#00249c",
     "anchors": {
-      "from": "#0E54BD",
-      "to": "#0E54BD"
+      "from": "#00249c",
+      "to": "#00249c"
     }
   },
   "topbarLinks": [
     {
-      "name": "GitHub",
-      "url": "https://github.com/Multiwoven/multiwoven"
+      "name": "Book a Demo",
+      "url": "https://squared.ai"
     }
   ],
   "topbarCtaButton": {
-    "name": "Join Slack",
-    "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
+    "name": "Back to App",
+    "url": "https://app.squared.ai"
+  },
+  "primaryTab": {
+    "name": "Home"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    },
-    {
-      "name": "Deployment & Architecture",
+      "name": "Guides",
       "url": "guides"
     },
     {
-      "name": "Community & Support",
-      "url": "community-support"
+      "name": "Developer Tools",
+      "url": "api-reference"
+    },
+    {
+      "name": "Open Source",
+      "url": "open-source"
+    },
+    {
+      "name": "Help & Resources",
+      "url": "help-and-resources"
+    },
+    {
+      "name": "Troubleshooting",
+      "url": "troubleshooting"
+    },
+    {
+      "name": "Releases",
+      "url": "release-notes"
     }
   ],
   "anchors": [
-    {
-      "name": "GitHub",
-      "icon": "github",
-      "url": "https://github.com/Multiwoven/multiwoven"
-    },
-    {
-      "name": "Join Slack",
-      "icon": "slack",
-      "url": "https://join.slack.com/t/multiwoven/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g"
-    }
+ 
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["get-started/introduction", "get-started/core-concepts"]
+      "pages": ["home/welcome"]
     },
     {
-      "group": "Models",
+      "group": "Guides",
+      "pages": ["guides/core-concepts"]
+    },
+    {
+      "group": "Open Source",
+      "pages": ["open-source/introduction"]
+    },
+    {
+      "group": "Help & Resources",
+      "pages": ["help-and-resources/overview"]
+    },
+    {
+      "group": "Release Notes",
+      "pages": ["release-notes/2024"]
+    },
+    {
+      "group": "Troubleshooting",
+      "pages": ["troubleshooting/overview"]
+    },
+    {
+      "group": "Data Activation",
       "pages": [
-        "models/overview",
-        "models/sql",
-        "models/dbt",
-        "models/table-visualization"
+        {
+          "group": "Models",
+          "icon": "table",
+          "pages": [
+            "guides/data-activation/models/overview",
+            "guides/data-activation/models/sql",
+            "guides/data-activation/models/dbt",
+            "guides/data-activation/models/table-visualization"
+          ]
+        },
+        {
+          "group": "Syncs",
+          "icon": "retweet",
+          "pages": [
+            "guides/data-activation/syncs/overview",
+            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
+          ]
+        }
       ]
     },
+
     {
-      "group": "Syncs",
-      "pages": ["syncs/overview"]
-    },
-    {
-      "group": "Sync Modes",
-      "pages": ["sync-modes/full-refresh", "sync-modes/incremental", "sync-modes/cursor-incremental"]
-    },
-    {
-      "group": "Sources",
+      "group": "Data Integration",
       "pages": [
-        "sources/overview",
-        "sources/redshift",
-        "sources/snowflake",
-        "sources/bquery",
-        "sources/databricks",
-        "sources/postgresql",
-        "sources/salesforce-consumer-goods-cloud"
-      ]
-    },
-    {
-      "group": "Destinations",
-      "pages": [
-        "destinations/overview",
         {
-          "group": "CRM",
-          "icon": "users",
-          "pages": [
-            "destinations/crm/salesforce",
-            "destinations/crm/hubspot",
-            "destinations/crm/zoho"
-          ]
-        },
-        {
-          "group": "Marketing Automation",
-          "icon": "sparkles",
-          "pages": [
-            "destinations/marketing-automation/braze",
-            "destinations/marketing-automation/clevertap",
-            "destinations/marketing-automation/klaviyo"
-          ]
-        },
-        {
-          "group": "Adtech",
-          "icon": "bullhorn",
-          "pages": [
-            "destinations/adtech/facebook-ads",
-            "destinations/adtech/google-ads"
-          ]
-        },
-        {
-          "group": "Analytics",
-          "icon": "chart-bar",
-          "pages": [
-            "destinations/analytics/google-analytics",
-            "destinations/analytics/mixpanel",
-            "destinations/analytics/amplitude"
-          ]
-        },
-        {
-          "group": "Customer Support",
-          "icon": "headset",
-          "pages": [
-            "destinations/customer-support/zendesk",
-            "destinations/customer-support/intercom"
-          ]
-        },
-        {
-          "group": "Team Collaboration",
-          "icon": "sparkle",
-          "pages": [
-            "destinations/team-collaboration/slack",
-            "destinations/team-collaboration/microsoft-teams"
-          ]
-        },
-        {
-          "group": "E-Commerce",
-          "icon": "shop",
-          "pages": [
-            "destinations/e-commerce/shopify",
-            "destinations/e-commerce/facebook-product-catalog"
-          ]
-        },
-        {
-          "group": "Payment",
-          "icon": "credit-card",
-          "pages": ["destinations/payment/stripe"]
-        },
-        {
-          "group": "Retail",
-          "icon": "shop",
-          "pages": ["destinations/retail/salesforce-consumer-goods-cloud"]
-        },
-        {
-          "group": "Productivity Tools",
-          "icon": "clock",
-          "pages": [
-            "destinations/productivity-tools/airtable",
-            "destinations/productivity-tools/google-sheets"
-          ]
-        },
-        {
-          "group": "File Storage",
-          "icon": "folder",
-          "pages": ["destinations/file-storage/sftp"]
-        },
-        {
-          "group": "Database",
+          "group": "Sources",
           "icon": "database",
-          "pages": ["destinations/database/postgresql"]
+          "pages": [
+            "guides/data-integration/sources/redshift",
+            "guides/data-integration/sources/snowflake",
+            "guides/data-integration/sources/bquery",
+            "guides/data-integration/sources/databricks",
+            "guides/data-integration/sources/postgresql",
+            "guides/data-integration/sources/salesforce-consumer-goods-cloud"
+          ]
+        },
+        {
+          "group": "Destinations",
+          "icon": "grid",
+          "pages": [
+            "guides/data-integration/destinations/crm/salesforce",
+            "guides/data-integration/destinations/crm/hubspot",
+            "guides/data-integration/destinations/crm/zoho",
+            "guides/data-integration/destinations/marketing-automation/braze",
+            "guides/data-integration/destinations/marketing-automation/clevertap",
+            "guides/data-integration/destinations/marketing-automation/klaviyo",
+            "guides/data-integration/destinations/adtech/facebook-ads",
+            "guides/data-integration/destinations/adtech/google-ads",
+            "guides/data-integration/destinations/analytics/google-analytics",
+            "guides/data-integration/destinations/analytics/mixpanel",
+            "guides/data-integration/destinations/analytics/amplitude",
+            "guides/data-integration/destinations/customer-support/zendesk",
+            "guides/data-integration/destinations/customer-support/intercom",
+            "guides/data-integration/destinations/team-collaboration/slack",
+            "guides/data-integration/destinations/team-collaboration/microsoft-teams",
+            "guides/data-integration/destinations/e-commerce/shopify",
+            "guides/data-integration/destinations/e-commerce/facebook-product-catalog",
+            "guides/data-integration/destinations/payment/stripe",
+            "guides/data-integration/destinations/retail/salesforce-consumer-goods-cloud",
+            "guides/data-integration/destinations/productivity-tools/airtable",
+            "guides/data-integration/destinations/productivity-tools/google-sheets",
+            "guides/data-integration/destinations/file-storage/sftp",
+            "guides/data-integration/destinations/database/postgresql"
+
+          ]
+        }
+      ]
+    },
+    
+    {
+      "group": "AI & ML Integrations",
+      "pages": ["guides/ai-ml-integration/overview"]
+    },
+
+    {
+      "group": "Workspace Management",
+      "pages": ["guides/workspace-management/overview"]
+    },
+
+    {
+      "group": "REST API",
+      "pages": [
+        "api-reference/introduction",
+        {
+          "group": "Models",
+          "pages": [
+            "api-reference/models/create-model",
+            "api-reference/models/update-model",
+            "api-reference/models/delete-model",
+            "api-reference/models/get-model",
+            "api-reference/models/get-all-models"
+          ]
+        },
+        {
+          "group": "Connector Definitions",
+          "pages": [
+            "api-reference/connector_definitions/connector_definitions",
+            "api-reference/connector_definitions/connector_definition",
+            "api-reference/connector_definitions/check_connection"
+          ]
+        },
+        {
+          "group": "Connectors",
+          "pages": [
+            "api-reference/connectors/create_connector",
+            "api-reference/connectors/list_connectors",
+            "api-reference/connectors/get_connector",
+            "api-reference/connectors/update_connector",
+            "api-reference/connectors/delete_connector",
+            "api-reference/connectors/discover",
+            "api-reference/connectors/query_source"
+          ]
+        },
+        {
+          "group": "Syncs",
+          "pages": [
+            "api-reference/syncs/get_syncs",
+            "api-reference/syncs/create_sync",
+            "api-reference/syncs/show_sync",
+            "api-reference/syncs/update_sync",
+            "api-reference/syncs/delete_sync",
+            "api-reference/syncs/sync_configuration"
+          ]
+        },
+        {
+          "group": "Sync Runs",
+          "pages": [
+            "api-reference/sync_runs/get_sync_runs",
+            "api-reference/sync_runs/get_sync_run"
+          ]
+        },
+        {
+          "group": "Sync Records",
+          "pages": ["api-reference/sync_records/get_sync_records"]
+        },
+        {
+          "group": "Reports",
+          "pages": ["api-reference/reports/get_report"]
+        }
+      ]
+    },
+   
+    {
+      "group": "Architecture",
+      "pages": [
+        "open-source/guides/architecture/introduction",
+        "open-source/guides/architecture/multiwoven-protocol",
+        "open-source/guides/architecture/technical-stack",
+        "open-source/guides/architecture/sync-states"
+      ]
+    },
+    {
+      "group": "Deployment",
+      "pages": [
+        "open-source/guides/setup/environment-variables",
+        {
+          "group": "Deploy Locally",
+          "icon": "",
+          "pages": [
+            "open-source/guides/setup/docker-compose-dev"
+          ]
+        },
+        {
+          "group": "Production Deployment",
+          "icon": "",
+          "pages": [
+            "open-source/guides/setup/docker-compose",
+            "open-source/guides/setup/helm",
+            "open-source/guides/setup/ec2",
+            "open-source/guides/setup/ecs",
+            "open-source/guides/setup/eks",
+            "open-source/guides/setup/gke",
+            "open-source/guides/setup/gce",
+            "open-source/guides/setup/aks",
+            "open-source/guides/setup/avm",
+            "open-source/guides/setup/dod",
+            "open-source/guides/setup/dok",
+            "open-source/guides/setup/heroku",
+            "open-source/guides/setup/openshift"
+          ]
         }
       ]
     },
     {
-      "group": "Audiences",
-      "pages": ["audiences/overview"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Architecture",
-      "pages": [
-        "guides/architecture/introduction",
-        "guides/architecture/multiwoven-protocol",
-        "guides/architecture/technical-stack",
-        "guides/architecture/sync-states"
-      ]
-    },
-    {
-      "group": "Deploy Locally",
-      "pages": [
-        "guides/setup/docker-compose-dev",
-        "guides/setup/environment-variables"
-      ]
-    },
-    {
-      "group": "Self-hosting Multiwoven",
-      "pages": [
-        "guides/setup/docker-compose",
-        "guides/setup/helm",
-        "guides/setup/ec2",
-        "guides/setup/ecs",
-        "guides/setup/eks",
-        "guides/setup/gke",
-        "guides/setup/gce",
-        "guides/setup/aks",
-        "guides/setup/avm",
-        "guides/setup/dod",
-        "guides/setup/dok",
-        "guides/setup/heroku",
-        "guides/setup/openshift"
-      ]
-    },
-    {
       "group": "Community & Support",
-      "pages": ["community-support/overview"]
+      "pages": ["open-source/community-support/overview"]
     },
     {
       "group": "Contributing Guide",
       "pages": [
-        "community-support/release-process",
-        "community-support/commit-message-guidelines",
-        "community-support/contribution",
-        "community-support/slack-conduct"
+        "open-source/community-support/release-process",
+        "open-source/community-support/commit-message-guidelines",
+        "open-source/community-support/contribution",
+        "open-source/community-support/slack-conduct"
       ]
-    },
-    {
-      "group": "Models",
-      "pages": [
-        "api-reference/models/create-model",
-        "api-reference/models/update-model",
-        "api-reference/models/delete-model",
-        "api-reference/models/get-model",
-        "api-reference/models/get-all-models"
-      ]
-    },
-    {
-      "group": "Connector Definitions",
-      "pages": [
-        "api-reference/connector_definitions/connector_definitions",
-        "api-reference/connector_definitions/connector_definition",
-        "api-reference/connector_definitions/check_connection"
-      ]
-    },
-    {
-      "group": "Connectors",
-      "pages": [
-        "api-reference/connectors/create_connector",
-        "api-reference/connectors/list_connectors",
-        "api-reference/connectors/get_connector",
-        "api-reference/connectors/update_connector",
-        "api-reference/connectors/delete_connector",
-        "api-reference/connectors/discover",
-        "api-reference/connectors/query_source"
-      ]
-    },
-    {
-      "group": "Syncs",
-      "pages": [
-        "api-reference/syncs/get_syncs",
-        "api-reference/syncs/create_sync",
-        "api-reference/syncs/show_sync",
-        "api-reference/syncs/update_sync",
-        "api-reference/syncs/delete_sync",
-        "api-reference/syncs/sync_configuration"
-      ]
-    },
-    {
-      "group": "Sync Runs",
-      "pages": [
-        "api-reference/sync_runs/get_sync_runs",
-        "api-reference/sync_runs/get_sync_run"
-      ]
-    },
-    {
-      "group": "Sync Records",
-      "pages": ["api-reference/sync_records/get_sync_records"]
-    },
-    {
-      "group": "Reports",
-      "pages": ["api-reference/reports/get_report"]
     },
     {
       "group": "Security & Compliance",
-      "pages": ["security-and-compliance/security"]
+      "pages": ["guides/security-and-compliance/security"]
     },
     {
       "group": "FAQs",
-      "pages": ["faqs/questions"]
+      "pages": ["help-and-resources/faqs/questions"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/multiwoven",
-    "github": "https://github.com/Multiwoven",
+    "github": "https://www.linkedin.com/company/aisquaredinc",
     "linkedin": "https://www.linkedin.com/company/multiwoven"
   }
 }

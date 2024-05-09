@@ -1,0 +1,126 @@
+---
+title: "Slack"
+description: ""
+---
+
+## Usecase
+
+<CardGroup cols={2}>
+  <Card title="Sales and Support Alerts" icon="bell">
+    Notify sales or customer support teams about significant customer events,
+    like contract renewals or support tickets, directly in Slack.
+  </Card>
+  <Card title="Collaborative Data Analysis" icon="magnifying-glass-chart">
+    Share real-time insights and reports in Slack channels to foster
+    collaborative analysis and decision-making among teams. This is particularly
+    useful for remote and distributed teams
+  </Card>
+  <Card title="Operational Efficiency" icon="triangle-exclamation">
+    Integrate Slack with operational systems to streamline operations. For
+    instance, sending real-time alerts about system downtimes, performance
+    bottlenecks, or successful deployments to relevant engineering or operations
+    Slack channels.
+  </Card>
+  <Card title="Event-Driven Marketing" icon="bullseye">
+    Trigger marketing actions based on customer behavior. For example, if a
+    customer action indicates high engagement, a notification can be sent to the
+    marketing team to follow up with personalized content or offers.
+  </Card>
+</CardGroup>
+
+## Slack Connector Configuration and Credential Retrieval Guide
+
+### Prerequisite Requirements
+
+To access Slack through AI Squared, you must authenticate using an API Token. This authentication can be obtained through a Slack App. However, if you already possess one, it remains valid for use with this integration.
+Given that AI Squared operates as a reverse ETL platform, requiring write access to perform its functions, we recommend creating a restricted API key that permits write access specifically for AI Squared's use.
+This strategy enables you to maintain control over the extent of actions AI Squared can execute within your Slack environment, ensuring security and compliance with your data governance policies.
+
+<Tip>Link to view your [Slack Apps](https://api.slack.com/apps).</Tip>
+
+### Destination Setup
+
+<AccordionGroup>
+  <Accordion title="Create Bot App" icon="robot">
+    To facilitate the integration of your Slack destination connector with AI Squared, please follow the detailed steps below:
+
+    <Steps>
+      <Step title="Create New App">
+        Initiate the process by selecting the "Create New App" option.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707307305/Multiwoven/connectors/slack/create-app.png" />
+        </Frame>
+      </Step>
+      <Step title="From scratch">
+        You will be required to create a Bot app from the ground up. To do this, select the "from scratch" option.
+      </Step>
+      <Step title="App Name & Workspace">
+        Proceed by entering your desired App Name and selecting a workspace where the app will be deployed.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707307572/Multiwoven/connectors/slack/scratch.png" />
+        </Frame>
+      </Step>
+      <Step title="Add features and functionality">
+        Navigate to the **Add features and functionality** menu and select **Bots** to add this capability to your app.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707308671/Multiwoven/connectors/slack/bots.png" />
+        </Frame>
+      </Step>
+      <Step title="OAuth & Permissions">
+        Within the menu on the side labeled as **Features** column, locate and click on **OAuth & Permissions**.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707308830/Multiwoven/connectors/slack/oauth.png" />
+        </Frame>
+      </Step>
+      <Step title="Add scope">
+        In the "OAuth & Permissions" section, add the scope **chat:write** to define the permissions for your app.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707310851/Multiwoven/connectors/slack/write.png" />
+        </Frame>
+      </Step>
+      <Step title="Install Bot">
+        To finalize the Bot installation, click on "Install to workspace" found in the "OAuth Tokens for Your Workspace" section.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707311271/Multiwoven/connectors/slack/install.png" />
+        </Frame>
+      </Step>
+      <Step title="Save Permissions">
+        Upon successful installation, a Bot User OAuth Token will be generated.
+        It is crucial to copy this token as it is required for the configuration of the Slack destination connector within AI Squared.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707311787/Multiwoven/connectors/slack/token.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+
+  <Accordion title="Obtain Channel ID" icon="key">
+    <Steps>
+      <Step title="View Channel Details">
+        Additionally, acquiring the Channel ID is essential for configuring the Slack destination. 
+        This ID can be retrieved by right-clicking on the channel intended for message dispatch through the newly created bot.
+        From the context menu, select **View channel details**
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707312009/Multiwoven/connectors/slack/channel-selection.png" />
+        </Frame>
+      </Step>
+      <Step title="Copy Channel ID">
+        Locate and copy the Channel ID, which is displayed at the lower left corner of the tab.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707312154/Multiwoven/connectors/slack/channel-id.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>

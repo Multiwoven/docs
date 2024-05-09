@@ -1,0 +1,171 @@
+---
+title: "Salesforce"
+description: ""
+---
+
+## Salesforce Connector Configuration and Credential Retrieval Guide
+
+### Prerequisite Requirements
+
+Before initiating the Salesforce connector setup, ensure you have an appropriate Salesforce edition. This setup requires either the Enterprise edition of Salesforce, the Professional Edition with an API access add-on, or the Developer edition. For further information on API access within Salesforce, please consult the [Salesforce documentation](https://developer.salesforce.com/docs/).
+
+<Tip>
+  If you need a Developer edition of Salesforce, you can register at [Salesforce
+  Developer Signup](https://developer.salesforce.com/signup).
+</Tip>
+
+### Destination Setup
+
+<AccordionGroup>
+  <Accordion title="Create a Connected App" icon="key">
+    For AI Squared Open Source, certain OAuth credentials are necessary for authentication. These credentials include:
+
+    - Access Token
+    - Refresh Token
+    - Instance URL
+    - Client ID
+    - Client Secret
+
+    <Steps>
+      <Step title="Login">
+        Start by logging into your Salesforce account with admin rights. Look for a Setup option in the menu at the top-right corner of the screen and click on it.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707482972/Multiwoven/connectors/salesforce-crm/setup.png" />
+        </Frame>
+      </Step>
+      <Step title="App Manager">
+        On the left side of the screen, you'll see a menu. Click on Apps, then App Manager.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707484672/Multiwoven/connectors/salesforce-crm/app-manager.png" />
+        </Frame>
+      </Step>
+      <Step title="New Connected App">
+        Find a button that says New Connected App at the top right and click it.
+      </Step>
+      <Step title="Fill the details">
+        You'll be taken to a page to set up your new app.
+        Here, you need to fill in some basic info: the name you want for your app, its API name (a technical identifier), and your email address.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707485030/Multiwoven/connectors/salesforce-crm/details.png" />
+        </Frame>
+      </Step>
+      <Step title="Enable OAuth Settings">
+        Now, look for a section named API (Enable OAuth Settings) and check the box for Enable OAuth Settings.
+        There’s a box for a Callback URL; type in https://login.salesforce.com/ there.
+        You also need to pick some permissions from a list called Selected OAuth Scopes. Choose these: Access and manage your data (api), Perform requests on your behalf at any time (refresh_token, offline_access), Provide access to your data via the Web (web), and then add them to your app settings.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707486682/Multiwoven/connectors/salesforce-crm/enable-oauth.png" />
+        </Frame>
+      </Step>
+      <Step title="Save">
+        Click Save to keep your new app's settings.
+      </Step>
+      <Step title="Apps > App Manager">
+        Go back to where all your apps are listed (under Apps > App Manager), find the app you just created, and click Manage next to it.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487232/Multiwoven/connectors/salesforce-crm/my-app.png" />
+        </Frame>
+      </Step>
+      <Step title="OAuth policies">
+        On the next screen, click Edit.
+        There’s an option for OAuth policies; under Permitted Users, choose All users may self-authorize. Save your changes.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487471/Multiwoven/connectors/salesforce-crm/self-authorize.png" />
+        </Frame>
+      </Step>
+      <Step title="View App">
+        Head back to your app list, find your new app again, and this time click View.
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487890/Multiwoven/connectors/salesforce-crm/view.png" />
+        </Frame>
+      </Step>
+      <Step title="Save Permissions">
+        Once more, go to the API (Enable OAuth Settings) section. Click on Manage Consumer Details.
+        You need to write down two things: the Consumer Key and Consumer Secret.
+        These are important because you'll use them to connect Salesforce.
+
+
+        <Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707488140/Multiwoven/connectors/salesforce-crm/credentials.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+
+  <Accordion title="Obtain OAuth Credentials" icon="key">
+      <Steps>
+        <Step title="Getting the Code">
+          First, open Salesforce in your preferred web browser. 
+          To get the code, open a new tab and type in a special web address (URL). 
+          You'll need to change **CONSUMER_KEY** to the Consumer Key you noted earlier. 
+          Also, replace **INSTANCE_URL** with your specific Salesforce instance name (for example, ours is multiwoven-dev in https://multiwoven-dev.develop.lightning.force.com/).
+
+          ```
+            https://INSTANCE_URL.salesforce.com/services/oauth2/authorize?response_type=code&client_id=CONSUMER_KEY&redirect_uri=https://login.salesforce.com/
+          ```
+
+          If you see any alerts asking for permission, go ahead and allow them.
+          After that, the browser will take you to a new webpage.
+          Pay attention to this new web address because it contains the code you need.
+          Save the code available in the new URL as shown in the below example.
+
+          ```
+            https://login.salesforce.com/services/oauth2/success?code=aPrx0jWjRo8KRXs42SX1Q7A5ckVpD9lSAvxdKnJUApCpikQQZf.YFm4bHNDUlgiG_PHwWQ%3D%3Dclient_id = "3MVG9pRzvMkjMb6kugcl2xWhaCVwiZPwg17wZSM42kf6HqY4jmw6ocKKoYYLz4ztHqM1vWxMbZB6sxQQU"
+          ```
+        </Step>
+      <Step title="Getting the Access Token and Refresh Token">
+        Now, you'll use a tool called curl to ask for more keys, known as tokens.
+        You'll type a command into your computer that includes the special code you just got.
+        Remember to replace **CODE** with your code, and also replace **CONSUMER_KEY** and **CONSUMER_SECRET** with the details you saved from when you set up the app in Salesforce.
+
+        ```
+        curl -X POST https://INSTANCE_URL.salesforce.com/services/oauth2/token?code=CODE&grant_type=authorization_code&client_id=CONSUMER_KEY&client_secret=CONSUMER_SECRET&redirect_uri=https://login.salesforce.com/
+        ```
+        After you send this command, you'll get back a response that includes your access_token and refresh_token.
+        These tokens are what you'll use to securely access Salesforce data.
+
+        ```
+          {
+            "access_token": "access_token",
+            "refresh_token": "refresh_token",
+            "signature": "signature",
+            "scope": "scopes",
+            "id_token": "id_token",
+            "instance_url": "https://multiwoven-dev.develop.my.salesforce.com",
+            "id": "id",
+            "token_type": "Bearer",
+            "issued_at": "1707415379555",
+            "api_instance_url": "https://api.salesforce.com"
+        }
+        ```
+        This way, you’re essentially getting the necessary permissions and access to work with Salesforce data in more detail.
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>
+
+<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+
+| Mode             | Supported (Yes/No/Coming soon) |
+| ---------------- | ------------------------------ |
+| Incremental sync | Yes                            |
+| Full refresh     | Coming soon                    |
+
+</Accordion>
+
+<Accordion title="Supported Streams">
+
+| Stream                                                                                                                             | Supported (Yes/No/Coming soon) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| [Account](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_account.htm) | Yes                            |
+
+</Accordion>

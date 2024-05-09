@@ -1,0 +1,103 @@
+---
+title: 'AWS EC2'
+description: ''
+---
+
+## Deploying Multiwoven on AWS EC2 Using Docker Compose
+
+This guide walks you through setting up Multiwoven, on an AWS EC2 instance using Docker Compose. We'll cover launching the instance, installing Docker, running Multiwoven with its dependencies, and finally, accessing the Multiwoven UI.
+
+**Prerequisites:**
+
+* An AWS account with an active EC2 instance (Ubuntu recommended).
+* Basic knowledge of Docker, AWS, and command-line tools.
+* Docker Compose installed on your local machine.
+
+**Note:** This guide uses environment variables for sensitive information. Replace the placeholders with your own values before proceeding.
+
+**1. EC2 Instance Setup:**
+
+1. **Launch an EC2 instance:** Choose an Ubuntu instance with suitable specifications for your workload.
+
+    **Security Group Configuration:**
+    * Open port 22 (SSH) for inbound traffic from your IP address.
+    * Open port 8000 (Multiwoven UI) for inbound traffic from your IP address (optional).
+
+    **Key Pair:** Create a new key pair or use an existing one to connect to your instance.
+
+2. **Connect to your instance:** Use SSH to connect to your EC2 instance.
+    
+        **Example:**
+        ```
+        ssh -i /path/to/your-key-pair.pem ubuntu@<your_ec2_public_ip>
+        ```
+    Replace `/path/to/your-key-pair.pem` with the path to your key pair file and `<your_ec2_public_ip>` with your EC2 instance's public IP address.
+    
+3. **Update and upgrade:** Run `sudo apt update && sudo apt upgrade -y` to ensure your system is up-to-date.
+
+**2. Docker and Docker Compose Installation:**
+
+1. **Install Docker:** Follow the official Docker installation instructions for Ubuntu: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+2. **Install Docker Compose:** Download the latest version from the Docker Compose releases page and place it in a suitable directory (e.g., `/usr/local/bin/docker-compose`). Make the file executable: `sudo chmod +x /usr/local/bin/docker-compose`.
+3. **Start and enable Docker:** Run `sudo systemctl start docker` and `sudo systemctl enable docker` to start Docker and configure it to start automatically on boot.
+
+**3. Download Multiwoven `docker-compose.yml` file and Configure Environment:**
+
+1. **Download the file:** 
+``` 
+curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
+```
+2. **Download the `.env` file:**  
+```
+curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
+
+4. Rename the file .env.production to .env and update the environment variables if required.
+
+```bash
+mv .env.production .env
+``````
+
+5. **Configure `.env`, This file holds environment variables for various services. Replace the placeholders with your own values, including:
+    * `DB_PASSWORD` and `DB_USERNAME` for your PostgreSQL database
+    * `REDIS_PASSWORD` for your Redis server
+    * (Optional) Additional environment variables specific to your Multiwoven configuration
+
+**Example `.env` file:**
+
+```
+DB_PASSWORD=your_db_password
+DB_USERNAME=your_db_username
+REDIS_PASSWORD=your_redis_password
+# Modify your Multiwoven-specific environment variables here
+```
+
+**4. Run Multiwoven with Docker Compose:**
+
+1. **Start Multiwoven:** Navigate to the `multiwoven` directory and run `docker-compose up -d`. This will start all Multiwoven services in the background, including the Multiwoven UI.
+
+**5. Accessing Multiwoven UI:**
+
+Open your web browser and navigate to `http://<your_ec2_public_ip>:8000` (replace `<your_ec2_public_ip>` with your EC2 instance's public IP address). You should now see the Multiwoven UI.
+
+**6. Stopping Multiwoven:**
+
+To stop Multiwoven, navigate to the `multiwoven` directory and run.
+
+```bash
+docker-compose down
+```
+
+**7. Upgrading Multiwoven:**
+    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
+
+    ```bash
+    docker-compose pull && docker-compose up -d
+    ```
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+
+**Additional Notes:**
+
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+
+* Depending on your security group configuration, you might need to open port 8000 (Multiwoven UI) for inbound traffic.
+* For production deployments, consider using a reverse proxy (e.g., Nginx) and a domain name with SSL/TLS certificates for secure access to the Multiwoven UI.
