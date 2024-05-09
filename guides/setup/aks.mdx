@@ -18,9 +18,15 @@ This guide will walk you through setting up Multiwoven on AKS. We'll cover confi
 **1. AKS Cluster Deployment:**
 1. **Select a Resource Group for your deployment:** 
     * Navigate to your Azure subscription and select a Resource Group or, if necessary, start by creating a new Resource Group.
+    <Frame>
+        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1706791257/dev%20docs%20assets/Screenshot_2024-02-01_at_5.50.40_PM_qj6ikq.png" />
+    </Frame>
 2. **Initiate AKS Deployment**
     * Select the **Create +** button at the top of the overview section of your Resource Group which will take you to the Azure Marketplace.
     * In the Azure Marketplace, type **aks** into the search field at the top. Select **Azure Kuberenetes Service (AKS)** and create.
+    <Frame>
+        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.04.46_PM_vrtry3.png" />
+    </Frame>
 3. **Configure your AKS Cluster**
     * **Basics**
         * For **Cluster Preset Configuration**, we recommend **Dev/Test** for Development deployments.
@@ -28,24 +34,66 @@ This guide will walk you through setting up Multiwoven on AKS. We'll cover confi
         * For **AKS Pricing Tier**, we recommend **Standard**.
         * For **Kubernetes version**, we recommend sticking with the current **default**.
         * For **Authentication and Authorization**, we recommend **Local accounts with Kubernetes RBAC** for simplicity.
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.03_PM_xp7soo.png" />
+        </Frame>
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.23_PM_lflhwv.png" />
+        </Frame>
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.31_PM_xal5nh.png" />
+        </Frame>
     * **Node Pools**
         * Leave defaults
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.23_PM_ynj6cu.png" />
+        </Frame>
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.29_PM_arveg8.png" />
+        </Frame>
     * **Networking**
         * For **Network Configuration**, we recommend the **Azure CNI** network configuration for simplicity.
         * For **Network Policy**, we recommend **Azure**.
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.57_PM_v3thlf.png" />
+        </Frame>
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.08.05_PM_dcsvlo.png" />
+        </Frame>
     * **Integrations**
         * Leave defaults
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.09.36_PM_juypye.png" />
+        </Frame>
     * **Monitoring**
-        * Leave defaults, however, to reduce costs, you can uncheck **Managed Prometheus** which will automatically uncheck **Managed Grafana**. 
+        * Leave defaults, however, to reduce costs, you can uncheck **Managed Prometheus** which will automatically uncheck **Managed Grafana**.
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.10.44_PM_epn32u.png" />
+        </Frame>
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.10.57_PM_edxypj.png" />
+        </Frame>
     * **Advanced**
         * Leave defaults
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.11.19_PM_i2smpg.png" />
+        </Frame>
     * **Tags**
         * Add tags if necessary, otherwise, leave defaults.
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289232/Screenshot_2024-05-09_at_5.13.26_PM_su7yyx.png" />
+        </Frame>
     * **Review + Create**
         * If there are validation errors that arise during the review, like a missed mandatory field, address the errors and create. If there are no validation errors, proceed to create.
         * Wait for your deployment to complete before proceeding.
 4. **Connecting to your AKS Cluster**
     * In the **Overview** section of your AKS cluster, there is a **Connect** button at the top. Choose whichever method suits you best and follow the on-screen instructions. Make sure to run at least one of the test commands to verify that your kubectl commands are being run against your new AKS cluster.
+    <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289389/Screenshot_2024-05-09_at_5.14.58_PM_enzily.png" />
+    </Frame>
+    <Frame>
+        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289389/Screenshot_2024-05-09_at_5.15.39_PM_fbhv86.png" />
+    </Frame>
 5. **Deploying Multiwoven**
-    * Please refer to the **Helm Charts** section of our guide to proceed with your installation of Multiwoven!
-
+    * Please refer to the **Helm Charts** section of our guide to proceed with your installation of Multiwoven!\
+    [Helm Chart Deployment Guide](https://docs.squared.ai/open-source/guides/setup/helm)
