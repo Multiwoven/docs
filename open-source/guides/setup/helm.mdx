@@ -3,83 +3,143 @@ title: 'Helm Charts	'
 description: ''
 ---
 
-## Installing Helm
+## Prerequisites:
+- Access to a DNS record set
+- Kubernetes cluster
+- [Install Kubernetes 1.16+](https://kubernetes.io/docs/tasks/tools/)
+- [Install Helm 3.1.0+](https://kubernetes.io/docs/tasks/tools/)
+- Temporal Namespace (optional)
 
-Helm, the Kubernetes package manager, can be installed via pre-built binary releases, script, or through package managers. Choose the method that best suits your OS and preferences.
+## Overview of the Deployment Process
+1. Install kubectl and helm on your local machine
+2. Select required subdomains
+3. Deploy the Cert-Manager Helm chart
+4. Deploy the Multiwoven Helm Chart 
+5. Deploy additional (required) Nginx Ingress resources
+6. Obtain the public IP address associated with your Nginx Ingress Controller
+7. Create A records in your DNS record set that resolve to the public IP address of your Nginx Ingress Controller.
+8. Wait for cert-manager to issue an invalid staging certificate to your K8s cluster
+9. Switch letsencrypt-staging to letsencrypt-prod and upgrade Multiwoven again, this time obtaining a valid TLS certificate
 
-## From Binary Releases
-1. Download the desired version from Helm's [releases page](https://github.com/helm/helm/releases).
-2. Unpack the archive.
-3. Move the `helm` binary to your desired location (e.g., `/usr/local/bin`).
+## Installing Multiwoven via Helm
+Below is a shell script that can be used to deploy Multiwoven and its dependencies.
 
-## Through Package Managers
+### Chart Dependencies
+#### Cert-Manager
+Cert-Manager is used to automatically request, implement and rotate TLS certificates for your deployment. Enabling TLS is required.
 
-### Mac 
+#### Nginx-Ingress
+Nginx-Ingress resources are added to provide the Multiwoven Ingress Controller with a external IP address.
 
-``` brew install helm ```
+### Install Multiwoven
 
-### Windows
+#### Environment Variables:
 
-```choco install kubernetes-helm```
+##### Generic
 
-``` scoop install helm ```
+1. <b>tls-admin-email-address</b> -> the email address that will receive email notifications about pending automatic TLS certificate rotations
 
-### From Apt (Debian/Ubuntu)
+2. <b>api-host</b> -> api.your_domain (ex. api.multiwoven.com)
 
+3. <b>ui-host</b> -> app.your_domain (ex. app.multiwoven.com)
+
+##### Temporal - Please read the [Notes](#notes) section below
+
+4. <b>temporal-ui-host</b> -> temporal.your_domain (ex. temporal.multiwoven.com)
+
+5. <b>temporalHost</b> -> your Temporal Cloud host name (ex. my.personal.tmprl.cloud)
+
+6. <b>temporalNamespace</b> -> your Temporal Namespace, verify within your Temporal Cloud account (ex. my.personal)
+
+#### Notes:
+- Deploying with the default In-cluster Temporal (<b>recommended for Development workloads</b>):
+  1. Only temporal-ui-host is required. You should leave multiwovenConfig.temporalHost, temporal.enabled and multiwovenConfig.temporalNamespace commented out. You should also leave the temporal-cloud secret commented out as well.
+- Deploying with Temporal Cloud (<b>HIGHLY recommended for Production workloads</b>):
+  1. comment out or remove the flag setting multiwovenConfig.temporalUiHost
+  2. Uncomment the flags setting multiwovenConfig.temporalHost, temporal.enabled and multiwovenConfig.temporalNamespace. Also uncomment the temporal-cloud secret.
+  3. Before running this script, you need to make sure that your Temporal Namespace authentication certificate key and pem files are in the same directory as the script. We recommend renaming these files to temporal.key and temporal.pem for simplicity.
+- Notice that for tlsCertIssuer, the value letsencrypt-staging is present. When the intial installation is done and cert-manager has successfully issued an invalid certificate for your 3 subdomains, you will switch this value to letsencrypt-prod to obtain a valid certificate. It is very important that you follow the steps written out here as LetsEncrypt's production server only allows 5 attempts per week to obtain a valid certificate. This switch should be done LAST after you have verified that everything is already working as expected.
 ```
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt-get update
-sudo apt-get install helm
-```
+#### Pull and deploy the cert-manager Helm chart
+cd charts/multiwoven
+echo "installing cert-manager"
+helm repo add jetstack https://charts.jetstack.io --force-update
+helm repo update
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.5 --set installCRDs=true
 
-
-## TLDR; Install Multiwoven via helm 
-
-```
+#### Pull and deploy the Multiwoven Helm chart
+echo "installing Multiwoven"
 helm repo add multiwoven https://multiwoven.github.io/helm-charts
-helm install multiwoven multiwoven/multiwoven
+helm upgrade -i multiwoven multiwoven/multiwoven \
+  --set multiwovenConfig.tlsAdminEmail=<tls-admin-email-address> \
+  --set multiwovenConfig.tlsCertIssuer=letsencrypt-staging \
+  --set multiwovenConfig.apiHost=<api-host> \
+  --set multiwovenConfig.uiHost=<ui-host> \
+  --set multiwovenWorker.multiwovenWorker.args={./app/temporal/cli/worker} \
+  --set multiwovenConfig.temporalUiHost=<temporal-ui-host>
+  # --set temporal.enabled=false \
+  # --set multiwovenConfig.temporalHost=<temporal-host> \
+  # --set multiwovenConfig.temporalNamespace=<temporal-namespace>
+
+# kubectl create secret generic temporal-cloud -n multiwoven \
+#     --from-file=temporal-root-cert=./temporal.pem \
+#     --from-file=temporal-client-key=./temporal.key
+
+# Install additional required Nginx ingress resources
+echo "installing ingress-nginx resources"
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 
-## Prerequisites
+#### Post Installation Steps
 
-- Kubernetes 1.16+
-- Helm 3.1.0+
-
-
-## Installing the chart
-
-To install the chart with the release name `multiwoven`:
-
-```console
-$ helm install multiwoven multiwoven/multiwoven
+1. Run the following command to find the external IP address of your Ingress Controller. Note that it may take a minute or two for this value to become available post installation.
 ```
-
-## Uninstalling the chart
-
-To uninstall/delete the `multiwoven` deployment:
-
-```console
-helm delete multiwoven
+kubectl get svc -n ingress-nginx
 ```
+  <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374296/Screenshot_2024-05-10_at_4.45.06_PM_k5bh0d.png" />
+  </Frame>
 
-> **Note**: Persistent volumes are not deleted automatically. They need to be removed manually.
+2. Once you have this IP address, go to your DNS record set and use that IP address to create three A records, one for each subdomain. Below are a list of Cloud Service Provider DNS tools but please refer to the documentation of your specific provider if not listed below.
+  - [Adding a new record in Azure DNS Zones](https://learn.microsoft.com/en-us/azure/dns/dns-operations-recordsets-portal)
+  - [Adding a new record in AWS Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+  - [Adding a new record in GCP Cloud DNS](https://cloud.google.com/dns/docs/records)
+
+3. Run the following command, repeatedly, until an invalid LetsEncrypt staging certificate has been issued for your Ingress Controller.
+```
+kubectl describe certificate -n multiwoven mw-tls-cert
+```
+When the certificate has been issued, you will see the following output from the command above.
+  <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.41.12_PM_b3mjhs.png" />
+  </Frame>
+We also encourage you to further verify by navigating to your subdomain, app.your_domain, and check the certificate received by the browser. You should see something similar to the image below:
+  <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.43.02_PM_twq1gs.png" />
+  </Frame>
+Once the invalid certificate has been successfully issued, you are ready for the final steps.
+
+4. Edit the shell script above by changing the tlsCertIssuer value from <b>letsencrypt-staging</b> to <b>letsencrypt-prod</b> and run the script again. Do not worry when you see Installation Failed for cert-manager, you are seeing this because it was installed on the intial run.
+
+5. Repeat Post Installation Step 3 until a valid certificate has been issued. Once issued, your deployment is complete and you can navigate to app.your_domain to get started using Mutliwoven!
+
+Happy Helming!
 
 
-## Parameters
+
+## Helm Chart Environment Values
 
 
-# Multiwoven Helm Configuration
+### Multiwoven Helm Configuration
 
-## General Configuration
+#### General Configuration
 
 - **kubernetesClusterDomain**: The domain used within the Kubernetes cluster.
   - Default: `cluster.local`
 - **kubernetesNamespace**: The Kubernetes namespace for deployment.
   - Default: `multiwoven`
 
-## Multiwoven Configuration
+#### Multiwoven Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
@@ -117,7 +177,7 @@ helm delete multiwoven
 | `multiwovenConfig.temporalWorkflowThreadPoolSize` | Thread pool size for Temporal workflows.                   | `10`                             |
 | `multiwovenConfig.uiHost`               | UI host for the application interface.                       | `app.multiwoven.com`            |
 
-## Multiwoven PostgreSQL Configuration
+### Multiwoven PostgreSQL Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
@@ -134,7 +194,7 @@ helm delete multiwoven
 | `multiwovenPostgresql.replicas`              | Number of PostgreSQL pod replicas.                            | `1`                              |
 | `multiwovenPostgresql.type`                  | Service type for PostgreSQL.                                  | `ClusterIP`                      |
 
-## Multiwoven Server Configuration
+### Multiwoven Server Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
@@ -150,7 +210,7 @@ helm delete multiwoven
 | `multiwovenServer.replicas`                  | Number of Multiwoven server pod replicas.                     | `1`                              |
 | `multiwovenServer.type`                      | Service type for Multiwoven server.                           | `ClusterIP`                      |
 
-## Multiwoven Worker Configuration
+### Multiwoven Worker Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
@@ -164,13 +224,13 @@ helm delete multiwoven
 | `multiwovenWorker.resources.requests.memory` | Memory resource requests for Multiwoven worker pod.           | `512Mi`                          |
 | `multiwovenWorker.replicas`                  | Number of Multiwoven worker pod replicas.                     | `1`                              |
 
-## Persistent Volume Claim (PVC)
+### Persistent Volume Claim (PVC)
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
 | `pvc.storageRequest`                         | Storage request size for the PVC.                             | `100Mi`                          |
 
-## Temporal Configuration
+### Temporal Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------  | -------------------------------------------- | 
@@ -188,7 +248,7 @@ helm delete multiwoven
 | `temporal.temporal.resources.requests.memory` | Memory resource requests for Temporal pod.                    | `1Gi`                            |
 | `temporal.type`                               | Service type for Temporal.                                    | `ClusterIP`                      |
 
-## Temporal UI Configuration
+### Temporal UI Configuration
 
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
