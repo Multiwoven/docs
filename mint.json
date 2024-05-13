@@ -290,12 +290,16 @@
       "pages": ["guides/security-and-compliance/security"]
     },
     {
+      "group": "Enterprise SaaS",
+      "pages": ["help-and-resources/enterprise-saas/overview","help-and-resources/enterprise-saas/self-hosting-enterprise"]
+    },
+    {
       "group": "FAQs",
       "pages": ["help-and-resources/faqs/questions"]
     }
   ],
   "footerSocials": {
-    "github": "https://www.linkedin.com/company/aisquaredinc",
-    "linkedin": "https://www.linkedin.com/company/multiwoven"
+    "github": "https://github.com/Multiwoven/multiwoven",
+    "linkedin": "https://www.linkedin.com/company/aisquaredinc"
   }
 }

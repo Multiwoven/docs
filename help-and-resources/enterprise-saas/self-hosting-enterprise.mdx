@@ -1,0 +1,43 @@
+---
+title: Self Hosting Enterprise
+description: ''
+
+---
+
+Our self-hosted Enterprise SaaS offers 1 click deployment on your infrastructure. You can deploy and setup the platform on your private VPC across multiple cloud providers.
+
+The self-hosted Enterprise SaaS is container based and can be deployed on any Docker compatible infrastructure. 
+
+## Docker Compose
+
+To begin with, you can deploy the platform using Docker Compose using a simple virtual machine like EC2 or GCP VM. 
+
+For more information on deploying the enterprise platform using Docker Compose, refer to the [**Docker Compose guide**](https://docs.squared.ai/open-source/guides/setup/docker-compose) in the open-source documentation. The Docker Compose guide provides detailed instructions on setting up the platform using Docker Compose.
+
+The difference between the open-source platform and the enterprise platform deployment is the docker image used for the platform.
+
+<Tip>The enterprise platform uses the `squaredai/enterprise` docker image, which extends the platform with additional enterprise features.</Tip>
+
+## Kubernetes
+
+For a more scalable and production-grade deployment, you can deploy the platform on Kubernetes. The platform provides a [Helm chart](https://docs.squared.ai/open-source/guides/setup/helm) for deploying the platform on Kubernetes.
+
+You can refer to the [Environment Variables](https://docs.squared.ai/open-source/guides/setup/helm#environment-variables) section to configure the platform for your environment.
+
+<Info>You can also refer to the [Production Deployment](https://docs.squared.ai/open-source/guides/setup/docker-compose) section for a more detailed guide on deploying the platform to other cloud providers like AWS, GCP, and Azure.</Info>
+
+## Accessing the Platform
+
+Once you have deployed the platform, you can access the platform by visiting `localhost:8000` to access the platform UI. You can sign up for a new account and log in to the platform, you should be able to see the platform dashboard.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1715613911/AIS/aisquared_x_multiwoven_aksa1v.png"
+  alt="Hero Light"
+/>
+
+<Note>In case you are facing any issues with the deployment, you can reach out to the AI Squared team for support.</Note>
+
+
+
+
