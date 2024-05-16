@@ -6,21 +6,22 @@ icon: ""
 
 Multiwoven follows the following format for all commit messages. 
 
-Format: `<type>: <subject>`
+Format: `[<edition>] <type>: <subject>`
 
 ## Example
 
 ```
-feat: add source/snowflake connector
-^--^  ^------------^
+[CE] feat: add source/snowflake connector
+^--^  ^--^  ^------------^
+|     |     |
+|     |     +-> Summary in present tense.
 |     |
-|     +-> Summary in present tense.
+|     +-------> Type: chore, docs, feat, fix, refactor, style, or test.
 |
-+-------> Type: chore, docs, feat, fix, refactor, style, or test.
++-------------> Edition: CE for Community Edition or EE for Enterprise Edition.
 ```
 
-More Examples:
-
+Supported Types:
 - `feat`: (new feature for the user, not a new feature for build script)
 - `fix`: (bug fix for the user, not a fix to a build script)
 - `docs`: (changes to the documentation)
@@ -29,8 +30,12 @@ More Examples:
 - `test`: (adding missing tests, refactoring tests; no production code change)
 - `chore`: (updating grunt tasks etc; no production code change)
 
-References:
 
+Sample messages:
+- [CE] feat: add source/snowflake connector
+- [EE] feat: add google sso
+
+References:
 - https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 - https://www.conventionalcommits.org/
 - https://seesparkbox.com/foundry/semantic_commit_messages
