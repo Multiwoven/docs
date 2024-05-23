@@ -122,7 +122,8 @@
             "guides/data-integration/sources/bquery",
             "guides/data-integration/sources/databricks",
             "guides/data-integration/sources/postgresql",
-            "guides/data-integration/sources/salesforce-consumer-goods-cloud"
+            "guides/data-integration/sources/salesforce-consumer-goods-cloud",
+            "guides/data-integration/sources/aws_athena"
           ]
         },
         {
