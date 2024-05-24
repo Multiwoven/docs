@@ -58,38 +58,47 @@
       "url": "release-notes"
     }
   ],
-  "anchors": [
- 
-  ],
+  "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["home/welcome"]
+      "pages": [
+        "home/welcome"
+      ]
     },
     {
       "group": "Guides",
-      "pages": ["guides/core-concepts"]
+      "pages": [
+        "guides/core-concepts"
+      ]
     },
     {
       "group": "Open Source",
-      "pages": ["open-source/introduction"]
+      "pages": [
+        "open-source/introduction"
+      ]
     },
     {
       "group": "Help & Resources",
-      "pages": ["help-and-resources/overview"]
+      "pages": [
+        "help-and-resources/overview"
+      ]
     },
     {
       "group": "Release Notes",
-      "pages": ["release-notes/2024"]
+      "pages": [
+        "release-notes/2024"
+      ]
     },
     {
       "group": "Troubleshooting",
-      "pages": ["troubleshooting/overview"]
+      "pages": [
+        "troubleshooting/overview"
+      ]
     },
     {
       "group": "Data Activation",
       "pages": [
-<<<<<<< HEAD
         {
           "group": "Models",
           "icon": "table",
@@ -105,12 +114,13 @@
           "icon": "retweet",
           "pages": [
             "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
+            "guides/data-activation/sync-modes/full-refresh",
+            "guides/data-activation/sync-modes/incremental",
+            "guides/data-activation/sync-modes/cursor-incremental"
           ]
         }
       ]
     },
-
     {
       "group": "Data Integration",
       "pages": [
@@ -118,56 +128,18 @@
           "group": "Sources",
           "icon": "database",
           "pages": [
-=======
-        {
-          "group": "Models",
-          "icon": "database",
-          "pages": [
-            "guides/data-activation/models/overview",
-            "guides/data-activation/models/sql",
-            "guides/data-activation/models/dbt",
-            "guides/data-activation/models/table-visualization"
-          ]
-        },
-        {
-          "group": "Syncs",
-          "icon": "users",
-          "pages": [
-            "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
-          ]
-        }
-      ]
-    },
-
-    {
-      "group": "Data Integration",
-      "pages": [
-        {
-          "group": "Sources",
-          "icon": "users",
-          "pages": [
->>>>>>> 8d34e59 (feat: AIS updates (#48))
             "guides/data-integration/sources/redshift",
             "guides/data-integration/sources/snowflake",
             "guides/data-integration/sources/bquery",
             "guides/data-integration/sources/databricks",
             "guides/data-integration/sources/postgresql",
-<<<<<<< HEAD
             "guides/data-integration/sources/salesforce-consumer-goods-cloud",
             "guides/data-integration/sources/aws_athena"
-=======
-            "guides/data-integration/sources/salesforce-consumer-goods-cloud"
->>>>>>> 8d34e59 (feat: AIS updates (#48))
           ]
         },
         {
           "group": "Destinations",
-<<<<<<< HEAD
           "icon": "grid",
-=======
-          "icon": "users",
->>>>>>> 8d34e59 (feat: AIS updates (#48))
           "pages": [
             "guides/data-integration/destinations/crm/salesforce",
             "guides/data-integration/destinations/crm/hubspot",
@@ -191,32 +163,24 @@
             "guides/data-integration/destinations/productivity-tools/airtable",
             "guides/data-integration/destinations/productivity-tools/google-sheets",
             "guides/data-integration/destinations/file-storage/sftp",
-<<<<<<< HEAD
             "guides/data-integration/destinations/database/postgresql",
             "guides/data-integration/destinations/http/http"
-=======
-            "guides/data-integration/destinations/database/postgresql"
->>>>>>> 8d34e59 (feat: AIS updates (#48))
-
           ]
         }
       ]
     },
-    
     {
       "group": "AI & ML Integrations",
-<<<<<<< HEAD
-      "pages": ["guides/ai-ml-integration/overview"]
-=======
-      "pages": ["guides/ai-ml-integration/audiences/overview"]
->>>>>>> 8d34e59 (feat: AIS updates (#48))
+      "pages": [
+        "guides/ai-ml-integration/overview"
+      ]
     },
-
     {
       "group": "Workspace Management",
-      "pages": ["guides/workspace-management/overview"]
+      "pages": [
+        "guides/workspace-management/overview"
+      ]
     },
-
     {
       "group": "REST API",
       "pages": [
@@ -271,15 +235,18 @@
         },
         {
           "group": "Sync Records",
-          "pages": ["api-reference/sync_records/get_sync_records"]
+          "pages": [
+            "api-reference/sync_records/get_sync_records"
+          ]
         },
         {
           "group": "Reports",
-          "pages": ["api-reference/reports/get_report"]
+          "pages": [
+            "api-reference/reports/get_report"
+          ]
         }
       ]
     },
-   
     {
       "group": "Architecture",
       "pages": [
@@ -323,7 +290,9 @@
     },
     {
       "group": "Community & Support",
-      "pages": ["open-source/community-support/overview"]
+      "pages": [
+        "open-source/community-support/overview"
+      ]
     },
     {
       "group": "Contributing Guide",
@@ -336,27 +305,26 @@
     },
     {
       "group": "Security & Compliance",
-      "pages": ["guides/security-and-compliance/security"]
-<<<<<<< HEAD
+      "pages": [
+        "guides/security-and-compliance/security"
+      ]
     },
     {
       "group": "Enterprise SaaS",
-      "pages": ["help-and-resources/enterprise-saas/overview","help-and-resources/enterprise-saas/self-hosting-enterprise"]
-=======
->>>>>>> 8d34e59 (feat: AIS updates (#48))
+      "pages": [
+        "help-and-resources/enterprise-saas/overview",
+        "help-and-resources/enterprise-saas/self-hosting-enterprise"
+      ]
     },
     {
       "group": "FAQs",
-      "pages": ["help-and-resources/faqs/questions"]
+      "pages": [
+        "help-and-resources/faqs/questions"
+      ]
     }
   ],
   "footerSocials": {
-<<<<<<< HEAD
     "github": "https://github.com/Multiwoven/multiwoven",
     "linkedin": "https://www.linkedin.com/company/aisquaredinc"
-=======
-    "github": "https://www.linkedin.com/company/aisquaredinc",
-    "linkedin": "https://www.linkedin.com/company/multiwoven"
->>>>>>> 8d34e59 (feat: AIS updates (#48))
   }
 }
