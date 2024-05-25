@@ -58,33 +58,43 @@
       "url": "release-notes"
     }
   ],
-  "anchors": [
- 
-  ],
+  "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["home/welcome"]
+      "pages": [
+        "home/welcome"
+      ]
     },
     {
       "group": "Guides",
-      "pages": ["guides/core-concepts"]
+      "pages": [
+        "guides/core-concepts"
+      ]
     },
     {
       "group": "Open Source",
-      "pages": ["open-source/introduction"]
+      "pages": [
+        "open-source/introduction"
+      ]
     },
     {
       "group": "Help & Resources",
-      "pages": ["help-and-resources/overview"]
+      "pages": [
+        "help-and-resources/overview"
+      ]
     },
     {
       "group": "Release Notes",
-      "pages": ["release-notes/2024"]
+      "pages": [
+        "release-notes/2024"
+      ]
     },
     {
       "group": "Troubleshooting",
-      "pages": ["troubleshooting/overview"]
+      "pages": [
+        "troubleshooting/overview"
+      ]
     },
     {
       "group": "Data Activation",
@@ -104,12 +114,13 @@
           "icon": "retweet",
           "pages": [
             "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
+            "guides/data-activation/sync-modes/full-refresh",
+            "guides/data-activation/sync-modes/incremental",
+            "guides/data-activation/sync-modes/cursor-incremental"
           ]
         }
       ]
     },
-
     {
       "group": "Data Integration",
       "pages": [
@@ -154,22 +165,22 @@
             "guides/data-integration/destinations/file-storage/sftp",
             "guides/data-integration/destinations/database/postgresql",
             "guides/data-integration/destinations/http/http"
-
           ]
         }
       ]
     },
-    
     {
       "group": "AI & ML Integrations",
-      "pages": ["guides/ai-ml-integration/overview"]
+      "pages": [
+        "guides/ai-ml-integration/audiences/overview"
+      ]
     },
-
     {
       "group": "Workspace Management",
-      "pages": ["guides/workspace-management/overview"]
+      "pages": [
+        "guides/workspace-management/overview"
+      ]
     },
-
     {
       "group": "REST API",
       "pages": [
@@ -224,15 +235,18 @@
         },
         {
           "group": "Sync Records",
-          "pages": ["api-reference/sync_records/get_sync_records"]
+          "pages": [
+            "api-reference/sync_records/get_sync_records"
+          ]
         },
         {
           "group": "Reports",
-          "pages": ["api-reference/reports/get_report"]
+          "pages": [
+            "api-reference/reports/get_report"
+          ]
         }
       ]
     },
-   
     {
       "group": "Architecture",
       "pages": [
@@ -276,7 +290,9 @@
     },
     {
       "group": "Community & Support",
-      "pages": ["open-source/community-support/overview"]
+      "pages": [
+        "open-source/community-support/overview"
+      ]
     },
     {
       "group": "Contributing Guide",
@@ -289,15 +305,22 @@
     },
     {
       "group": "Security & Compliance",
-      "pages": ["guides/security-and-compliance/security"]
+      "pages": [
+        "guides/security-and-compliance/security"
+      ]
     },
     {
       "group": "Enterprise SaaS",
-      "pages": ["help-and-resources/enterprise-saas/overview","help-and-resources/enterprise-saas/self-hosting-enterprise"]
+      "pages": [
+        "help-and-resources/enterprise-saas/overview",
+        "help-and-resources/enterprise-saas/self-hosting-enterprise"
+      ]
     },
     {
       "group": "FAQs",
-      "pages": ["help-and-resources/faqs/questions"]
+      "pages": [
+        "help-and-resources/faqs/questions"
+      ]
     }
   ],
   "footerSocials": {
