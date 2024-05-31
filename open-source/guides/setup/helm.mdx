@@ -144,17 +144,21 @@ Happy Helming!
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
 | `multiwovenConfig.apiHost`                   | Hostname for the API service.                                 | `api.multiwoven.com`             |
+| `multiwovenConfig.appsignalPushApiKey`       | AppSignal API key.                                           | `yourkey`                        | 
 | `multiwovenConfig.dbHost`                    | Hostname for the PostgreSQL database service.                | `multiwoven-postgresql`          |
 | `multiwovenConfig.dbPassword`                | Password for the database user.                              | `password`                       |
 | `multiwovenConfig.dbPort`                    | Port on which the database service is running.               | `5432`                           |
 | `multiwovenConfig.dbUsername`                | Username for the database.                                   | `multiwoven`                     |
 | `multiwovenConfig.newRelicKey`               | New Relic License Key.                                       | `yourkey`                        |
 | `multiwovenConfig.railsEnv`                  | Rails environment setting.                                   | `development`                    |
+| `multiwovenConfig.railsLogLevel`             | Rails log level.                                             | `info`                           |
 | `multiwovenConfig.smtpAddress`               | SMTP server address.                                         | `smtp.yourdomain.com`            |
+| `multiwovenConfig.smtpBrandName`             | SMTP brand name used in From email.                          | `Multiwoven`                     |
 | `multiwovenConfig.smtpHost`                  | SMTP server host.                                            | `yourdomain.com`                 |
 | `multiwovenConfig.smtpPassword`              | SMTP server password.                                        | `yourpassword`                   |
 | `multiwovenConfig.smtpPort`                  | SMTP server port.                                            | `587`                            |
 | `multiwovenConfig.smtpUsername`              | SMTP server username.                                        | `yourusername`                   |
+| `multiwovenConfig.smtpSenderEmail`           | SMTP sender email.                                           | `admin@yourdomain.com`           |
 | `multiwovenConfig.snowflakeDriverPath`       | Path to the Snowflake ODBC driver.                           | `/usr/lib/snowflake/odbc/lib/libSnowflake.so` |
 | `multiwovenConfig.syncExtractorBatchSize`    | Batch size for the sync extractor.                           | `1000`                           |
 | `multiwovenConfig.syncExtractorThreadPoolSize` | Thread pool size for the sync extractor.                    | `10`                             |
@@ -176,6 +180,13 @@ Happy Helming!
 | `multiwovenConfig.temporalVersion`           | Version of Temporal service.                                 | `1.22.4`                         |
 | `multiwovenConfig.temporalWorkflowThreadPoolSize` | Thread pool size for Temporal workflows.                   | `10`                             |
 | `multiwovenConfig.uiHost`               | UI host for the application interface.                       | `app.multiwoven.com`            |
+| `multiwovenConfig.viteApiHost`          | API host for the web application.                            | `api.multiwoven.com`            |
+| `multiwovenConfig.viteAppsignalPushApiKey` | AppSignal API key.                                        | `yourkey`                       | 
+| `multiwovenConfig.viteBrandName`           | Community Brand Name.                                     | `Multiwoven`                    |
+| `multiwovenConfig.viteLogoUrl`             | URL of Brand Logo.                                        |                                 |
+| `multiwovenConfig.viteBrandColor`          | Community Theme Color.                                    |                                 |
+| `multiwovenConfig.viteBrandHoverColor`     | Community Theme Color On Hover.                           |                                 |
+| `multiwovenConfig.viteFavIconUrl`          | URL of Brand Favicon.                                     |                                 |
 
 ### Multiwoven PostgreSQL Configuration
 

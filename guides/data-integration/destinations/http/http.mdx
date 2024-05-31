@@ -1,0 +1,58 @@
+---
+title: "HTTP"
+description: "Learn how to set up a HTTP destination connector in AI Squared to efficiently transfer data to your HTTP destination."
+---
+
+## Introduction
+
+The Hyper Text Transfer Protocol (HTTP) connector is a method of transerring data over the internet to specific url endpoints. Integrating the HTTP Destination connector with AI Squared allows you to efficiently transfer your data to HTTP endpoints of your choosing. This guide outlines how to setup your HTTP destination connector in AI Squared. 
+
+### Destination Setup
+<AccordionGroup>
+  <Accordion title="Create an HTTP destination" icon="key" defaultOpen="true">
+    <Steps>
+      <Step title="Access AI Squared">
+        Log in to your AI Squared account and navigate to the **Destinations** section to manage your data destinations.
+            <Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_1.png" />
+            </Frame>
+        </Step>
+      <Step title="Create a New Destination Connector">
+        Click on the **Add Destination** button. Select **HTTP** from the list of available destination types.
+    		<Frame>
+                <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_2.png" />
+            </Frame>
+      </Step>
+      <Step title="Configure Connection Settings">
+        Provide the following details to establish a connection between AI Squared and your HTTP endpoint:
+            - **Destination Url**: The HTTP address of where you are sending your data.
+            - **Headers**: A list of key value pairs of your choosing. This can include any headers that are required to send along with your HTTP request.
+
+        Enter these details in the respective fields on the connector configuration page and press **Finish**.
+
+        <Frame>
+            <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_3.png" />
+        </Frame>
+      </Step>
+      <Step title="Test the Connection">
+         After entering the necessary information, use the automated **Test Connection** feature to ensure AI Squared can successfully connect to your HTTP endpoint. If the test is successful, you'll receive a confirmation message. If not, double-check your entered details for any errors.
+      </Step>
+      <Step title="Finalize the Destination Connector Setup">
+        After a successful connection test, save the connector settings to establish the destination connection.
+
+        By following these steps, you've successfully set up an HTTP destination connector in AI Squared. You can now efficiently transfer data to your HTTP endpoint for storage or further distribution within AI Squared.
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>
+
+<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+
+| Mode             | Supported (Yes/No/Coming soon) |
+| ---------------- | ------------------------------ |
+| Incremental sync | Yes                            |
+| Full refresh     | No                             |
+
+</Accordion>
+
