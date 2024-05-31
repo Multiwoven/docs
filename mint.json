@@ -153,7 +153,8 @@
             "guides/data-integration/destinations/productivity-tools/airtable",
             "guides/data-integration/destinations/productivity-tools/google-sheets",
             "guides/data-integration/destinations/file-storage/sftp",
-            "guides/data-integration/destinations/database/postgresql"
+            "guides/data-integration/destinations/database/postgresql",
+            "guides/data-integration/destinations/http/http"
 
           ]
         }
