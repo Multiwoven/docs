@@ -5,6 +5,7 @@
     "thumbsRating": true
   },
   "name": "AI Squared",
+  "isWhiteLabeled": true,
   "logo": {
     "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755522/AIS/aisquared_docs_-_logo_-_dark_d5iv0a.svg",
     "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755523/AIS/aisquared_docs_-_logo_-_light_uprxct.svg"
