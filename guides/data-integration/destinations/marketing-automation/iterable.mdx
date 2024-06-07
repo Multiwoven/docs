@@ -9,7 +9,7 @@ This guide will help you configure the Iterable Connector in AI Squared to acces
 
 ### Prerequisites
 
-Before proceeding, ensure you have the necessary API URL, API Key, Catalog Name, and Item Name from Iterable.
+Before proceeding, ensure you have the necessary API Key from Iterable.
 
 ## Step-by-Step Guide to Connect to Iterable
 
@@ -20,43 +20,26 @@ Start by logging into your Iterable account and navigating to the Iterable servi
 1. Sign in to your Iterable account at [Iterable Login](https://www.iterable.com/login/).
 2. Once logged in, you will be directed to the Iterable dashboard.
 
-## Step 2: Locate Iterable Configuration Details
+## Step 2: Locate Iterable API Key
 
 Once you're logged into Iterable, you'll find the necessary configuration details:
 
-1. **API URL:**
-   - The API URL for Iterable is typically `https://api.iterable.com/api/`. This URL is used to make API requests to Iterable.
-
-2. **API Key:**
+1. **API Key:**
    - Click on "Integrations" and select "API Keys" from the dropdown menu.
-   - Here, you can create a new API key or use an existing one. Click on "Create new API key" if needed, and give it a name.
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710242447/Multiwoven/connectors/iterable/iterable_api_key.png" />
+</Frame>
+   - Here, you can create a new API key or use an existing one. Click on "+ New API key" if needed, and give it a name.
    - Once the API key is created, copy it as it will be required for configuring the connector.
 
-3. **Catalog Name:**
-   - Click on "Content" and select "Catalogs" from the dropdown menu.
-   - Here, you will see a list of all your catalogs. Select the catalog you want to connect to and note down its name.
-
-4. **Item Name:**
-   - Within the chosen catalog, look for the items or data you want to query.
-   - Each item represents a collection of data within your catalog. Note down the name of the item you need to access.
-
-## Step 3: Configure Iterable Connector in Your Application
-
-Now that you have gathered all the necessary details, enter the following information:
-   - **API URL:** The API URL for Iterable (`https://api.iterable.com/api/`).
-   - **API Key:** Your Iterable API Key.
-   - **Catalog Name:** The name of the catalog containing your data.
-   - **Item Name:** The name of the item within the catalog.
-
-## Step 4: Test the Iterable Connection
+## Step 3: Test the Iterable Connection
 
 After configuring the connector in your application:
 
 1. Save the configuration settings.
-2. Test the connection to Iterable from your application to ensure everything is set up correctly.
-3. Run a test query or check the connection status to verify successful connectivity.
+2. Test the connection to Iterable from the AI Squared platform to ensure a connection is made.
 
-Your Iterable connector is now configured and ready to query data from your Iterable data catalog.
+By following these steps, you’ve successfully set up an Iterable destination connector in AI Squared. You can now efficiently transfer data to your Iterable endpoint for storage or further distribution within AI Squared.
 
 ### Supported sync modes
 
