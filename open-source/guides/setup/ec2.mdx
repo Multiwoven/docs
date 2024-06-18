@@ -1,103 +1,474 @@
 ---
-title: 'AWS EC2'
-description: ''
+title: "AWS EC2"
+description: ""
 ---
 
 ## Deploying Multiwoven on AWS EC2 Using Docker Compose
 
 This guide walks you through setting up Multiwoven, on an AWS EC2 instance using Docker Compose. We'll cover launching the instance, installing Docker, running Multiwoven with its dependencies, and finally, accessing the Multiwoven UI.
 
+**Important Note:** at present, TLS is required. This means that to successfully deploy the Platform via docker-compose, you will need access to a DNS record set as well as the ability to obtain a valid TLS certificate from a Certificate Authority. You can obtain a free TLS certificates via tools like CertBot, Amazon Certificate Manager (if using an AWS Application Load Balancer to front an EC2 instance), letsencrypt-nginx-proxy-companion (if you add an nginx proxy to the docker-compose file to front the other services), etc.
+
 **Prerequisites:**
 
-* An AWS account with an active EC2 instance (Ubuntu recommended).
-* Basic knowledge of Docker, AWS, and command-line tools.
-* Docker Compose installed on your local machine.
+- An active AWS account
+- Basic knowledge of AWS and Docker
+- A private repository access key (please contact your AIS point of contact if you have not received one)
 
-**Note:** This guide uses environment variables for sensitive information. Replace the placeholders with your own values before proceeding.
+**Notes:**
 
-**1. EC2 Instance Setup:**
+- This guide uses environment variables for sensitive information. Replace the placeholders with your own values before proceeding.
+- This guide uses an Application Load Balancer (ALB) to front the EC2 instance for ease of enabling secure TLS communication with the backend using an Amazon Certificate Manager (ACM) TLS certificate. These certificates are free of charge and ACM automatically rotates them every 90 days. While the ACM certificate is free, the ALB is not. You can refer to the following document for current ALB pricing: [ALB Pricing Page](https://aws.amazon.com/elasticloadbalancing/pricing/?nc=sn&loc=3).
 
-1. **Launch an EC2 instance:** Choose an Ubuntu instance with suitable specifications for your workload.
+** 1. Obtain TLS Certificate (Requires access to DNS Record Set) **
 
-    **Security Group Configuration:**
-    * Open port 22 (SSH) for inbound traffic from your IP address.
-    * Open port 8000 (Multiwoven UI) for inbound traffic from your IP address (optional).
+1. In the AWS Management Console, navigate to Amazon Certificate Manager and request a new certificate.
 
-    **Key Pair:** Create a new key pair or use an existing one to connect to your instance.
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661486/Screenshot_2024-06-17_at_5.54.16_PM_tffjih.png" />
+   </Frame>
 
-2. **Connect to your instance:** Use SSH to connect to your EC2 instance.
-    
-        **Example:**
-        ```
-        ssh -i /path/to/your-key-pair.pem ubuntu@<your_ec2_public_ip>
-        ```
-    Replace `/path/to/your-key-pair.pem` with the path to your key pair file and `<your_ec2_public_ip>` with your EC2 instance's public IP address.
-    
-3. **Update and upgrade:** Run `sudo apt update && sudo apt upgrade -y` to ensure your system is up-to-date.
+2. Unless your organization has created a Private CA (Certificate Authority), we recommend requesting a public certificate.
 
-**2. Docker and Docker Compose Installation:**
+3. Request a single ACM certificate that can verify all three of your chosen subdomains for this deployment. DNS validation is recommended for automatic rotation of your certificate but this method requires access to your domain's DNS record set.
 
-1. **Install Docker:** Follow the official Docker installation instructions for Ubuntu: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
-2. **Install Docker Compose:** Download the latest version from the Docker Compose releases page and place it in a suitable directory (e.g., `/usr/local/bin/docker-compose`). Make the file executable: `sudo chmod +x /usr/local/bin/docker-compose`.
-3. **Start and enable Docker:** Run `sudo systemctl start docker` and `sudo systemctl enable docker` to start Docker and configure it to start automatically on boot.
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661706/Screenshot_2024-06-17_at_6.01.25_PM_egtqer.png" />
+   </Frame>
 
-**3. Download Multiwoven `docker-compose.yml` file and Configure Environment:**
+4. Once you have added your selected sub-domains, scroll down and click **Request**.
 
-1. **Download the file:** 
-``` 
-curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
+5. Once your request has been made, you will be taken to a page that will describe your certificate request and its current status. Scroll down a bit and you will see a section labeled **Domains** with 3 subdomains and 1 CNAME validation record for each. These records need to be added to your DNS record set. Please refer to your organization's internal documentation or the documentation of your DNS service for further instruction on how to add DNS records to your domain's record set. <br / >
+
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718663532/Screenshot_2024-06-17_at_6.29.24_PM_qoauh2.png" />
+   </Frame>
+
+   **Note:** For automatic certificate rotation, you need to leave these records
+   in your record set. If they are removed, automatic rotation will fail.
+
+6. Once your ACM certificate has been issued, note the ARN of your certificate and proceed.
+
+**2. Create and Configure Application Load Balancer and Target Groups**
+
+1.  In the AWS Management Console, navigate to the EC2 Dashboard and select **Load Balancers**.
+
+    {" "}
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718663854/Screenshot_2024-06-17_at_6.37.03_PM_lorrnq.png" />
+    </Frame>
+
+2.  On the next screen select **Create** under **Application Load Balancer**.
+
+    {" "}
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665389/Screenshot_2024-06-17_at_7.02.31_PM_qjjo3i.png" />
+    </Frame>
+
+3.  Under **Basic configuration** name your load balancer. If you are deploying this application within a private network, select **Internal**. Otherwise, select **Internet-facing**. Consult with your internal Networking team if you are unsure as this setting can not be changed post-deployment and you will need to create an entirely new load balancer to correct this.
+
+    {" "}
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665609/Screenshot_2024-06-17_at_7.06.16_PM_xfeq5r.png" />
+    </Frame>
+
+4.  Under **Network mapping**, select a VPC and write it down somewhere for later use. Also, select 2 subnets (2 are **required** for an Application Load Balancer) and write them down too for later use.<br />
+
+    **Note:** If you are using the **internal** configuration, select only **private** subnets. If you are using the **internet-facing** configuration, you must select **public** subnets and they must have routes to an **Internet Gateway**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665808/Screenshot_2024-06-17_at_7.09.18_PM_gqd6pb.png" />
+    </Frame>
+
+5.  Under **Security groups**, select the link to **create a new security group** and a new tab will open.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666010/Screenshot_2024-06-17_at_7.12.56_PM_f809y7.png" />
+    </Frame>
+
+6.  Under **Basic details**, name your security group and provide a description. Be sure to pick the same VPC that you selected for your load balancer configuration.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666207/Screenshot_2024-06-17_at_7.16.18_PM_ssg81d.png" />
+    </Frame>
+
+7.  Under **Inbound rules**, create rules for HTTP and HTTPS and set the source for both rules to **Anywhere**. This will expose inbound ports 80 and 443 on the load balancer. Leave the default **Outbound rules** allowing for all outbound traffic for simplicity. Scroll down and select **Create security group**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666442/Screenshot_2024-06-17_at_7.20.01_PM_meylpq.png" />
+    </Frame>
+
+8.  Once the security group has been created, close the security group tab and return to the load balancer tab. On the load balancer tab, in the **Security groups** section, hit the refresh icon and select your newly created security group. If the VPC's **default security group** gets appended automatically, be sure to remove it before proceeding.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667183/Screenshot_2024-06-17_at_7.32.24_PM_bdmsf3.png" />
+    </Frame>
+
+9.  Under **Listeners and routing** in the card for **Listener HTTP:80**, select **Create target group**. A new tab will open.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666826/Screenshot_2024-06-17_at_7.26.35_PM_sc62nw.png" />
+    </Frame>
+
+10. Under **Basic configuration**, select **Instances**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666904/Screenshot_2024-06-17_at_7.27.42_PM_ne7euy.png" />
+    </Frame>
+
+11. Scroll down and name your target group. This first one will be for the Platform's web app so you should name it accordingly. Leave the protocol set to HTTP **but** change the port value to 8000. Also, make sure that the pre-selected VPC matches the VPC that you selected for the load balancer. Scroll down and click **Next**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667095/Screenshot_2024-06-17_at_7.30.56_PM_wna7en.png" />
+    </Frame>
+
+12. Leave all defaults on the next screen, scroll down and select **Create target group**. Repeat this process 2 more times, once for the **Platform API** on **port 3000** and again for **Temporal UI** on **port 8080**. You should now have 3 target groups.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667613/Screenshot_2024-06-17_at_7.38.59_PM_pqvtbv.png" />
+    </Frame>
+
+13. Navigate back to the load balancer configuration screen and hit the refresh button in the card for **Listener HTTP:80**. Now, in the target group dropdown, you should see your 3 new target groups. For now, select any one of them. There will be some further configuration needed after the creation of the load balancer.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667785/Screenshot_2024-06-17_at_7.41.49_PM_u9jecz.png" />
+    </Frame>
+
+14. Now, click **Add listener**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667845/Screenshot_2024-06-17_at_7.43.30_PM_vtjpyk.png" />
+    </Frame>
+
+15. Change the protocol to HTTPS and in the target group dropdown, again, select any one of the target groups that you previously created.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718668686/Screenshot_2024-06-17_at_7.45.24_PM_m77rvm.png" />
+    </Frame>
+
+16. Scroll down to the **Secure listener settings**. Under **Default SSL/TLS server certificate**, select **From ACM** and in the **Select a certificate** dropdown, select the certificate that you created in Step 1. In the dropdown, your certificate will only show the first subdomain that you listed when you created the certificate request. This is expected behavior.
+
+    **Note:** If you do not see your certificate in the dropdown list, the most likely issues are:<br />
+    (1) your certificate has not yet been successfully issued. Navigate back to ACM and verify that your certificate has a status of **Issued**.
+    (2) you created your certificate in a different region and will need to either recreate your load balancer in the same region as your certificate OR recreate your certificate in the region in which you are creating your load balancer.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718668686/Screenshot_2024-06-17_at_7.57.37_PM_jeyltt.png" />
+    </Frame>
+
+17. Scroll down to the bottom of the page and click **Create load balancer**. Load balancers take a while to create, approximately 10 minutes or more. However, while the load balancer is creating, copy the DNS name of the load balancer and create CNAME records in your DNS record set, pointing all 3 of your chosen subdomains to the DNS name of the load balancer. Until you complete this step, the deployment will not work as expected. You can proceed with the final steps of the deployment but you need to create those CNAME records.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669401/Screenshot_2024-06-17_at_8.08.00_PM_lscyfu.png" />
+    </Frame>
+
+18. At the bottom of the details page for your load balancer, you will see the section **Listeners and rules**. Click on the listener labeled **HTTP:80**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669552/Screenshot_2024-06-17_at_8.12.05_PM_hyybin.png" />
+    </Frame>
+
+19. Check the box next to the **Default** rule and click the **Actions** dropdown.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669716/Screenshot_2024-06-17_at_8.14.41_PM_xnv4fc.png" />
+    </Frame>
+
+20. Scroll down to **Routing actions** and select **Redirect to URL**. Leave **URI parts** selected. In the **Protocol** dropdown, select **HTTPS** and set the port value to **443**. This configuration step will automatically redirect all insecure requests to the load balancer on port 80 (HTTP) to port 443 (HTTPS). Scroll to the bottom and click **Save**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718670073/Screenshot_2024-06-17_at_8.20.53_PM_sapmoj.png" />
+    </Frame>
+
+21. Return to the load balancer's configuration page (screenshot in step 18) and scroll back down to the _Listeners and rules_ section. This time, click the listener labled **HTTPS:443**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718684557/Screenshot_2024-06-18_at_12.22.10_AM_pbjtuo.png" />
+    </Frame>
+
+22. Click **Add rule**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718732781/Screenshot_2024-06-18_at_1.45.19_PM_egsfx2.png" />
+    </Frame>
+
+23. On the next page, you can optionally add a name to this new rule. Click **Next**.
+
+24. On the next page, click **Add condition**. In the **Add condition** pop-up, select **Host header** from the dropdown. For the host header, put the subdomain that you selected for the Platform web app and click **Confirm** and then click **Next**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718734838/Screenshot_2024-06-18_at_2.11.36_PM_cwazra.png" />
+    </Frame>
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718736912/Screenshot_2024-06-18_at_2.54.32_PM_o7ylel.png" />
+    </Frame>
+
+25. One the next page, under **Actions**. Leave the **Routing actions** set to **Forward to target groups**. From the **Target group** dropdown, select the target group that you created for the web app. Click **Next**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737171/Screenshot_2024-06-18_at_2.58.50_PM_rcmuao.png" />
+    </Frame>
+
+26. On the next page, you can set the **Priority** to 1 and click **Next**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737279/Screenshot_2024-06-18_at_3.00.49_PM_kovsvw.png" />
+    </Frame>
+
+27. On the next page, click **Create**.
+
+28. Repeat steps 24 - 27 for the **api** (priority 2) and **temporal ui** (priority 3).
+
+29. Optionally, you can also edit the default rule so that it **Returns a fixed response**. The default **Response code** of 503 is fine.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737699/Screenshot_2024-06-18_at_3.07.52_PM_hlt91e.png" />
+    </Frame>
+
+**3. Launch EC2 Instance**
+
+1.  Navigate to the EC2 Dashboard and click **Launch Instance**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718738785/Screenshot_2024-06-18_at_3.25.56_PM_o1ffon.png" />
+    </Frame>
+
+2.  Name your instance and select **Ubuntu 22.04 or later** with **64-bit** architecture.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739054/Screenshot_2024-06-18_at_3.29.02_PM_ormuxu.png" />
+    </Frame>
+
+3.  For instance type, we recommend **t3.large**. You can find EC2 on-demand pricing here: [EC2 Instance On-Demand Pricing](https://aws.amazon.com/ec2/pricing/on-demand). Also, create a **key pair** or select a pre-existing one as you will need it to SSH into the instance later.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739395/Screenshot_2024-06-18_at_3.36.09_PM_ohv7jn.png" />
+    </Frame>
+
+4.  Under **Network settings**, click **Edit**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739549/Screenshot_2024-06-18_at_3.38.21_PM_yfka13.png" />
+    </Frame>
+
+5.  First, verify that the listed **VPC** is the same one that you selected for the load balancer. Also, verify that the pre-selected subnet is one of the two that you selected earlier for the load balancer as well. If either is incorrect, make the necessary changes. If you are using **private subnets** because your load balancer is **internal**, you do not need to auto-assign a public IP. However, if you chose **internet-facing**, you may need to associate a public IP address with your instance so you can SSH into it from your local machine.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739981/Screenshot_2024-06-18_at_3.45.06_PM_sbiike.png" />
+    </Frame>
+
+6.  Under **Firewall (security groups)**, we recommend that you name the security group but this is optional. After naming the security security group, click the button \*Add security group rule\*\* 3 times to create 3 additional rules.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740294/Screenshot_2024-06-18_at_3.50.03_PM_hywm9g.png" />
+    </Frame>
+
+7.  In the first new rule (rule 2), set the port to **3000**. Click the **Source** input box and scroll down until you see the security group that you previously created for the load balancer. Doing this will firewall inbound traffic to port 3000 on the EC2 instance, only allowing inbound traffic from the load balancer that you created earlier. Do the same for rules 3 and 4, using ports 8000 and 8080 respectively.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740803/Screenshot_2024-06-18_at_3.57.10_PM_gvvpig.png" />
+    </Frame>
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740802/Screenshot_2024-06-18_at_3.58.37_PM_gyxneg.png" />
+    </Frame>
+
+8.  Scroll to the bottom of the screen and click on **Advanced Details**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745225/Screenshot_2024-06-18_at_5.12.35_PM_cioo3f.png" />
+    </Frame>
+
+9.  In the **User data** box, paste the following to automate the installation of **Docker** and **docker-compose**.
+
 ```
-2. **Download the `.env` file:**  
-```
-curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
+Content-Type: multipart/mixed; boundary="//"
+MIME-Version: 1.0
 
-4. Rename the file .env.production to .env and update the environment variables if required.
+--//
+Content-Type: text/cloud-config; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="cloud-config.txt"
 
-```bash
-mv .env.production .env
-``````
+#cloud-config
+cloud_final_modules:
+- [scripts-user, always]
 
-5. **Configure `.env`, This file holds environment variables for various services. Replace the placeholders with your own values, including:
-    * `DB_PASSWORD` and `DB_USERNAME` for your PostgreSQL database
-    * `REDIS_PASSWORD` for your Redis server
-    * (Optional) Additional environment variables specific to your Multiwoven configuration
-
-**Example `.env` file:**
-
-```
-DB_PASSWORD=your_db_password
-DB_USERNAME=your_db_username
-REDIS_PASSWORD=your_redis_password
-# Modify your Multiwoven-specific environment variables here
-```
-
-**4. Run Multiwoven with Docker Compose:**
-
-1. **Start Multiwoven:** Navigate to the `multiwoven` directory and run `docker-compose up -d`. This will start all Multiwoven services in the background, including the Multiwoven UI.
-
-**5. Accessing Multiwoven UI:**
-
-Open your web browser and navigate to `http://<your_ec2_public_ip>:8000` (replace `<your_ec2_public_ip>` with your EC2 instance's public IP address). You should now see the Multiwoven UI.
-
-**6. Stopping Multiwoven:**
-
-To stop Multiwoven, navigate to the `multiwoven` directory and run.
-
-```bash
-docker-compose down
+--//
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="userdata.txt"
+#!/bin/bash
+sudo mkdir ais
+cd ais
+# install docker
+sudo apt-get update
+yes Y | sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo | sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+yes Y | sudo apt-get install docker-ce
+sudo systemctl status docker --no-pager && echo "Docker status checked"
+# install docker-compose
+sudo apt-get install -y jq
+VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
+sudo curl -L "https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+sudo systemctl enable docker
 ```
 
-**7. Upgrading Multiwoven:**
-    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745225/Screenshot_2024-06-18_at_5.13.02_PM_gd4lfi.png" />
+    </Frame>
 
-    ```bash
-    docker-compose pull && docker-compose up -d
-    ```
-<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+10. In the right-hand panel, click **Launch instance**.
 
-**Additional Notes:**
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745564/Screenshot_2024-06-18_at_5.15.36_PM_zaw3m6.png" />
+    </Frame>
 
-<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+**4. Register EC2 Instance in Target Groups**
 
-* Depending on your security group configuration, you might need to open port 8000 (Multiwoven UI) for inbound traffic.
-* For production deployments, consider using a reverse proxy (e.g., Nginx) and a domain name with SSL/TLS certificates for secure access to the Multiwoven UI.
+1.  Navigate back to the EC2 Dashboard and in the left panel, scroll down to **Target groups**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745704/Screenshot_2024-06-18_at_5.21.20_PM_icj8mi.png" />
+    </Frame>
+
+2.  Click on the name of the first listed target group.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745784/Screenshot_2024-06-18_at_5.22.46_PM_vn4pwm.png" />
+    </Frame>
+
+3.  Under **Registered targets**, click **Register targets**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745869/Screenshot_2024-06-18_at_5.23.40_PM_ubfog9.png" />
+    </Frame>
+
+4.  Under **Available instances**, you should see the instance that you just created. Check the tick-box next to the instance and click **Include as pending below**. Once the instance shows in **Review targets**, click **Register pending targets**.
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746192/Screenshot_2024-06-18_at_5.26.56_PM_sdzm0e.png" />
+    </Frame>
+
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746130/Screenshot_2024-06-18_at_5.27.54_PM_ojsle5.png" />
+    </Frame>
+
+5.  **Repeat steps 2 - 4 for the remaining 2 target groups.**
+
+**5. Deploy AIS Platform**
+
+1. SSH into the EC2 instance that you created earlier. For assistance, you can navigate to your EC2 instance in the EC2 dashboard and click the **Connect** button. In the **Connect to instance** screen, click on **SSH client** and follow the instructions on the screen.
+
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746962/Screenshot_2024-06-18_at_5.39.06_PM_h1ourx.png" />
+   </Frame>
+
+2. Verify that **Docker** and **docker-compose** were successfully installed by running the following commands
+
+```
+sudo docker --version
+sudo docker-compose --version
+```
+
+You should see something similar to
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746612/Screenshot_2024-06-18_at_5.34.45_PM_uppsh1.png" />
+</Frame>
+
+3. Change directory to the **ais** directory and download the AIS Platform docker-compose file and the corresponding .env file.
+
+```
+cd \ais
+sudo curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
+sudo curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production && sudo mv /ais/.env.production /ais/.env
+```
+
+Verify the downloads
+
+```
+ls -a
+```
+
+You should see the following
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718747493/Screenshot_2024-06-18_at_5.50.35_PM_gk3n7e.png" />
+</Frame>
+
+4. You will need to edit both files a little before deploying. First open the .env file.
+
+```
+sudo nano .env
+```
+
+The only **required** changes are changing (1) the variable VITE_API_HOST so the UI knows to send requests to your API subdomain and (2) adding a variable **TRACK** and setting its value to **no**. For simplicity, the remaining defaults are fine.
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718748317/Screenshot_2024-06-18_at_5.54.59_PM_upnaov.png" />
+</Frame>
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718749130/Screenshot_2024-06-18_at_6.18.20_PM_zxfj23.png" />
+</Frame>
+
+Commands to save and exit **nano**.<br />
+**Mac users:**
+
+```
+  - to save your changes: Control + S
+  - to exit: Control + X
+```
+
+**Windows users:**
+
+```
+  - to save your changes: Ctrl + O
+  - to exit: Ctrl + X
+```
+
+5. Next, open the **docker-compose** file.
+
+```
+sudo nano docker-compose.yaml
+```
+
+The only changes that you should make here are to the AIS Platform image repositories. After opening the docker-compose file, scroll down to the Multiwoven Services and append **-ee** to the end of each repostiory and change the tag for each to **edge**.
+Before changes
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718750766/Screenshot_2024-06-18_at_6.44.34_PM_ewwwn4.png" />
+</Frame>
+
+After changes
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718751265/Screenshot_2024-06-18_at_6.53.55_PM_hahs8c.png" />
+</Frame>
+
+6. Deploy the AIS Platform. This step requires a private repository access key that you should have received from your AIS point of contact. If you do not have one, please reach out to AIS.
+
+```
+DOCKERHUB_USERNAME="multiwoven"
+DOCKERHUB_PASSWORD="YOUR_PRIVATE_ACCESS_TOKEN"
+sudo docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
+sudo docker-compose up -d
+```
+
+You can use the following command to ensure that none of the containers have exited
+
+```
+sudo docker ps -a
+```
+
+7. Return to your browser and navigate back to the EC2 dashboard. In the left panel, scroll back down to **Target groups**. Click through each target group and verify that each has the registered instance showing as **healthy**. This may take a minute or two after starting the containers.
+
+8. Once all target groups are showing your instance as healthy, you can navigate to your browser and enter the subdomain that you selected for the AIS Platform web app to get started!
