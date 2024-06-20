@@ -1,0 +1,87 @@
+---
+title: 'S3'
+description: ''
+---
+
+## Connect AI Squared to S3
+
+This guide will help you configure the S3 Connector in AI Squared to access and use your S3 bucket files.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary access id, secret access key, region, bucket, path, and the file type you wish to read from.
+
+## Step-by-Step Guide to Connect to S3
+
+### Step 1: Navigate to AWS S3 Console
+
+Start by logging into your AWS Management Console and navigating to the AWS S3 service.
+
+1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+2. In the AWS services search bar, type "S3" and select it from the dropdown.
+
+### Step 2: Locate AWS S3 Configuration Details
+
+Once you're in the AWS S3 console, you'll find the necessary configuration details:
+
+1. **Access Key and Secret Access Key:**
+   - Click on your username at the top right corner of the AWS Management Console.
+   - Choose "Security Credentials" from the dropdown menu.
+   - In the "Access keys" section, you can create or view your access keys.
+   - If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+
+2. **Bucket:**
+   - Once inside of the AWS S3 console you should be able to see the list of buckets available, if not go ahead and create a bucket by clicking on the "Create bucket" button.
+
+3. **Region:**
+   - In the same list showing the buckets, there's a region assotiated with it.
+
+4. **Path:**
+   - The path where the file you wish to read from. This field is optional and can be left blank.
+
+5. **File type:**
+   - The files within the path that was selected should help determine the file type.
+
+### Step 3: Configure S3 Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+   - **Region:** The AWS region where your S3 bucket resources are located.
+   - **Access Key ID:** Your AWS IAM user's Access Key ID.
+   - **Secret Access Key:** The corresponding Secret Access Key.
+   - **Bucket:** The name of the bucket you want to use.
+   - **Path:** The path directory where the files are located at.
+   - **File type:** The type of file (csv, parquet).
+
+### Step 4: Test the S3 Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to S3 from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your S3 connector is now configured and ready to query data from your S3 data catalog.
+
+## Building a Model Query
+
+The S3 source connector is powered by [DuckDB S3 api support](https://duckdb.org/docs/extensions/httpfs/s3api.html). This allows us to use 
+SQL queries to describe and/or fetch data from an S3 bucket, for example:
+```
+SELECT * FROM 's3://my-bucket/path/to/file/file.parquet';
+```
+
+From the example, we can notice some details that are required in order to perform the query:
+   - **FROM command: `'s3://my-bucket/path/to/file/file.parquet'`** You need to provide a value in the same format as the example.
+   - **Bucket: `my-bucket`** In that format you will need to provide the bucket name. The bucket name needs to be
+   the same one provided when configuring the S3 source connector.
+   - **Path: `/path/to/file`** In that format you will need to provide the path to the file. The path needs to be
+   the same one provided when configuring the S3 source connector.
+   - **File name and type: `file.parquet`** In that format you will need to provide the file name and type at the end of the path. The file type needs to be
+   the same one provided when configuring the S3 source connector.
+
+## Supported sync modes
+
+| Mode             | Supported (Yes/No/Coming soon) |
+|------------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | YES                           |
