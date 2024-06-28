@@ -1,0 +1,67 @@
+---
+title: 'MariaDB'
+description: ''
+---
+
+## Connect AI Squared to MariaDB
+
+This guide will help you configure the MariaDB Connector in AI Squared to access and use your MariaDB data.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary host, port, username, password, and database name from your MariaDB server.
+
+## Step-by-Step Guide to Connect to MariaDB
+
+## Step 1: Navigate to MariaDB Console
+
+Start by logging into your MariaDB Management Console and navigating to the MariaDB service.
+
+1. Sign in to your MariaDB account on your local server or through the MariaDB Enterprise interface.
+2. In the MariaDB console, select the service you want to connect to.
+
+## Step 2: Locate MariaDB Configuration Details
+
+Once you're in the MariaDB console, you'll find the necessary configuration details:
+
+1. **Host and Port:**
+   - For local servers, the host is typically `localhost` and the default port is `3306`.
+   - For remote servers, check your server settings or consult with your database administrator to get the correct host and port.
+   - Note down the host and port as they will be used to connect to your MariaDB service.
+
+2. **Username and Password:**
+   - In the MariaDB console, you can find or create a user with the necessary permissions to access the database.
+   - Note down the username and password as they are required for the connection.
+
+3. **Database Name:**
+   - List the available databases using the command `SHOW DATABASES;` in the MariaDB console.
+   - Choose the database you want to connect to and note down its name.
+
+## Step 3: Configure MariaDB Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Host:** The host of your MariaDB service.
+- **Port:** The port number of your MariaDB service.
+- **Username:** Your MariaDB service username.
+- **Password:** The corresponding password for the username.
+- **Database:** The name of the database you want to connect to.
+
+## Step 4: Test the MariaDB Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to MariaDB from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your MariaDB connector is now configured and ready to query data from your MariaDB service.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
+
+This guide will help you seamlessly connect your AI Squared application to MariaDB, enabling you to leverage your database's full potential.
