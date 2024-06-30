@@ -144,7 +144,11 @@ Happy Helming!
 | Parameter                                    | Description                                                   | Default                          |
 | -------------------------------------------- | ------------------------------------------------------------- | -------------------------------- |
 | `multiwovenConfig.apiHost`                   | Hostname for the API service.                                 | `api.multiwoven.com`             |
+| `multiwovenConfig.appEnv`                    | Deployment environment.                                      | `community`                      |
+| `multiwovenConfig.appRevision`               | Latest github commit sha, identifies revision of deployment  | ``                               |
 | `multiwovenConfig.appsignalPushApiKey`       | AppSignal API key.                                           | `yourkey`                        | 
+| `multiwovenConfig.awsAccessKeyId`            | AWS Access Key Id. Used to assume role in S3 connector.      | ``                               |
+| `multiwovenConfig.awsSecretAccessKey`        | AWS Secret Access Key. Used to assume role in S3 connector.  | ``                               |
 | `multiwovenConfig.dbHost`                    | Hostname for the PostgreSQL database service.                | `multiwoven-postgresql`          |
 | `multiwovenConfig.dbPassword`                | Password for the database user.                              | `password`                       |
 | `multiwovenConfig.dbPort`                    | Port on which the database service is running.               | `5432`                           |
