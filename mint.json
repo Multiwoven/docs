@@ -125,7 +125,8 @@
             "guides/data-integration/sources/postgresql",
             "guides/data-integration/sources/salesforce-consumer-goods-cloud",
             "guides/data-integration/sources/aws_athena",
-            "guides/data-integration/sources/clickhouse"
+            "guides/data-integration/sources/clickhouse",
+            "guides/data-integration/sources/maria_db"
           ]
         },
         {
