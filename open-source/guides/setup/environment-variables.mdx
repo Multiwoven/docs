@@ -25,6 +25,10 @@ Multiwoven uses the following environment variables for both the client and serv
 
 `DB_PASSWORD` - Database Password
 
+`ALLOWED_HOST` - Frontend host that can connect to API. Prevents against DNS rebinding and other Host header attacks. Default values is localhost. 
+
+`JWT_SECRET` - secret key used to sign generated token
+
 ## SMTP Configuration
 
 `SMTP_HOST` - This variable represents the host name of the SMTP server that the application will connect to for sending emails. The default configuration for SMTP_HOST is set to `multiwoven.com`, indicating the server host.

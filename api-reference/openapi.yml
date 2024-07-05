@@ -737,6 +737,12 @@ paths:
           schema:
             type: string
           description: Unique ID of the connector
+        - name: refresh
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Set to true to force refresh the catalog
       responses:
         "200":
           description: Catalog information for the connector
