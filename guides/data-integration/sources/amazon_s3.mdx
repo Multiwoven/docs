@@ -5,30 +5,126 @@ description: ''
 
 ## Connect AI Squared to S3
 
-This guide will help you configure the S3 Connector in AI Squared to access and use your S3 bucket files.
+This page describes how to add AWS S3 as a source to Census.
+
+AI Squared lets you pull data from CSV and Parquet files stored in an Amazon S3 bucket and push them to downstream destinations. To get started, you need an S3 bucket and AWS credentials.
+
+## Connector Configuration and Credentials Guide
 
 ### Prerequisites
 
-Before proceeding, ensure you have the necessary access id, secret access key, region, bucket, path, and the file type you wish to read from.
+Before proceeding, ensure you have the necessary information based on how you plan to authenticate to AWS. The two types of authentication we support are:
+- IAM User with access id and secret access key.
+- IAM Role with ARN configured with an external ID so that AI Square can connect to your S3 bucket.
 
-## Step-by-Step Guide to Connect to S3
+Additional info you will need regardless of authentication type will be:
+- Region
+- Bucket name
+- The type of file we are working with (CSV or Parquet)
+- Path to the CSV or Parquet files
 
-### Step 1: Navigate to AWS S3 Console
+### Setting Up AWS Requirements
 
-Start by logging into your AWS Management Console and navigating to the AWS S3 service.
+<AccordionGroup>
+  <Accordion title="Steps to Retrieve or Create an IAM Role User credentials">
+    <Steps>
+      <Step title="Sign In">
+        Log in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+      </Step>
+      <Step title="Users">
+        Navigate to the the **Users**. This can be found in the left navigation under "Access Management" -> "Users". 
 
-1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
-2. In the AWS services search bar, type "S3" and select it from the dropdown.
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_view.png" />
+        </Frame>
+      </Step>
+      <Step title="Access/Secret Key">
+        Once inside the Users page, Select the User you would like to authenticate with. If there are no users to select, create one and make sure to give it the required permissions to read from S3 buckets.
+        After selecting the user, go to **Security Credentials** tab and in it you should be able to see the Access keys for that user.
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_access_key.png" />
+        </Frame>
+      </Step>
+    </Steps>
+
+  </Accordion>
+  <Accordion title="Steps to Retrieve or Create an IAM Role ARN">
+    <Steps>
+      <Step title="Sign In">
+        Log in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+      </Step>
+      <Step title="External ID">
+        The ARN is going to need an external ID which will be required during the configuration of the S3 source connector. The external ID will allow us to reach out to you S3 buckets and read data from it.
+        You can generate an external Id using this [GUID generator tool](https://guidgenerator.com/). [Learn more about AWS STS external ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+      </Step>
+      <Step title="Roles">
+        Navigate to the the **Roles**. This can be found in the left navigation under "Access Management" -> "Roles". 
+
+    		<Frame>
+          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_roles_view.png" />
+        </Frame>
+      </Step>
+      <Step title="Create or Select an existing role">
+        Select an existing role to edit or create a new one by clicking on "Create Role".
+      </Step>
+      <Step title="ARN Premissions Policy">
+        The "Permissions Policy" should look something like this:
+        ```
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+               {
+                     "Sid": "VisualEditor0",
+                     "Effect": "Allow",
+                     "Action": [
+                        "s3:GetObject",
+                        "s3:GetObjectVersion",
+                        "s3:ListBucket"
+                     ],
+                     "Resource": [
+                        "arn:aws:s3:::{your-bucket-name}",
+                        "arn:aws:s3:::{your-bucket-name}/*"
+                     ]
+               }
+            ]
+         }
+        ```
+      </Step>
+      <Step title="ARN Trust Relationship">
+        The "Trust Relationship" should look something like this:
+        ```
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+               {
+                     "Sid": "Statement1",
+                     "Effect": "Allow",
+                     "Principal": {
+                        "AWS": "{iam-user-principal-arn}"
+                     },
+                     "Action": "sts:AssumeRole",
+                     "Condition": {
+                        "StringEquals": {
+                           "sts:ExternalId": "{generated-external-id}"
+                        }
+                     }
+               }
+            ]
+         }
+        ```
+      </Step>
+    </Steps>
+
+  </Accordion>
+</AccordionGroup>
 
 ### Step 2: Locate AWS S3 Configuration Details
 
-Once you're in the AWS S3 console, you'll find the necessary configuration details:
+Now you should be in the AWS and have found your credentials. Now we will navigate to the S3 service to find the necessary configuration details:
 
-1. **Access Key and Secret Access Key:**
-   - Click on your username at the top right corner of the AWS Management Console.
-   - Choose "Security Credentials" from the dropdown menu.
-   - In the "Access keys" section, you can create or view your access keys.
-   - If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+1. **IAM User Access Key and Secret Access Key or IAM Role ARN and External ID:**
+   - This has been gathered from the previous step.
 
 2. **Bucket:**
    - Once inside of the AWS S3 console you should be able to see the list of buckets available, if not go ahead and create a bucket by clicking on the "Create bucket" button.
