@@ -1,0 +1,117 @@
+---
+title: 'Oracle'
+description: ''
+---
+
+## Connect AI Squared to Oracle
+
+This guide will help you configure the Oracle Connector in AI Squared to access and transfer data to your Oracle database using the RESTful web services from Oracles Apex application.
+
+### Prerequisites
+
+Before proceeding, ensure you have Oracle Apex installed along with the necessary Base URL, GET URL, POST URL, username, password, and assign the required privileges from your Oracle APEX environment.
+
+## Step-by-Step Guide to Connect to Oracle ORDS APEX
+
+### Step 1: Navigate to Oracle APEX Console
+
+Start by logging into your Oracle APEX Management Console and navigating to the ORDS service.
+
+1. Sign in to your Oracle APEX account on your local server or through the Oracle APEX interface.
+2. In the APEX console, select SQL Workshop then RESTful Services.
+
+### Step 2: Locate Oracle ORDS Configuration Details
+
+Once you're in the APEX console, you'll find the necessary configuration details:
+
+1. **Base URL:**
+   - In the **RESTful Services** section, create a new module if one does not already exist.
+   - A module is a top-level container for your RESTful services. Give it a name and specify the base path, which will be part of the full URL.
+   - The **base URL** for the module will be in the format `http://localhost:<port>/ords/<workspace>/<module-path>`.
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1721788266/Multiwoven/connectors/Oracle/Base_URL_nsnifo.jpg" />
+</Frame>
+
+2. **GET URL:**
+   - Within the module, create resource templates for your GET requests.
+   - For a GET request, ensure you have the URL for retrieving data from your database.
+   - Specify the URI pattern and the HTTP method (GET).
+   - Use the PL/SQL query below, it'll grab data from your table when a GET request is made to this endpoint.
+    ```
+    SELECT table_name, column_name, data_type, nullable
+    FROM all_tab_columns
+    WHERE owner = <your_schema> -- Replace with your schema's name
+    ORDER BY table_name, column_id
+    ```
+
+   - Note down the **GET URL**, which will be the full URL for this resource template, in the format `http://localhost:<port>/ords/<workspace>/<module-path>/<resource-path>`.
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1721788267/Multiwoven/connectors/Oracle/get_URL_b40qvo.jpg" />
+</Frame>
+
+3. **POST URL:**
+   - Within the module, create resource templates for your POST requests.
+   - For a POST request, ensure you have the URL for sending data to your database.
+   - Specify the URI pattern and the HTTP method (POST).
+   - Use the PL/SQL query below, it'll send data to your table when a POST request is made to this endpoint.
+    ```
+    DECLARE
+      myVariable VARCHAR2(4000);  -- Use VARCHAR2 instead of varchar(max)
+    BEGIN
+      myVariable := :query;
+      EXECUTE IMMEDIATE myVariable;
+    END;
+    ```
+   - Set the **Parameters** as the following:
+
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1721789416/Multiwoven/connectors/Oracle/post_parameter_tjnblo.jpg" />
+</Frame>
+
+   - Note down the **POST URL**, which will be the full URL for this resource template, in the format `http://localhost:<port>/ords/<workspace>/<module-path>/<resource-path>`.
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1721788266/Multiwoven/connectors/Oracle/post_URL_sj5wlm.jpg" />
+</Frame>
+
+4. **Assign Role Privileges:**
+   - Within **RESTful Services** create the appropriate roles and privileges to access and manipulate the data.
+   - To create a role click on **Roles** then **Create Role** and give a **Role Name** to create.
+   - Next, goto **Privileges** and click **Create Privilege**. Give the privilege a **Name**, **Title**, **Roles**, and **Modules**.
+   (**Note:** The box on the right is what you want to assign/protect)
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1721790215/Multiwoven/connectors/Oracle/privileges_r5vn6s.jpg" />
+</Frame>
+
+4. **Username and Password:**
+   - In the APEX console, click on the icon next to the search bar then goto **Administration**
+   - In **Administration** click on **Manage Users and Group** to create a user if you haven't.
+   - To assign a role click on the **Groups** tab and give the **Group Name** the same name as the role you made. Once done goto the **Users** tab and click on a user to assign to the newly made group
+   - Note down the username and password as they are required for the connection.
+
+### Step 3: Configure ORDS Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Base URL:** The base URL of your Oracle APEX service.
+- **GET URL:** The endpoint URL for GET requests.
+- **POST URL:** The endpoint URL for POST requests.
+- **Username:** Your Oracle APEX service username.
+- **Password:** The corresponding password for the username.
+
+### Step 4: Test the Oracle ORDS Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Oracle ORDS from your application to ensure everything is set up correctly.
+
+By following these steps, you’ve successfully set up an Oracle ORDS destination connector in AI Squared. You can now efficiently transfer data to your Oracle APEX endpoint for storage or further distribution within AI Squared.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
+
+This guide will help you seamlessly connect your AI Squared application to Oracle ORDS APEX, enabling you to leverage your database's full potential.
