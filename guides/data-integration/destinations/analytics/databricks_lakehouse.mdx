@@ -1,0 +1,56 @@
+---
+title: 'Databricks'
+description: ''
+---
+
+## Connect AI Squared to Databricks
+
+This guide will help you configure the Databricks Connector in AI Squared to access and use your Databricks data.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary Host URL and API Token from Databricks.
+
+## Step-by-Step Guide to Connect to Databricks
+
+## Step 1: Navigate to Databricks
+
+Start by logging into your Databricks account and navigating to the Databricks workspace.
+
+1. Sign in to your Databricks account at [Databricks Login](https://accounts.cloud.databricks.com/login).
+2. Once logged in, you will be directed to the Databricks workspace dashboard.
+
+## Step 2: Locate Databricks Host URL and API Token
+
+Once you're logged into Databricks, you'll find the necessary configuration details:
+
+1. **Host URL:**
+   - The Host URL is the first part of the URL when you log into your Databricks. It will look something like `https://<your-instance>.databricks.com`.
+
+2. **API Token:**
+   - Click on your user icon in the upper right corner and select "Settings" from the dropdown menu.
+   - In the Settings page, navigate to the "Developer" tab.
+   - Here, you can create a new Access Token by clicking on Manage then "Generate New Token." Give it a name and set the expiration duration.
+   - Once the token is generated, copy it as it will be required for configuring the connector. **Note:** This token will only be shown once, so make sure to store it securely.
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669164/05_p6ikgb.jpg" />
+</Frame>
+
+## Step 3: Test the Databricks Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Databricks from the AI Squared platform to ensure a connection is made.
+
+By following these steps, you’ve successfully set up a Databricks destination connector in AI Squared. You can now efficiently transfer data to your Databricks endpoint for storage or further distribution within AI Squared.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
+
+Follow these steps to configure and test your Databricks connector successfully.
