@@ -159,6 +159,7 @@
             "guides/data-integration/destinations/file-storage/sftp",
             "guides/data-integration/destinations/database/postgresql",
             "guides/data-integration/destinations/database/maria_db",
+            "guides/data-integration/destinations/database/oracle",
             "guides/data-integration/destinations/http/http"
 
           ]
