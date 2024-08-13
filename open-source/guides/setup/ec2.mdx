@@ -20,23 +20,23 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 - This guide uses environment variables for sensitive information. Replace the placeholders with your own values before proceeding.
 - This guide uses an Application Load Balancer (ALB) to front the EC2 instance for ease of enabling secure TLS communication with the backend using an Amazon Certificate Manager (ACM) TLS certificate. These certificates are free of charge and ACM automatically rotates them every 90 days. While the ACM certificate is free, the ALB is not. You can refer to the following document for current ALB pricing: [ALB Pricing Page](https://aws.amazon.com/elasticloadbalancing/pricing/?nc=sn&loc=3).
 
-** 1. Obtain TLS Certificate (Requires access to DNS Record Set) **
+**1. Obtain TLS Certificate (Requires access to DNS Record Set)**
 
-1. In the AWS Management Console, navigate to Amazon Certificate Manager and request a new certificate.
+**1.1** In the AWS Management Console, navigate to Amazon Certificate Manager and request a new certificate.
 
    <Frame>
      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661486/Screenshot_2024-06-17_at_5.54.16_PM_tffjih.png" />
    </Frame>
 
-2. Unless your organization has created a Private CA (Certificate Authority), we recommend requesting a public certificate.
+1.2 Unless your organization has created a Private CA (Certificate Authority), we recommend requesting a public certificate.
 
-3. Request a single ACM certificate that can verify all three of your chosen subdomains for this deployment. DNS validation is recommended for automatic rotation of your certificate but this method requires access to your domain's DNS record set.
+1.3 Request a single ACM certificate that can verify all three of your chosen subdomains for this deployment. DNS validation is recommended for automatic rotation of your certificate but this method requires access to your domain's DNS record set.
 
    <Frame>
      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661706/Screenshot_2024-06-17_at_6.01.25_PM_egtqer.png" />
    </Frame>
 
-4. Once you have added your selected sub-domains, scroll down and click **Request**.
+1.4 Once you have added your selected sub-domains, scroll down and click **Request**.
 
 5. Once your request has been made, you will be taken to a page that will describe your certificate request and its current status. Scroll down a bit and you will see a section labeled **Domains** with 3 subdomains and 1 CNAME validation record for each. These records need to be added to your DNS record set. Please refer to your organization's internal documentation or the documentation of your DNS service for further instruction on how to add DNS records to your domain's record set. <br / >
 
@@ -410,14 +410,21 @@ You should see the following
 sudo nano .env
 ```
 
-The only **required** changes are changing (1) the variable VITE_API_HOST so the UI knows to send requests to your API subdomain and (2) adding a variable **TRACK** and setting its value to **no**. For simplicity, the remaining defaults are fine.
+
+**There are 3 required changes.**<br /><br />
+**(1)** Set the variable **VITE_API_HOST** so the UI knows to send requests to your **API subdomain**.<br /><br />
+**(2)** If not present already, add a variable **Track** and set its value to **no**.<br /><br />
+**(3)** If not present already, add a variable **ALLOWED_HOST**. The value for this is dependent on how you selected your subdomains earlier. This variable only allows for a single step down in subdomain so if, for instance, you selected ***app.mydomain.com***, ***api.mydomain.com*** and ***temporal.mydomain.com*** you would set the value to **.mydomain.com**. 
+
+If you selected ***app.c1.mydomain.com***, ***api.c1.mydomain.com*** and ***temporal.c1.mydomain.com*** you would set the value to **.c1.mydomain.com**.<br /><br />
+For simplicity, the remaining defaults are fine.
 
 <Frame>
   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718748317/Screenshot_2024-06-18_at_5.54.59_PM_upnaov.png" />
 </Frame>
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718749130/Screenshot_2024-06-18_at_6.18.20_PM_zxfj23.png" />
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720563829/Screenshot_2024-07-09_at_6.22.27_PM_q4prkv.png" />
 </Frame>
 
 Commands to save and exit **nano**.<br />
