@@ -127,7 +127,8 @@
             "guides/data-integration/sources/aws_athena",
             "guides/data-integration/sources/clickhouse",
             "guides/data-integration/sources/maria_db",
-            "guides/data-integration/sources/oracle"
+            "guides/data-integration/sources/oracle",
+            "guides/data-integration/sources/amazon_s3"
           ]
         },
         {
