@@ -147,6 +147,7 @@
             "guides/data-integration/destinations/analytics/google-analytics",
             "guides/data-integration/destinations/analytics/mixpanel",
             "guides/data-integration/destinations/analytics/amplitude",
+            "guides/data-integration/destinations/analytics/databricks_lakehouse",
             "guides/data-integration/destinations/customer-support/zendesk",
             "guides/data-integration/destinations/customer-support/intercom",
             "guides/data-integration/destinations/team-collaboration/slack",
