@@ -1,0 +1,65 @@
+---
+title: 'Microsoft Excel'
+description: ''
+---
+
+## Connect AI Squared to Microsoft Excel
+
+This guide will help you configure the Iterable Connector in AI Squared to access and use your Iterable data.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary Access Token from Microsoft Graph.
+
+## Step-by-Step Guide to Connect to Microsoft Excel
+
+## Step 1: Navigate to Microsoft Graph Explorer
+
+Start by logging into Microsoft Graph Explorer using your Microsoft account and consent to the required permissions.
+
+1. Sign into Microsoft Graph Explorer at [developer.microsoft.com](https://developer.microsoft.com/en-us/graph/graph-explorer).
+2. Once logged in, consent to the following under each category:
+    - **Excel:**
+        - worksheets in a workbook
+        - used range in worksheet
+    - **OneDrive:**
+        - list items in my drive
+    - **User:**
+        - me
+2. Once the following is consented to click Access token and copy the token
+
+## Step 2: Navigate to Microsoft Excel
+
+Once you're logged into Microsoft Excel do the following:
+
+1. **Create a new workbook:**
+   - Create a new workbook in excel to have the data stored.
+   - Once you have create the workbook open it and navigate to the sheet of you choosing.
+   - In the sheet of your choosing make a table with the required headers you want to transfer data to.
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1723599643/Multiwoven/connectors/microsoft-excel/Workbook_setup_withfd.jpg" />
+</Frame>
+
+## Step 3: Configure Microsoft Excel Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Token:** The access token from Microsoft Graph Explorer.
+
+## Step 4: Test the Microsoft Excel Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Microsoft Excel from the AI Squared platform to ensure a connection is made.
+
+By following these steps, you’ve successfully set up an Microsoft Excel destination connector in AI Squared. You can now efficiently transfer data to your Microsoft Excel workbook for storage or further distribution within AI Squared.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
+
+Follow these steps to configure and test your Iterable connector successfully.

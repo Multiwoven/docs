@@ -158,6 +158,7 @@
             "guides/data-integration/destinations/retail/salesforce-consumer-goods-cloud",
             "guides/data-integration/destinations/productivity-tools/airtable",
             "guides/data-integration/destinations/productivity-tools/google-sheets",
+            "guides/data-integration/destinations/productivity-tools/microsoft-excel",
             "guides/data-integration/destinations/file-storage/sftp",
             "guides/data-integration/destinations/database/postgresql",
             "guides/data-integration/destinations/database/maria_db",
