@@ -248,6 +248,12 @@
           "pages": [
             "api-reference/roles/get_roles"
           ]
+        },
+        {
+          "group": "Catalogs",
+          "pages": [
+            "api-reference/catalogs/create_catalog"
+          ]
         }
       ]
     },
