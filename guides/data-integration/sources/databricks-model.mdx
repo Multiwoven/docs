@@ -1,0 +1,35 @@
+---
+title: "Databricks Model"
+description: ""
+---
+
+### Overview
+
+AI Squared enables you to transfer data from a Databricks Model to various destinations or data apps. This guide explains how to obtain your Databricks Model URL and connect to AI Squared using your credentials.
+
+### Setup
+
+<Steps>
+  <Step title="Get connection details">
+    Go to the Serving tab in Databricks, select the endpoint you want to
+    configure, and locate the Databricks host and endpoint as shown below.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1724264572/Multiwoven/connectors/DataBricks/endpoint_rt3tea.png" />
+    </Frame>
+  </Step>
+  <Step title="Create personal token">
+    Generate a personal access token by following the steps in the [Databricks
+    documentation](https://docs.databricks.com/en/dev-tools/auth/pat.html).
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669164/05_p6ikgb.jpg" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Configuration
+
+| Field               | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| **databricks_host** | The databricks-instance url                    |
+| **token**           | Bearer token to connect with Databricks Model. |
+| **endpoint**        | Name of the serving endpoint                   |
