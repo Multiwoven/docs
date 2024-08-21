@@ -84,7 +84,31 @@ Description - [connector_spec](https://github.com/Multiwoven/multiwoven-integrat
 
 Input - `None`
 
-Output - [ConnectorSpecification](https://github.com/Multiwoven/multiwoven-integrations/blob/main/lib/multiwoven/integrations/protocol/protocol.rb#L49)
+Output - [ConnectorSpecification](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L49)
+-One of the main pieces of information the specification shares is what information is needed to configure an Actor.
+
+- **`documentation_url`**:  
+  URL providing information about the connector.
+
+- **`stream_type`**:  
+  The type of stream supported by the connector. Possible values include:
+
+  - `static`: The connector catalog is static.
+  - `dynamic`: The connector catalog is dynamic, which can be either schemaless or with a schema.
+  - `user_defined`: The connector catalog is defined by the user.
+
+- **`connector_query_type`**:  
+  The type of query supported by the connector. Possible values include:
+
+  - `raw_sql`: The connector is SQL-based.
+  - `soql`: Specifically for Salesforce.
+  - `ai_ml`: Specific for AI model source connectors.
+
+- **`connection_specification`**:  
+  The properties required to connect to the source or destination.
+
+- **`sync_mode`**:  
+  The synchronization modes supported by the connector.
 
 2. `meta_data() -> Hash`
 
