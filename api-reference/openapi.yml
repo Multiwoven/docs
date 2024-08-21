@@ -1311,6 +1311,98 @@ paths:
                                           value:
                                             type: string
                                             description: Expression to perform regex replace operation.
+  "/api/v1/schedule_syncs":
+    post:
+      summary: Trigger a manual Sync
+      description: Trigger a manual Sync by providing the sync ID.
+      operationId: manualSyncTrigger
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                schedule_sync:
+                  type: object
+                  properties:
+                    sync_id:
+                      type: integer
+                      description: ID of the sync to be scheduled
+                      example: 10
+                  required:
+                    - sync_id
+      responses:
+        "200":
+          description: Sync scheduled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sync scheduled successfully"
+  "/api/v1/schedule_syncs/{sync_id}":
+    delete:
+      summary: Cancel a Manual Sync
+      description: Cancel a Manual Sync using the sync ID.
+      operationId: cancelSyncTrigger
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
+          description: The ID of the sync to be canceled
+          schema:
+            type: integer
+            example: 72
+      responses:
+        "200":
+          description: Sync cancelled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sync cancelled successfully"
+  "/enterprise/api/v1/syncs/{sync_id}/test":
+    post:
+      summary: Trigger a Sync Test
+      description: Triggers a test for the specified sync using the sync ID.
+      operationId: testSync
+      tags:
+        - Syncs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
+          description: The ID of the sync to be tested
+          schema:
+            type: integer
+            example: 72
+      responses:
+        "200":
+          description: Sync test triggered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sync test triggered successfully"
   "/api/v1/reports":
     get:
       summary: Get report data based on given type
@@ -1705,6 +1797,90 @@ paths:
                   message:
                     type: string
                     example: "SyncRun not found"
+                  status:
+                    type: string
+                    example: "not_found"
+  "/enterprise/api/v1/roles":
+  get:
+    summary: List of All roles
+    description: Retrieves a list of all roles available.
+    operationId: getRoles
+    tags:
+      - Roles
+    security:
+      - bearerAuth: []
+    responses:
+      "200":
+        description: A JSON array of roles
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the role
+                        example: "1"
+                      type:
+                        type: string
+                        description: Type of the resource
+                        example: roles
+                      attributes:
+                        type: object
+                        properties:
+                          role_name:
+                            type: string
+                            description: Name of the role
+                            example: Admin
+                          role_desc:
+                            type: string
+                            description: Description of the role
+                            example: An Admin can add and manage Sources, Destinations, Models, Syncs, and Workspaces.
+                          policies:
+                            type: object
+                            properties:
+                              permissions:
+                                type: object
+                                additionalProperties:
+                                  type: object
+                                  properties:
+                                    read:
+                                      type: boolean
+                                      example: true
+                                    create:
+                                      type: boolean
+                                      example: true
+                                    delete:
+                                      type: boolean
+                                      example: true
+                                    update:
+                                      type: boolean
+                                      example: true
+                          updated_at:
+                            type: string
+                            format: date-time
+                            description: Timestamp of the last update
+                            example: "2024-08-01T10:03:39.086Z"
+                          created_at:
+                            type: string
+                            format: date-time
+                            description: Timestamp of creation
+                            example: "2024-08-01T10:03:39.021Z"
+        "404":
+          description: Roles not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Roles not found"
                   status:
                     type: string
                     example: "not_found"
