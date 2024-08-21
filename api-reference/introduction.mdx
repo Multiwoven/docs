@@ -1,9 +1,9 @@
 ---
-title: 'Introduction'
-description: ''
+title: "Introduction"
+description: ""
 ---
 
-Welcome to the AI Squared API documentation! You can use our API to access all the features of the AI Squared platform. 
+Welcome to the AI Squared API documentation! You can use our API to access all the features of the AI Squared platform.
 
 ## Authentication
 
@@ -13,7 +13,11 @@ The AI Squared API uses a JWT-based authentication mechanism. To access the API,
 --header 'Authorization: Bearer <YOUR_JWT_TOKEN>'
 ```
 
-<Warning>It is advised to keep your JWT token safe and not share it with anyone. If you think your token has been compromised, you can generate a new token from the AI Squared dashboard.</Warning>
+<Warning>
+  It is advised to keep your JWT token safe and not share it with anyone. If you
+  think your token has been compromised, you can generate a new token from the
+  AI Squared dashboard.
+</Warning>
 
 ## API Endpoints
 
@@ -21,7 +25,7 @@ The AI Squared API is organized around REST. Our API has predictable resource-or
 
 ### Base URL
 
-The base URL for all API requests is `https://api.squared.ai/v1/`
+The base URL for all API requests is `https://api.squared.ai/api/v1/`
 
 ### API Reference
 
@@ -29,16 +33,20 @@ The API reference contains a list of all the endpoints available in the AI Squar
 
 <CardGroup cols={2}>
   <Card title="Models" icon="square-1">
-    Models are the core of the AI Squared API. They represent the different entities in the AI Squared platform.
+    Models are the core of the AI Squared API. They represent the different
+    entities in the AI Squared platform.
   </Card>
   <Card title="Connectors" icon="square-2">
-  Connectors help connect various data warehouse sources or destinations to the AI Squared platform.
+    Connectors help connect various data warehouse sources or destinations to
+    the AI Squared platform.
   </Card>
   <Card title="Syncs" icon="square-3">
-  Syncs help you sync data between different data warehouse sources and destinations.
+    Syncs help you sync data between different data warehouse sources and
+    destinations.
   </Card>
   <Card title="Audiences" icon="square-4">
-  Audiences allow you to send targeted customer segments from data sources to various destinations.
+    Audiences allow you to send targeted customer segments from data sources to
+    various destinations.
   </Card>
 </CardGroup>
 
@@ -47,7 +55,7 @@ The API reference contains a list of all the endpoints available in the AI Squar
 Requests that return multiple items will be paginated to 100 items by default. You can specify further pages with the `page` parameter. You can also set a custom page size up to 100 with the `page_size` parameter.
 
 ```text
-https://api.squared.ai/v1/models?page=2&page_size=50
+https://api.squared.ai/api/v1/models?page=2&page_size=50
 ```
 
 ## Rate Limiting
@@ -57,22 +65,3 @@ The AI Squared API is rate limited to 100 requests per minute. If you exceed thi
 ## Errors
 
 The AI Squared API uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success, codes in the `4xx` range indicate an error that failed given the information provided, and codes in the `5xx` range indicate an error with AI Squared's servers.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

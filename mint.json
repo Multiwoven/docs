@@ -222,7 +222,10 @@
             "api-reference/syncs/show_sync",
             "api-reference/syncs/update_sync",
             "api-reference/syncs/delete_sync",
-            "api-reference/syncs/sync_configuration"
+            "api-reference/syncs/sync_configuration",
+            "api-reference/syncs/manual_sync_trigger",
+            "api-reference/syncs/manual_sync_cancel",
+            "api-reference/syncs/test_sync"
           ]
         },
         {
@@ -239,6 +242,12 @@
         {
           "group": "Reports",
           "pages": ["api-reference/reports/get_report"]
+        },
+        {
+          "group": "Roles",
+          "pages": [
+            "api-reference/roles/get_roles"
+          ]
         }
       ]
     },
