@@ -1884,12 +1884,6 @@ paths:
                   status:
                     type: string
                     example: "not_found"
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   "/api/v1/catalogs":
     post:
       summary: Create catalog 
@@ -1951,6 +1945,114 @@ components:
           description: Unauthorized
         "400":
           description: Bad Request
+        "500":
+          description: Internal Server Error
+          
+
+  "/api/v1/catalogs/{id}":
+    put:
+      summary: Update catalog
+      operationId: updateCatalog
+      tags:
+        - Catalogs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the catalog to update
+          schema:
+            type: integer
+            example: 34
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector_id:
+                  type: integer
+                  example: 6
+                catalog:
+                  type: object
+                  properties:
+                    json_schema:
+                      type: object
+                      example:
+                        field: "test_field"
+      responses:
+        "200":
+          description: Catalog updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: "34"
+                      type:
+                        type: string
+                        example: "catalogs"
+                      attributes:
+                        type: object
+                        properties:
+                          connector_id:
+                            type: integer
+                            example: 6
+                          workspace_id:
+                            type: integer
+                            example: 2
+                          catalog:
+                            type: object
+                            properties:
+                              streams:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: "test_name"
+                                    url:
+                                      type: string
+                                      example: "test_url"
+                                    json_schema:
+                                      type: object
+                                      example:
+                                        field: "test field"
+                                    batch_support:
+                                      type: boolean
+                                      example: false
+                                    batch_size:
+                                      type: integer
+                                      example: 0
+                                    request_method:
+                                      type: string
+                                      example: "POST"
+                              request_rate_concurrency:
+                                type: integer
+                                example: 10
+                              request_rate_limit:
+                                type: integer
+                                example: 600
+                              request_rate_limit_unit:
+                                type: string
+                                example: "minute"
+                          catalog_hash:
+                            type: string
+                            example: "0755b5f0d3432bc3b0064227d2b6178d402327b9"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Catalog not found
         "500":
           description: Internal Server Error
 
