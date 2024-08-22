@@ -253,7 +253,8 @@
         {
           "group": "Catalogs",
           "pages": [
-            "api-reference/catalogs/create_catalog"
+            "api-reference/catalogs/create_catalog",
+            "api-reference/catalogs/update_catalog"
           ]
         }
       ]
