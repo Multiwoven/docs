@@ -40,6 +40,8 @@ paths:
                               type: string
                             query_type:
                               type: string
+                            configuration:
+                              type: object
                             primary_key:
                               type: string
                             connector_id:
@@ -96,6 +98,8 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          configuration:
+                            type: object
                           primary_key:
                             type: string
                           connector_id:
@@ -123,6 +127,8 @@ paths:
                       type: string
                     query_type:
                       type: string
+                    configuration:
+                      type: object
                     primary_key:
                       type: string
                     connector_id:
@@ -130,7 +136,6 @@ paths:
                   required:
                     - connector_id
                     - name
-                    - query
                     - query_type
 
   "/api/v1/models/{id}":
@@ -172,6 +177,8 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          configuration:
+                            type: object
                           primary_key:
                             type: string
                           connector_id:
@@ -220,6 +227,8 @@ paths:
                             type: string
                           query_type:
                             type: string
+                          configuration:
+                            type: object
                           primary_key:
                             type: string
                           connector_id:
@@ -247,6 +256,8 @@ paths:
                       type: string
                     query_type:
                       type: string
+                    configuration:
+                      type: object
                     primary_key:
                       type: string
                     connector_id:
@@ -254,7 +265,6 @@ paths:
                   required:
                     - connector_id
                     - name
-                    - query
                     - query_type
     delete:
       summary: Deletes a model
