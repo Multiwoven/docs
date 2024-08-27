@@ -12,6 +12,19 @@ paths:
         - Models
       security:
         - bearerAuth: []
+      parameters:
+        - name: query_type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - data
+              - ai_ml
+              - raw_sql 
+              - dbt soql 
+              - table_selector
+          description: query type
       responses:
         "200":
           description: Successful operation
@@ -289,6 +302,15 @@ paths:
               - source
               - destination
           description: Type of the connector (source or destination)
+        - name: category
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - data
+              - ai_ml
+          description: Category of the connector
       responses:
         "200":
           description: Successful response
