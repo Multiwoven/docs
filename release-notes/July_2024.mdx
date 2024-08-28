@@ -1,0 +1,83 @@
+---
+title: July 2024 releases
+description: ' Multiwoven Release updates for the month of July'
+
+---
+
+
+## ✨ **New Features**
+
+### 🔍 **Search Filter in Table Selector**
+The table selector method now includes a powerful search filter. This feature enhances your workflow by allowing you to swiftly locate and select the exact tables you need, even in large datasets. It’s all about saving time and boosting productivity.
+
+### 🏠 **Databricks Lakehouse Destination**
+We're excited to introduce Databricks Lakehouse as a new destination connector. Seamlessly integrate your data pipelines with Databricks Lakehouse, harnessing its advanced analytics capabilities for data processing and AI-driven insights. This feature empowers your data strategies with greater flexibility and power.
+
+### 📅 **Manual Sync Schedule Controller**
+Take control of your data syncs with the new Manual Sync Schedule controller. This feature gives you the freedom to define when and how often syncs occur, ensuring they align perfectly with your business needs while optimizing resource usage.
+
+### 🛢️ **MariaDB Destination Connector**
+MariaDB is now available as a destination connector! You can now channel your processed data directly into MariaDB databases, enabling robust data storage and processing workflows. This integration is perfect for users operating in MariaDB environments.
+
+### 🎛️ **Table Selector and Layout Enhancements**
+We’ve made significant improvements to the table selector and layout. The interface is now more intuitive, making it easier than ever to navigate and manage your tables, especially in complex data scenarios.
+
+### 🔄 **Catalog Refresh**
+Introducing on-demand catalog refresh! Keep your data sources up-to-date with a simple refresh, ensuring you always have the latest data structure available. Say goodbye to outdated data and hello to consistency and accuracy.
+
+### 🛡️ **S3 Connector ARN Support for Authentication**
+Enhance your security with ARN (Amazon Resource Name) support for Amazon S3 connectors. This update provides a more secure and scalable approach to managing access to your S3 resources, particularly beneficial for large-scale environments.
+
+### 📊 **Integration Changes for Sync Record Log**
+We’ve optimized the integration logic for sync record logs. These changes ensure more reliable logging, making it easier to track sync operations and diagnose issues effectively.
+
+### 🗄️ **Server Changes for Log Storage in Sync Record Table**
+Logs are now stored directly in the sync record table, centralizing your data and improving log accessibility. This update ensures that all relevant sync information is easily retrievable for analysis.
+
+### ✅ **Select Row Support in Data Table**
+Interact with your data tables like never before! We've added row selection support, allowing for targeted actions such as editing or deleting entries directly from the table interface.
+
+### 🛢️ **MariaDB Source Connector**
+The MariaDB source connector is here! Pull data directly from MariaDB databases into Multiwoven for seamless integration into your data workflows.
+
+### 🛠️ **Sync Records Error Log**
+A detailed error log feature has been added to sync records, providing granular visibility into issues that occur during sync operations. Troubleshooting just got a whole lot easier!
+
+### 🛠️ **Model Query Type - Table Selector**
+The table selector is now available as a model query type, offering enhanced flexibility in defining queries and working with your data models.
+
+### 🔄 **Force Catalog Refresh**
+Set the refresh flag to true, and the catalog will be forcefully refreshed. This ensures you're always working with the latest data, reducing the chances of outdated information impacting your operations.
+
+## 🔧 **Improvements**
+
+- **Manual Sync Delete API Call**: Enhanced the API call for deleting manual syncs for smoother operations.
+- **Server Error Handling**: Improved error handling to better display server errors when data fetches return empty results.
+- **Heartbeat Timeout in Extractor**: Introduced new actions to handle heartbeat timeouts in extractors for improved reliability.
+- **Sync Run Type Column**: Added a `sync_run_type` column in sync logs for better tracking and operational clarity.
+- **Refactor Discover Stream**: Refined the discover stream process, leading to better efficiency and reliability.
+- **DuckDB HTTPFS Extension**: Introduced server installation steps for the DuckDB `httpfs` extension.
+- **Temporal Initialization**: Temporal processes are now initialized in all registered namespaces, improving system stability.
+- **Password Reset Email**: Updated the reset password email template and validation for a smoother user experience.
+- **Organization Model Changes**: Applied structural changes to the organization model, enhancing functionality.
+- **Log Response Validation**: Added validation to log response bodies, improving error detection.
+- **Missing DuckDB Dependencies**: Resolved missing dependencies for DuckDB, ensuring smoother operations.
+- **STS Client Initialization**: Removed unnecessary credential parameters from STS client initialization, boosting security.
+- **Main Layout Error Handling**: Added error screens for the main layout to improve user experience when data is missing or errors occur.
+- **Server Gem Updates**: Upgraded server gems to the latest versions, enhancing performance and security.
+- **AppSignal Logging**: Enhanced AppSignal logging by including app request and response logs for better monitoring.
+- **Sync Records Table**: Added a dedicated table for sync records to improve data management and retrieval.
+- **AWS S3 Connector**: Improved handling of S3 credentials and added support for STS credentials in AWS S3 connectors.
+- **Sync Interval Dropdown Fix**: Fixed an issue where the sync interval dropdown text was hidden on smaller screens.
+- **Form Data Processing**: Added a pre-check process for form data before checking connections, improving validation and accuracy.
+- **S3 Connector ARN Support**: Updated the gem to support ARN-based authentication for S3 connectors, enhancing security.
+- **Role Descriptions**: Updated role descriptions for clearer understanding and easier management.
+- **JWT Secret Configuration**: JWT secret is now configurable from environment variables, boosting security practices.
+- **MariaDB README Update**: Updated the README file to include the latest information on MariaDB connectors.
+- **Logout Authorization**: Streamlined the logout process by skipping unnecessary authorization checks.
+- **Sync Record JSON Error**: Added a JSON error field in sync records to enhance error tracking and debugging.
+- **MariaDB DockerFile Update**: Added `mariadb-dev` to the DockerFile to better support MariaDB integrations.
+- **Signup Error Response**: Improved the clarity and detail of signup error responses.
+- **Role Policies Update**: Refined role policies for enhanced access control and security.
+- **Pundit Policy Enhancements**: Applied Pundit policies at the role permission level, ensuring robust authorization management.
+
