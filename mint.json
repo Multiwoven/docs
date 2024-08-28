@@ -81,7 +81,11 @@
     },
     {
       "group": "Release Notes",
-      "pages": ["release-notes/2024"]
+      "pages": [
+        "release-notes/2024",
+        "release-notes/July_2024",
+        "release-notes/August_2024"
+      ]
     },
     {
       "group": "Troubleshooting",
