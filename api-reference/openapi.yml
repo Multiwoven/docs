@@ -552,6 +552,25 @@ paths:
         - Connectors
       security:
         - bearerAuth: []
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector
+        - name: category
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - data
+              - ai_ml
+          description: Category of the connector
       responses:
         "200":
           description: A list of connectors
