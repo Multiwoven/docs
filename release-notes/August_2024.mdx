@@ -4,94 +4,97 @@ description: ' Multiwoven Release updates for the month of August'
 
 ---
 
-**Features** 
 
-Enable/disable sync - This feature will allow users to enable or disable a Sync. A disabled sync won’t execute regardless of the configured schedule. This helps the user to effectively stop a sync from executing without the need of deleting it. 
+## 🚀 **New Features**
 
-Databricks AI Model connector - Users can Connect [Databricks AI models](https://docs.squared.ai/guides/data-integration/sources/databricks-model) through Multiwoven for AI Activation. 
+### 🔄 **Enable/Disable Sync**
+We’ve introduced the ability to enable or disable a sync. When a sync is disabled, it won’t execute according to its schedule, allowing you to effectively pause it without the need to delete it. This feature provides greater control and flexibility in managing your sync operations.
 
-Destination Microsoft Excel - [Microsoft Excel](https://docs.squared.ai/guides/data-integration/destinations/productivity-tools/microsoft-excel) now avaiable as destination connector for users wanting to have their modelled data delivered to Microsoft Excel sheets. 
+### 🧠 **Databricks AI Model Connector**
+Multiwoven now integrates seamlessly with [Databricks AI models](https://docs.squared.ai/guides/data-integration/sources/databricks-model). This connection allows users to activate AI models directly through Multiwoven, enhancing your data processing and analytical capabilities with cutting-edge AI tools.
 
-Sync Run Type - Users are able to view sync types as in General or Test on the Syncs Tab.
+### 📊 **Destination: Microsoft Excel**
+You can now use [Microsoft Excel](https://docs.squared.ai/guides/data-integration/destinations/productivity-tools/microsoft-excel) as a destination connector. Deliver your modeled data directly to Excel sheets for in-depth analysis or reporting. This addition simplifies workflows for those who rely on Excel for their data presentation and analysis needs.
 
-Test sync extractor changes
+### ✅ **Triggering Test Sync**
+Before running a full sync, users can now initiate a test sync to verify that everything is functioning as expected. This feature ensures that potential issues are caught early, saving time and resources.
 
-Oracle DB is now part of the destination connectors. Users can Select Destinations on the UI, goto Add Destination, Select Oracle and fill in all the details of the Database. [Oracle DB Source](https://docs.squared.ai/guides/data-integration/sources/oracle)   
+### 🏷️ **Sync Run Type**
+Sync types are now clearly labeled as either "General" or "Test" in the Syncs Tab. This enhancement provides clearer context for each sync operation, making it easier to distinguish between different sync runs.
 
-Oracle DB is now part of the Source connectors too. Users can Select Sources on the UI, goto Add Source, Select Oracle and fill in all the details of the DB. [Oracle DB Destination](https://docs.squared.ai/guides/data-integration/destinations/database/oracle)
+### 🛢️ **Oracle DB as a Destination Connector**
+[Oracle DB](https://docs.squared.ai/guides/data-integration/destinations/database/oracle) is now available as a destination connector. Users can navigate to **Add Destination**, select **Oracle**, and input the necessary database details to route data directly to Oracle databases.
 
+### 🗄️ **Oracle DB as a Source Connector**
+[Oracle DB](https://docs.squared.ai/guides/data-integration/sources/oracle) has also been added as a source connector. Users can pull data from Oracle databases by navigating to **Add Source**, selecting **Oracle**, and entering the database details.
 
+---
 
-**Improvements**  
+## 🔧 **Improvements**
 
-Catalog creation via API 
+### **Catalog Creation via API**
+Enhanced API support for catalog creation, streamlining workflows for developers and system integrators by automating catalog management.
 
-Calalog update api
+### **Catalog Update API**
+The catalog update API has been improved, enabling more seamless updates to existing catalogs, ensuring that your data is always current.
 
-Correction in databricks model connection_spec
+### **Databricks Model Connection Specification**
+We corrected the connection specification for Databricks models, resulting in smoother and more reliable integrations with Databricks.
 
-Memory bloat issue in sync
+### **Memory Bloat Issue in Sync**
+Resolved an issue where memory bloat was affecting sync performance over time, ensuring more stable and efficient sync operations.
 
-Fix discover and table url
+### **Discover and Table URL Fix**
+Fixed issues with discovering and accessing table URLs, enhancing the reliability and accuracy of data retrieval processes.
 
-Added disable to fields
+### **Disable to Fields**
+Added the option to disable fields where necessary, giving users more customization options to fit their specific needs.
 
-Update the query_source response
+### **Query Source Response Update**
+Updated the query source response mechanism, improving data handling and accuracy in data query operations.
 
-Fix oci8 version
+### **OCI8 Version Fix**
+Resolved issues related to the OCI8 version, ensuring better compatibility and smoother database interactions.
 
-Update user read permission
+### **User Read Permission Update**
+Updated user read permissions to enhance security and provide more granular control over data access.
 
-Update server gem
+### **Server Gem Updates**
+Upgraded server gems to versions `0.5.2` and `0.6.0`, resulting in improved performance, stability, and security.
 
-Update connector name
+### **Connector Name Update**
+Updated connector names across the platform to ensure better clarity and consistency, making it easier to manage and understand your integrations.
 
-Remove account verify route
+### **Account Verification Route Removal**
+Streamlined the user signup process by removing the account verification route, reducing friction for new users.
 
-Connector creation process
+### **Connector Creation Process**
+Refined the connector creation process, making it more intuitive and user-friendly, thus reducing the learning curve for new users.
 
-Update README
+### **README Update**
+The README file has been updated to reflect the latest changes and enhancements, providing more accurate and helpful guidance.
 
-Add request response log for Klaviyo
+### **Request/Response Logs Added**
+We’ve added request/response logs for multiple connectors, including Klaviyo, HTTP, Airtable, Slack, MariaDB, Google Sheets, Iterable, Zendesk, HubSpot, Stripe, and Salesforce CRM, improving debugging and traceability.
 
-Add request response log for HTTP
+### **Logger Issue in Sync**
+Addressed a logging issue within sync operations, ensuring that logs are accurate and provide valuable insights.
 
-Add request response log for Airtable
+### **Main Layout Protected**
+Wrapped the main layout with a protector, enhancing security and stability across the platform.
 
-Add request response log for Slack
+### **User Email Verification**
+Implemented email verification during signup using Devise, increasing account security and ensuring that only verified users have access.
 
-Add request response log for MariaDB
+### **Databricks Datawarehouse Name Change**
+Renamed the Databricks connection to "Databricks Datawarehouse" for improved clarity and better alignment with user expectations.
 
-Add request response log for Google Sheets
+### **Integration Gem Update**
+Updated the integration gem to version `0.7.1`, bringing in enhanced features, performance improvements, and bug fixes.
 
-Add request response log for Iterable
+### **Version Upgrade to 0.9.1**
+The platform has been upgraded to version `0.9.1`, incorporating all the above features and improvements, ensuring a more robust and feature-rich experience.
 
-Add request response log for Zendesk
-
-Lazy init temporal after puma worker boot
-
-Logger issue in sync
-
-Wrapped main layout with protector
-
-Verify user mail in signup using devise
-
-Update server gem 0.5.2
-
-Update gem 0.6.0
-
-Change name to databricks datawarehouse
-
-Update integration gem 0.7.1
-
-Add request response log for Hubspot 
-
-Add request response log for Stripe 
-
-Add request response log for SalesforceCrm 
-
-Upgrade version to 0.9.1 
-
-Refactor error message to agreed standard 
-
+### **Error Message Refactoring**
+Refactored error messages to align with agreed-upon standards, resulting in clearer and more consistent communication across the platform.
 
