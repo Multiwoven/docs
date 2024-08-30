@@ -177,7 +177,12 @@
     
     {
       "group": "AI & ML Integrations",
-      "pages": ["guides/ai-ml-integration/overview"]
+      "pages": [
+          "guides/ai-ml-integration/overview",
+          "guides/ai-ml-integration/Models",
+          "guides/ai-ml-integration/Sources",
+          "guides/ai-ml-integration/Data_Apps"
+      ]
     },
 
     {
