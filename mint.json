@@ -134,7 +134,7 @@
             "guides/data-integration/sources/oracle",
             "guides/data-integration/sources/amazon_s3",
             "guides/data-integration/sources/databricks-model",
-            "guides/data-integration/sources/aws-sagemaker-model"
+            "guides/data-integration/sources/aws_sagemaker-model"
           ]
         },
         {
