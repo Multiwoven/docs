@@ -1,6 +1,7 @@
 ---
 title: 'Sources'
-description: " "
+description: "AI/ML sources refer to datasets or repositories of information that serve as inputs for Artificial Intelligence (AI) and Machine Learning (ML) models. These sources provide the data needed to train, validate, and test AI/ML models, enabling them to make accurate predictions and informed decisions. Connect your AI/ML sources to the AI Squared application by following the steps outlined below."
+icon: 'database'
 ---
 
 <img
@@ -9,4 +10,58 @@ description: " "
   alt=""
 />
 
-<Note>Watch out for this space, **Sources** coming soon!</Note>
+<Steps>
+
+  <Step title="Step 1">
+    Navigate to the <strong>Sources</strong> section in the AISquared application. Click on the <strong>Add Source</strong> button located in the top right corner of the screen to begin adding a new data source.
+  </Step>
+
+  <Step title="Step 2">
+    From the list of available connectors, select the <strong>AI/ML Source</strong> connector that you wish to connect to. This allows you to integrate with various AI/ML data sources.
+  </Step>
+
+  <Step title="Step 3">
+    To establish a connection to your chosen endpoint, fill in the following details:
+    <ul>
+      <li><strong>Endpoint Name:</strong> A unique name to identify this endpoint.</li>
+      <li><strong>URL:</strong> The endpoint's URL where the data can be accessed.</li>
+      <li><strong>Authentication:</strong> Select the type of authentication required for accessing the endpoint.</li>
+      <li><strong>Auth Header:</strong> Provide the authentication header if needed.</li>
+      <li><strong>Secret Key:</strong> Enter the secret key for secure access.</li>
+    </ul>
+    Additionally, provide a sample <strong>Request Format</strong> and <strong>Response Format</strong> to define how data will be sent to and received from the endpoint.
+  </Step>
+
+  <Step title="Step 4">
+    After entering the necessary details, test the connection by clicking on the <strong>Test Connection</strong> button. Ensure that you receive a "Connection Successful" response, indicating that the endpoint is correctly configured.
+  </Step>
+
+  <Step title="Step 5">
+    Provide a name for your new source, and add a brief description that explains its purpose or any relevant details. This will help in identifying the source later.
+  </Step>
+
+  <Step title="Step 6">
+    Define the input schema for the data by specifying the following:
+    <ul>
+      <li><strong>Name:</strong> The name of each key in the payload (as defined in the request format).</li>
+      <li><strong>Type:</strong> The data type for each key (e.g., String, Integer, Float, Boolean).</li>
+      <li><strong>Value:</strong> Indicate whether the value is dynamic (changes over time) or static (remains constant).</li>
+    </ul>
+    This schema will structure the data that is input into your AI/ML models.
+  </Step>
+
+  <Step title="Step 7">
+    Similarly, define the output schema by specifying the following:
+    <ul>
+      <li><strong>Field Name:</strong> The name of each key in the output payload (as defined in the response format).</li>
+      <li><strong>Type:</strong> The data type for each key (e.g., String, Integer, Float, Boolean).</li>
+    </ul>
+    This schema will structure the data that your AI/ML model will output.
+  </Step>
+
+</Steps>
+
+---
+
+**Conclusion:**  
+Once the source is created, it will be displayed in the **Sources** list with a tag labeled **AI/ML** to easily differentiate it from other types of sources.
