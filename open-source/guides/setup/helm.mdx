@@ -3,6 +3,14 @@ title: 'Helm Charts	'
 description: ''
 ---
 
+## Description:
+This helm chart is designed to deploy the AI Squared Platform 2.0 into a Kubernetes cluster. The Platform is cloud-agnostic and can be deployed successfully into
+any Kubernetes cluster, including Azure Kubernetes Service, Elastic Kubernetes Service, Microk8s, etc. Along with the platform containers, there are also a couple of
+additional support tools to simplify and automate the installation process. These include: nginx-ingress to expose the platform to users, cert-manager to automate the
+creation and renewal of TLS certificates, horizontal-pod scaling resources that are configured to trigger scale-out and scale-in events based on the CPU and memory utilization of the pods.
+
+For monitoring, the templates can be updated to push container logs to CloudWatch, Azure Monitor or any logging solution of your choosing. More info on this coming soon.
+
 ## Prerequisites:
 - Access to a DNS record set
 - Kubernetes cluster
