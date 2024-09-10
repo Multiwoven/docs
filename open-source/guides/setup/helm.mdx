@@ -4,12 +4,17 @@ description: ''
 ---
 
 ## Description:
-This helm chart is designed to deploy the AI Squared Platform 2.0 into a Kubernetes cluster. The Platform is cloud-agnostic and can be deployed successfully into
-any Kubernetes cluster, including Azure Kubernetes Service, Elastic Kubernetes Service, Microk8s, etc. Along with the platform containers, there are also a couple of
-additional support tools to simplify and automate the installation process. These include: nginx-ingress to expose the platform to users, cert-manager to automate the
-creation and renewal of TLS certificates, horizontal-pod scaling resources that are configured to trigger scale-out and scale-in events based on the CPU and memory utilization of the pods.
+This helm chart is designed to deploy AI Squared's Platform 2.0 into a Kubernetes cluster. 
 
-For monitoring, the templates can be updated to push container logs to CloudWatch, Azure Monitor or any logging solution of your choosing. More info on this coming soon.
+Platform 2.0 is cloud-agnostic and can be deployed successfully into any Kubernetes cluster, including clusters deployed via Azure Kubernetes Service, Elastic Kubernetes Service, Microk8s, etc. 
+
+Along with the platform containers, there are also a couple of additional support resources added to simplify and further automate the installation process. These include: the **nginx-ingress resources** to expose the platform to end-users and **cert-manager** to automate the
+creation and renewal of TLS certificates.
+
+### Coming Soon!
+We have a couple of useful features that are still in development that will further promote high availability, scalability and visibility into the platform pods! 
+
+These features include **horizontal-pod autoscaling** based on pod CPU and memory utilization as well as in-cluster instances of both **Prometheus** and **Grafana**. 
 
 ## Prerequisites:
 - Access to a DNS record set
