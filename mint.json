@@ -84,7 +84,9 @@
       "pages": [
         "release-notes/2024",
         "release-notes/July_2024",
-        "release-notes/August_2024"
+        "release-notes/August_2024",
+        "release-notes/May_2024",
+        "release-notes/June_2024"
       ]
     },
     {
@@ -177,12 +179,11 @@
     },
     
     {
-      "group": "AI & ML Integrations",
+      "group": "AI Activation",
       "pages": [
-          "guides/ai-ml-integration/overview",
-          "guides/ai-ml-integration/Models",
-          "guides/ai-ml-integration/Sources",
-          "guides/ai-ml-integration/Data_Apps"
+          "guides/ai-activation/Models",
+          "guides/ai-activation/Sources",
+          "guides/ai-activation/Data_Apps"
       ]
     },
 
