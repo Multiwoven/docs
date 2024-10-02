@@ -336,9 +336,7 @@
     },
     {
       "group": "FAQs",
-      "pages": ["help-and-resources/faqs/questions",
-                "help-and-resources/faqs/security"
-    ]
+      "pages": ["help-and-resources/faqs/questions"]
     }
   ],
   "footerSocials": {
