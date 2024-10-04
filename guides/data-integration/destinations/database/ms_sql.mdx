@@ -1,0 +1,53 @@
+---
+title: "MicrosoftSQL"
+description: "Microsoft SQL Server (Structured Query Language) is a proprietary relational database management system developed by Microsoft. As a database server, it is a software product with the primary function of storing and retrieving data as requested by other software applications—which may run either on the same computer or on another computer across a network."
+---
+
+## Setting MS SQL Connector in AI Squared
+
+To integrate Microsoft SQL with AI Squared, you need to establish a destination connector.
+This connector will enable AI Squared to load data from various sources efficiently.
+Below are the steps to set up the MS SQL Destination connector in AI Squared:
+
+### Step 1: Access AI Squared
+
+- Log in to your AI Squared account.
+- Navigate to the `destinations` section where you can manage your destinations.
+
+### Step 2: Create a New destination Connector
+
+- Click on the `Add destination` button.
+- Select `Microsoft SQL` from the list of available destination types.
+
+### Step 3: Configure Connection Settings
+
+You'll need to provide the following details to establish a connection between AI Squared and your MicrosoftSQL Database:
+
+`Host` The hostname or IP address of the server where your MicrosoftSQL database is hosted.
+
+`Port` The port number on which your MicrosoftSQL server is listening (default is 1433).
+
+`Database` The name of the database you want to connect to.
+
+`Schema` The schema within your MicrosoftSQL database you wish to access. The default schema for Microsoft SQL Server is dbo. 
+
+`Username` The username used to access the database.
+
+`Password` The password associated with the username.
+
+Enter these details in the respective fields on the connector configuration page and press continue.
+
+### Step 4: Test the Connection
+
+- Once you've entered the necessary information. The next step is automated **Test Connection** feature to ensure that AI Squared can successfully connect to your MicrosoftSQL database.
+- If the test is successful, you'll receive a confirmation message. If not, double-check your entered details for any errors.
+
+### Step 5: Finalize the destination Connector Setup
+
+- Save the connector settings to establish the destination connection.
+
+## Notes
+
+- The Azure SQL Database firewall is a security feature that protects customer data by blocking access to the SQL Database server by default. To allow access, users can configure firewall rules to specify which IP addresses are permitted to access the database. https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure?view=azuresql
+
+- Your credentials must be able to: Add/update/delete rows in your sync's table.
