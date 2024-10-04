@@ -51,3 +51,9 @@ Enter these details in the respective fields on the connector configuration page
 - The Azure SQL Database firewall is a security feature that protects customer data by blocking access to the SQL Database server by default. To allow access, users can configure firewall rules to specify which IP addresses are permitted to access the database. https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure?view=azuresql
 
 - Your credentials must be able to: Add/update/delete rows in your sync's table.
+
+- Get the connection information you need to connect to the database in Azure SQL Database. You'll need the fully qualified server name or host name, database name, and login information for the connection setup.
+  - Sign in to the Azure portal.
+  - Navigate to the SQL Databases or SQL Managed Instances page.
+  - On the Overview page, review the fully qualified server name next to Server name for the database in Azure SQL Database or the fully qualified server name (or IP address) next to Host for an Azure SQL Managed Instance or SQL Server on Azure VM. To copy the server name or host name, hover over it and select the Copy icon.
+  - More info at https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-content-reference-guide?view=azuresql
