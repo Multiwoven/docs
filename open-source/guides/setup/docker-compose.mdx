@@ -1,143 +1,75 @@
 ---
-title: 'Docker'
-description: 'Deploying Multiwoven using Docker'
+title: 'Docker-Compose'
+description: 'Deploying Multiwoven using Docker-Compose'
 ---
 
-Below steps will guide you through deploying Multiwoven on a server using Docker Compose. We require PostgreSQL database to store meta data for Multiwoven. We will use Docker Compose to deploy Multiwoven and PostgreSQL.
-
-<Tip>Note: If you are setting up Multiwoven on your local machine, you can skip this section and refer to [Local Setup](/guides/setup/docker-compose-dev) section.</Tip>
+The steps below will guide you through deploying Multiwoven using docker-compose.
 
 ## Prerequisites
-
+- [A Gmail account with an app password](https://support.google.com/accounts/answer/185833?hl=en)
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 <Info> All our Docker images are available in x86_64 architecture, make sure your server supports x86_64 architecture.</Info>
 
-## Deployment options
-
-Multiwoven can be deployed using two different options for PostgreSQL database.
-
-<Tabs>
-  <Tab title="In-built PostgreSQL">
-
-  1. Create a new directory for Multiwoven and navigate to it.
-
-    ```bash
-    mkdir multiwoven
-    cd multiwoven
-    ```
-    2. Download the production `docker-compose.yml` file from the following link.
-    
-    ```bash
-    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
-    ```
-
-    3. Download the `.env.production` file from the following link.
-    
-    ```bash
-    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
-    ```
-
-    4. Rename the file .env.production to .env and update the environment variables if required.
-    
-    ```bash
-    mv .env.production .env
-    ```
-    
-    5. Start the Multiwoven using the following command.
-    
-    ```bash
-    docker-compose up -d
-    ```
-
-    6. Stopping Multiwoven
-
-    To stop the Multiwoven, use the following command.
-
-    ```bash
-    docker-compose down
-    ```
-
-    7. Upgrading Multiwoven
-
-    When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
-
-    ```bash
-    docker-compose pull && docker-compose up -d
-    ```
-    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
-
-  </Tab>
-  <Tab title="Cloud PostgreSQL">
-    
-    1. Create a new directory for Multiwoven and navigate to it.
-    
-        ```bash
-        mkdir multiwoven
-        cd multiwoven
-        ```
-        2. Download the production `docker-compose.yml` file from the following link.
-        
-        ```bash
-        curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose-cloud-postgres.yaml
-        ```
-        3. Rename the file .env.production to .env and update the **PostgreSQL** environment variables.
-
-        ```DB_HOST``` - Database Host
-
-        ```DB_USERNAME``` - Database Username
-
-        ```DB_PASSWORD``` - Database Password
-
-        The default port for PostgreSQL is 5432. If you are using a different port, update the ```DB_PORT``` environment variable.
-        
-        ```bash
-        mv .env.production .env
-        ```
-        
-        4. Start the Multiwoven using the following command.
-        
-        ```bash
-        docker-compose up -d
-        ```
-  </Tab>
-</Tabs>
-
-## Accessing Multiwoven
-
-Once the Multiwoven is up and running, you can access it using the following URL and port.
-
-Multiwoven Server URL:
-
-```http
-http://<server-ip>:3000
-```
-
-Multiwoven UI Service:
-
-```http
-http://<server-ip>:8000
-```
-
-<Info>If you are using a custom domain you can update the `API_HOST` and `UI_HOST` environment variable in the `.env` file.</Info>
-
-### Important considerations
-
-- Make sure to update the environment variables in the `.env` file before starting the Multiwoven.
-
-- Make sure to take regular **backups** of the PostgreSQL database.
-
-To restore the backup, you can use the following command.
-
+## Deployment Steps
+1. On your VM or Local Machine, you will need to first create a directory for the Multiwoven deployment files.
 ```bash
-cat dump.sql | docker exec -i --user postgres <postgres-container-name> psql -U postgres
+mkdir mw
+cd mw
 ```
+2. Create a self-signed certificate for psuedo-TLS and store them in a sub-directory named **certs**. Please use the command below and do not change the names of the cert and key files.
+```bash
+mkdir -p certs && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout certs/selfsigned.key -out certs/selfsigned.crt
+```
+3. Download the Multiwoven docker-compose assets
+```bash
+# docker-compose.yaml
+curl -O https://aiseepublicstorage.blob.core.windows.net/multiwoven-docker-compose/docker-compose.yaml
 
-- If you are using a custom domain, make sure to update the `API_HOST` and `UI_HOST` environment variables in the `.env` file.
+# nginx configuration file
+curl -O https://aiseepublicstorage.blob.core.windows.net/multiwoven-docker-compose/nginx.conf
 
+# platform environment variable file
+curl -O https://aiseepublicstorage.blob.core.windows.net/multiwoven-docker-compose/platform.env
 
+# temporal environment variable file
+curl -O https://aiseepublicstorage.blob.core.windows.net/multiwoven-docker-compose/temporal.env
+```
+4. Follow steps 5-8 to edit the platform.env and temporal.env environment variable files
+5. For the following variables, replace `0.0.0.0` with either **localhost** or the **ip address** of your virtual machine
+- ALLOWED_HOST="0.0.0.0"
+- API_HOST="https://0.0.0.0"
+- UI_HOST="https://0.0.0.0"
+- VITE_API_HOST="https://0.0.0.0"
 
+6. For the SECRET_KEY_BASE, use a random string of 32 characters.
+- SECRET_KEY_BASE="01010101010101010101010101010101"
 
+7. The following variables will allow the application to send you a single verification email during the account creation process. If you are using Gmail as recommended, you only need to change the following variables. For SMTP_SENDER and SMTP_USERNAME, you should use your gmail username/email address. For SMTP_PASSWORD, you should use an [app password](https://support.google.com/accounts/answer/185833?hl=en) associated with this gmail account. Note, your gmail account's default password will not work. You *must* create an app password.
+- SMTP_PASSWORD="000 111 222 333"
+- SMTP_SENDER_EMAIL=mw_test@gmail.com
+- SMTP_USERNAME=mw_test@gmail.com
 
+8. If you are not using Gmail, you will also need to update the following variables with the appropriate values for the email service that you are using.
+- SMTP_ADDRESS=smtp.gmail.com
+- SMTP_HOST=gmail.com
+- SMTP_PORT=587
 
+9. (Optional) The following changes are only required if you are using an external/cloud postgresql database.
+- DB_HOST=db
+- DB_PASSWORD=password
+- DB_PORT="5432"
+- DB_USERNAME=multiwoven
+
+10. (Optional) If you are using an external database, please comment out the following lines in the docker-compose.yaml file.
+- 59-65
+- 81
+- 103
+
+11. Once your envrionment variables have been updated, please run the following command to deploy the application:
+```bash
+docker-compose up -d
+```
+12. You should now be able to access your deployment using either `https://localhost` or `https://VM_IP_ADDRESS`. The nginx proxy will terminate TLS and route your requests back to the
+necessary services. You can also access the **Temporal UI** directly via `localhost:8080` or `VM_IP_ADDRESS:8080`.
