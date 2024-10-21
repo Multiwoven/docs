@@ -205,6 +205,7 @@ Happy Helming!
 | `multiwovenConfig.viteBrandColor`          | Community Theme Color.                                    |                                 |
 | `multiwovenConfig.viteBrandHoverColor`     | Community Theme Color On Hover.                           |                                 |
 | `multiwovenConfig.viteFavIconUrl`          | URL of Brand Favicon.                                     |                                 |
+| 'multiwovenConfig.workerHost`              | Worker host for the worker service.                       | 'worker.multiwoven.com'         |
 
 ### Multiwoven PostgreSQL Configuration
 
@@ -214,9 +215,9 @@ Happy Helming!
 | `multiwovenPostgresql.image.repository`      | Docker image repository for PostgreSQL.                       | `postgres`                       |
 | `multiwovenPostgresql.image.tag`             | Docker image tag for PostgreSQL.                              | `13`                             |
 | `multiwovenPostgresql.resources.limits.cpu`  | CPU resource limits for PostgreSQL pod.                       | `1`                              |
-| `multiwovenPostgresql.resources.limits.memory` | Memory resource limits for PostgreSQL pod.                   | `2Gi`                            |
+| `multiwovenPostgresql.resources.limits.memory` | Memory resource limits for PostgreSQL pod.                  | `2Gi`                            |
 | `multiwovenPostgresql.resources.requests.cpu` | CPU resource requests for PostgreSQL pod.                    | `500m`                           |
-| `multiwovenPostgresql.resources.requests.memory` | Memory resource requests for PostgreSQL pod.                | `1Gi`                            |
+| `multiwovenPostgresql.resources.requests.memory` | Memory resource requests for PostgreSQL pod.              | `1Gi`                            |
 | `multiwovenPostgresql.ports.name`            | Port name for PostgreSQL service.                             | `postgres`                       |
 | `multiwovenPostgresql.ports.port`            | Port number for PostgreSQL service.                           | `5432`                           |
 | `multiwovenPostgresql.ports.targetPort`      | Target port for PostgreSQL service within the pod.            | `5432`                           |
@@ -251,7 +252,11 @@ Happy Helming!
 | `multiwovenWorker.resources.limits.memory`   | Memory resource limits for Multiwoven worker pod.             | `1Gi`                            |
 | `multiwovenWorker.resources.requests.cpu`    | CPU resource requests for Multiwoven worker pod.              | `500m`                           |
 | `multiwovenWorker.resources.requests.memory` | Memory resource requests for Multiwoven worker pod.           | `512Mi`                          |
+| `multiwovenWorker.ports.name`                | Port name for Multiwoven worker service.                      | `4567`                           |
+| `multiwovenWorker.ports.port`                | Port number for Multiwoven worker service.                    | `4567`                           |
+| `multiwovenWorker.ports.targetPort`          | Target port for Multiwoven worker service within the pod.     | `4567`                           |
 | `multiwovenWorker.replicas`                  | Number of Multiwoven worker pod replicas.                     | `1`                              |
+| `multiwovenWorker.type`                      | Service type for Multiwoven worker.                           | `ClusterIP`                      |
 
 ### Persistent Volume Claim (PVC)
 
