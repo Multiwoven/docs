@@ -27,22 +27,22 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
     mkdir multiwoven
     cd multiwoven
     ```
-    2. Download the production `docker-compose.yml` file from the following link.
+    2. Download the production `docker-compose.yaml` file from the following link.
     
     ```bash
-    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
+    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml
     ```
 
-    3. Download the `.env.production` file from the following link.
+    3. Download the `.env.example` file from the following link.
     
     ```bash
-    curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
+    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/.env.example
     ```
 
-    4. Rename the file .env.production to .env and update the environment variables if required.
+    4. Rename the file .env.example to .env and update the environment variables if required.
     
     ```bash
-    mv .env.production .env
+    mv .env.example .env
     ```
     
     5. Start the Multiwoven using the following command.
@@ -66,7 +66,7 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
     ```bash
     docker-compose pull && docker-compose up -d
     ```
-    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yml` file is present.</Tip>
+    <Tip> Make sure to run the above command from the same directory where the `docker-compose.yaml` file is present.</Tip>
 
   </Tab>
   <Tab title="Cloud PostgreSQL">
@@ -77,12 +77,12 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
         mkdir multiwoven
         cd multiwoven
         ```
-        2. Download the production `docker-compose.yml` file from the following link.
+        2. Download the production `docker-compose.yaml` file from the following link.
         
         ```bash
-        curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose-cloud-postgres.yaml
+        curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml
         ```
-        3. Rename the file .env.production to .env and update the **PostgreSQL** environment variables.
+        3. Rename the file .env.example to .env and update the **PostgreSQL** environment variables.
 
         ```DB_HOST``` - Database Host
 
@@ -93,7 +93,7 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
         The default port for PostgreSQL is 5432. If you are using a different port, update the ```DB_PORT``` environment variable.
         
         ```bash
-        mv .env.production .env
+        mv .env.example .env
         ```
         
         4. Start the Multiwoven using the following command.
