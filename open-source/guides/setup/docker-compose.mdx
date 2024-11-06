@@ -30,13 +30,13 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
     2. Download the production `docker-compose.yaml` file from the following link.
     
     ```bash
-    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml
+    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml && echo "Downloaded docker-compose.yaml successfully" || echo "Failed to download docker-compose.yaml"
     ```
 
     3. Download the `.env.example` file from the following link.
     
     ```bash
-    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/.env.example
+    curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/.env.example && echo "Downloaded .env.example successfully" || echo "Failed to download .env.example"
     ```
 
     4. Rename the file .env.example to .env and update the environment variables if required.
@@ -80,7 +80,7 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
         2. Download the production `docker-compose.yaml` file from the following link.
         
         ```bash
-        curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml
+        curl -LO https://aiseepublicstorage.blob.core.windows.net/mw-public-main/docker-compose.yaml && echo "Downloaded docker-compose.yaml successfully" || echo "Failed to download docker-compose.yaml"
         ```
         3. Rename the file .env.example to .env and update the **PostgreSQL** environment variables.
 
