@@ -1,0 +1,161 @@
+
+
+## Setting Up the Mailchimp Connector in AI Squared
+
+To integrate Mailchimp with AI Squared, you need to establish a destination connector. This connector will allow AI Squared to sync data efficiently from various sources to Mailchimp.
+
+---
+
+## Step 1: Access AI Squared
+
+1. Log in to your **AI Squared** account.
+2. Navigate to the **Destinations** section to manage your destination connectors.
+
+
+## Step 2: Create a New Destination Connector
+
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/zabdi90se75ehy0w1vhu" />
+</Frame>
+
+1. Click on the **Add Destination** button.
+2. Select **Mailchimp** from the list of available destination types.
+
+
+## Step 3: Configure Connection Settings
+
+To establish a connection between AI Squared and Mailchimp, provide the following details:
+
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/eyt4nbbzjwdnomq72qpf" />
+</Frame>
+
+1. **API Key**
+   - Used to authenticate your Mailchimp account.
+   - Generate this key in your Mailchimp account under `Account > Extras > API Keys`.
+
+2. **List ID**
+   - The unique identifier for the specific audience (mailing list) you want to target in Mailchimp.
+   - Find your Audience ID in Mailchimp by navigating to `Audience > Manage Audience > Settings > Audience name and defaults`.
+
+3. **Email Template ID**
+   - The unique ID of the email template you want to use for campaigns or automated emails in Mailchimp.
+   - Locate or create templates in the **Templates** section of Mailchimp. The ID is retrievable via the Mailchimp API or from the template’s settings.
+
+Enter these parameters in their respective fields on the connector configuration page and press **Continue** to proceed.
+
+
+## Step 4: Test the Connection
+
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/qzf8qecchcr3vdtiskgu" />
+</Frame>
+
+1. Use the **Test Connection** feature to ensure AI Squared can successfully connect to your Mailchimp account.
+2. If the test is successful, you’ll receive confirmation.
+3. If unsuccessful, recheck the entered information.
+
+
+## Step 5: Finalize the Destination Connector Setup
+
+1. Save the connector settings to establish the Mailchimp destination connection.
+
+<Frame>
+   <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/gn1jbkrh7h6gsgldh3ct" />
+</Frame>
+
+---
+
+## Setting Up a Model for Mailchimp
+
+To sync data to Mailchimp, you first need to prepare your data by creating a model based on the source data. Here's how:
+
+1. **Review Your Source Data**
+    Identify the key fields you need from the source (e.g., email, first name, last name, and tags).
+
+2. **Create the Model**
+    Select the necessary fields from your source.
+    Map these fields to match Mailchimp’s required parameters, such as `email`, `merge_fields.FNAME` (first name), and `tags.0`.
+
+3. **Save and Validate**
+    Ensure the model is structured properly and contains clean, valid data.
+
+4. **Sync the Model**
+    Use the model as the basis for setting up your sync to Mailchimp.
+    Map fields from the model to the corresponding Mailchimp parameters during sync configuration.
+
+This step ensures your data is well-structured and ready to integrate with Mailchimp seamlessly.
+
+---
+
+## Configuring the Mapping for Mailchimp
+
+When creating a sync for the Mailchimp destination connector, the following parameters can be mapped to enhance data synchronization and segmentation capabilities:
+
+### Core Parameters
+
+1. `email`  
+   **Description**: The email address of the subscriber.  
+   **Purpose**: Required to uniquely identify and add/update contacts in a Mailchimp audience.
+
+2. `status`  
+   **Description**: The subscription status of the contact.  
+   **Purpose**: Maintains accurate subscription data for compliance and segmentation.  
+   **Options**:  
+      - `subscribed` – Actively subscribed to the mailing list.  
+      - `unsubscribed` – Opted out of the list.  
+      - `cleaned` – Undeliverable address.  
+      - `pending` – Awaiting confirmation (e.g., double opt-in).
+
+### Personalization Parameters
+
+1. `first_name`  
+   **Description**: The first name of the contact.  
+   **Purpose**: Used for personalization in email campaigns.
+
+2. `last_name` 
+   **Description**: The last name of the contact.  
+   **Purpose**: Complements personalization for formal messaging.
+
+3. `merge_fields.FNAME`  
+   **Description**: Merge field for the first name of the contact.  
+   **Purpose**: Enables advanced personalization in email templates (e.g., "Hello, |FNAME|!").
+
+4. `merge_fields.LNAME`  
+   **Description**: Merge field for the last name of the contact.  
+   **Purpose**: Adds dynamic content based on the last name.
+
+### Segmentation Parameters
+
+1. `tags.0`  
+   **Description**: A tag assigned to the contact.  
+   **Purpose**: Enables grouping and segmentation within the Mailchimp audience.
+
+2. `vip`  
+   **Description**: Marks the contact as a VIP (true or false).  
+   **Purpose**: Identifies high-priority contacts for specialized campaigns.
+
+3. `language`  
+   **Description**: The preferred language of the contact using an ISO 639-1 code (e.g., `en` for English, `fr` for French).  
+   **Purpose**: Supports localization and tailored communication for multilingual audiences.
+
+### Compliance and Tracking Parameters
+
+1. `ip_opt`  
+   **Description**: The IP address from which the contact opted into the list.  
+   **Purpose**: Ensures regulatory compliance and tracks opt-in origins.
+
+2. `ip_signup`  
+   **Description**: The IP address where the contact originally signed up.  
+   **Purpose**: Tracks the geographical location of the signup for analytics and compliance.
+
+3. `timestamp_opt`  
+   **Description**: The timestamp when the contact opted into the list (ISO 8601 format).  
+   **Purpose**: Provides a record for regulatory compliance and automation triggers.
+
+4. `timestamp_signup`  
+   **Description**: The timestamp when the contact signed up (ISO 8601 format).  
+   **Purpose**: Tracks the signup date for lifecycle and engagement analysis.
+
+
+---
