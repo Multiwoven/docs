@@ -179,7 +179,8 @@
             "guides/data-integration/destinations/database/maria_db",
             "guides/data-integration/destinations/database/oracle",
             "guides/data-integration/destinations/http/http",
-            "guides/data-integration/destinations/database/ms_sql"
+            "guides/data-integration/destinations/database/ms_sql",
+            "guides/data-integration/destinations/file-storage/amazon_s3"
           ]
         }
       ]
