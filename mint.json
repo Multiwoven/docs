@@ -82,16 +82,30 @@
     {
       "group": "Release Notes",
       "pages": [
-        "release-notes/2024",
-        "release-notes/May_2024",
-        "release-notes/June_2024",
-        "release-notes/July_2024",
-        "release-notes/August_2024",
-        "release-notes/September_2024",
-        "release-notes/October_2024",
-        "release-notes/November_2024",
-        "release-notes/December_2024"
-      ]
+        {
+          "group": "2025",
+          "icon": "bars",
+          "pages": [
+            "release-notes/2025",
+            "release-notes/January_2025"
+          ]
+        },
+        {
+          "group": "2024",
+          "icon": "bars",
+          "pages": [
+            "release-notes/2024",
+            "release-notes/May_2024",
+            "release-notes/June_2024",
+            "release-notes/July_2024",
+            "release-notes/August_2024",
+            "release-notes/September_2024",
+            "release-notes/October_2024",
+            "release-notes/November_2024",
+            "release-notes/December_2024"
+          ]
+        }
+      ]        
     },
     {
       "group": "Troubleshooting",
