@@ -1,0 +1,74 @@
+---
+title: January 2025 releases
+description: 'Release updates for the month of January'
+
+---
+
+## 🚀 Features
+
+- **Added Empty State for Feedback Overview Table**  
+  Introduces a default view when no feedback data is available, ensuring clearer guidance and intuitive messaging for end users.
+
+- **Custom Visual Component for Writing Data to Destination Connectors**  
+  Simplifies the process of sending or mapping data to various destination connectors within the platform’s interface.
+
+- **Azure Blob Storage Integration**  
+  Adds support for storing and retrieving data from Azure Blob, expanding available cloud storage options.
+
+- **Update Workflows to Deploy Solid Worker**  
+  Automates deployment of a dedicated worker process, improving back-end task management and system scalability.
+
+- **Chatbot Visual Type**  
+  Adds a dedicated visualization type designed for chatbot creation and management, enabling more intuitive configuration of conversational experiences.
+
+- **Trigger Sync Alerts / Sync Alerts**  
+  Implements a notification system to inform teams about the success or failure of data synchronization events in real time.
+
+- **Runner Script Enhancements for Chatbot**  
+  Improves the runner script’s capability to handle chatbot logic, ensuring smoother automated operations.
+
+- **Add S3 Destination Connector**  
+  Enables direct export of transformed or collected data to Amazon S3, broadening deployment possibilities for cloud-based workflows.
+
+- **Add SFTP Source Connector**  
+  Permits data ingestion from SFTP servers, streamlining workflows where secure file transfers are a primary data source.
+
+
+## 🐛 Bug Fixes
+
+- **Handle Chatbot Response When Streaming Is Off**  
+  Resolves an issue causing chatbot responses to fail when streaming mode was disabled, improving overall reliability.
+
+- **Sync Alert Issues**  
+  Fixes various edge cases where alerts either triggered incorrectly or failed to trigger for certain data sync events.
+
+- **UI Enhancements and Fixes**  
+  Addresses multiple interface inconsistencies, refining the user experience for navigation and data presentation.
+
+- **Validation for “Continue” CTA During Chatbot Creation**  
+  Ensures that all mandatory fields are properly completed before users can progress through chatbot setup.
+
+- **Refetch Data Model After Update**  
+  Corrects a scenario where updated data models were not automatically reloaded, preventing stale information in certain views.
+
+- **OpenAI Connector Failure Handling**  
+  Improves error handling and retry mechanisms for OpenAI-related requests, reducing the impact of transient network issues.
+
+- **Stream Fetch Fix for Salesforce**  
+  Patches a problem causing occasional timeouts or failed data streams when retrieving records from Salesforce.
+
+- **Radio Button Inconsistencies**  
+  Unifies radio button behavior across the platform’s interface, preventing unexpected selection or styling errors.
+
+- **Keep Reports Link Highlight**  
+  Ensures the “Reports” link remains visibly highlighted in the navigation menu, maintaining consistent visual cues.
+  
+
+## ⚙️ Miscellaneous Tasks
+
+- **Add Default Request and Response in Connection Configuration for OpenAI**  
+  Provides pre-populated request/response templates for OpenAI connectors, simplifying initial setup for users.
+
+- **Add Alert Policy to Roles**  
+  Integrates alert policies into user role management, allowing fine-grained control over who can create or modify data alerts.
+
