@@ -153,6 +153,7 @@
             "guides/data-integration/destinations/crm/salesforce",
             "guides/data-integration/destinations/crm/hubspot",
             "guides/data-integration/destinations/crm/zoho",
+            "guides/data-integration/destinations/crm/microsoft_dynamics",
             "guides/data-integration/destinations/marketing-automation/braze",
             "guides/data-integration/destinations/marketing-automation/clevertap",
             "guides/data-integration/destinations/marketing-automation/klaviyo",
