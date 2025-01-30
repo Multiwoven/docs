@@ -1,0 +1,75 @@
+---
+title: 'Microsoft Dynamics'
+description: ''
+---
+
+## Connect AI Squared to Microsoft Dynamics
+
+This guide will help you configure the Microsoft Dynamics Connector in AI Squared to access and transfer data to your Dynamics CRM.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary instance URL, tenant ID, application ID, and client secret from Azure Portal.
+
+## Step-by-Step Guide to Connect to Microsoft Dynamics
+
+## Step 1: Navigate to Azure Portal to create App Registration
+
+Start by logging into your Azure Portal.
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1738204195/Multiwoven/connectors/Microsoft%20Dynamics/Portal_Home_bcool0.png" />
+</Frame>
+
+1. Navigate to the Azure Portal and go to [App Registration](https://portal.azure.com/#home).
+2. Create a new registration
+3. Name the app registration and select single or multi-tenant, depending on the needs
+4. You can disregard the Redirect URI for now
+5. From the Overview screen, make note of the Application ID and the Tenant ID
+6. Under Manage on the left panel, select API Permissions
+7. Scroll down and select Dynamics CRM
+8. Check all available permissions and click Add Permissions
+9. Under Manage on the left panel, select Certificates and secrets
+10. Create a new client secret and make note of the Client Secret ID and the Client Secret Value
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1738204173/Multiwoven/connectors/Microsoft%20Dynamics/AppRegistrations_Home_ceo2es.png" />
+</Frame>
+
+## Step 2: Add App Registration as Application User for Dynamics 365
+
+When App Registration is created:
+
+1. Navigate to the Application Users screen in Power Platform
+2. At the top of the screen, select New App User
+3. When the New App User blade opens, click Add an app
+4. Find the name of your new App Registration and select Add
+5. Select the appropriate Business Unit
+6. Select appropriate Security Roles for your app, depending on its access needs
+7. Click Create
+
+## Step 3: Configure Microsoft Dynamics Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Instance URL:** The URL of your Microsoft Dynamics instance (e.g., https://**instance_url**.crm.dynamics.com).
+- **Application ID:** The unique identifier for your registered Azure AD application.
+- **tenant ID:** The unique identifier of your Azure AD directory (tenant) where the Dynamics instance is hosted.
+- **Client Secret:** The corresponding Secret Access Key.
+
+## Step 4: Test the Microsoft Dynamics Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Microsoft Dynamics from your application to ensure everything is set up correctly.
+
+By following these steps, you’ve successfully set up an Microsoft Dynamics destination connector in AI Squared. You can now efficiently transfer data to your Microsoft Dynamics endpoint for storage or further distribution within AI Squared.
+
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
