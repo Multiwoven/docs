@@ -7,10 +7,10 @@
   "name": "AI Squared",
   "isWhiteLabeled": true,
   "logo": {
-    "dark": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755522/AIS/aisquared_docs_-_logo_-_dark_d5iv0a.svg",
-    "light": "https://res.cloudinary.com/dspflukeu/image/upload/v1714755523/AIS/aisquared_docs_-_logo_-_light_uprxct.svg"
+    "dark": "/logo/ai-squared-docs-logo-dark.svg",
+    "light": "/logo/ai-squared-docs-logo-light.svg"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#00249c",
     "light": "#ffffff",
@@ -59,9 +59,7 @@
       "url": "release-notes"
     }
   ],
-  "anchors": [
- 
-  ],
+  "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
@@ -87,7 +85,8 @@
           "icon": "bars",
           "pages": [
             "release-notes/2025",
-            "release-notes/January_2025"
+            "release-notes/January_2025",
+            "release-notes/Feb-2025"
           ]
         },
         {
@@ -105,7 +104,7 @@
             "release-notes/December_2024"
           ]
         }
-      ]        
+      ]
     },
     {
       "group": "Troubleshooting",
@@ -129,7 +128,9 @@
           "icon": "retweet",
           "pages": [
             "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh", "guides/data-activation/sync-modes/incremental", "guides/data-activation/sync-modes/cursor-incremental"
+            "guides/data-activation/sync-modes/full-refresh",
+            "guides/data-activation/sync-modes/incremental",
+            "guides/data-activation/sync-modes/cursor-incremental"
           ]
         }
       ]
@@ -201,13 +202,13 @@
         }
       ]
     },
-    
+
     {
       "group": "AI Activation",
       "pages": [
-          "guides/ai-activation/Sources",
-          "guides/ai-activation/Models",
-          "guides/ai-activation/Data_Apps"
+        "guides/ai-activation/Sources",
+        "guides/ai-activation/Models",
+        "guides/ai-activation/Data_Apps"
       ]
     },
 
@@ -281,9 +282,7 @@
         },
         {
           "group": "Roles",
-          "pages": [
-            "api-reference/roles/get_roles"
-          ]
+          "pages": ["api-reference/roles/get_roles"]
         },
         {
           "group": "Catalogs",
@@ -294,7 +293,7 @@
         }
       ]
     },
-   
+
     {
       "group": "Architecture",
       "pages": [
@@ -311,9 +310,7 @@
         {
           "group": "Deploy Locally",
           "icon": "",
-          "pages": [
-            "open-source/guides/setup/docker-compose-dev"
-          ]
+          "pages": ["open-source/guides/setup/docker-compose-dev"]
         },
         {
           "group": "Production Deployment",
@@ -355,7 +352,10 @@
     },
     {
       "group": "Enterprise SaaS",
-      "pages": ["help-and-resources/enterprise-saas/overview","help-and-resources/enterprise-saas/self-hosting-enterprise"]
+      "pages": [
+        "help-and-resources/enterprise-saas/overview",
+        "help-and-resources/enterprise-saas/self-hosting-enterprise"
+      ]
     },
     {
       "group": "FAQs",
