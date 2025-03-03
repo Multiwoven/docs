@@ -39,7 +39,7 @@ export function openSearch() {
     </p>
     <button
       type="button"
-      className="mx-auto w-full flex items-center text-sm leading-6 shadow-sm text-gray-400 bg-white ring-1 ring-gray-400/20 focus:outline-primary"
+      className="mx-auto w-full flex items-center text-sm leading-6 shadow-sm text-gray-400 bg-white gap-2 ring-1 ring-gray-400/20 focus:outline-primary"
       id="home-search-entry"
       style={{
         maxWidth: '24rem',
@@ -75,12 +75,13 @@ export function openSearch() {
     textAlign: 'center',
     fontSize: '24px',
     fontWeight: '600',
-    color: '#121142',
     marginBottom: '3rem',
   }}
 >
-  Choose a topic below or simply{' '}
-  <a href="https://app.squared.ai" className="text-primary underline" style={{textUnderlineOffset: "5px"}}>get started</a>
+  <h1 className="text-black dark:text-white">
+    Choose a topic below or simply{' '}
+    <a href="https://app.squared.ai" className="text-primary underline" style={{textUnderlineOffset: "5px"}}>get started</a>
+  </h1>
 </div>
 
 <CardGroup cols={3}>
