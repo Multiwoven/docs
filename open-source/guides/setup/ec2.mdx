@@ -7,7 +7,7 @@ description: ""
 
 This guide walks you through setting up Multiwoven, on an AWS EC2 instance using Docker Compose. We'll cover launching the instance, installing Docker, running Multiwoven with its dependencies, and finally, accessing the Multiwoven UI.
 
-**Important Note:** at present, TLS is required. This means that to successfully deploy the Platform via docker-compose, you will need access to a DNS record set as well as the ability to obtain a valid TLS certificate from a Certificate Authority. You can obtain a free TLS certificates via tools like CertBot, Amazon Certificate Manager (if using an AWS Application Load Balancer to front an EC2 instance), letsencrypt-nginx-proxy-companion (if you add an nginx proxy to the docker-compose file to front the other services), etc.
+**Important Note:** At present, TLS is required. This means that to successfully deploy the Platform via docker-compose, you will need access to a DNS record set as well as the ability to obtain a valid TLS certificate from a Certificate Authority. You can obtain a free TLS certificates via tools like CertBot, Amazon Certificate Manager (if using an AWS Application Load Balancer to front an EC2 instance), letsencrypt-nginx-proxy-companion (if you add an nginx proxy to the docker-compose file to front the other services), etc.
 
 **Prerequisites:**
 
@@ -414,7 +414,7 @@ sudo nano .env
 **There are 3 required changes.**<br /><br />
 **(1)** Set the variable **VITE_API_HOST** so the UI knows to send requests to your **API subdomain**.<br /><br />
 **(2)** If not present already, add a variable **Track** and set its value to **no**.<br /><br />
-**(3)** If not present already, add a variable **ALLOWED_HOST**. The value for this is dependent on how you selected your subdomains earlier. This variable only allows for a single step down in subdomain so if, for instance, you selected ***app.mydomain.com***, ***api.mydomain.com*** and ***temporal.mydomain.com*** you would set the value to **.mydomain.com**. 
+**(3)** If not present already, add a variable **ALLOWED_HOST**. The value for this is dependent on how you selected your subdomains earlier. This variable only allows for a single step down in subdomain so if, for instance, you selected ***app.mydomain.com***, ***api.mydomain.com*** and ***temporal.mydomain.com*** you would set the value to **.mydomain.com**.
 
 If you selected ***app.c1.mydomain.com***, ***api.c1.mydomain.com*** and ***temporal.c1.mydomain.com*** you would set the value to **.c1.mydomain.com**.<br /><br />
 For simplicity, the remaining defaults are fine.

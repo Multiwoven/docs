@@ -1,7 +1,7 @@
 ---
 title: 'Google Cloud Compute Engine'
 description: ''
----		
+---
 
 ## Deploying Multiwoven on Google Cloud Platform using Docker Compose
 
@@ -69,7 +69,7 @@ REDIS_PASSWORD=your_redis_password
 **5. Run Multiwoven with Docker Compose:**
 
 **Start Multiwoven:** Navigate to the `multiwoven` directory and run.
-    
+
     ```bash
     docker-compose up -d
     ```
@@ -96,7 +96,7 @@ docker-compose down
 
 **Additional Notes:**
 
-<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3000, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
 
 * Depending on your firewall configuration, you might need to open port 8000 for inbound traffic.
 * For production deployments, consider using a managed load balancer and a Cloud SQL database instance for better performance and scalability.

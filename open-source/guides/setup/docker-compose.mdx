@@ -5,6 +5,8 @@ description: 'Deploying Multiwoven using Docker'
 
 Below steps will guide you through deploying Multiwoven on a server using Docker Compose. We require PostgreSQL database to store meta data for Multiwoven. We will use Docker Compose to deploy Multiwoven and PostgreSQL.
 
+**Important Note:** TLS is mandatory for deployment. To successfully deploy the Platform via docker-compose, you must have access to a DNS record and obtain a valid TLS certificate from a Certificate Authority. You can acquire a free TLS certificate using tools like CertBot, Let's Encrypt, or other ACME-based solutions. If using a reverse proxy (e.g., Nginx or Traefik), consider integrating an automated certificate management tool such as letsencrypt-nginx-proxy-companion or Traefik's built-in Let's Encrypt support.
+
 <Tip>Note: If you are setting up Multiwoven on your local machine, you can skip this section and refer to [Local Setup](/guides/setup/docker-compose-dev) section.</Tip>
 
 ## Prerequisites
@@ -28,25 +30,25 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
     cd multiwoven
     ```
     2. Download the production `docker-compose.yml` file from the following link.
-    
+
     ```bash
     curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
     ```
 
     3. Download the `.env.production` file from the following link.
-    
+
     ```bash
     curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
     ```
 
     4. Rename the file .env.production to .env and update the environment variables if required.
-    
+
     ```bash
     mv .env.production .env
     ```
-    
+
     5. Start the Multiwoven using the following command.
-    
+
     ```bash
     docker-compose up -d
     ```
@@ -70,15 +72,15 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
 
   </Tab>
   <Tab title="Cloud PostgreSQL">
-    
+
     1. Create a new directory for Multiwoven and navigate to it.
-    
+
         ```bash
         mkdir multiwoven
         cd multiwoven
         ```
         2. Download the production `docker-compose.yml` file from the following link.
-        
+
         ```bash
         curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose-cloud-postgres.yaml
         ```
@@ -91,13 +93,13 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
         ```DB_PASSWORD``` - Database Password
 
         The default port for PostgreSQL is 5432. If you are using a different port, update the ```DB_PORT``` environment variable.
-        
+
         ```bash
         mv .env.production .env
         ```
-        
+
         4. Start the Multiwoven using the following command.
-        
+
         ```bash
         docker-compose up -d
         ```
@@ -135,9 +137,3 @@ cat dump.sql | docker exec -i --user postgres <postgres-container-name> psql -U 
 ```
 
 - If you are using a custom domain, make sure to update the `API_HOST` and `UI_HOST` environment variables in the `.env` file.
-
-
-
-
-
-
