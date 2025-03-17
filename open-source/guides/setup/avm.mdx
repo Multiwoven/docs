@@ -26,7 +26,7 @@ This guide will walk you through setting up Multiwoven on an Azure VM. We'll cov
     **SSH Key Pair:** Create a new key pair or use an existing one to connect to your VM.
 
 2. **Connect to your VM:** Use SSH to connect to your Azure VM.
-    
+
         **Example:**
         ```
         ssh -i /path/to/your-key-pair.pem azureuser@<your_vm_public_ip>
@@ -45,12 +45,12 @@ This guide will walk you through setting up Multiwoven on an Azure VM. We'll cov
 
 **3. Download Multiwoven `docker-compose.yml` file and Configure Environment:**
 
-1. **Download the file:** 
+1. **Download the file:**
 ```
 curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
 ```
 
-2. **Download the `.env` file:**  
+2. **Download the `.env` file:**
 ```
 curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
 ```
@@ -67,7 +67,7 @@ mv .env.production .env
     * (Optional) Additional environment variables specific to your Multiwoven configuration
 
 **Example `.env` file:**
-    
+
     ```
     DB_PASSWORD=your_db_password
     DB_USERNAME=your_db_username
@@ -101,7 +101,7 @@ docker-compose down
 
 **Additional Notes:**
 
-<Tip>**Note**: the frontend and backend services run on port 8000 and 3001, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
+<Tip>**Note**: the frontend and backend services run on port 8000 and 3000, respectively. Make sure you update the **VITE_API_HOST** environment variable in the **.env** file to the desired backend service URL running on port 3000. </Tip>
 
 * Depending on your network security group configuration, you might need to open port 8000 (Multiwoven UI) for inbound traffic.
 * For production deployments, consider using a reverse proxy (e.g., Nginx) and a domain name with SSL/TLS certificates for secure access to the Multiwoven UI.
