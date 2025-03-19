@@ -160,7 +160,7 @@
             "guides/data-integration/sources/http-model-endpoint",
             "guides/data-integration/sources/sftp",
             "guides/data-integration/sources/watsonx_ai-model",
-            "guides/data-integration/sources/Anthropic-model"
+            "guides/data-integration/sources/anthropic-model"
           ]
         },
         {
