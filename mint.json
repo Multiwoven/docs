@@ -159,7 +159,8 @@
             "guides/data-integration/sources/google_vertex-model",
             "guides/data-integration/sources/http-model-endpoint",
             "guides/data-integration/sources/sftp",
-            "guides/data-integration/sources/watsonx_ai-model"
+            "guides/data-integration/sources/watsonx_ai-model",
+            "guides/data-integration/sources/antropic-model"
           ]
         },
         {

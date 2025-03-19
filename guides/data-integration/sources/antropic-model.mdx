@@ -1,0 +1,108 @@
+---
+title: "Antropic Model"
+description: ""
+---
+
+## Connect AI Squared to Antropic Model
+
+This guide will help you configure the Antropic Model Connector in AI Squared to access your Antropic Model Endpoint.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary API key from Antropic.
+
+## Step-by-Step Guide to Connect to an Antropic Model Endpoint
+
+## Step 1: Navigate to Antropic Console
+
+Start by logging into your Antropic Console.
+
+1. Sign in to your Antropic account at [Antropic](https://console.anthropic.com/dashboard).
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742405724/Multiwoven/connectors/Antropic-model/Dashboard_xr5wie.png" />
+    </Frame>
+
+## Step 2: Locate API keys
+
+Once you're in the Antropic, you'll find the necessary configuration details:
+
+1. **API Key:**
+
+   - Click on "API keys" to view your API keys.
+   - If you haven't created an API Key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742405724/Multiwoven/connectors/Antropic-model/API_keys_q4zhke.png" />
+    </Frame>
+
+## Step 3: Configure Antropic Model Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+
+- **API Key:** Your Antropic API key.
+
+## Sample Request and Response
+
+<AccordionGroup>
+  <Accordion title="Stream disabled" icon="key">
+    **Request:**
+    ```json
+    {
+      "model": "claude-3-7-sonnet-20250219",
+      "max_tokens": 256,
+      "messages": [{"role": "user", "content": "Hi."}],
+      "stream": false
+    }
+    ```
+
+    **Response:**
+    ```json
+    {
+      "id": "msg_0123ABC",
+      "type": "message",
+      "role": "assistant",
+      "model": "claude-3-7-sonnet-20250219",
+      "content": [
+        {
+          "type": "text",
+          "text": "Hello there! How can I assist you today? Whether you have a question, need some information, or just want to chat, I'm here to help. What's on your mind?"
+        }
+      ],
+      "stop_reason": "end_turn",
+      "stop_sequence": null,
+      "usage": {
+        "input_tokens": 10,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 41
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Stream enabled" icon="key">
+    **Request:**
+    ```json
+    {
+      "model": "claude-3-7-sonnet-20250219",
+      "max_tokens": 1024,
+      "messages": [{"role": "user", "content": "Hi"}],
+      "stream": true
+    }
+    ```
+
+    **Response:**
+    ```json
+    {
+      "type": "content_block_delta",
+      "index": 0,
+      "delta": {
+        "type": "text_delta",
+        "text": "Hello!"
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
