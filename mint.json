@@ -35,6 +35,10 @@
   },
   "tabs": [
     {
+      "name": "Getting Started",
+      "url": "getting-started"
+    },
+    {
       "name": "Guides",
       "url": "guides"
     },
@@ -64,6 +68,10 @@
     {
       "group": "Get Started",
       "pages": ["home/welcome"]
+    },
+    {
+      "group": "Getting Started",
+      "pages": ["getting-started/core-concepts"]
     },
     {
       "group": "Guides",

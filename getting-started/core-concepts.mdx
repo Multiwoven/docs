@@ -1,0 +1,89 @@
+---
+title: Core Concepts
+description: ''
+icon: 'rocket-launch'
+
+---
+
+The core concepts of AI Squared are the foundation of your data journey. They include Sources, Destinations, Models, and Syncs. Understanding these concepts is crucial to building a robust data pipeline.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756028/AIS/Core_Concepts_v4o7rp.png"
+  alt="Hero Light"
+/>
+
+
+## Sources: The Foundation of Data
+
+### Overview
+Sources are the starting points of your data journey. It's where all your data is stored and where AI Squared pulls data from.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756029/AIS/Sources_xrjsvz.png"
+  alt="Hero Light"
+/>
+
+These can be:
+- **Data Warehouses**: For example, `Snowflake` `Google BigQuery` and `Amazon Redshift`
+- **Databases and Files**: Including traditional databases, `CSV files`, `SFTP`
+
+
+### Adding a Source
+To integrate a source with AI Squared, navigate to the Sources overview page and select 'Add source'.
+
+## Destinations: Where Data Finds Value
+
+### Overview
+
+'Destinations' in AI Squared are business tools where you want to send your data stored in sources. 
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756029/AIS/Destinations_p2du4o.png"
+  alt="Hero Light"
+/>
+
+These can be:
+- **CRM Systems**: Like Salesforce, HubSpot, etc.
+- **Advertising Platforms**: Such as Google Ads, Facebook Ads, etc.
+- **Marketing Tools**: Braze and Klaviyo, for example
+
+### Integrating a Destination
+Add a destination by going to the Destinations page and clicking 'Add destination'.
+
+## Models: Shaping Your Data
+
+### Overview
+'Models' in AI Squared determine the data you wish to sync from a source to a destination. They are the building blocks of your data pipeline.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Models_dyihll.png"
+  alt="Hero Light"
+/>
+
+They can be defined through:
+
+- **SQL Editor**: For customized queries
+- **Visual Table Selector**: For intuitive interface
+- **Existing dbt Models or Looker Looks**: Leveraging pre-built models
+
+### Importance of a Unique Primary Key
+Every model must have a unique primary key to ensure each data entry is distinct, crucial for data tracking and updating.
+
+## Syncs: Customizing Data Flow
+
+### Overview
+'Syncs' in AI Squared helps you move data from sources to destinations. They help you in mapping the data from your models to the destination.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Syncs_dncrnv.png"
+  alt="Hero Light"
+/>
+
+There are two types of syncs:
+- **Full Refresh Sync**: All data is synced from the source to the destination.
+- **Incremental Sync**: Only the new or updated data is synced.
