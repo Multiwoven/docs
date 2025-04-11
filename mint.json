@@ -39,29 +39,11 @@
       "url": "getting-started"
     },
     {
-      "name": "Guides",
+      "name": "AI & Data Integration",
       "url": "guides"
-    },
-    {
-      "name": "Developer Tools",
-      "url": "api-reference"
-    },
-    {
-      "name": "Open Source",
-      "url": "open-source"
-    },
-    {
-      "name": "Help & Resources",
-      "url": "help-and-resources"
-    },
-    {
-      "name": "Troubleshooting",
-      "url": "troubleshooting"
-    },
-    {
-      "name": "Releases",
-      "url": "release-notes"
     }
+    
+    
   ],
   "anchors": [],
   "navigation": [
@@ -71,7 +53,7 @@
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/core-concepts"]
+      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts"]
     },
     {
       "group": "Guides",
