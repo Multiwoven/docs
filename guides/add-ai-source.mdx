@@ -1,0 +1,88 @@
+---
+title: Adding an AI/ML Source
+description: How to connect and configure a hosted AI/ML model source in AI Squared.
+---
+
+You can connect your hosted AI/ML model endpoints to AI Squared in just a few steps. This allows your models to power real-time insights across business applications.
+
+---
+
+## Step 1: Select Your AI/ML Source
+
+1. Navigate to **Sources** → **AI/ML Sources** in the sidebar.
+2. Click **“Add Source”**.
+3. Select the AI/ML source connector from the list.
+
+> 📸 *Add screenshot of “Add AI/ML Source” UI*
+
+---
+
+## Step 2: Define and Connect the Endpoint
+
+Fill in the required connection details:
+
+- **Endpoint Name** – A descriptive name for easy identification.
+- **Endpoint URL** – The hosted URL of your AI/ML model.
+- **Authentication Method** – Choose between `OAuth`, `API Key`, etc.
+- **Authorization Header** – Format of the header (if applicable).
+- **Secret Key** – For secure access.
+- **Request Format** – Define the input structure (e.g., JSON).
+- **Response Format** – Define how the model returns predictions.
+
+> 📸 *Add screenshot of endpoint configuration UI*
+
+---
+
+## Step 3: Test the Source
+
+Before saving, click **“Test Connection”** to verify that the endpoint is reachable and properly configured.
+
+> ⚠️ If the test fails, check for errors in the endpoint URL, headers, or authentication values.
+
+> 📸 *Add screenshot of test results with success/failure examples*
+
+---
+
+## Step 4: Save the Source
+
+Once the test passes:
+
+- Provide a name and optional description.
+- Click **“Save”** to finalize setup.
+- Your model source will now appear under **AI/ML Sources**.
+
+> 📸 *Add screenshot showing saved model in the source list*
+
+---
+
+## Step 5: Define Input Schema
+
+The **Input Schema** tells AI Squared how to format data before sending it to the model.
+
+Each input field requires:
+- **Name** – Matches the key in your model’s input payload.
+- **Type** – `String`, `Integer`, `Float`, or `Boolean`.
+- **Value Type** – `Dynamic` (from data/apps) or `Static` (fixed value).
+
+> 📸 *Add screenshot of input schema editor*
+
+---
+
+## Step 6: Define Output Schema
+
+The **Output Schema** tells AI Squared how to interpret the model's response.
+
+Each output field requires:
+- **Field Name** – The key returned by the model.
+- **Type** – Define the type: `String`, `Integer`, `Float`, `Boolean`.
+
+This ensures downstream systems or visualizations can consume the output consistently.
+
+> 📸 *Add screenshot of output schema editor*
+
+---
+
+## ✅ You’re Done!
+
+You’ve successfully added and configured your hosted AI/ML model as a source in AI Squared. Your model can now be used in **Data Apps**, **Chatbots**, and other workflow automations.
+

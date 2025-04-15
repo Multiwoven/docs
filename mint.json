@@ -71,6 +71,13 @@
       "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts","getting-started/workspace-management/overview"]
     },
     {
+      "group": "",
+      "icon": "",
+      "pages": [
+        "activation/overview"
+      ]
+    },
+    {
       "group": "Data Activation",
       "pages": ["activation/data-modelling/core-concepts",
       {
@@ -97,7 +104,7 @@
     },
     {
       "group": "AI Activation",
-      "pages": ["activation/introduction",
+      "pages": ["activation/ai-modelling/introduction",
       {
         "group": "AI Modeling",
         "icon": "",
@@ -121,8 +128,8 @@
     },
     
     {
-      "group": "Getting Started",
-      "pages": ["guides/getting-started"]
+      "group": "",
+      "pages": ["guides/getting-started", "guides/add-data-source", "guides/add-ai-source"]
     },
     {
       "group": "Open Source",
@@ -242,7 +249,7 @@
           ]
         },
         {
-          "group": "AI-Powered",
+          "group": "AI Delivery",
           "icon": "grid",
           "pages": [
             "guides/destinations/ai-ml-destinations/salesforce",
