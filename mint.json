@@ -41,8 +41,23 @@
     {
       "name": "AI & Data Integration",
       "url": "guides"
+    },
+    {
+      "name": "Embedding AI",
+      "url": "embedding-ai"
+    },
+    {
+      "name": "Deployment & Security",
+      "url": "deployment-and-security"
+    },
+    {
+      "name": "Support & FAQs",
+      "url": "help-and-resources"
+    },
+    {
+      "name": "Product Updates",
+      "url": "release-notes"
     }
-    
     
   ],
   "anchors": [],
@@ -53,22 +68,31 @@
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts"]
+      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts","getting-started/workspace-management/overview"]
     },
     {
+      "group": "Embedding AI",
+      "pages": ["embedding-ai/introduction"]
+    },
+    {
+      "group": "Deployment & Security",
+      "pages": ["deployment-and-security/security-and-compliance/security"]
+    },
+    
+    {
       "group": "Guides",
-      "pages": ["guides/core-concepts"]
+      "pages": ["guides/getting-started"]
     },
     {
       "group": "Open Source",
       "pages": ["open-source/introduction"]
     },
     {
-      "group": "Help & Resources",
+      "group": "Support & FAQs",
       "pages": ["help-and-resources/overview"]
     },
     {
-      "group": "Release Notes",
+      "group": "Product Updates",
       "pages": [
         {
           "group": "2025",
@@ -100,31 +124,7 @@
       "group": "Troubleshooting",
       "pages": ["troubleshooting/overview"]
     },
-    {
-      "group": "Data Activation",
-      "pages": [
-        {
-          "group": "Models",
-          "icon": "table",
-          "pages": [
-            "guides/data-activation/models/overview",
-            "guides/data-activation/models/sql",
-            "guides/data-activation/models/dbt",
-            "guides/data-activation/models/table-visualization"
-          ]
-        },
-        {
-          "group": "Syncs",
-          "icon": "retweet",
-          "pages": [
-            "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh",
-            "guides/data-activation/sync-modes/incremental",
-            "guides/data-activation/sync-modes/cursor-incremental"
-          ]
-        }
-      ]
-    },
+    
 
     {
       "group": "Data Integration",
@@ -198,17 +198,38 @@
     },
 
     {
+      "group": "Data Activation",
+      "pages": [
+        {
+          "group": "Models",
+          "icon": "table",
+          "pages": [
+            "guides/data-activation/models/overview",
+            "guides/data-activation/models/sql",
+            "guides/data-activation/models/dbt",
+            "guides/data-activation/models/table-visualization"
+          ]
+        },
+        {
+          "group": "Syncs",
+          "icon": "retweet",
+          "pages": [
+            "guides/data-activation/syncs/overview",
+            "guides/data-activation/sync-modes/full-refresh",
+            "guides/data-activation/sync-modes/incremental",
+            "guides/data-activation/sync-modes/cursor-incremental"
+          ]
+        }
+      ]
+    },
+
+    {
       "group": "AI Activation",
       "pages": [
         "guides/ai-activation/Sources",
         "guides/ai-activation/Models",
         "guides/ai-activation/Data_Apps"
       ]
-    },
-
-    {
-      "group": "Workspace Management",
-      "pages": ["guides/workspace-management/overview"]
     },
 
     {
@@ -340,17 +361,7 @@
         "open-source/community-support/slack-conduct"
       ]
     },
-    {
-      "group": "Security & Compliance",
-      "pages": ["guides/security-and-compliance/security"]
-    },
-    {
-      "group": "Enterprise SaaS",
-      "pages": [
-        "help-and-resources/enterprise-saas/overview",
-        "help-and-resources/enterprise-saas/self-hosting-enterprise"
-      ]
-    },
+    
     {
       "group": "FAQs",
       "pages": ["help-and-resources/faqs/questions"]
