@@ -43,8 +43,8 @@
       "url": "guides"
     },
     {
-      "name": "Embedding AI",
-      "url": "embedding-ai"
+      "name": "AI & Data Activation",
+      "url": "activation"
     },
     {
       "name": "Deployment & Security",
@@ -71,16 +71,57 @@
       "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts","getting-started/workspace-management/overview"]
     },
     {
-      "group": "Embedding AI",
-      "pages": ["embedding-ai/introduction"]
+      "group": "Data Activation",
+      "pages": ["activation/data-modelling/core-concepts",
+      {
+        "group": "Data Modelling",
+        "icon": "",
+        "pages": [
+          "activation/data-modelling/models/overview",
+          "activation/data-modelling/models/sql",
+          "activation/data-modelling/models/dbt",
+          "activation/data-modelling/models/table-visualization"
+        ]
+      },
+      {
+        "group": "Data Syncs",
+        "icon": "",
+        "pages": [
+          "activation/data-modelling/syncs/overview",
+          "activation/data-modelling/sync-modes/full-refresh",
+          "activation/data-modelling/sync-modes/incremental",
+          "activation/data-modelling/sync-modes/cursor-incremental"
+        ]
+      }
+    ]
     },
+    {
+      "group": "AI Activation",
+      "pages": ["activation/introduction",
+      {
+        "group": "AI Modeling",
+        "icon": "",
+        "pages": [
+          "activation/ai-modelling/Models"
+        ]
+      },
+      {
+        "group": "Data Apps",
+        "icon": "",
+        "pages": [
+          "activation/ai-modelling/Models"
+        ]
+      }
+    ]
+    },
+    
     {
       "group": "Deployment & Security",
       "pages": ["deployment-and-security/security-and-compliance/security"]
     },
     
     {
-      "group": "Guides",
+      "group": "Getting Started",
       "pages": ["guides/getting-started"]
     },
     {
@@ -121,194 +162,96 @@
       ]
     },
     {
-      "group": "Troubleshooting",
-      "pages": ["troubleshooting/overview"]
-    },
-    
-
-    {
-      "group": "Data Integration",
+      "group": "Sources",
       "pages": [
         {
-          "group": "Sources",
+          "group": "Data Sources",
           "icon": "database",
           "pages": [
-            "guides/data-integration/sources/redshift",
-            "guides/data-integration/sources/snowflake",
-            "guides/data-integration/sources/bquery",
-            "guides/data-integration/sources/databricks",
-            "guides/data-integration/sources/postgresql",
-            "guides/data-integration/sources/salesforce-consumer-goods-cloud",
-            "guides/data-integration/sources/aws_athena",
-            "guides/data-integration/sources/clickhouse",
-            "guides/data-integration/sources/maria_db",
-            "guides/data-integration/sources/oracle",
-            "guides/data-integration/sources/amazon_s3",
-            "guides/data-integration/sources/databricks-model",
-            "guides/data-integration/sources/aws_sagemaker-model",
-            "guides/data-integration/sources/google_vertex-model",
-            "guides/data-integration/sources/http-model-endpoint",
-            "guides/data-integration/sources/sftp",
-            "guides/data-integration/sources/watsonx_ai-model",
-            "guides/data-integration/sources/watsonx_data",
-            "guides/data-integration/sources/anthropic-model",
-            "guides/data-integration/sources/open_ai-model"
+            "guides/sources/data-sources/redshift",
+            "guides/sources/data-sources/snowflake",
+            "guides/sources/data-sources/bquery",
+            "guides/sources/data-sources/databricks",
+            "guides/sources/data-sources/postgresql",
+            "guides/sources/data-sources/salesforce-consumer-goods-cloud",
+            "guides/sources/data-sources/aws_athena",
+            "guides/sources/data-sources/clickhouse",
+            "guides/sources/data-sources/maria_db",
+            "guides/sources/data-sources/oracle",
+            "guides/sources/data-sources/amazon_s3",
+            "guides/sources/data-sources/databricks-model",
+            "guides/sources/data-sources/aws_sagemaker-model",
+            "guides/sources/data-sources/sftp",
+            "guides/sources/data-sources/watsonx_data"
           ]
         },
         {
-          "group": "Destinations",
+          "group": "AI/ML Sources",
           "icon": "grid",
           "pages": [
-            "guides/data-integration/destinations/crm/salesforce",
-            "guides/data-integration/destinations/crm/hubspot",
-            "guides/data-integration/destinations/crm/zoho",
-            "guides/data-integration/destinations/crm/microsoft_dynamics",
-            "guides/data-integration/destinations/marketing-automation/braze",
-            "guides/data-integration/destinations/marketing-automation/clevertap",
-            "guides/data-integration/destinations/marketing-automation/klaviyo",
-            "guides/data-integration/destinations/marketing-automation/iterable",
-            "guides/data-integration/destinations/marketing-automation/mailchimp",
-            "guides/data-integration/destinations/adtech/facebook-ads",
-            "guides/data-integration/destinations/adtech/google-ads",
-            "guides/data-integration/destinations/analytics/google-analytics",
-            "guides/data-integration/destinations/analytics/mixpanel",
-            "guides/data-integration/destinations/analytics/amplitude",
-            "guides/data-integration/destinations/analytics/databricks_lakehouse",
-            "guides/data-integration/destinations/customer-support/zendesk",
-            "guides/data-integration/destinations/customer-support/intercom",
-            "guides/data-integration/destinations/team-collaboration/slack",
-            "guides/data-integration/destinations/team-collaboration/microsoft-teams",
-            "guides/data-integration/destinations/e-commerce/shopify",
-            "guides/data-integration/destinations/e-commerce/facebook-product-catalog",
-            "guides/data-integration/destinations/payment/stripe",
-            "guides/data-integration/destinations/retail/salesforce-consumer-goods-cloud",
-            "guides/data-integration/destinations/productivity-tools/airtable",
-            "guides/data-integration/destinations/productivity-tools/google-sheets",
-            "guides/data-integration/destinations/productivity-tools/microsoft-excel",
-            "guides/data-integration/destinations/file-storage/sftp",
-            "guides/data-integration/destinations/database/postgresql",
-            "guides/data-integration/destinations/database/maria_db",
-            "guides/data-integration/destinations/database/oracle",
-            "guides/data-integration/destinations/http/http",
-            "guides/data-integration/destinations/database/ms_sql",
-            "guides/data-integration/destinations/file-storage/amazon_s3"
+            "guides/sources/ai-ml-sources/anthropic-model",
+            "guides/sources/ai-ml-sources/open_ai-model",
+            "guides/sources/ai-ml-sources/google_vertex-model",
+            "guides/sources/ai-ml-sources/watsonx_ai-model",
+            "guides/sources/ai-ml-sources/http-model-endpoint"
+          ]
+        }
+        
+      ]
+    },
+    {
+      "group": "Destinations",
+      "pages": [
+        {
+          "group": "Data Movement",
+          "icon": "database",
+          "pages": [
+            "guides/destinations/retl-destinations/crm/salesforce",
+            "guides/destinations/retl-destinations/crm/hubspot",
+            "guides/destinations/retl-destinations/crm/zoho",
+            "guides/destinations/retl-destinations/crm/microsoft_dynamics",
+            "guides/destinations/retl-destinations/marketing-automation/braze",
+            "guides/destinations/retl-destinations/marketing-automation/clevertap",
+            "guides/destinations/retl-destinations/marketing-automation/klaviyo",
+            "guides/destinations/retl-destinations/marketing-automation/iterable",
+            "guides/destinations/retl-destinations/marketing-automation/mailchimp",
+            "guides/destinations/retl-destinations/adtech/facebook-ads",
+            "guides/destinations/retl-destinations/adtech/google-ads",
+            "guides/destinations/retl-destinations/analytics/google-analytics",
+            "guides/destinations/retl-destinations/analytics/mixpanel",
+            "guides/destinations/retl-destinations/analytics/amplitude",
+            "guides/destinations/retl-destinations/analytics/databricks_lakehouse",
+            "guides/destinations/retl-destinations/customer-support/zendesk",
+            "guides/destinations/retl-destinations/customer-support/intercom",
+            "guides/destinations/retl-destinations/team-collaboration/slack",
+            "guides/destinations/retl-destinations/team-collaboration/microsoft-teams",
+            "guides/destinations/retl-destinations/e-commerce/shopify",
+            "guides/destinations/retl-destinations/e-commerce/facebook-product-catalog",
+            "guides/destinations/retl-destinations/payment/stripe",
+            "guides/destinations/retl-destinations/retail/salesforce-consumer-goods-cloud",
+            "guides/destinations/retl-destinations/productivity-tools/airtable",
+            "guides/destinations/retl-destinations/productivity-tools/google-sheets",
+            "guides/destinations/retl-destinations/productivity-tools/microsoft-excel",
+            "guides/destinations/retl-destinations/file-storage/sftp",
+            "guides/destinations/retl-destinations/database/postgresql",
+            "guides/destinations/retl-destinations/database/maria_db",
+            "guides/destinations/retl-destinations/database/oracle",
+            "guides/destinations/retl-destinations/http/http",
+            "guides/destinations/retl-destinations/database/ms_sql",
+            "guides/destinations/retl-destinations/file-storage/amazon_s3"
+          ]
+        },
+        {
+          "group": "AI-Powered",
+          "icon": "grid",
+          "pages": [
+            "guides/destinations/ai-ml-destinations/salesforce",
+            "guides/destinations/ai-ml-destinations/browser-extension",
+            "guides/destinations/ai-ml-destinations/custom-web-app"
           ]
         }
       ]
     },
-
-    {
-      "group": "Data Activation",
-      "pages": [
-        {
-          "group": "Models",
-          "icon": "table",
-          "pages": [
-            "guides/data-activation/models/overview",
-            "guides/data-activation/models/sql",
-            "guides/data-activation/models/dbt",
-            "guides/data-activation/models/table-visualization"
-          ]
-        },
-        {
-          "group": "Syncs",
-          "icon": "retweet",
-          "pages": [
-            "guides/data-activation/syncs/overview",
-            "guides/data-activation/sync-modes/full-refresh",
-            "guides/data-activation/sync-modes/incremental",
-            "guides/data-activation/sync-modes/cursor-incremental"
-          ]
-        }
-      ]
-    },
-
-    {
-      "group": "AI Activation",
-      "pages": [
-        "guides/ai-activation/Sources",
-        "guides/ai-activation/Models",
-        "guides/ai-activation/Data_Apps"
-      ]
-    },
-
-    {
-      "group": "REST API",
-      "pages": [
-        "api-reference/introduction",
-        {
-          "group": "Models",
-          "pages": [
-            "api-reference/models/create-model",
-            "api-reference/models/update-model",
-            "api-reference/models/delete-model",
-            "api-reference/models/get-model",
-            "api-reference/models/get-all-models"
-          ]
-        },
-        {
-          "group": "Connector Definitions",
-          "pages": [
-            "api-reference/connector_definitions/connector_definitions",
-            "api-reference/connector_definitions/connector_definition",
-            "api-reference/connector_definitions/check_connection"
-          ]
-        },
-        {
-          "group": "Connectors",
-          "pages": [
-            "api-reference/connectors/create_connector",
-            "api-reference/connectors/list_connectors",
-            "api-reference/connectors/get_connector",
-            "api-reference/connectors/update_connector",
-            "api-reference/connectors/delete_connector",
-            "api-reference/connectors/discover",
-            "api-reference/connectors/query_source"
-          ]
-        },
-        {
-          "group": "Syncs",
-          "pages": [
-            "api-reference/syncs/get_syncs",
-            "api-reference/syncs/create_sync",
-            "api-reference/syncs/show_sync",
-            "api-reference/syncs/update_sync",
-            "api-reference/syncs/delete_sync",
-            "api-reference/syncs/sync_configuration",
-            "api-reference/syncs/manual_sync_trigger",
-            "api-reference/syncs/manual_sync_cancel",
-            "api-reference/syncs/test_sync"
-          ]
-        },
-        {
-          "group": "Sync Runs",
-          "pages": [
-            "api-reference/sync_runs/get_sync_runs",
-            "api-reference/sync_runs/get_sync_run"
-          ]
-        },
-        {
-          "group": "Sync Records",
-          "pages": ["api-reference/sync_records/get_sync_records"]
-        },
-        {
-          "group": "Reports",
-          "pages": ["api-reference/reports/get_report"]
-        },
-        {
-          "group": "Roles",
-          "pages": ["api-reference/roles/get_roles"]
-        },
-        {
-          "group": "Catalogs",
-          "pages": [
-            "api-reference/catalogs/create_catalog",
-            "api-reference/catalogs/update_catalog"
-          ]
-        }
-      ]
-    },
-
     {
       "group": "Architecture",
       "pages": [

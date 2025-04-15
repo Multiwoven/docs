@@ -1,107 +1,128 @@
 ---
-title: Getting Started
-description: ''
+title: Overview
+description: Learn how to connect AI and data using AI Squared to power real-time business insights.
 icon: ""
 ---
 
-## Connecting Your AI & Data 
+## Connecting Your AI & Data
 
-Connecting your AI and data is the foundational step in bringing AI insights to the business applications where work happens. By seamlessly integrating data sources and AI models, you enable real-time intelligence to flow into your daily workflows, empowering business users with actionable AI insights. AI Squared simplifies this process by providing no-code connectors for AI/ML models and data sources, eliminating the need for complex engineering efforts. 
+Connecting your AI and data is the foundational step in delivering AI-powered insights to the business applications where work happens. AI Squared enables this by integrating:
 
-## What are Sources & Destinations? 
+- **Data Sources**: Business databases, warehouses, or storage services
+- **AI/ML Models**: Your deployed machine learning models from cloud providers or custom endpoints
+
+With AI Squared, you can:
+- Enable real-time data movement and inference
+- Embed AI insights directly into enterprise apps like CRMs and ERPs
+- Do all of this with **no-code connectors**—no complex engineering required
+
+---
+
+## Understanding Sources & Destinations
 
 ### Sources
-A data source refers to any repository where business information is stored. Common examples include data warehouses such as Snowflake and Google BigQuery, as well as databases, CSV files, SFTP servers.  
 
-An AI source refers to the hosting environment where your AI or machine learning models reside. These environments can include cloud-based platforms such as Amazon SageMaker, Google Cloud's Vertex AI, and Databricks, as well as custom model endpoints tailored to specific organizational needs. 
+Sources are where your raw data or AI models originate. These are categorized into two types:
+
+#### 📊 Data Sources
+Repositories that store business data.
+Examples:
+- Snowflake
+- Google BigQuery
+- Amazon Redshift
+- PostgreSQL
+- SFTP, CSV, Oracle, and more
+
+#### 🧠 AI/ML Sources
+Environments where your AI or ML models are hosted and served for inference.
+Examples:
+- Amazon SageMaker
+- Google Vertex AI
+- Databricks
+- OpenAI API
+- HTTP model endpoints (custom)
+
+---
 
 ### Destinations
-A destination is any platform, tool, or service where processed data and AI insights are delivered for end-users to access and utilize within their workflows. 
 
-## AI/ML Sources vs. Data Sources 
+Destinations are the platforms where insights are delivered and consumed. These can be either:
 
-AI source is an environment where your AI/ML models are hosted and deployed.  
+#### 🔁 Data Movement Destinations
+Where transformed data lands—for analytics or business processes.
 
-A Data source is where raw or processed business data is stored.  
+Examples:
+- PostgreSQL, Redshift, Databricks
+- Oracle, S3, Microsoft SQL
+- Google Sheets, Microsoft Excel
 
-## Supported Connectors 
+#### 🤖 AI-Powered Destinations
+Apps where AI insights are surfaced for users—e.g., recommendations, scores, next-best actions.
 
-### Data source connectors  
+Examples:
+- Salesforce CRM
+- Hubspot
+- Zendesk
+- Slack
+- Klaviyo
+- Facebook Custom Audiences
 
-1. Amazon Redshift  
+---
 
-2. Snowflake  
+## Data Source vs AI/ML Source: What’s the Difference?
 
-3. Google BigQuery  
+| Type          | Description                                                | Examples                        |
+|---------------|------------------------------------------------------------|---------------------------------|
+| Data Source   | Stores business data for analysis or enrichment            | Snowflake, Redshift, BigQuery   |
+| AI/ML Source  | Hosts your trained ML models for prediction and inference  | SageMaker, Vertex, OpenAI API   |
 
-4. PostgreSQL  
+---
 
-5. Salesforce Consumer Cloud  
+## ⚙️ Supported Integrations
 
-6. AWS Athena  
+### Data Source
+- Amazon Redshift  
+- Snowflake  
+- Google BigQuery  
+- PostgreSQL  
+- AWS Athena  
+- Clickhouse  
+- MariaDB  
+- Oracle  
+- Amazon S3  
+- SFTP  
+- Databricks  
+- Salesforce Consumer Cloud  
 
-7. Clickhouse  
+### AI/ML Source
+- AWS SageMaker  
+- Google Vertex AI  
+- Databricks Model Endpoint  
+- HTTP Model Source (Generic)  
+- OpenAI API  
 
-8. MariaDB  
+### Destination Integrations
 
-9. Oracle  
+#### Data Movement
+- PostgreSQL  
+- Databricks Warehouse  
+- MariaDB  
+- Oracle  
+- SFTP  
+- Amazon S3  
+- Microsoft SQL  
+- Microsoft Excel  
+- Google Sheets  
 
-10. Amazon S3  
+#### AI-Powered (Business Apps)
+- Salesforce CRM  
+- Microsoft Dynamics 365
+- Custom Web Apps
+- Chrome Browser Extension
 
-11. SFTP  
+---
 
-12. Databricks  
+## ✅ Next Step
 
-### AI/ML source connectors  
+Continue to [Data Sources](../data-sources) or [AI/ML Sources](../ai-ml-sources) to learn how to connect your first source and start building workflows.
 
-1. AWS Sagemaker  
-
-2. Google Vertex  
-
-3. Databricks model  
-
-4. HTTP Model source (Generic)  
-
-5. OpenAI model endpoint  
-
-### Destination connectors  
-
-1. Salesforce CRM  
-
-2. Hubspot CRM  
-
-3. MariaDB  
-
-4. Databricks Data Warehouse  
-
-5. PostgreSQL  
-
-6. Klaviyo  
-
-7. Iterable  
-
-8. Mailchimp  
-
-9. Facebook Custom Audiences (Ads)  
-
-10. Google Sheets  
-
-11. Zendesk  
-
-12. Slack  
-
-13. Airtable  
-
-14. Stripe  
-
-15. SFTP  
-
-16. Oracle DB  
-
-17. Amazon S3  
-
-18. Microsoft SQL  
-
-19. Microsoft Excel  
-
-20. HTTP (generic)

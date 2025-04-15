@@ -1,0 +1,74 @@
+---
+title: 'AWS Athena'
+description: ''
+---
+
+## Connect AI Squared to AWS Athena
+
+This guide will help you configure the AWS Athena Connector in AI Squared to access and use your AWS Athena data.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary access key, secret access key, region, workgroup, catalog, and output location from AWS Athena.
+
+## Step-by-Step Guide to Connect to AWS Athena
+
+## Step 1: Navigate to AWS Athena Console
+
+Start by logging into your AWS Management Console and navigating to the AWS Athena service.
+
+1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+2. In the AWS services search bar, type "Athena" and select it from the dropdown.
+
+## Step 2: Locate AWS Athena Configuration Details
+
+Once you're in the AWS Athena console, you'll find the necessary configuration details:
+
+1. **Access Key and Secret Access Key:**
+   - Click on your username at the top right corner of the AWS Management Console.
+   - Choose "Security Credentials" from the dropdown menu.
+   - In the "Access keys" section, you can create or view your access keys.
+   - If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+
+2. **Region:**
+   - The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Athena resources are located or where you want to perform queries.
+
+3. **Workgroup:**
+   - In the AWS Athena console, navigate to the "Workgroups" section in the left sidebar.
+   - Here, you can view the existing workgroups or create a new one if needed. Note down the name of the workgroup you want to use.
+
+4. **Catalog and Database:**
+   - Go to the "Data Source" section in the in the left sidebar.
+   - Select the catalog that contains the databases and tables you want to query. Note down the name of the catalog and database.
+
+5. **Output Location:**
+   - In the AWS Athena console, click on "Settings".
+   - Under "Query result location," you can see the default output location for query results. You can also set a custom output location if needed. Note down the output location URL.
+
+## Step 3: Configure AWS Athena Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+   - **Access Key ID:** Your AWS IAM user's Access Key ID.
+   - **Secret Access Key:** The corresponding Secret Access Key.
+   - **Region:** The AWS region where your Athena resources are located.
+   - **Workgroup:** The name of the workgroup you want to use.
+   - **Catalog:** The name of the catalog containing your data.
+   - **Schema:** The name of the database containing your data.
+   - **Output Location:** The URL of the output location for query results.
+
+## Step 4: Test the AWS Athena Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to AWS Athena from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your AWS Athena connector is now configured and ready to query data from your AWS Athena data catalog.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |

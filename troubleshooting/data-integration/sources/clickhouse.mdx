@@ -1,0 +1,60 @@
+---
+title: 'ClickHouse'
+description: ''
+---
+
+## Connect AI Squared to ClickHouse
+
+This guide will help you configure the ClickHouse Connector in AI Squared to access and use your ClickHouse data.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary URL, username, and password from ClickHouse.
+
+## Step-by-Step Guide to Connect to ClickHouse
+
+## Step 1: Navigate to ClickHouse Console
+
+Start by logging into your ClickHouse Management Console and navigating to the ClickHouse service.
+
+1. Sign in to your ClickHouse account at [ClickHouse](https://clickhouse.com/).
+2. In the ClickHouse console, select the service you want to connect to.
+
+## Step 2: Locate ClickHouse Configuration Details
+
+Once you're in the ClickHouse console, you'll find the necessary configuration details:
+
+1. **HTTP Interface URL:**
+   - Click on the "Connect" button in your ClickHouse service.
+   - In "Connect with" select HTTPS.
+   - Find the HTTP interface URL, which typically looks like `http://<your-clickhouse-url>:8443`. Note down this URL as it will be used to connect to your ClickHouse service.
+
+2. **Username and Password:**
+   - Click on the "Connect" button in your ClickHouse service.
+   - Here, you will see the credentials needed to connect, including the username and password.
+   - Note down the username and password as they are required for the HTTP connection.
+
+## Step 3: Configure ClickHouse Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **HTTP Interface URL:** The URL of your ClickHouse service HTTP interface.
+- **Username:** Your ClickHouse service username.
+- **Password:** The corresponding password for the username.
+
+## Step 4: Test the ClickHouse Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to ClickHouse from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your ClickHouse connector is now configured and ready to query data from your ClickHouse service.
+
+### Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |

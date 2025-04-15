@@ -1,0 +1,66 @@
+---
+title: "WatsonX.AI Model"
+description: ""
+---
+
+## Connect AI Squared to WatsonX.AI Model
+
+This guide will help you configure the WatsonX.AI Model Connector in AI Squared to access your WatsonX.AI Model Endpoint.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary API key, region, and deployment id from WatsonX.AI.
+
+## Step-by-Step Guide to Connect to an WatsonX.AI Model Endpoint
+
+## Step 1: Navigate to WatsonX.AI Console
+
+Start by logging into your WatsonX.AI Console.
+
+1. Sign in to your IBM WatsonX account at [WatsonX.AI](https://dataplatform.cloud.ibm.com/wx/home?context=wx).
+
+## Step 2: Locate Developer Access
+
+Once you're in the WatsonX.AI, you'll find the necessary configuration details:
+
+1. **API Key:**
+
+  - Scroll down to Developer access.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742348073/Multiwoven/connectors/WatsonX_AI/Discover_g59hes.png" />
+    </Frame>
+  - Click on "Manage IBM Cloud API keys" to view your API keys.
+  - If you haven't created an API Key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742348072/Multiwoven/connectors/WatsonX_AI/Create_API_Key_qupq4r.png" />
+    </Frame>
+
+2. **Region**
+
+  - The IBM Cloud region can be selected from the top right corner of the WatsonX.AI Console. Choose the region where your WatsonX.AI resources is located and note down the region.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742400772/Multiwoven/connectors/WatsonX_AI/Region_mlxbpz.png" />
+    </Frame>
+
+3. **Deployment Id**
+
+  - Scroll down to Deployment spaces and click on your deployment space.
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742392179/Multiwoven/connectors/WatsonX_AI/Deployment_ojvyuk.png" />
+    </Frame>
+  - In your selected deployment space select your online deployed model
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742398916/Multiwoven/connectors/WatsonX_AI/Deployment_Space_oszqu6.png" />
+    </Frame>
+  - On the right-hand side, under "About this deployment", the Deployment ID will appear under "Deployment Details".
+    <Frame>
+      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742392179/Multiwoven/connectors/WatsonX_AI/Deployment_ID_ij3k50.png" />
+    </Frame>
+
+## Step 3: Configure WatsonX.AI Model Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+
+- **API Key:** Your IBM Cloud API key.
+- **Region:** The IBM Cloud region where your WatsonX.AI resources are located.
+- **Deployment ID:** The WatsonX.AI online deployment id

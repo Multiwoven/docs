@@ -1,0 +1,75 @@
+---
+title: 'Oracle'
+description: ''
+---
+
+## Connect AI Squared to Oracle
+
+This guide will help you configure the Oracle Connector in AI Squared to access and transfer data to your Oracle database.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary host, port, SID or service name, username, and password from your Oracle database.
+
+## Step-by-Step Guide to Connect to Oracle database
+
+### Step 1: Locate Oracle database Configuration Details
+
+In your Oracle database, you'll need to find the necessary configuration details:
+
+1. **Host and Port:**
+   - For local servers, the host is typically `localhost` and the default port is `1521`.
+   - For remote servers, check your server settings or consult with your database administrator to get the correct host and port.
+   - Note down the host and port as they will be used to connect to your Oracle database.
+
+2. **SID or Service Name:**
+   - To find your SID or Service name:
+        1. **Using SQL*Plus or SQL Developer:**
+           - Connect to your Oracle database using SQL*Plus or SQL Developer.
+           - Execute the following query:
+             ```sql
+             select instance from v$thread
+             ```
+             or
+             ```sql
+             SELECT sys_context('userenv', 'service_name') AS service_name FROM dual;
+             ```
+           - The result will display the SID or service name of your Oracle database.
+        2. **Checking the TNSNAMES.ORA File:**
+           - Locate and open the `tnsnames.ora` file on your system. This file is usually found in the `ORACLE_HOME/network/admin` directory.
+           - Look for the entry corresponding to your database connection. The `SERVICE_NAME` or `SID` will be listed within this entry.
+      - Note down the SID or service name as it will be used to connect to your Oracle database.
+
+3. **Username and Password:**
+   - In the Oracle, you can find or create a user with the necessary permissions to access the database.
+   - Note down the username and password as it will be used to connect to your Oracle database.
+
+### Step 2: Configure Oracle Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Host:** The host of your Oracle database.
+- **Port:** The port number of your Oracle database.
+- **SID:** The SID or service name you want to connect to.
+- **Username:** Your Oracle username.
+- **Password:** The corresponding password for the username.
+
+
+### Step 3: Test the Oracle Database Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Oracle database from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your Oracle connector is now configured and ready to query data from your Oracle database.
+
+## Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
+| Full refresh     | Coming soon                   |
+
+This guide will help you seamlessly connect your AI Squared application to Oracle Database, enabling you to leverage your database's full potential.
