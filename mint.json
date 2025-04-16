@@ -39,12 +39,12 @@
       "url": "getting-started"
     },
     {
-      "name": "AI & Data Integration",
-      "url": "guides"
+      "name": "AI Activation",
+      "url": "activation"
     },
     {
-      "name": "AI & Data Activation",
-      "url": "activation"
+      "name": "Data Movement",
+      "url": "guides"
     },
     {
       "name": "Deployment & Security",
@@ -72,60 +72,41 @@
     },
     {
       "group": "",
+      "pages": ["activation/ai-modelling/introduction"
+    ]
+    },
+    {
+      "group": "AI/ML Sources",
       "icon": "",
       "pages": [
-        "activation/overview"
+        "activation/add-ai-source",
+        "activation/ai-ml-sources/anthropic-model",
+        "activation/ai-ml-sources/open_ai-model",
+        "activation/ai-ml-sources/google_vertex-model",
+        "activation/ai-ml-sources/watsonx_ai-model",
+        "activation/ai-ml-sources/http-model-endpoint"
       ]
     },
     {
-      "group": "Data Activation",
-      "pages": ["activation/data-modelling/core-concepts",
-      {
-        "group": "Data Modelling",
-        "icon": "",
-        "pages": [
-          "activation/data-modelling/models/overview",
-          "activation/data-modelling/models/sql",
-          "activation/data-modelling/models/table-visualization"
-        ]
-      },
-      {
-        "group": "Data Syncs",
-        "icon": "",
-        "pages": [
-          "activation/data-modelling/syncs/overview",
-          "activation/data-modelling/sync-modes/full-refresh",
-          "activation/data-modelling/sync-modes/incremental",
-          "activation/data-modelling/sync-modes/cursor-incremental"
-        ]
-      }
-    ]
+      "group": "AI Modeling",
+      "icon": "",
+      "pages": [
+        "activation/ai-modelling/modelling-overview","activation/ai-modelling/connect-source",
+        "activation/ai-modelling/input-schema",
+        "activation/ai-modelling/preprocessing",
+        "activation/ai-modelling/output-schema"
+      ]
     },
     {
-      "group": "AI Activation",
-      "pages": ["activation/ai-modelling/introduction",
-      {
-        "group": "AI Modeling",
-        "icon": "",
-        "pages": [
-          "activation/ai-modelling/modelling-overview","activation/ai-modelling/connect-source",
-          "activation/ai-modelling/input-schema",
-          "activation/ai-modelling/preprocessing",
-          "activation/ai-modelling/output-schema"
-        ]
-      },
-      {
-        "group": "Data Apps",
-        "icon": "",
-        "pages": [
-          "activation/data-apps/overview",
-          "activation/data-apps/create-data-app",
-          "activation/data-apps/embed",
-          "activation/data-apps/feedback",
-          "activation/data-apps/reports"
-        ]
-      }
-    ]
+      "group": "Data Apps",
+      "icon": "",
+      "pages": [
+        "activation/data-apps/overview",
+        "activation/data-apps/create-data-app",
+        "activation/data-apps/embed",
+        "activation/data-apps/feedback",
+        "activation/data-apps/reports"
+      ]
     },
     
     {
@@ -136,6 +117,7 @@
     {
       "group": "Deployment",
       "pages": [
+        "deployment-and-security/cloud",
         {
           "group": "Deploy Locally",
           "icon": "",
@@ -163,10 +145,35 @@
         }
       ]
     },
+
+    {
+      "group": "Authentication & Access Control",
+      "pages": ["deployment-and-security/auth/overview"]
+    },
+
+    {
+      "group": "Data Security & Infrastructure",
+      "pages": ["deployment-and-security/data-security-infra/overview"]
+    },
+
+    {
+      "group": "Compliance & Certifications",
+      "pages": ["deployment-and-security/compliance/overview"]
+    },
+
+    {
+      "group": "FAQ / Troubleshooting",
+      "pages": ["deployment-and-security/faqs/overview",
+      "deployment-and-security/faqs/data-and-ai-integration",
+      "deployment-and-security/faqs/model-config",
+      "deployment-and-security/faqs/data-apps",
+      "deployment-and-security/faqs/data-and-ai-integration"
+    ]
+    },
     
     {
       "group": "",
-      "pages": ["guides/getting-started", "guides/add-data-source", "guides/add-ai-source"]
+      "pages": ["guides/core-concepts"]
     },
     {
       "group": "Open Source",
@@ -208,6 +215,7 @@
     {
       "group": "Sources",
       "pages": [
+        "guides/add-data-source",
         {
           "group": "Data Sources",
           "icon": "database",
@@ -228,17 +236,6 @@
             "guides/sources/data-sources/sftp",
             "guides/sources/data-sources/watsonx_data"
           ]
-        },
-        {
-          "group": "AI/ML Sources",
-          "icon": "grid",
-          "pages": [
-            "guides/sources/ai-ml-sources/anthropic-model",
-            "guides/sources/ai-ml-sources/open_ai-model",
-            "guides/sources/ai-ml-sources/google_vertex-model",
-            "guides/sources/ai-ml-sources/watsonx_ai-model",
-            "guides/sources/ai-ml-sources/http-model-endpoint"
-          ]
         }
         
       ]
@@ -247,7 +244,7 @@
       "group": "Destinations",
       "pages": [
         {
-          "group": "Data Movement",
+          "group": "Business Applications",
           "icon": "database",
           "pages": [
             "guides/destinations/retl-destinations/crm/salesforce",
@@ -284,17 +281,26 @@
             "guides/destinations/retl-destinations/database/ms_sql",
             "guides/destinations/retl-destinations/file-storage/amazon_s3"
           ]
-        },
-        {
-          "group": "AI Delivery",
-          "icon": "grid",
-          "pages": [
-            "guides/destinations/ai-ml-destinations/overview",
-            "guides/destinations/ai-ml-destinations/salesforce",
-            "guides/destinations/ai-ml-destinations/browser-extension",
-            "guides/destinations/ai-ml-destinations/custom-web-app"
-          ]
         }
+      ]
+    },
+    {
+      "group": "Data Modelling",
+      "icon": "",
+      "pages": [
+        "guides/data-modelling/models/overview",
+        "guides/data-modelling/models/sql",
+        "guides/data-modelling/models/table-visualization"
+      ]
+    },
+    {
+      "group": "Data Syncs",
+      "icon": "",
+      "pages": [
+        "guides/data-modelling/syncs/overview",
+        "guides/data-modelling/sync-modes/full-refresh",
+        "guides/data-modelling/sync-modes/incremental",
+        "guides/data-modelling/sync-modes/cursor-incremental"
       ]
     },
     {
