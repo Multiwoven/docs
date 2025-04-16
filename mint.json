@@ -68,7 +68,7 @@
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/core-concepts","getting-started/workspace-management/overview"]
+      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/workspace-management/overview"]
     },
     {
       "group": "",
