@@ -1,0 +1,116 @@
+---
+title: Core Concepts
+description: ''
+icon: ''
+
+---
+
+The core concepts of AI Squared are the foundation of your data & AI journey. They include Sources, Destinations, Models, and Syncs. Understanding these concepts is crucial to building a robust data pipeline.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756028/AIS/Core_Concepts_v4o7rp.png"
+  alt="Hero Light"
+/>
+
+## Sources & Destinations
+
+### Sources
+Sources are the **starting points** of your data and AI journey. AI Squared connects with a wide range of sources to facilitate **data extraction and transformation** across multiple systems.
+
+- **Data Sources**: Data warehouses, databases, and files.
+- **AI/ML Sources**: Integrate with AI/ML models such as **AWS SageMaker** to bring AI insights into daily business workflows.
+
+
+
+### Destinations
+Destinations are where AI insights and processed data are delivered in **real-time**. These could be:
+- **CRMs**
+- **Support software**
+- **Marketing automation platforms**
+- **Other databases**
+
+
+
+## Models & AI Processing
+
+### Data Models
+Define and organize data, simplifying the process of querying various sources.
+
+- **SQL Query**: Define models directly using SQL queries, supporting both **dynamic and static** querying.
+- **Table Selector**: A **visual** approach to model building, ideal for straightforward selections.
+- **dbt Model**: Advanced **data transformation** using the dbt framework.
+
+### AI Models
+AI Models define how **input and output** data interact with an AI/ML source.
+
+#### Parameter Harvesting
+Before sending parameters to AI/ML models, business applications may retrieve them from **DOM elements** or **queries**, a process called **Harvesting**. AI Squared offers **no-code preprocessors** to dynamically transform parameters, ensuring **seamless integration** without complex coding.
+
+
+## Syncs: Customizing Data Flow
+
+### Overview
+'Syncs' in AI Squared helps you move data from sources to destinations. They help you in mapping the data from your models to the destination.
+
+<img
+  className="block"
+  src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Syncs_dncrnv.png"
+  alt="Hero Light"
+/>
+
+There are two types of syncs:
+- **Full Refresh Sync**: All data is synced from the source to the destination.
+- **Incremental Sync**: Only the new or updated data is synced.
+
+
+## Data Apps & Embedding  
+
+### What are Data Apps?  
+Data Apps enable you to bring **AI/ML insights** directly into business applications by connecting to AI/ML sources and building **visualizations** that business users can easily consume.
+
+To get started with Data Apps, you first need to **connect to an AI/ML model**. Refer to the [AI/ML Model Integration](#) section to learn more.
+
+### Creating & Embedding Data Apps  
+
+Once the AI model is connected and **input & output variables** are defined, follow these steps:
+
+1. **Select the model**  
+2. **Choose a visualization format** (table, bar chart, pie chart)  
+3. **Customize branding** to align with your business identity  
+4. **Configure feedback capture mechanisms**  
+5. **Embed the Data App** using either:
+   - An **embeddable code**  
+   - A **browser extension**  
+
+
+
+---
+
+## Feedback & Reports  
+
+You can configure and capture **end-user feedback** (from business teams) when they access model insights within a business application.
+
+### **Types of End-User Feedback**  
+
+#### **Qualitative Feedback**  
+- Captures user observations or experiences using **free-form text input**.  
+
+#### **Quantitative Feedback**  
+- **Thumbs up/down**: Users provide a **Yes/No** rating on AI insights.  
+- **Scale-based input**: Users rate usefulness on a **configurable scale** (e.g., **1-3, 1-5, 1-7**).  
+- **Single/Multi-select options**: Users choose from predefined **custom options**.  
+
+---
+
+## Analyzing Data App Performance  
+
+Once an AI model is integrated into a business application using Data Apps, you can track **active usage and performance** in the **Data Apps Reports** section.
+
+### **Key Metrics Tracked in Reports**  
+- **How many employees access AI model results?**  
+- **How actively do users engage with a Data App?**  
+- **How satisfied are users with the model results?**  
+- **What feedback trends can be observed?**  
+
+The **Data Apps Reports** section provides **real-time visibility** into **AI adoption and model effectiveness** across your business workflows.

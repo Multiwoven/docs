@@ -1,0 +1,52 @@
+---
+title: Data & AI Integration
+description:
+---
+
+This section addresses frequently asked questions when connecting data sources, setting up AI/ML model endpoints, or troubleshooting integration issues within AI Squared.
+
+---
+
+## Data Source Integration
+
+### Why is my data source connection failing?
+
+- Verify that the connection credentials (e.g., host, port, username, password) are correct.
+- Ensure that the network/firewall rules allow connections to AI Squared’s IPs (for on-prem data).
+- Check if the database is online and reachable.
+
+### What formats are supported for ingesting data?
+
+- AI Squared supports connections to major databases like Snowflake, BigQuery, PostgreSQL, Oracle, and more.
+- Files such as CSV, Excel, and JSON can be ingested via SFTP or cloud storage (e.g., S3).
+
+---
+
+## AI/ML Model Integration
+
+### How do I connect my hosted model?
+
+- Use the [Add AI/ML Source](/activation/ai-modelling/connect-source) guide to define your model endpoint.
+- Provide input/output schema details so the platform can handle data mapping effectively.
+
+### What types of model endpoints are supported?
+
+- REST-based hosted models with JSON payloads
+- Hosted services like AWS SageMaker, Vertex AI, and custom HTTP endpoints
+
+---
+
+## Sync & Schema Issues
+
+### Why is my sync failing?
+
+- Confirm that your data model and sync mapping are valid
+- Check that input types in your model schema match your data source fields
+- Review logs for any missing fields or payload mismatches
+
+### How can I test if my connection is working?
+
+- Use the “Test Connection” button when setting up a new source or sync.
+- If testing fails, examine error messages and retry with updated configs.
+
+---

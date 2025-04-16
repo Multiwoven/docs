@@ -1,0 +1,85 @@
+---
+title: 'SQL Editor'
+description: "SQL Editor for Data Modeling in AI Squared"
+---
+
+## Overview
+
+AI Squared's SQL Editor allows you to define and manage your data models directly through SQL queries. This powerful tool supports native SQL commands compatible with your data warehouse, enabling you to seamlessly model your data.
+
+## Creating a Model with the SQL Editor
+### Starting with a Query
+
+Begin by writing a SQL query to define your model. For instance, if using a typical eCommerce dataset, you might start with a query like:
+
+```sql
+SELECT * FROM sales_data.customers
+```
+
+
+### Previewing Your Data
+
+Click the `Preview` button to review the first 100 rows of your data. This step ensures the query fetches the expected data. After verifying, proceed by clicking `Continue`.
+
+<Tip>**Important Note:**  The model cannot be saved if the query is incorrect or yields no results.</Tip>
+
+### Configuring Model Details
+
+Finalize your model by:
+- Naming the model descriptively.
+- Choosing a column as the Primary Key.
+
+### Completing the Setup
+
+Finish your model setup by clicking the `Finish` button.
+
+## Unique Primary Key Requirement
+
+Every model requires a unique primary key. If no unique column exists, consider:
+- Removing duplicate rows.
+- Creating a composite column for the primary key.
+
+## Handling Duplicate Data
+
+To filter duplicates, use a `GROUP BY` clause in your SQL query. For instance:
+
+```sql
+SELECT *
+FROM customer_data
+GROUP BY unique_identifier_column
+```
+
+## Composite Primary Keys
+
+In scenarios where a unique primary key is not available, construct a composite key. Example:
+
+```sql
+SELECT customer_id, 
+       email, 
+       purchase_date,
+       MD5(CONCAT(customer_id, '-', email)) AS composite_key
+FROM sales_data
+```
+
+## Saving a Model Without Current Results
+
+To save a model expected to have future data:
+
+```sql
+UNION ALL
+SELECT NULL, NULL, NULL
+```
+
+Add this to your query to include a dummy row, ensuring the model can be saved.
+
+## Excluding Rows with Null Values
+
+To exclude rows with null values:
+
+```sql
+SELECT *
+FROM your_dataset
+WHERE important_column1 IS NOT NULL AND important_column2 IS NOT NULL
+```
+
+Replace `important_column1`, `important_column2`, etc., with your relevant column names.
