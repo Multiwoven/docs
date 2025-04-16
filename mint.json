@@ -86,7 +86,6 @@
         "pages": [
           "activation/data-modelling/models/overview",
           "activation/data-modelling/models/sql",
-          "activation/data-modelling/models/dbt",
           "activation/data-modelling/models/table-visualization"
         ]
       },
@@ -109,14 +108,21 @@
         "group": "AI Modeling",
         "icon": "",
         "pages": [
-          "activation/ai-modelling/Models"
+          "activation/ai-modelling/modelling-overview","activation/ai-modelling/connect-source",
+          "activation/ai-modelling/input-schema",
+          "activation/ai-modelling/preprocessing",
+          "activation/ai-modelling/output-schema"
         ]
       },
       {
         "group": "Data Apps",
         "icon": "",
         "pages": [
-          "activation/ai-modelling/Models"
+          "activation/data-apps/overview",
+          "activation/data-apps/create-data-app",
+          "activation/data-apps/embed",
+          "activation/data-apps/feedback",
+          "activation/data-apps/reports"
         ]
       }
     ]
@@ -124,7 +130,38 @@
     
     {
       "group": "Deployment & Security",
-      "pages": ["deployment-and-security/security-and-compliance/security"]
+      "pages": ["deployment-and-security/overview"]
+    },
+
+    {
+      "group": "Deployment",
+      "pages": [
+        {
+          "group": "Deploy Locally",
+          "icon": "",
+          "pages": ["deployment-and-security/setup/docker-compose-dev"]
+        },
+        {
+          "group": "Self-Hosted (On-Premise)",
+          "icon": "",
+          "pages": [
+            "deployment-and-security/setup/environment-variables",
+            "deployment-and-security/setup/docker-compose",
+            "deployment-and-security/setup/helm",
+            "deployment-and-security/setup/ec2",
+            "deployment-and-security/setup/ecs",
+            "deployment-and-security/setup/eks",
+            "deployment-and-security/setup/gke",
+            "deployment-and-security/setup/gce",
+            "deployment-and-security/setup/aks",
+            "deployment-and-security/setup/avm",
+            "deployment-and-security/setup/dod",
+            "deployment-and-security/setup/dok",
+            "deployment-and-security/setup/heroku",
+            "deployment-and-security/setup/openshift"
+          ]
+        }
+      ]
     },
     
     {
@@ -252,6 +289,7 @@
           "group": "AI Delivery",
           "icon": "grid",
           "pages": [
+            "guides/destinations/ai-ml-destinations/overview",
             "guides/destinations/ai-ml-destinations/salesforce",
             "guides/destinations/ai-ml-destinations/browser-extension",
             "guides/destinations/ai-ml-destinations/custom-web-app"
@@ -266,36 +304,6 @@
         "open-source/guides/architecture/multiwoven-protocol",
         "open-source/guides/architecture/technical-stack",
         "open-source/guides/architecture/sync-states"
-      ]
-    },
-    {
-      "group": "Deployment",
-      "pages": [
-        "open-source/guides/setup/environment-variables",
-        {
-          "group": "Deploy Locally",
-          "icon": "",
-          "pages": ["open-source/guides/setup/docker-compose-dev"]
-        },
-        {
-          "group": "Production Deployment",
-          "icon": "",
-          "pages": [
-            "open-source/guides/setup/docker-compose",
-            "open-source/guides/setup/helm",
-            "open-source/guides/setup/ec2",
-            "open-source/guides/setup/ecs",
-            "open-source/guides/setup/eks",
-            "open-source/guides/setup/gke",
-            "open-source/guides/setup/gce",
-            "open-source/guides/setup/aks",
-            "open-source/guides/setup/avm",
-            "open-source/guides/setup/dod",
-            "open-source/guides/setup/dok",
-            "open-source/guides/setup/heroku",
-            "open-source/guides/setup/openshift"
-          ]
-        }
       ]
     },
     {

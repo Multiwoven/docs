@@ -1,0 +1,90 @@
+---
+title: Connect Source
+description: Learn how to connect and configure an AI/ML model as a source for use within the AI Squared platform.
+---
+
+Connecting an AI/ML source is the first step in activating AI within your business workflows. AI Squared allows you to seamlessly integrate your deployed model endpoints—from providers like SageMaker, Vertex AI, Databricks, or custom HTTP APIs.
+
+This guide walks you through connecting a new model source.
+
+---
+
+## Step 1: Select an AI/ML Source
+
+1. Navigate to **AI Activation → AI Modeling → Connect Source**
+2. Click on **Add Source**
+3. Choose your desired connector from the list:
+   - AWS SageMaker
+   - Google Vertex AI
+   - Databricks Model
+   - OpenAI Model Endpoint
+   - HTTP Model Source (Generic)
+
+📸 _Placeholder for: Screenshot of “Add Source” screen_
+
+---
+
+## Step 2: Enter Endpoint Details
+
+Each connector requires some basic configuration for successful integration.
+
+### Required Fields
+
+- **Endpoint Name** – A meaningful name for this model source
+- **Endpoint URL** – The endpoint where the model is hosted
+- **Authentication Method** – e.g., OAuth, API Key, Bearer Token
+- **Auth Header / Secret Key** – If applicable
+- **Request Format** – Structure expected by the model (e.g., JSON payload)
+- **Response Format** – Format returned by the model (e.g., structured JSON with keys)
+
+📸 _Placeholder for: Screenshot of endpoint input form_
+
+---
+
+## Step 3: Test Connection
+
+Click **Test Connection** to validate that the model endpoint is reachable and returns a valid response.
+
+- Ensure all fields are correct
+- The system will validate the endpoint and return a success or error message
+
+📸 _Placeholder for: Screenshot of test success/failure_
+
+---
+
+## Step 4: Define Input Schema
+
+The input schema specifies the fields your model expects during inference.
+
+| Field       | Description                                     |
+|-------------|-------------------------------------------------|
+| **Name**    | Key name expected by the model                  |
+| **Type**    | Data type: String, Integer, Float, Boolean      |
+| **Value**   | Static or dynamic input value                   |
+
+📸 _Placeholder for: Input schema editor screenshot_
+
+---
+
+## Step 5: Define Output Schema
+
+The output schema ensures consistent mapping of the model’s response.
+
+| Field       | Description                                   |
+|-------------|-----------------------------------------------|
+| **Field Name** | Key name from the model response            |
+| **Type**       | Data type: String, Integer, Float, Boolean |
+
+📸 _Placeholder for: Output schema editor screenshot_
+
+---
+
+## Step 6: Save the Source
+
+Click **Save** once configuration is complete. Your model source will now appear in the **AI Modeling** tab and can be used in downstream workflows such as Data Apps or visualizations.
+
+📸 _Placeholder for: Final save and confirmation screen_
+
+---
+
+Need help? Head over to our [Support & FAQs](/support) section for troubleshooting tips or reach out via the in-app help widget.
