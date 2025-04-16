@@ -161,14 +161,6 @@
       "pages": ["deployment-and-security/security-and-compliance/overview"]
     },
     {
-      "group": "",
-      "pages": ["guides/core-concepts"]
-    },
-    {
-      "group": "Open Source",
-      "pages": ["open-source/introduction"]
-    },
-    {
       "group": "Support & FAQs",
       "pages": [
       "faqs/data-and-ai-integration",
@@ -207,6 +199,10 @@
           ]
         }
       ]
+    },
+    {
+      "group": "",
+      "pages": ["guides/core-concepts"]
     },
     {
       "group": "Sources",
