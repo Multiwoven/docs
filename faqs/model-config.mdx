@@ -1,0 +1,72 @@
+---
+title: Model Configuration
+description:
+---
+
+This section answers frequently asked questions about configuring AI models within AI Squared—including how to define schemas, preprocess inputs, and ensure model compatibility.
+
+---
+
+## Input & Output Schema
+
+### What is the input schema used for?
+
+The input schema defines the structure of data sent to your model. Each key in the schema maps to a variable used by the model endpoint.
+
+- Ensure all required fields are covered
+- Match data types (string, integer, float, boolean) exactly
+- Use dynamic/static value tagging depending on your use case
+
+### What is the output schema used for?
+
+The output schema maps the model’s prediction response to fields that can be used in visualizations and downstream applications.
+
+- Identify key-value pairs in the model response
+- Use flat structures (nested objects not supported currently)
+- Label predictions clearly for user-facing display
+
+---
+
+## Preprocessing & Formatting
+
+### How do I clean or transform inputs before sending them to the model?
+
+Use AI Squared's built-in **Preprocessing Rules**, which allow no-code logic to:
+
+- Format strings or numbers (e.g., round decimals)
+- Apply conditional logic (e.g., replace nulls)
+- Normalize or scale inputs
+
+Preprocessors are configurable per input field.
+
+---
+
+## Updating a Model Source
+
+### Can I update a connected model after initial setup?
+
+Yes, you can:
+
+- Edit endpoint details (URL, auth, headers)
+- Modify input/output schemas
+- Add or update preprocessing rules
+
+Changes will reflect in associated Data Apps using the model.
+
+---
+
+## Debugging Model Issues
+
+### How can I test if my model responds correctly?
+
+1. Navigate to the AI Modeling section and click on **Test Model**
+2. Provide sample input data based on your schema
+3. Review the response payload
+
+Common issues include:
+
+- Auth failures (invalid API keys or tokens)
+- Incorrect input field names or types
+- Mismatched response format from expected schema
+
+---

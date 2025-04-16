@@ -52,7 +52,7 @@
     },
     {
       "name": "Support & FAQs",
-      "url": "help-and-resources"
+      "url": "faqs"
     },
     {
       "name": "Product Updates",
@@ -158,19 +158,8 @@
 
     {
       "group": "Compliance & Certifications",
-      "pages": ["deployment-and-security/compliance/overview"]
+      "pages": ["deployment-and-security/security-and-compliance/overview"]
     },
-
-    {
-      "group": "FAQ / Troubleshooting",
-      "pages": ["deployment-and-security/faqs/overview",
-      "deployment-and-security/faqs/data-and-ai-integration",
-      "deployment-and-security/faqs/model-config",
-      "deployment-and-security/faqs/data-apps",
-      "deployment-and-security/faqs/data-and-ai-integration"
-    ]
-    },
-    
     {
       "group": "",
       "pages": ["guides/core-concepts"]
@@ -181,7 +170,14 @@
     },
     {
       "group": "Support & FAQs",
-      "pages": ["help-and-resources/overview"]
+      "pages": [
+      "faqs/data-and-ai-integration",
+      "faqs/model-config",
+      "faqs/data-apps",
+      "faqs/deployment-and-security",
+      "faqs/feedback",
+      "faqs/billing-and-account"
+    ]
     },
     {
       "group": "Product Updates",
@@ -218,7 +214,7 @@
         "guides/add-data-source",
         {
           "group": "Data Sources",
-          "icon": "database",
+          "icon": "",
           "pages": [
             "guides/sources/data-sources/redshift",
             "guides/sources/data-sources/snowflake",
@@ -245,7 +241,7 @@
       "pages": [
         {
           "group": "Business Applications",
-          "icon": "database",
+          "icon": "",
           "pages": [
             "guides/destinations/retl-destinations/crm/salesforce",
             "guides/destinations/retl-destinations/crm/hubspot",
@@ -324,11 +320,6 @@
         "open-source/community-support/contribution",
         "open-source/community-support/slack-conduct"
       ]
-    },
-    
-    {
-      "group": "FAQs",
-      "pages": ["help-and-resources/faqs/questions"]
     }
   ],
   "footerSocials": {
