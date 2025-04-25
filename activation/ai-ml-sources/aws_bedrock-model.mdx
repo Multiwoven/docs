@@ -1,0 +1,999 @@
+---
+title: "AWS Bedrock Model"
+description: ""
+---
+
+## Connect AI Squared to AWS Bedrock Model
+
+This guide will help you configure the AWS Bedrock Model Connector in AI Squared to access your AWS Bedrock Model Endpoint.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary access key, secret access key, and region from AWS.
+
+## Step-by-Step Guide to Connect to an AWS Bedrock Model Endpoint
+
+## Step 1: Navigate to AWS Console
+
+Start by logging into your AWS Management Console.
+
+1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+
+## Step 2: Locate AWS Configuration Details
+
+Once you're in the AWS console, you'll find the necessary configuration details:
+
+1. **Access Key and Secret Access Key:**
+   - Click on your username at the top right corner of the AWS Management Console.
+   - Choose "Security Credentials" from the dropdown menu.
+   - In the "Access keys" section, you can create or view your access keys.
+   - If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+     </Frame>
+
+2. **Region:**
+   - The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Bedrock resources is located and note down the region.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025964/Multiwoven/connectors/aws_sagemaker-model/region_nonhav.jpg" />
+     </Frame>
+
+3. **Model ID:**
+   - The AWS Model Id can be found in your selected models catalog.
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745549438/Multiwoven/connectors/aws_bedrock-model/Model_Id_m0uetd.png" />
+   </Frame>
+
+## Step 3: Configure AWS Bedrock Model Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+
+- **Access Key ID:** Your AWS IAM user's Access Key ID.
+- **Secret Access Key:** The corresponding Secret Access Key.
+- **Region:** The AWS region where your Bedrock model are located.
+- **Model ID:** The Model ID.
+
+## Sample Request and Response
+
+<AccordionGroup>
+  <Accordion title="Jamba Models" icon="layers">
+    <Accordion title="Jamba 1.5 Large" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello world"
+          }
+        ],
+        "max_tokens": 1000,
+        "top_p": 0.8,
+        "temperature": 0.7
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": "Hi there!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Jamba 1.5 Mini" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello world"
+          }
+        ],
+        "max_tokens": 1000,
+        "top_p": 0.8,
+        "temperature": 0.7
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": "Hello!"
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Amazon Models" icon="layers">
+    <Accordion title="Nova Lite" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 1000
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "Hi there!"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Nova Micro" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 1000
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "Hello!"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Nova Pro" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 1000
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "Hey! How can I assist?"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Premier" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputText": "hello world",
+        "textGenerationConfig": {
+          "maxTokenCount": 8192,
+          "stopSequences": [],
+          "temperature": 0,
+          "topP": 1
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "results": [
+          {
+            "outputText": "Hello from Titan Premier!"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Express" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputText": "hello world",
+        "textGenerationConfig": {
+          "maxTokenCount": 8192,
+          "stopSequences": [],
+          "temperature": 0,
+          "topP": 1
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "results": [
+          {
+            "outputText": "Hey there!"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Lite" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputText": "hello world",
+        "textGenerationConfig": {
+          "maxTokenCount": 8192,
+          "stopSequences": [],
+          "temperature": 0,
+          "topP": 1
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "results": [
+          {
+            "outputText": "Hi!"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+
+<AccordionGroup>
+  <Accordion title="Anthropic Models" icon="layers">
+    <Accordion title="Claude 3.7 Sonnet" icon="key">
+      **Request:**
+      ```json
+      {
+        {
+          "anthropic_version": "bedrock-2023-05-31",
+          "max_tokens": 200,
+          "messages": [
+            {
+              "role": "user",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "hello world"
+                }
+              ]
+            }
+          ]
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello!"
+          }
+        ],
+        "model": "claude-3-7-sonnet-20250219",
+        "stop_reason": "end_turn",
+        "stop_sequence": null,
+        "usage": {
+          "input_tokens": 12,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Haiku" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_02ABC1234",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hi there!"
+          }
+        ],
+        "model": "claude-3-5-haiku-20240305",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 5
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Sonnet v2" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_03XYZ5678",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello, friend!"
+          }
+        ],
+        "model": "claude-3-5-sonnet-20240315-v2",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Sonnet" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_04LMN8901",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Greetings!"
+          }
+        ],
+        "model": "claude-3-5-sonnet-20240229",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3 Opus" icon="key">
+      **Request:**
+      ```json
+     {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_05OPQ2345",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hey there!"
+          }
+        ],
+        "model": "claude-3-opus-20240229",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3 Haiku" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "msg_06RST6789",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello, world!"
+          }
+        ],
+        "model": "claude-3-haiku-20240305",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Cohere Models" icon="layers">
+    <Accordion title="Command R" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "chat_history": [
+          {
+            "role": "USER",
+            "message": "hello world"
+          },
+          {
+            "role": "CHATBOT",
+            "message": "Hi there!"
+          }
+        ],
+        "message": "How can I get started?"
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "CHATBOT",
+        "message": "You can begin by learning basic AI concepts and tools like Python and prompt engineering."
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command R+" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "chat_history": [
+          {
+            "role": "USER",
+            "message": "hello world"
+          },
+          {
+            "role": "CHATBOT",
+            "message": "Hey there!"
+          }
+        ],
+        "message": "What can you help with?"
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "CHATBOT",
+        "message": "I can help answer questions, generate content, and assist with tasks across many topics."
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command Light" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_tokens": 100,
+        "temperature": 0.8
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello there!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_tokens": 100,
+        "temperature": 0.8
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hi! How can I assist you today?"
+      }
+      ```
+    </Accordion>
+
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="DeepSeek Models" icon="layers">
+    <Accordion title="DeepSeek-R1" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_tokens": 512
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello world"
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "role": "assistant",
+        "content": "Hi there! How can I assist you?"
+      }
+      ```
+    </Accordion>
+
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Meta Models" icon="layers">
+    <Accordion title="Llama 3.3 70B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_gen_len": 512,
+        "temperature": 0.5,
+        "top_p": 0.9
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello, world!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 11B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputs": [
+          [
+            {
+              "role": "user",
+              "content": "hello world"
+            }
+          ]
+        ],
+        "parameters": {
+          "max_new_tokens": 512,
+          "top_p": 0.9,
+          "temperature": 0.6
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.2 11B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 1B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputs": [
+          [
+            {
+              "role": "user",
+              "content": "hello world"
+            }
+          ]
+        ],
+        "parameters": {
+          "max_new_tokens": 512,
+          "top_p": 0.9,
+          "temperature": 0.6
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.2 1B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 3B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputs": [
+          [
+            {
+              "role": "user",
+              "content": "hello world"
+            }
+          ]
+        ],
+        "parameters": {
+          "max_new_tokens": 512,
+          "top_p": 0.9,
+          "temperature": 0.6
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.2 3B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 90B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "inputs": [
+          [
+            {
+              "role": "user",
+              "content": "hello world"
+            }
+          ]
+        ],
+        "parameters": {
+          "max_new_tokens": 512,
+          "top_p": 0.9,
+          "temperature": 0.6
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.2 90B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.1 70B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_gen_len": 512,
+        "temperature": 0.5,
+        "top_p": 0.9
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.1 70B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.1 8B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_gen_len": 512,
+        "temperature": 0.5,
+        "top_p": 0.9
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3.1 8B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3 70B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_gen_len": 512,
+        "temperature": 0.5,
+        "top_p": 0.9
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3 70B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3 8B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "hello world",
+        "max_gen_len": 512,
+        "temperature": 0.5,
+        "top_p": 0.9
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Llama 3 8B!"
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Mistral AI Models" icon="layers">
+
+    <Accordion title="Pixtral Large (25.02)" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello world"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "The countries with the best food are Italy, France, Japan, and India. For example, Italy's city of Florence is visible on the map."
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral Large (24.02)" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello world [/INST]",
+        "max_tokens": 200,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "top_k": 50
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello! How can I assist you today?"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral 7B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello world [/INST]",
+        "max_tokens": 200,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "top_k": 50
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Mistral 7B Instruct!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mixtral 8x7B Instruct" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello world [/INST]",
+        "max_tokens": 200,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "top_k": 50
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Mixtral 8x7B!"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral Small (24.02)" icon="key">
+      **Request Body:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello world [/INST]",
+        "max_tokens": 200,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "top_k": 50
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "text": "Hello from Mistral Small!"
+      }
+      ```
+    </Accordion>
+
+  </Accordion>
+</AccordionGroup>
