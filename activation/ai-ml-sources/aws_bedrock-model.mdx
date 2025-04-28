@@ -58,51 +58,85 @@ Now that you have gathered all the necessary details enter the following informa
 <AccordionGroup>
   <Accordion title="Jamba Models" icon="layers">
     <Accordion title="Jamba 1.5 Large" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "messages": [
           {
             "role": "user",
-            "content": "hello world"
+            "content": "hello"
           }
         ],
-        "max_tokens": 1000,
-        "top_p": 0.8,
-        "temperature": 0.7
+        "max_tokens": 100
       }
       ```
 
       **Response:**
       ```json
       {
-        "role": "assistant",
-        "content": "Hi there!"
+        "id": "chatcmpl",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": " Hello!",
+              "tool_calls": null
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 12,
+          "completion_tokens": 10,
+          "total_tokens": 22
+        },
+        "meta": {
+          "requestDurationMillis": 113
+        },
+        "model": "jamba-1.5-large"
       }
       ```
     </Accordion>
 
     <Accordion title="Jamba 1.5 Mini" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "messages": [
           {
             "role": "user",
-            "content": "hello world"
+            "content": "hello"
           }
         ],
-        "max_tokens": 1000,
-        "top_p": 0.8,
-        "temperature": 0.7
+        "max_tokens": 100
       }
       ```
 
       **Response:**
       ```json
       {
-        "role": "assistant",
-        "content": "Hello!"
+        "id": "chatcmpl",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": " Hello!",
+              "tool_calls": null
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 12,
+          "completion_tokens": 10,
+          "total_tokens": 22
+        },
+        "meta": {
+          "requestDurationMillis": 113
+        },
+        "model": "jamba-1.5-mini"
       }
       ```
     </Accordion>
@@ -112,18 +146,18 @@ Now that you have gathered all the necessary details enter the following informa
 <AccordionGroup>
   <Accordion title="Amazon Models" icon="layers">
     <Accordion title="Nova Lite" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inferenceConfig": {
-          "max_new_tokens": 1000
+          "max_new_tokens": 100
         },
         "messages": [
           {
             "role": "user",
             "content": [
               {
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
@@ -134,29 +168,41 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
-        "role": "assistant",
-        "content": [
-          {
-            "text": "Hi there!"
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
           }
-        ]
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
       }
       ```
     </Accordion>
 
     <Accordion title="Nova Micro" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inferenceConfig": {
-          "max_new_tokens": 1000
+          "max_new_tokens": 100
         },
         "messages": [
           {
             "role": "user",
             "content": [
               {
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
@@ -167,29 +213,41 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
-        "role": "assistant",
-        "content": [
-          {
-            "text": "Hello!"
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
           }
-        ]
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
       }
       ```
     </Accordion>
 
     <Accordion title="Nova Pro" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inferenceConfig": {
-          "max_new_tokens": 1000
+          "max_new_tokens": 100
         },
         "messages": [
           {
             "role": "user",
             "content": [
               {
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
@@ -200,26 +258,36 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
-        "role": "assistant",
-        "content": [
-          {
-            "text": "Hey! How can I assist?"
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
           }
-        ]
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
       }
       ```
     </Accordion>
 
     <Accordion title="Titan Text G1 - Premier" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "inputText": "hello world",
+        "inputText": "hello",
         "textGenerationConfig": {
-          "maxTokenCount": 8192,
-          "stopSequences": [],
-          "temperature": 0,
-          "topP": 1
+          "maxTokenCount": 100,
+          "stopSequences": []
         }
       }
       ```
@@ -227,9 +295,12 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
+        "inputTextTokenCount": 3,
         "results": [
           {
-            "outputText": "Hello from Titan Premier!"
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
           }
         ]
       }
@@ -237,15 +308,13 @@ Now that you have gathered all the necessary details enter the following informa
     </Accordion>
 
     <Accordion title="Titan Text G1 - Express" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "inputText": "hello world",
+        "inputText": "hello",
         "textGenerationConfig": {
-          "maxTokenCount": 8192,
-          "stopSequences": [],
-          "temperature": 0,
-          "topP": 1
+          "maxTokenCount": 100,
+          "stopSequences": []
         }
       }
       ```
@@ -253,9 +322,12 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
+        "inputTextTokenCount": 3,
         "results": [
           {
-            "outputText": "Hey there!"
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
           }
         ]
       }
@@ -263,15 +335,13 @@ Now that you have gathered all the necessary details enter the following informa
     </Accordion>
 
     <Accordion title="Titan Text G1 - Lite" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "inputText": "hello world",
+        "inputText": "hello",
         "textGenerationConfig": {
-          "maxTokenCount": 8192,
-          "stopSequences": [],
-          "temperature": 0,
-          "topP": 1
+          "maxTokenCount": 100,
+          "stopSequences": []
         }
       }
       ```
@@ -279,9 +349,12 @@ Now that you have gathered all the necessary details enter the following informa
       **Response:**
       ```json
       {
+        "inputTextTokenCount": 3,
         "results": [
           {
-            "outputText": "Hi!"
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
           }
         ]
       }
@@ -290,31 +363,27 @@ Now that you have gathered all the necessary details enter the following informa
   </Accordion>
 </AccordionGroup>
 
-
 <AccordionGroup>
   <Accordion title="Anthropic Models" icon="layers">
     <Accordion title="Claude 3.7 Sonnet" icon="key">
       **Request:**
       ```json
       {
-        {
-          "anthropic_version": "bedrock-2023-05-31",
-          "max_tokens": 200,
-          "messages": [
-            {
-              "role": "user",
-              "content": [
-                {
-                  "type": "text",
-                  "text": "hello world"
-                }
-              ]
-            }
-          ]
-        }
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 200,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
       }
       ```
-
       **Response:**
       ```json
       {
@@ -350,14 +419,13 @@ Now that you have gathered all the necessary details enter the following informa
             "content": [
               {
                 "type": "text",
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
         ]
       }
       ```
-
       **Response:**
       ```json
       {
@@ -392,14 +460,13 @@ Now that you have gathered all the necessary details enter the following informa
             "content": [
               {
                 "type": "text",
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
         ]
       }
       ```
-
       **Response:**
       ```json
       {
@@ -427,38 +494,38 @@ Now that you have gathered all the necessary details enter the following informa
       ```json
       {
         "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": 100,
+        "max_tokens": 200,
         "messages": [
           {
             "role": "user",
             "content": [
               {
                 "type": "text",
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
         ]
       }
       ```
-
       **Response:**
       ```json
       {
-        "id": "msg_04LMN8901",
+        "id": "msg_bdrk",
         "type": "message",
         "role": "assistant",
+        "model": "claude-3-5-sonnet-20240307",
         "content": [
           {
             "type": "text",
-            "text": "Greetings!"
+            "text": "Hello!"
           }
         ],
-        "model": "claude-3-5-sonnet-20240229",
         "stop_reason": "end_turn",
+        "stop_sequence": null,
         "usage": {
-          "input_tokens": 9,
-          "output_tokens": 6
+          "input_tokens": 8,
+          "output_tokens": 12
         }
       }
       ```
@@ -467,7 +534,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3 Opus" icon="key">
       **Request:**
       ```json
-     {
+      {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
         "messages": [
@@ -476,14 +543,13 @@ Now that you have gathered all the necessary details enter the following informa
             "content": [
               {
                 "type": "text",
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
         ]
       }
       ```
-
       **Response:**
       ```json
       {
@@ -518,14 +584,13 @@ Now that you have gathered all the necessary details enter the following informa
             "content": [
               {
                 "type": "text",
-                "text": "hello world"
+                "text": "hello"
               }
             ]
           }
         ]
       }
       ```
-
       **Response:**
       ```json
       {
@@ -553,186 +618,184 @@ Now that you have gathered all the necessary details enter the following informa
 <AccordionGroup>
   <Accordion title="Cohere Models" icon="layers">
     <Accordion title="Command R" icon="key">
-      **Request Body:**
+      **Request:**
+      ```json
+      { 
+        "message": "Hi" 
+      }
+      ```
+      **Response:**
       ```json
       {
+        "response_id": "123D7",
+        "text": "Hi there!",
+        "generation_id": "e70d12",
         "chat_history": [
           {
             "role": "USER",
-            "message": "hello world"
+            "message": "Hi"
           },
           {
             "role": "CHATBOT",
             "message": "Hi there!"
           }
         ],
-        "message": "How can I get started?"
-      }
-      ```
-
-      **Response:**
-      ```json
-      {
-        "role": "CHATBOT",
-        "message": "You can begin by learning basic AI concepts and tools like Python and prompt engineering."
+        "finish_reason": "COMPLETE"
       }
       ```
     </Accordion>
 
     <Accordion title="Command R+" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
-      {
-        "chat_history": [
-          {
-            "role": "USER",
-            "message": "hello world"
-          },
-          {
-            "role": "CHATBOT",
-            "message": "Hey there!"
-          }
-        ],
-        "message": "What can you help with?"
+      { 
+        "message": "Hi" 
       }
       ```
-
       **Response:**
       ```json
       {
-        "role": "CHATBOT",
-        "message": "I can help answer questions, generate content, and assist with tasks across many topics."
+        "response_id": "123D7",
+        "text": "Hi there!",
+        "generation_id": "e70d12",
+        "chat_history": [
+          {
+            "role": "USER",
+            "message": "Hi"
+          },
+          {
+            "role": "CHATBOT",
+            "message": "Hi there!"
+          }
+        ],
+        "finish_reason": "COMPLETE"
       }
       ```
     </Accordion>
 
     <Accordion title="Command Light" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_tokens": 100,
-        "temperature": 0.8
+        "prompt": "hello",
+        "max_tokens": 100
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello there!"
+        "id": "5e820f61f54d",
+        "generations": [
+          {
+            "id": "5e820f61f54d",
+            "text": " Hello!",
+            "finish_reason": "COMPLETE"
+          }
+        ],
+        "prompt": "hello"
       }
       ```
     </Accordion>
 
     <Accordion title="Command" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_tokens": 100,
-        "temperature": 0.8
+        "prompt": "hello",
+        "max_tokens": 100
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hi! How can I assist you today?"
+        "id": "5e820f61f54d",
+        "generations": [
+          {
+            "id": "5e820f61f54d",
+            "text": " Hello!",
+            "finish_reason": "COMPLETE"
+          }
+        ],
+        "prompt": "hello"
       }
       ```
     </Accordion>
-
   </Accordion>
 </AccordionGroup>
 
 <AccordionGroup>
   <Accordion title="DeepSeek Models" icon="layers">
     <Accordion title="DeepSeek-R1" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "inferenceConfig": {
-          "max_tokens": 512
-        },
-        "messages": [
+        "prompt": "Hello",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "choices": [
           {
-            "role": "user",
-            "content": "hello world"
+            "text": "Hi!",
+            "stop_reason": "length"
           }
         ]
       }
       ```
-
-      **Response:**
-      ```json
-      {
-        "role": "assistant",
-        "content": "Hi there! How can I assist you?"
-      }
-      ```
     </Accordion>
-
   </Accordion>
 </AccordionGroup>
 
 <AccordionGroup>
   <Accordion title="Meta Models" icon="layers">
     <Accordion title="Llama 3.3 70B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_gen_len": 512,
-        "temperature": 0.5,
-        "top_p": 0.9
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello, world!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
 
     <Accordion title="Llama 3.2 11B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "inputs": [
-          [
-            {
-              "role": "user",
-              "content": "hello world"
-            }
-          ]
-        ],
-        "parameters": {
-          "max_new_tokens": 512,
-          "top_p": 0.9,
-          "temperature": 0.6
-        }
+        "prompt": "hello"
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.2 11B!"
+        "generation": "Hi",
+        "prompt_token_count": 1,
+        "generation_token_count": 512,
+        "stop_reason": "length"
       }
       ```
     </Accordion>
 
     <Accordion title="Llama 3.2 1B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inputs": [
           [
             {
               "role": "user",
-              "content": "hello world"
+              "content": "hello"
             }
           ]
         ],
@@ -743,7 +806,6 @@ Now that you have gathered all the necessary details enter the following informa
         }
       }
       ```
-
       **Response:**
       ```json
       {
@@ -753,14 +815,14 @@ Now that you have gathered all the necessary details enter the following informa
     </Accordion>
 
     <Accordion title="Llama 3.2 3B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inputs": [
           [
             {
               "role": "user",
-              "content": "hello world"
+              "content": "hello"
             }
           ]
         ],
@@ -771,7 +833,6 @@ Now that you have gathered all the necessary details enter the following informa
         }
       }
       ```
-
       **Response:**
       ```json
       {
@@ -781,14 +842,14 @@ Now that you have gathered all the necessary details enter the following informa
     </Accordion>
 
     <Accordion title="Llama 3.2 90B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "inputs": [
           [
             {
               "role": "user",
-              "content": "hello world"
+              "content": "hello"
             }
           ]
         ],
@@ -799,7 +860,6 @@ Now that you have gathered all the necessary details enter the following informa
         }
       }
       ```
-
       **Response:**
       ```json
       {
@@ -809,77 +869,77 @@ Now that you have gathered all the necessary details enter the following informa
     </Accordion>
 
     <Accordion title="Llama 3.1 70B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_gen_len": 512,
-        "temperature": 0.5,
-        "top_p": 0.9
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.1 70B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
 
     <Accordion title="Llama 3.1 8B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_gen_len": 512,
-        "temperature": 0.5,
-        "top_p": 0.9
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.1 8B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
 
     <Accordion title="Llama 3 70B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_gen_len": 512,
-        "temperature": 0.5,
-        "top_p": 0.9
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3 70B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
 
     <Accordion title="Llama 3 8B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
-        "prompt": "hello world",
-        "max_gen_len": 512,
-        "temperature": 0.5,
-        "top_p": 0.9
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3 8B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
@@ -890,7 +950,7 @@ Now that you have gathered all the necessary details enter the following informa
   <Accordion title="Mistral AI Models" icon="layers">
 
     <Accordion title="Pixtral Large (25.02)" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "messages": [
@@ -906,17 +966,34 @@ Now that you have gathered all the necessary details enter the following informa
         ]
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "The countries with the best food are Italy, France, Japan, and India. For example, Italy's city of Florence is visible on the map."
+        "id": "model_id",
+        "object": "chat.completion",
+        "created": 1745858024,
+        "model": "pixtral-large-2502",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Hello!"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 5,
+          "completion_tokens": 33,
+          "total_tokens": 38
+        }
       }
       ```
     </Accordion>
 
     <Accordion title="Mistral Large (24.02)" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
@@ -926,17 +1003,21 @@ Now that you have gathered all the necessary details enter the following informa
         "top_k": 50
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello! How can I assist you today?"
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
       }
       ```
     </Accordion>
 
     <Accordion title="Mistral 7B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
@@ -946,17 +1027,21 @@ Now that you have gathered all the necessary details enter the following informa
         "top_k": 50
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Mistral 7B Instruct!"
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
       }
       ```
     </Accordion>
 
     <Accordion title="Mixtral 8x7B Instruct" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
@@ -966,17 +1051,21 @@ Now that you have gathered all the necessary details enter the following informa
         "top_k": 50
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Mixtral 8x7B!"
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
       }
       ```
     </Accordion>
 
     <Accordion title="Mistral Small (24.02)" icon="key">
-      **Request Body:**
+      **Request:**
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
@@ -986,11 +1075,15 @@ Now that you have gathered all the necessary details enter the following informa
         "top_k": 50
       }
       ```
-
       **Response:**
       ```json
       {
-        "text": "Hello from Mistral Small!"
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
       }
       ```
     </Accordion>
