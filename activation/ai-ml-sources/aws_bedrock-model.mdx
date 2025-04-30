@@ -38,7 +38,13 @@ Once you're in the AWS console, you'll find the necessary configuration details:
        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025964/Multiwoven/connectors/aws_sagemaker-model/region_nonhav.jpg" />
      </Frame>
 
-3. **Model ID:**
+3. **Inference Profile ARN:**
+   - The Inference Profile ARN is in the Cross-region inference page and can be found in your selected model.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745884727/Multiwoven/connectors/aws_bedrock-model/Bedrock_Inference_Profile_pngrpa.png" />
+     </Frame>
+
+4. **Model ID:**
    - The AWS Model Id can be found in your selected models catalog.
    <Frame>
      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745549438/Multiwoven/connectors/aws_bedrock-model/Model_Id_m0uetd.png" />
@@ -51,6 +57,7 @@ Now that you have gathered all the necessary details enter the following informa
 - **Access Key ID:** Your AWS IAM user's Access Key ID.
 - **Secret Access Key:** The corresponding Secret Access Key.
 - **Region:** The AWS region where your Bedrock model are located.
+- **Inference Profile ARN:** Inference Profile ARN for Model in AWS Bedrock.
 - **Model ID:** The Model ID.
 
 ## Sample Request and Response
@@ -763,8 +770,8 @@ Now that you have gathered all the necessary details enter the following informa
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
-        "generation_token_count": 445,
-        "stop_reason": "stop"
+        "generation_token_count": 512,
+        "stop_reason": "length"
       }
       ```
     </Accordion>
@@ -773,7 +780,8 @@ Now that you have gathered all the necessary details enter the following informa
       **Request:**
       ```json
       {
-        "prompt": "hello"
+        "prompt": "hello",
+        "max_gen_len": 512 
       }
       ```
       **Response:**
@@ -791,25 +799,17 @@ Now that you have gathered all the necessary details enter the following informa
       **Request:**
       ```json
       {
-        "inputs": [
-          [
-            {
-              "role": "user",
-              "content": "hello"
-            }
-          ]
-        ],
-        "parameters": {
-          "max_new_tokens": 512,
-          "top_p": 0.9,
-          "temperature": 0.6
-        }
+        "prompt": "hello",
+        "max_gen_len": 512
       }
       ```
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.2 1B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 480,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
@@ -818,25 +818,17 @@ Now that you have gathered all the necessary details enter the following informa
       **Request:**
       ```json
       {
-        "inputs": [
-          [
-            {
-              "role": "user",
-              "content": "hello"
-            }
-          ]
-        ],
-        "parameters": {
-          "max_new_tokens": 512,
-          "top_p": 0.9,
-          "temperature": 0.6
-        }
+        "prompt": "hello",
+        "max_gen_len": 512 
       }
       ```
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.2 3B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 480,
+        "stop_reason": "stop"
       }
       ```
     </Accordion>
@@ -845,25 +837,17 @@ Now that you have gathered all the necessary details enter the following informa
       **Request:**
       ```json
       {
-        "inputs": [
-          [
-            {
-              "role": "user",
-              "content": "hello"
-            }
-          ]
-        ],
-        "parameters": {
-          "max_new_tokens": 512,
-          "top_p": 0.9,
-          "temperature": 0.6
-        }
+        "prompt": "hello",
+        "max_gen_len": 512 
       }
       ```
       **Response:**
       ```json
       {
-        "text": "Hello from Llama 3.2 90B!"
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 512,
+        "stop_reason": "length"
       }
       ```
     </Accordion>
@@ -882,7 +866,7 @@ Now that you have gathered all the necessary details enter the following informa
         "generation": "Hi!",
         "prompt_token_count": 1,
         "generation_token_count": 445,
-        "stop_reason": "stop"
+        "stop_reason": "length"
       }
       ```
     </Accordion>
@@ -901,7 +885,7 @@ Now that you have gathered all the necessary details enter the following informa
         "generation": "Hi!",
         "prompt_token_count": 1,
         "generation_token_count": 445,
-        "stop_reason": "stop"
+        "stop_reason": "length"
       }
       ```
     </Accordion>
@@ -997,10 +981,7 @@ Now that you have gathered all the necessary details enter the following informa
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
-        "max_tokens": 200,
-        "temperature": 0.5,
-        "top_p": 0.9,
-        "top_k": 50
+        "max_tokens": 200
       }
       ```
       **Response:**
@@ -1021,10 +1002,7 @@ Now that you have gathered all the necessary details enter the following informa
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
-        "max_tokens": 200,
-        "temperature": 0.5,
-        "top_p": 0.9,
-        "top_k": 50
+        "max_tokens": 200
       }
       ```
       **Response:**
@@ -1045,10 +1023,7 @@ Now that you have gathered all the necessary details enter the following informa
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
-        "max_tokens": 200,
-        "temperature": 0.5,
-        "top_p": 0.9,
-        "top_k": 50
+        "max_tokens": 200
       }
       ```
       **Response:**
@@ -1069,10 +1044,7 @@ Now that you have gathered all the necessary details enter the following informa
       ```json
       {
         "prompt": "<s>[INST] hello world [/INST]",
-        "max_tokens": 200,
-        "temperature": 0.5,
-        "top_p": 0.9,
-        "top_k": 50
+        "max_tokens": 200
       }
       ```
       **Response:**
