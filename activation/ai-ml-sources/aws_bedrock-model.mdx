@@ -1,0 +1,1064 @@
+---
+title: "AWS Bedrock Model"
+description: ""
+---
+
+## Connect AI Squared to AWS Bedrock Model
+
+This guide will help you configure the AWS Bedrock Model Connector in AI Squared to access your AWS Bedrock Model Endpoint.
+
+### Prerequisites
+
+Before proceeding, ensure you have the necessary access key, secret access key, and region from AWS.
+
+## Step-by-Step Guide to Connect to an AWS Bedrock Model Endpoint
+
+## Step 1: Navigate to AWS Console
+
+Start by logging into your AWS Management Console.
+
+1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
+
+## Step 2: Locate AWS Configuration Details
+
+Once you're in the AWS console, you'll find the necessary configuration details:
+
+1. **Access Key and Secret Access Key:**
+   - Click on your username at the top right corner of the AWS Management Console.
+   - Choose "Security Credentials" from the dropdown menu.
+   - In the "Access keys" section, you can create or view your access keys.
+   - If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+     </Frame>
+
+2. **Region:**
+   - The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Bedrock resources is located and note down the region.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025964/Multiwoven/connectors/aws_sagemaker-model/region_nonhav.jpg" />
+     </Frame>
+
+3. **Inference Profile ARN:**
+   - The Inference Profile ARN is in the Cross-region inference page and can be found in your selected model.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745884727/Multiwoven/connectors/aws_bedrock-model/Bedrock_Inference_Profile_pngrpa.png" />
+     </Frame>
+
+4. **Model ID:**
+   - The AWS Model Id can be found in your selected models catalog.
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745549438/Multiwoven/connectors/aws_bedrock-model/Model_Id_m0uetd.png" />
+   </Frame>
+
+## Step 3: Configure AWS Bedrock Model Connector in Your Application
+
+Now that you have gathered all the necessary details enter the following information:
+
+- **Access Key ID:** Your AWS IAM user's Access Key ID.
+- **Secret Access Key:** The corresponding Secret Access Key.
+- **Region:** The AWS region where your Bedrock model are located.
+- **Inference Profile ARN:** Inference Profile ARN for Model in AWS Bedrock.
+- **Model ID:** The Model ID.
+
+## Sample Request and Response
+
+<AccordionGroup>
+  <Accordion title="Jamba Models" icon="layers">
+    <Accordion title="Jamba 1.5 Large" icon="key">
+      **Request:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello"
+          }
+        ],
+        "max_tokens": 100
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "chatcmpl",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": " Hello!",
+              "tool_calls": null
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 12,
+          "completion_tokens": 10,
+          "total_tokens": 22
+        },
+        "meta": {
+          "requestDurationMillis": 113
+        },
+        "model": "jamba-1.5-large"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Jamba 1.5 Mini" icon="key">
+      **Request:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello"
+          }
+        ],
+        "max_tokens": 100
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "id": "chatcmpl",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": " Hello!",
+              "tool_calls": null
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 12,
+          "completion_tokens": 10,
+          "total_tokens": 22
+        },
+        "meta": {
+          "requestDurationMillis": 113
+        },
+        "model": "jamba-1.5-mini"
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Amazon Models" icon="layers">
+    <Accordion title="Nova Lite" icon="key">
+      **Request:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 100
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
+          }
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Nova Micro" icon="key">
+      **Request:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 100
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
+          }
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Nova Pro" icon="key">
+      **Request:**
+      ```json
+      {
+        "inferenceConfig": {
+          "max_new_tokens": 100
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "output": {
+          "message": {
+            "content": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "role": "assistant"
+          }
+        },
+        "stopReason": "end_turn",
+        "usage": {
+          "inputTokens": 1,
+          "outputTokens": 51,
+          "totalTokens": 52,
+          "cacheReadInputTokenCount": 0,
+          "cacheWriteInputTokenCount": 0
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Premier" icon="key">
+      **Request:**
+      ```json
+      {
+        "inputText": "hello",
+        "textGenerationConfig": {
+          "maxTokenCount": 100,
+          "stopSequences": []
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "inputTextTokenCount": 3,
+        "results": [
+          {
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Express" icon="key">
+      **Request:**
+      ```json
+      {
+        "inputText": "hello",
+        "textGenerationConfig": {
+          "maxTokenCount": 100,
+          "stopSequences": []
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "inputTextTokenCount": 3,
+        "results": [
+          {
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Titan Text G1 - Lite" icon="key">
+      **Request:**
+      ```json
+      {
+        "inputText": "hello",
+        "textGenerationConfig": {
+          "maxTokenCount": 100,
+          "stopSequences": []
+        }
+      }
+      ```
+
+      **Response:**
+      ```json
+      {
+        "inputTextTokenCount": 3,
+        "results": [
+          {
+            "tokenCount": 13,
+            "outputText": "\nBot: Hi there! How can I help you?",
+            "completionReason": "FINISH"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Anthropic Models" icon="layers">
+    <Accordion title="Claude 3.7 Sonnet" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello!"
+          }
+        ],
+        "model": "claude-3-7-sonnet-20250219",
+        "stop_reason": "end_turn",
+        "stop_sequence": null,
+        "usage": {
+          "input_tokens": 12,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Haiku" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_02ABC1234",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hi there!"
+          }
+        ],
+        "model": "claude-3-5-haiku-20240305",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 5
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Sonnet v2" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_03XYZ5678",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello, friend!"
+          }
+        ],
+        "model": "claude-3-5-sonnet-20240315-v2",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3.5 Sonnet" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_bdrk",
+        "type": "message",
+        "role": "assistant",
+        "model": "claude-3-5-sonnet-20240307",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello!"
+          }
+        ],
+        "stop_reason": "end_turn",
+        "stop_sequence": null,
+        "usage": {
+          "input_tokens": 8,
+          "output_tokens": 12
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3 Opus" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_05OPQ2345",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hey there!"
+          }
+        ],
+        "model": "claude-3-opus-20240229",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Claude 3 Haiku" icon="key">
+      **Request:**
+      ```json
+      {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 100,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "msg_06RST6789",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello, world!"
+          }
+        ],
+        "model": "claude-3-haiku-20240305",
+        "stop_reason": "end_turn",
+        "usage": {
+          "input_tokens": 9,
+          "output_tokens": 6
+        }
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Cohere Models" icon="layers">
+    <Accordion title="Command R" icon="key">
+      **Request:**
+      ```json
+      { 
+        "message": "Hi" 
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "response_id": "123D7",
+        "text": "Hi there!",
+        "generation_id": "e70d12",
+        "chat_history": [
+          {
+            "role": "USER",
+            "message": "Hi"
+          },
+          {
+            "role": "CHATBOT",
+            "message": "Hi there!"
+          }
+        ],
+        "finish_reason": "COMPLETE"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command R+" icon="key">
+      **Request:**
+      ```json
+      { 
+        "message": "Hi" 
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "response_id": "123D7",
+        "text": "Hi there!",
+        "generation_id": "e70d12",
+        "chat_history": [
+          {
+            "role": "USER",
+            "message": "Hi"
+          },
+          {
+            "role": "CHATBOT",
+            "message": "Hi there!"
+          }
+        ],
+        "finish_reason": "COMPLETE"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command Light" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "5e820f61f54d",
+        "generations": [
+          {
+            "id": "5e820f61f54d",
+            "text": " Hello!",
+            "finish_reason": "COMPLETE"
+          }
+        ],
+        "prompt": "hello"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Command" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "5e820f61f54d",
+        "generations": [
+          {
+            "id": "5e820f61f54d",
+            "text": " Hello!",
+            "finish_reason": "COMPLETE"
+          }
+        ],
+        "prompt": "hello"
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="DeepSeek Models" icon="layers">
+    <Accordion title="DeepSeek-R1" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "Hello",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "choices": [
+          {
+            "text": "Hi!",
+            "stop_reason": "length"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Meta Models" icon="layers">
+    <Accordion title="Llama 3.3 70B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 100,
+        "stop_reason": "length"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 11B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100 
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi",
+        "prompt_token_count": 1,
+        "generation_token_count": 100,
+        "stop_reason": "length"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 1B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 480,
+        "stop_reason": "stop"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 3B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100 
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 480,
+        "stop_reason": "stop"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.2 90B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100 
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 100,
+        "stop_reason": "length"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.1 70B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "length"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3.1 8B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "length"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3 70B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Llama 3 8B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "hello",
+        "max_gen_len": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "generation": "Hi!",
+        "prompt_token_count": 1,
+        "generation_token_count": 445,
+        "stop_reason": "stop"
+      }
+      ```
+    </Accordion>
+  </Accordion>
+</AccordionGroup>
+
+<AccordionGroup>
+  <Accordion title="Mistral AI Models" icon="layers">
+
+    <Accordion title="Pixtral Large (25.02)" icon="key">
+      **Request:**
+      ```json
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "hello"
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "id": "model_id",
+        "object": "chat.completion",
+        "created": 1745858024,
+        "model": "pixtral-large-2502",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Hello!"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 5,
+          "completion_tokens": 33,
+          "total_tokens": 38
+        }
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral Large (24.02)" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello [/INST]",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral 7B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello [/INST]",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mixtral 8x7B Instruct" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello [/INST]",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="Mistral Small (24.02)" icon="key">
+      **Request:**
+      ```json
+      {
+        "prompt": "<s>[INST] hello [/INST]",
+        "max_tokens": 100
+      }
+      ```
+      **Response:**
+      ```json
+      {
+        "outputs": [
+          {
+            "text": " Hello!",
+            "stop_reason": "stop"
+          }
+        ]
+      }
+      ```
+    </Accordion>
+
+  </Accordion>
+</AccordionGroup>
