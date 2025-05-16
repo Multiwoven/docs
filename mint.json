@@ -85,7 +85,8 @@
         "activation/ai-ml-sources/google_vertex-model",
         "activation/ai-ml-sources/watsonx_ai-model",
         "activation/ai-ml-sources/http-model-endpoint",
-        "activation/ai-ml-sources/aws_bedrock-model"
+        "activation/ai-ml-sources/aws_bedrock-model",
+        "activation/ai-ml-sources/generic_open_ai-endpoint"
       ]
     },
     {
