@@ -272,6 +272,7 @@
             "guides/destinations/retl-destinations/database/maria_db",
             "guides/destinations/retl-destinations/database/oracle",
             "guides/destinations/retl-destinations/database/pinecone_db",
+            "guides/destinations/retl-destinations/database/qdrant",
             "guides/destinations/retl-destinations/http/http",
             "guides/destinations/retl-destinations/database/ms_sql",
             "guides/destinations/retl-destinations/file-storage/amazon_s3"
