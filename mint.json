@@ -90,6 +90,13 @@
       ]
     },
     {
+      "group": "Vector Search Sources",
+      "icon": "",
+      "pages": [
+        "activation/vector-search/pinecone_db"
+      ]
+    },
+    {
       "group": "AI Modeling",
       "icon": "",
       "pages": [
