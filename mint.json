@@ -236,8 +236,7 @@
             "guides/sources/data-sources/aws_sagemaker-model",
             "guides/sources/data-sources/sftp",
             "guides/sources/data-sources/watsonx_data",
-            "guides/sources/data-sources/intuit_quickbooks",
-            "guides/sources/data-sources/pinecone_db"
+            "guides/sources/data-sources/intuit_quickbooks"
           ]
         }
         
