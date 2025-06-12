@@ -85,7 +85,8 @@
         "activation/ai-ml-sources/google_vertex-model",
         "activation/ai-ml-sources/watsonx_ai-model",
         "activation/ai-ml-sources/http-model-endpoint",
-        "activation/ai-ml-sources/aws_bedrock-model"
+        "activation/ai-ml-sources/aws_bedrock-model",
+        "activation/ai-ml-sources/generic_open_ai-endpoint"
       ]
     },
     {
@@ -228,6 +229,7 @@
             "guides/sources/data-sources/aws_sagemaker-model",
             "guides/sources/data-sources/sftp",
             "guides/sources/data-sources/watsonx_data",
+            "guides/sources/data-sources/intuit_quickbooks",
             "guides/sources/data-sources/pinecone_db"
           ]
         }
@@ -271,6 +273,8 @@
             "guides/destinations/retl-destinations/database/postgresql",
             "guides/destinations/retl-destinations/database/maria_db",
             "guides/destinations/retl-destinations/database/oracle",
+            "guides/destinations/retl-destinations/database/pinecone_db",
+            "guides/destinations/retl-destinations/database/qdrant",
             "guides/destinations/retl-destinations/http/http",
             "guides/destinations/retl-destinations/database/ms_sql",
             "guides/destinations/retl-destinations/file-storage/amazon_s3"
