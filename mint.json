@@ -90,6 +90,13 @@
       ]
     },
     {
+      "group": "Vector Search Sources",
+      "icon": "",
+      "pages": [
+        "activation/vector-search/qdrant"
+      ]
+    },
+    {
       "group": "AI Modeling",
       "icon": "",
       "pages": [
