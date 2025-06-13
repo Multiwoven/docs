@@ -1,0 +1,67 @@
+---
+title: 'Qdrant'
+description: ''
+---
+
+## Connect AI Squared to Qdrant
+
+This guide will help you configure the Qdrant Connector in AI Squared to access and transfer data to your Qdrant collection.
+
+### Prerequisites
+
+Before proceeding, ensure you have your host, API key, and collection name.
+
+## Step-by-Step Guide to Connect to your Qdrant collection
+
+## Step 1: Navigate to Qdrant
+
+Start by logging into your Qdrant account.
+
+1. Sign in to your Qdrant account at [Qdrant Account](https://login.cloud.qdrant.io/u/login/identifier?state=hKFo2SB6bDNQQTlydWFFZnpySEc0TXk1QlVWVHJ0Tk9MTDNyeqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDVCYm9qV010WXVRSXZvZVFMMkFiLW8wXzl5SkhvZnM4o2NpZNkgckkxd2NPUEhPTWRlSHVUeDR4MWtGMEtGZFE3d25lemc)
+
+2. Select Clusters from the side bar. 
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594908/Multiwoven/connectors/Qdrant/Qdrant_Get_Started_gdkuuz.png" />
+</Frame>
+
+## Step 2: Locate Qdrant Configuration Details
+
+Once in your selected Qdrant cluster, you'll find the necessary configuration details:
+
+**API Key:**
+- Click on the API Keys tab.  
+- If you haven't created an API key before, click on "Create" to generate a new one. Make sure to copy the API Key as they are shown only once.
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596348/Multiwoven/connectors/Qdrant/Qdrant_Cluster_API_Keys_ai7ptp.png" />
+</Frame>
+
+**Host and Collection name:**
+- Click on Cluster UI in you selected Qdrant Cluster.
+- Enter your API key to access your collection.
+- Note down your host, the url address before `/dashboard#/collections`, and the name of the collection.
+
+<Frame>
+    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1749759834/Multiwoven/connectors/Qdrant/Qdrant_collection_shbztm.png" />
+</Frame>
+
+## Step 3: Configure qdrant Connector in Your Application
+
+Now that you have gathered all the necessary details, enter the following information in your application:
+
+- **Host:** Qdrant cluster host url.
+- **API Url:** The endpoint where your Qdrant cluster is hosted.
+- **Collection Name:** The selected collections name in your Qdrant cluster.
+
+## Step 4: Test the Qdrant Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Qdrant from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your Qdrant connector is now configured and ready to query data from your Qdrant cluster.
+
+This guide will help you seamlessly connect your AI Squared application to Qdrant cluster, enabling you to leverage your clusters full potential.
