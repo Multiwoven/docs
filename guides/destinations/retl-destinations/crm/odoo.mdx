@@ -1,0 +1,47 @@
+---
+title: 'Odoo'
+description: ''
+---
+
+## Connect AI Squared to Odoo
+
+This guide will help you configure the Odoo Connector in AI Squared to access and transfer data to your Odoo server. 
+
+### Prerequisites
+
+Before initiating the Odoo connector setup, ensure you have the appropriate Odoo edition.
+This connector uses Odoo's <a href="https://www.odoo.com/documentation/18.0/developer/reference/external_api.html">External API</a>,
+which is only available on <i>Custom</i> Odoo pricing plans. Access to the external API is not available on 
+<i>One App Free</i> or <i>Standard</i> plans.
+
+## Step-by-Step Guide to Connect to your Odoo server.
+
+Before proceeding, ensure you have the URL to the Odoo instance, the database name, the account username and account password.
+
+### Step 1: Configure Odoo Connector in Your Application
+
+Enter the following information in your application:
+
+- **URL**: The URL where the Odoo instance is hosted.
+
+- **Database**: The Odoo database name where your data is stored.
+
+- **Username**: The username of the account you use to log into Odoo.
+
+- **Password**: The password of the account you use to log into Odoo.
+
+### Step 2: Test the Odoo Connection
+
+After configuring the connector in your application:
+
+1. Save the configuration settings.
+2. Test the connection to Odoo from your application to ensure everything is setup correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
+
+Your Odoo connector is now configured.
+
+## Supported sync modes
+
+| Mode            | Supported (Yes/No/Coming soon) |
+|-----------------|--------------------------------|
+| Incremental sync | YES                           |
