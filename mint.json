@@ -264,7 +264,8 @@
             "guides/sources/data-sources/sftp",
             "guides/sources/data-sources/watsonx_data",
             "guides/sources/data-sources/intuit_quickbooks",
-            "guides/sources/data-sources/firecrawl"
+            "guides/sources/data-sources/firecrawl",
+            "guides/sources/data-sources/odoo"
           ]
         }
         
@@ -311,7 +312,8 @@
             "guides/destinations/retl-destinations/database/qdrant",
             "guides/destinations/retl-destinations/http/http",
             "guides/destinations/retl-destinations/database/ms_sql",
-            "guides/destinations/retl-destinations/file-storage/amazon_s3"
+            "guides/destinations/retl-destinations/file-storage/amazon_s3",
+            "guides/destinations/retl-destinations/crm/odoo"
           ]
         }
       ]
