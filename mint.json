@@ -265,7 +265,8 @@
             "guides/sources/data-sources/watsonx_data",
             "guides/sources/data-sources/intuit_quickbooks",
             "guides/sources/data-sources/firecrawl",
-            "guides/sources/data-sources/odoo"
+            "guides/sources/data-sources/odoo",
+            "guides/sources/data-sources/google-drive"
           ]
         }
         
