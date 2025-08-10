@@ -51,6 +51,10 @@
       "url": "guides"
     },
     {
+      "name": "Sparx",
+      "url": "sparx"
+    },
+    {
       "name": "Deployment & Security",
       "url": "deployment-and-security"
     },
@@ -139,6 +143,16 @@
       ]
     },
 
+    {
+      "group": "Sparx",
+      "pages": [
+        "sparx/overview",
+        "sparx/use-cases",
+        "sparx/architecture",
+        "sparx/getting-started",
+        "sparx/system-layout"
+      ]
+    },
     {
       "group": "",
       "pages": ["workflows/overview"
