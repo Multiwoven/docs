@@ -43,6 +43,10 @@
       "url": "activation"
     },
     {
+      "name": "AI Workflows",
+      "url": "workflows"
+    },
+    {
       "name": "Data Movement",
       "url": "guides"
     },
@@ -57,12 +61,7 @@
     {
       "name": "Support & FAQs",
       "url": "faqs"
-    },
-    {
-      "name": "Product Updates",
-      "url": "release-notes"
     }
-    
   ],
   "anchors": [],
   "navigation": [
@@ -116,10 +115,31 @@
       "icon": "",
       "pages": [
         "activation/data-apps/overview",
-        "activation/data-apps/create-data-app",
-        "activation/data-apps/embed",
-        "activation/data-apps/feedback",
-        "activation/data-apps/reports"
+        {
+          "group": "Visualizations",
+          "icon": "",
+          "pages": [
+            "activation/data-apps/visualizations/create-data-app",
+            "activation/data-apps/visualizations/embed",
+            "activation/data-apps/visualizations/feedback",
+            "activation/data-apps/visualizations/reports"
+          ]
+        },
+        {
+          "group": "Chatbot",
+          "icon": "",
+          "pages": [
+            "activation/data-apps/chatbot/overview"
+          ]
+        },
+        {
+          "group": "Browser Extension",
+          "icon": "",
+          "pages": [
+            "activation/data-apps/browser-extension/platform",
+            "activation/data-apps/browser-extension/headless-ext"
+          ]
+        }
       ]
     },
 
@@ -132,6 +152,11 @@
         "sparx/getting-started",
         "sparx/system-layout"
       ]
+    },
+    {
+      "group": "",
+      "pages": ["workflows/overview"
+    ]
     },
     
     {
@@ -253,7 +278,8 @@
             "guides/sources/data-sources/sftp",
             "guides/sources/data-sources/watsonx_data",
             "guides/sources/data-sources/intuit_quickbooks",
-            "guides/sources/data-sources/firecrawl"
+            "guides/sources/data-sources/firecrawl",
+            "guides/sources/data-sources/odoo"
           ]
         }
         
@@ -300,7 +326,8 @@
             "guides/destinations/retl-destinations/database/qdrant",
             "guides/destinations/retl-destinations/http/http",
             "guides/destinations/retl-destinations/database/ms_sql",
-            "guides/destinations/retl-destinations/file-storage/amazon_s3"
+            "guides/destinations/retl-destinations/file-storage/amazon_s3",
+            "guides/destinations/retl-destinations/crm/odoo"
           ]
         }
       ]
