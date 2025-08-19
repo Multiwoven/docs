@@ -59,8 +59,8 @@
       "url": "deployment-and-security"
     },
     {
-      "name": "Support & FAQs",
-      "url": "faqs"
+      "name": "Developers",
+      "url": "api-reference"
     }
   ],
   "anchors": [],
@@ -211,15 +211,78 @@
       "pages": ["deployment-and-security/security-and-compliance/overview"]
     },
     {
-      "group": "Support & FAQs",
+      "group": "API Overview",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Connectors",
       "pages": [
-      "faqs/data-and-ai-integration",
-      "faqs/model-config",
-      "faqs/data-apps",
-      "faqs/deployment-and-security",
-      "faqs/feedback",
-      "faqs/billing-and-account"
-    ]
+        "api-reference/connectors/list_connectors",
+        "api-reference/connectors/create_connector",
+        "api-reference/connectors/get_connector",
+        "api-reference/connectors/update_connector",
+        "api-reference/connectors/delete_connector",
+        "api-reference/connectors/discover",
+        "api-reference/connectors/query_source"
+      ]
+    },
+    {
+      "group": "Connector Definitions",
+      "pages": [
+        "api-reference/connector_definitions/connector_definitions",
+        "api-reference/connector_definitions/connector_definition",
+        "api-reference/connector_definitions/check_connection"
+      ]
+    },
+    {
+      "group": "Models",
+      "pages": [
+        "api-reference/models/get-all-models",
+        "api-reference/models/create-model",
+        "api-reference/models/get-model",
+        "api-reference/models/update-model",
+        "api-reference/models/delete-model"
+      ]
+    },
+    {
+      "group": "Syncs",
+      "pages": [
+        "api-reference/syncs/get_syncs",
+        "api-reference/syncs/create_sync",
+        "api-reference/syncs/show_sync",
+        "api-reference/syncs/update_sync",
+        "api-reference/syncs/delete_sync",
+        "api-reference/syncs/manual_sync_trigger",
+        "api-reference/syncs/manual_sync_cancel",
+        "api-reference/syncs/test_sync",
+        "api-reference/syncs/sync_configuration"
+      ]
+    },
+    {
+      "group": "Sync Runs & Records",
+      "pages": [
+        "api-reference/sync_runs/get_sync_runs",
+        "api-reference/sync_runs/get_sync_run",
+        "api-reference/sync_records/get_sync_records"
+      ]
+    },
+    {
+      "group": "Catalogs",
+      "pages": [
+        "api-reference/catalogs/create_catalog",
+        "api-reference/catalogs/update_catalog"
+      ]
+    },
+    {
+      "group": "Developer Resources",
+      "pages": [
+        "faqs/data-and-ai-integration",
+        "faqs/model-config",
+        "faqs/data-apps",
+        "faqs/deployment-and-security",
+        "faqs/feedback",
+        "faqs/billing-and-account"
+      ]
     },
     {
       "group": "Product Updates",
