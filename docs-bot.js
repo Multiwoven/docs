@@ -5,8 +5,8 @@ document.head.appendChild(externalScript);
 externalScript.onload = function () {
   if (window.DataApp) {
     const dataApp = new window.DataApp({
-      dataAppId: "230",
-      dataAppUseCaseId: "xcj7gh9YXfVzfzsXXqfr",
+      dataAppId: "301",
+      dataAppUseCaseId: "46RE6ef1oLVT2eC6J6ho",
     });
     dataApp.runDataApp();
   }
