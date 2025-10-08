@@ -11,7 +11,6 @@
     "light": "/logo/ai-squared-docs-logo-light.svg"
   },
   "favicon": "/favicon.svg",
-  "app": "_app.mdx",
   "colors": {
     "primary": "#00249c",
     "light": "#ffffff",
