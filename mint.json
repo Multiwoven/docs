@@ -11,6 +11,7 @@
     "light": "/logo/ai-squared-docs-logo-light.svg"
   },
   "favicon": "/favicon.svg",
+  "app": "_app.mdx",
   "colors": {
     "primary": "#00249c",
     "light": "#ffffff",
@@ -158,7 +159,7 @@
       "pages": ["workflows/overview"
     ]
     },
-    
+
     {
       "group": "Deployment & Security",
       "pages": ["deployment-and-security/overview"]
@@ -346,7 +347,7 @@
             "guides/sources/data-sources/google-drive"
           ]
         }
-        
+
       ]
     },
     {
