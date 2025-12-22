@@ -61,6 +61,10 @@
     {
       "name": "Developers",
       "url": "api-reference"
+    },
+    {
+      "name": "Releases",
+      "url": "release-notes"
     }
   ],
   "anchors": [],
