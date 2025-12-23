@@ -1,0 +1,150 @@
+---
+title: July 2025 Releases
+description: 'Release updates for the month of July'
+---
+
+## 🚀 Features
+
+- **Workflow Builder**  
+  Introduced a comprehensive visual workflow builder with React Flow canvas, drag-and-drop components, sidebar navigation, and node configuration. Includes auto-save functionality, workflow publishing, and interface testing capabilities.
+
+- **Odoo Source Connector**  
+  Added Odoo as a new source connector for ERP data integration.
+
+- **Odoo Destination Connector**  
+  Introduced Odoo as a destination connector for writing data to Odoo systems.
+
+- **Workflow Run Feature API**  
+  Added API endpoints for executing and managing workflow runs.
+
+- **Retrieval Flow Components**  
+  Implemented retrieval flow with configurable components for building AI-powered data retrieval workflows.
+
+- **Agent Routes Setup**  
+  Set up routing infrastructure for agent-based workflow interactions.
+
+- **Workflow Interface**  
+  Added chatbot/assistant interface for testing workflows with pagination support and list view.
+
+- **Workflow Component Descriptions**  
+  Added descriptions for workflow components to improve user understanding.
+
+- **Code Quality Migration**  
+  Migrated code climate and code coverage tools to qlty.sh with updated badges.
+
+- **GitHub Workflow Timeout**  
+  Added timeout configuration for server-ci GitHub Actions workflow.
+
+## 🐛 Bug Fixes
+
+- **Global Namespace Violation**  
+  Fixed global namespace violation in runner script.
+
+- **JSON Schema Validation**  
+  Removed invalid field from JSON schema and fixed various schema issues.
+
+- **Batched Query Processing**  
+  Added batched_query call and improved SQL parsing capabilities.
+
+- **Workflow Builder UI Fixes**  
+  Fixed numerous workflow builder issues including drop position calculation, component selection, node duplication, edge deletion, and fit view functionality.
+
+- **LLM Model Temperature**  
+  Fixed missing temperature field for LLM model configuration.
+
+- **Component Rendering**  
+  Fixed component icon rendering from URLs and dynamic component loading from API.
+
+- **Interface State Persistence**  
+  Resolved issues with interface state not persisting correctly.
+
+- **Auto-Save Status**  
+  Fixed auto-save to correctly update status to draft and trigger after 1 second delay.
+
+- **Chatbot Messages**  
+  Fixed assistant chat JSON messages, loading states, and message responder issues.
+
+- **Prompt Input Modal**  
+  Resolved issues with prompt input modal and variable values.
+
+- **Chart Rendering**  
+  Fixed chart rendering issues in workflow interfaces.
+
+- **RBAC Policy**  
+  Corrected RBAC policy implementation for workflows.
+
+- **Sidebar Styling**  
+  Fixed sidebar collapsed state, styling, and component sizes.
+
+- **Async Dropdown**  
+  Fixed async dropdown scrolling and sizing to window dimensions.
+
+- **Workflow Template JSON**  
+  Corrected workflow template JSON structure.
+
+- **Workflow Execution Errors**  
+  Added user feedback on workflow execution errors.
+
+## 🚜 Refactor
+
+- **AIS Data Store Discover**  
+  Fixed AIS Data Store discover method implementation.
+
+- **Workflow Templates**  
+  Refactored workflow templates for better maintainability.
+
+## ⚙️ Miscellaneous Tasks
+
+- **Sub-Category Support**  
+  Added sub_category to connector model and fixed postgres sub-category handling.
+
+- **Connector Instance Protocol**  
+  Added connector_instance to protocol for better connector management.
+
+- **Server Gem Updates**  
+  Updated server gem through versions 0.30.4, 0.31.3, 0.32.0, and 0.32.1.
+
+- **Vector Search Enhancements**  
+  Added execute_search to connector for vector operations and vector search support for PostgreSQL.
+
+- **Firecrawl Updates**  
+  Added markdown_hash to Firecrawl and updated web_scraping extractors for VectorDB integration.
+
+- **Workflow Components**  
+  Updated workflow components with filters, JSON updates, and schema improvements.
+
+- **Chatbot Default State**  
+  Changed chatbot to render closed by default.
+
+- **Workflow Run Model**  
+  Added workflow run model changes and scope for updated_at descending.
+
+- **Security Enhancements**  
+  Added rack attack for rate limiting, secured cross-domain access, and added clickjacking prevention.
+
+- **Credential Masking**  
+  Implemented connector credentials masking for improved security.
+
+- **PG Vector Migration**  
+  Migrated existing PostgreSQL vector connectors to vector sub_category.
+
+- **NASA Workspace**  
+  Added NASA workspace to production environment.
+
+- **Workflow Role Group**  
+  Added Workflows role group for permission management.
+
+- **Workflow Template Database**  
+  Added and reverted template field for workflow in database.
+
+- **Workflow Builder Validations**  
+  Implemented agent workflow builder validations.
+
+- **Async Dropdown Filtering**  
+  Added async dropdown service support with filters and connector sub_category filtering.
+
+- **BigQuery Private Key**  
+  Reformatted private_key in BigQuery client for connection handling.
+
+- **Pinecone Metadata**  
+  Updated metadata handling in Pinecone DB destination connector.

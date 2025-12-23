@@ -1,0 +1,162 @@
+---
+title: November 2025 Releases
+description: 'Release updates for the month of November'
+---
+
+## 🚀 Features
+
+- **Workflow Builder Control Panel**  
+  Added control panel for workflow builder with enhanced management capabilities.
+
+- **Export Workflows as Slack App**  
+  Enabled exporting workflows as Slack applications for seamless team integration.
+
+- **Embeddable Chat Assistants**  
+  Introduced embeddable assistant support with script updates for embedding chatbots in external applications.
+
+- **Hosted Data Store**  
+  Added Hosted Database and Hosted Table support with complete CRUD APIs for managed data storage.
+
+- **Semistructured Data Support**  
+  Added semistructured model query type with configuration support for handling partially structured data formats.
+
+- **Primary Key Disabled Callout**  
+  Added callout notification when primary key is disabled to improve user awareness.
+
+- **Google Drive Connector Refactor**  
+  Refactored Google Drive source connector for improved performance and reliability.
+
+- **Larger CI Runner**  
+  Added support for new larger runner in CI pipeline for faster builds.
+
+## 🐛 Bug Fixes
+
+- **Spec Fix**  
+  Resolved specification test issues.
+
+- **AWS Bedrock Sub-Category**  
+  Changed AWS Bedrock sub-category for proper classification.
+
+- **Embeddable Assistant Variable**  
+  Fixed variable handling in embeddable assistant configuration.
+
+- **Message Content Fallback**  
+  Assign message to content at fallback for proper error handling.
+
+- **Chat Messages Overflow**  
+  Added overflow handling to chat messages for long content.
+
+- **Interface Toggle Condition**  
+  Fixed condition handling for interface toggle state.
+
+- **Google Drive File Download**  
+  Fixed errors when downloading files from Drive with backslashes and next_page_token clearing issues.
+
+- **Duplicate Submissions**  
+  Handled duplicate form submissions to prevent data duplication.
+
+- **Semistructure Column Mapping**  
+  Fixed missing columns for mapping in semistructure models.
+
+- **Lightning Request Timeout**  
+  Increased lightning request timeout and removed explicit DPI settings.
+
+- **Enterprise Config Fetch**  
+  Updated MW fetch to use enterprise configuration.
+
+- **Store ID in Connector List**  
+  Fixed returning store ID in connector list API.
+
+- **File Upload for Assistants**  
+  Fixed file upload functionality for assistant interactions.
+
+- **File Prompt and Response**  
+  Fixed file prompt and response handling in chat.
+
+- **Unit Test Coverage CI**  
+  Fixed unit test coverage reporting in CI pipeline.
+
+## 🚜 Refactor
+
+- **Welcome Message Rename**  
+  Changed introduction_message to welcome_message in channel_join for consistency.
+
+- **Chatbot Unified Component**  
+  Refactored chatbot into unified component for better maintainability.
+
+- **Hosted Data Store Creation**  
+  Refactored hosted data store creation workflow.
+
+- **Data Store Delete API**  
+  Removed enable check for Data Store delete API.
+
+- **Hosted Data Stores Validation**  
+  Added raise for existing hosted data stores validation.
+
+- **Connector Host Addition**  
+  Added host field to connector configuration.
+
+- **Axios Config Unification**  
+  Updated axios config to be common for enterprise and CE APIs.
+
+- **SQL Script Table Rename**  
+  Allowed update SQL script to rename tables.
+
+## ⚙️ Miscellaneous Tasks
+
+- **LLM Component Enhancement**  
+  Enhanced LLM Component to handle Generic OpenAI endpoints.
+
+- **PostHog Feature Flags**  
+  Implemented PostHog feature flag integration for controlled rollouts.
+
+- **Slack Bot Chat History**  
+  Added chat history support to Slack Bot.
+
+- **Template ID for Hosted Data Store**  
+  Added template ID to Hosted Data Store model.
+
+- **Vector Store Template API**  
+  Added Template API for Vector Store configuration.
+
+- **Data App Auth for List API**  
+  Added data_app_auth support for list API endpoints.
+
+- **Server Gem Update**  
+  Updated Server Gem to version 0.34.7.
+
+- **Hosted DB APIs**  
+  Added Create, Index, Update, Destroy, Enable, and Delete APIs for Hosted Data Store and Tables.
+
+- **Component Failure Scenarios**  
+  Added failure scenarios handling for workflow components.
+
+- **PGUtils Addition**  
+  Added PGUtils utility for PostgreSQL operations.
+
+- **Embed Login Header**  
+  Added login support with X-App-Context header for embed scenarios.
+
+- **Workflow Model RBAC**  
+  Added RBAC changes for workflow model permissions.
+
+- **Data Store Template Refactor**  
+  Refactored Data Store template configuration.
+
+- **Integrations Gem Updates**  
+  Upgraded multiwoven-integrations gem through versions 0.34.11.
+
+- **Hosted DB Connectors**  
+  Added connectors for hosted database integration.
+
+- **Connector Model Configuration**  
+  Added empty configuration support for Connector model.
+
+- **Sync-Based Table Updates**  
+  Updated data store table based on sync creation.
+
+- **Hosted Data Store Connector Definition**  
+  Added hosted data store to connector definition.
+
+- **PostgreSQL Destination Refactor**  
+  Refactored PostgreSQL Destination Connector for improved performance.

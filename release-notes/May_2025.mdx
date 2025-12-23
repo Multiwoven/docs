@@ -1,0 +1,156 @@
+---
+title: May 2025 Releases
+description: 'Release updates for the month of May'
+---
+
+## 🚀 Features
+
+- **Amazon Bedrock Source Connector**  
+  Added Amazon Bedrock as a new AI/ML source connector for integrating AWS foundation models into data workflows.
+
+- **Pinecone Vector DB Destination Connector**  
+  Introduced Pinecone as a destination connector for vector database storage and retrieval.
+
+- **Qdrant Destination Connector**  
+  Added Qdrant as a new vector database destination connector for similarity search workloads.
+
+- **Generic OpenAI Spec Connector**  
+  Added a generic OpenAI specification connector for flexible integration with OpenAI-compatible endpoints.
+
+- **Unstructured Data Support**  
+  Comprehensive support for unstructured data including LangChain Ruby integration, chunking configuration, and embedding config screens.
+
+- **Assistant UI Enhancements**  
+  Added Bar and Pie Chart support, feedback collection, table data rendering, CSV download capability, and dynamic title changes based on conversation.
+
+- **Vector Search Model Support**  
+  Added unstructured and vector_search types to ModelQueryType with embedding configuration for vector-based models.
+
+- **Sync Alerts Workflow**  
+  Added workflow middleware for sync alerts to improve notification handling.
+
+- **Solid Worker in Docker Compose**  
+  Added solid worker service to docker-compose.yml for improved background job processing.
+
+- **Prometheus Client**  
+  Added prometheus client gem for metrics collection and monitoring.
+
+- **Update Feedback and Message Feedback**  
+  Implemented update capabilities for feedback and message feedback records.
+
+- **Demo Workspace for Assistant**  
+  Added Demo Workspace to Assistant Enabled Workspaces for easier onboarding and testing.
+
+- **Custom Workspace Branding**  
+  Added support for logo and name customization for specific workspaces (e.g., BCLL Workspace).
+
+## 🐛 Bug Fixes
+
+- **Bedrock Inference Profile**  
+  Removed inference profile from Bedrock connector configuration.
+
+- **Sync Run Email Notifications**  
+  Disabled sync run send_status_email and fixed sync run mailer issues.
+
+- **CVE Corrections**  
+  Corrected CVEs for BAH using Trivy security scanning.
+
+- **Failed Sync Alerts Email Format**  
+  Fixed email format for failed sync alerts and added end_time to sync failure emails.
+
+- **Pagination Issues**  
+  Fixed broken pagination across various views.
+
+- **Logo URL Updates**  
+  Updated the logo URL for Slack and Email Alerts.
+
+- **Email Taken Error Message**  
+  Improved error message when email is already taken during signup.
+
+- **Unstructured Model Handling**  
+  Fixed model updates for vector type, catalog data usage, and API updates for unstructured models.
+
+- **Duplicate API Calls**  
+  Removed duplicate GET call during connector updates.
+
+- **Pinecone Spec**  
+  Removed model and namespace from Pinecone specification.
+
+- **Connector Edit Navigation**  
+  Fixed opening connector edit screen after creation.
+
+- **Stepped Form Issues**  
+  Fixed multiple issues with stepped form including browser back restriction, query params in URL, and infinite loop problems.
+
+- **Configure Sync Screen**  
+  Resolved issues with the configure sync screen for unstructured models.
+
+- **Embedding Validation**  
+  Disabled continue button if embedding configuration is not completed.
+
+- **Chat History Display**  
+  Show chat history only when messages exist.
+
+- **Unstructured Model Steps**  
+  Fixed dynamic step addition for unstructured models and preserved base steps for reset.
+
+## 🚜 Refactor
+
+- **Button Styling Updates**  
+  Changed button styling across the application for consistency.
+
+- **Datalist Icon Removal**  
+  Removed icons from datalist components for cleaner UI.
+
+- **Error Toast Improvements**  
+  Removed titleCase from error toasts and added support to hide success toasts when not needed.
+
+- **Schema Validation**  
+  Removed input and output schema validation for improved flexibility.
+
+- **Pagination Logic**  
+  Changed logic to show pagination only when rows equal 10 or more.
+
+- **Assistant Deployment Option**  
+  Changed deploy to assistant option to only be visible in Assistant Enabled Workspaces.
+
+- **Embedding Config Component**  
+  Extracted embedding config fields into a standalone reusable component.
+
+- **Chart Export Utilities**  
+  Added chart download and copy functionality with export function moved to utilities.
+
+- **Data Apps Empty State**  
+  Improved copy for empty state in data apps.
+
+- **Slack Sync Button**  
+  Updated View Sync Run button styling for Slack notifications.
+
+- **Stepped Form Store**  
+  Refactored stepped form state management for better maintainability.
+
+## ⚙️ Miscellaneous Tasks
+
+- **EULA Role Updates**  
+  Made read permission in EULA true for Custom Role.
+
+- **Model Query Type Updates**  
+  Added unstructured and vector_search types to ModelQueryType.
+
+- **Data App Querying**  
+  Enabled Data App querying capabilities.
+
+- **Redis Removal**  
+  Removed Redis dependency from the application stack.
+
+- **Data Format Type Names**  
+  Updated title names for Data Format Types.
+
+- **Server Gem Updates**  
+  Updated server gem through versions 0.23.2, 0.24.0, 0.24.1, 0.24.2, 0.25.0, and 0.26.0.
+
+- **Connector Documentation URLs**  
+  Updated connector documentation URLs in spec and meta files.
+
+- **Counter Culture for Messages**  
+  Added count_culture for chat_messages and message_feedbacks for efficient counting.

@@ -1,0 +1,156 @@
+---
+title: April 2025 Releases
+description: 'Release updates for the month of April'
+---
+
+## 🚀 Features
+
+- **Assistant UI**  
+  Introduced a new Assistant interface with UI improvements for enhanced user interaction and workflow automation.
+
+- **EULA Management**  
+  Added End User License Agreement (EULA) controller and management capabilities, including database storage, permissions, and acceptance tracking.
+
+- **WatsonX.Data Source Connector**  
+  Added IBM WatsonX.Data as a new source connector for data integration workflows.
+
+- **Generic Connector Edit Component**  
+  Introduced a reusable generic connector edit component for improved maintainability and consistent editing experience.
+
+- **Unstructured File Support in S3 Connector**  
+  Added support for unstructured files in the S3 connector, expanding data ingestion capabilities.
+
+- **Chatbot Data App Reports Enhancements**  
+  Improved reporting capabilities for chatbot data applications with new overview pages and dedicated routes.
+
+- **Databricks Timeout Configuration**  
+  Added timeout configuration options for the Databricks source connector to handle long-running queries.
+
+- **QA Verification Workflow**  
+  Enforced qa-verified label requirement for PRs with needs-qa label, improving quality assurance processes.
+
+- **CI/CD Improvements**  
+  Updated workflows with GHA Docker cache, latest versions, and improved trigger event types for faster builds.
+
+- **Snyk Security Scanning**  
+  Enhanced Snyk scanning to focus on manifests and lockfiles for more efficient vulnerability detection.
+
+## 🐛 Bug Fixes
+
+- **Top Bar Name Rendering**  
+  Fixed proper rendering of names in the top bar and added truncation for long names with tooltips.
+
+- **Confirm Email Template**  
+  Corrected issues with the email confirmation template.
+
+- **Test Connection Flow**  
+  Removed separate test connection step and combined it with the save changes button for streamlined UX.
+
+- **Connector Deletion**  
+  Fixed connector deletion to use connectorID as the parameter.
+
+- **Query Handling with Multiple FROMs**  
+  Applied different gsub handling when queries contain multiple FROM clauses.
+
+- **Catalog Refresh Indicator**  
+  Added visual indicator for catalog refresh and fixed duplicate API calls.
+
+- **EULA Enable Fix**  
+  Resolved issues with EULA enable functionality and added skip option for invite sign-up flow.
+
+- **Add Models Button**  
+  Fixed redirect issues with the Add Models button from the syncs page.
+
+- **SSO Documentation**  
+  Updated notes to clarify support for Okta and Azure in SSO configuration.
+
+- **Assistant UI Bugs**  
+  Fixed various bugs in the Assistant UI including duplicate field entity components.
+
+- **SFTP Connection Query**  
+  Fixed inner query replacement for SFTP connections.
+
+- **Data App Message Feedbacks**  
+  Ensured selected data apps only display their own message feedbacks.
+
+- **Breadcrumb Navigation**  
+  Fixed navigation issues in breadcrumb components.
+
+- **Chatbot Keys**  
+  Corrected key usage for chatbot components.
+
+- **AI/ML Source State Persistence**  
+  Fixed state persistence when creating AI/ML sources and prevented resubmission when navigating back.
+
+- **Company Name Display**  
+  Fixed display to show company name instead of workspace name in invitations and org settings.
+
+- **EULA Popup Flash**  
+  Fixed EULA popup briefly appearing when updating documents.
+
+## 🚜 Refactor
+
+- **Destination Name in Syncs**  
+  Changed destination name display in Syncs from Connector Name to Name for clarity.
+
+- **Image to SVG Conversion**  
+  Converted images to SVGs for better scalability and performance.
+
+- **Custom Select Widget for RJSF**  
+  Added custom widget for select components in React JSON Schema Forms.
+
+- **Reports UI/UX Audit**  
+  Completed Reports UI/UX audit fixes for improved user experience.
+
+- **Data Apps Audit**  
+  Addressed medium priority items from the Data Apps audit.
+
+- **Error Logs Modal**  
+  Refactored error logs modal for better usability.
+
+- **Catalog Fetching Hook**  
+  Created dedicated hook for fetching catalog data.
+
+- **Reports Overview Page**  
+  Added new Overview page with RBAC for Reports route and dedicated data apps reports route.
+
+- **User Invite Company Name**  
+  Updated user invites to send company name instead of workspace name.
+
+- **Data App Reports Tags**  
+  Changed tag and empty copy for data app reports.
+
+- **Feature Flag Arrays**  
+  Changed feature flags to use arrays for enabling across multiple workspaces.
+
+## ⚙️ Miscellaneous Tasks
+
+- **EULA Database Setup**  
+  Added EULA to database, factory, and model with proper permissions and role groups.
+
+- **Okta SSO Support**  
+  Added Okta support to Single Sign-On configuration.
+
+- **Assistant Resources**  
+  Added assistant rendering type, resource permissions, and role group configuration.
+
+- **Server Gem Updates**  
+  Updated server gem through versions 0.22.0, 0.22.1, 0.22.3, 0.22.5, and integrations gem to 0.22.6.
+
+- **Visual Component Model Update**  
+  Updated the Visual Component model with improvements.
+
+- **Chat Report Implementation**  
+  Added Chat Report implementation to Data App functionality.
+
+- **Template Mapping Tests**  
+  Added comprehensive tests for template mapping options and static template options.
+
+- **EULA Application Check**  
+  Added EULA check to Application controller for compliance enforcement.
+
+- **Dependency Updates**  
+  Bumped dependency versions for security and compatibility improvements.
+
+- **Legacy File Cleanup**  
+  Removed old and unused files from the codebase.
