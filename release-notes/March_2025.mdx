@@ -1,0 +1,129 @@
+---
+title: March 2025 Releases
+description: 'Release updates for the month of March'
+---
+
+## 🚀 Features
+
+- **Custom RBAC UI**  
+  Introduced a comprehensive Role-Based Access Control interface, allowing administrators to create, edit, and manage custom roles with granular permissions across the platform.
+
+- **SSO Integration**  
+  Added complete Single Sign-On support including SSO Configuration Controller, SSO Login, ACS Callback, and organization settings for seamless enterprise authentication.
+
+- **WatsonX.AI Connector**  
+  Added IBM WatsonX.AI as a new AI/ML source connector, expanding the available AI model integrations.
+
+- **Anthropic AI/ML Source Connector**  
+  Introduced Anthropic as a new AI/ML source connector for leveraging Claude models in data workflows.
+
+- **Chatbot Enhancements**  
+  Added feedback display on chatbot preview and history context for user prompts, improving conversational AI experiences.
+
+- **Sync Export API**  
+  New API endpoints for exporting sync configurations and sync records, enabling better data portability and backup options.
+
+- **Environment Variables for Connection Config**  
+  Support for using environment variables in connection configurations, improving security and deployment flexibility.
+
+- **Enhanced Search Functionality**  
+  Added search bars to model selection, destination section, and data source views for easier navigation in large datasets.
+
+- **Delete Confirmation Modals**  
+  Added confirmation dialogs when deleting sources and workspace members to prevent accidental data loss.
+
+- **Docker Hub Integration**  
+  Updated workflow to automatically push images to Docker Hub when new releases are created.
+
+- **Snyk Security Testing**  
+  Integrated Snyk tests for server, UI, and integrations to enhance security vulnerability detection.
+
+- **Primary Key Helper Text**  
+  Added helper text and tooltips for Primary Key fields to improve user understanding during data modeling.
+
+## 🐛 Bug Fixes
+
+- **Pagination in Empty State**  
+  Fixed pagination controls incorrectly showing when there are no results to display.
+
+- **Content Layout**  
+  Corrected content centering at maximum width for better visual consistency.
+
+- **User Login with Email Confirmation**  
+  Resolved issues with user login flow when email confirmation is required.
+
+- **Role Permission Count**  
+  Fixed incorrect permission count display for roles and updated to group permission count.
+
+- **SSO Entity ID**  
+  Corrected entity ID handling in SSO configuration.
+
+- **Missing Logo Icons**  
+  Fixed missing logo icons appearing in various authentication views.
+
+- **Invite User Workflow**  
+  Addressed issues in the user invitation workflow for better reliability.
+
+- **Solid Worker Migrations**  
+  Fixed migration issues affecting the Solid Worker background job processor.
+
+- **Anthropic Connector**  
+  Fixed spelling error and quick fixes for the Anthropic AI/ML connector.
+
+- **Template Value Persistence**  
+  Resolved issues where template values were not persisting correctly in AI/ML models.
+
+- **Auth UI/UX Improvements**  
+  Fixed password validation design, forgot password positioning, sign-in/sign-up UI audit issues, and checkbox styling on RJSF forms.
+
+## 🚜 Refactor
+
+- **Data Apps Audits**  
+  Completed high-priority audit items for Data Apps, improving overall code quality and user experience.
+
+- **Template Mapping Components**  
+  Refactored template options into generic, reusable components for better maintainability.
+
+- **Model Page Improvements**  
+  Applied audit fixes to model pages including navigation, timestamp formatting, and empty state handling.
+
+- **Settings Page Audit**  
+  Completed comprehensive audit of settings pages for consistency and usability.
+
+- **Authentication UI**  
+  Improved copy for invalid credentials, placeholders, terms and privacy policy messages, and password instructions.
+
+- **Stepped Form Exit**  
+  Removed unnecessary exit warnings when leaving stepped forms for smoother user experience.
+
+## ⚙️ Miscellaneous Tasks
+
+- **ChatMessage Model**  
+  Added ChatMessage model and ChatMessageTransformer for enhanced chat prompt message handling.
+
+- **Ruby SAML Gem**  
+  Added ruby-saml gem to support SAML-based SSO authentication.
+
+- **Playwright E2E Tests**  
+  Set up Playwright framework for end-to-end testing automation.
+
+- **SSO Configuration Permissions**  
+  Added permissions for SSO Configuration management at organization and workspace levels.
+
+- **Signing Certificate Verification**  
+  Implemented signing certificate verification for enhanced security.
+
+- **Audit Log Enhancements**  
+  Added audit logging to Roles Controller and updated audit usage across multiple controllers for better traceability.
+
+- **Export Improvements**  
+  Refactored date handling in Audit Log and Feedback exports, and added Additional Remarks field to message feedback exports.
+
+- **Server Gem Updates**  
+  Updated Server gem to versions 0.20.0, 0.21.1, and 0.21.2 with various improvements and fixes.
+
+- **System Role Descriptions**  
+  Updated descriptions for system roles to provide clearer guidance.
+
+- **Security Updates**  
+  Updated gems to address Snyk security vulnerabilities.
