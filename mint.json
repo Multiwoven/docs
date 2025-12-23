@@ -61,6 +61,10 @@
     {
       "name": "Developers",
       "url": "api-reference"
+    },
+    {
+      "name": "Product Updates",
+      "url": "release-notes"
     }
   ],
   "anchors": [],
@@ -71,12 +75,16 @@
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/introduction","getting-started/setup","getting-started/navigation","getting-started/workspace-management/overview"]
+      "pages": [
+        "getting-started/introduction",
+        "getting-started/setup",
+        "getting-started/navigation",
+        "getting-started/workspace-management/overview"
+      ]
     },
     {
       "group": "",
-      "pages": ["activation/ai-modelling/introduction"
-    ]
+      "pages": ["activation/ai-modelling/introduction"]
     },
     {
       "group": "AI/ML Sources",
@@ -104,7 +112,8 @@
       "group": "AI Modeling",
       "icon": "",
       "pages": [
-        "activation/ai-modelling/modelling-overview","activation/ai-modelling/connect-source",
+        "activation/ai-modelling/modelling-overview",
+        "activation/ai-modelling/connect-source",
         "activation/ai-modelling/input-schema",
         "activation/ai-modelling/preprocessing",
         "activation/ai-modelling/output-schema"
@@ -128,9 +137,7 @@
         {
           "group": "Chatbot",
           "icon": "",
-          "pages": [
-            "activation/data-apps/chatbot/overview"
-          ]
+          "pages": ["activation/data-apps/chatbot/overview"]
         },
         {
           "group": "Browser Extension",
@@ -155,10 +162,9 @@
     },
     {
       "group": "",
-      "pages": ["workflows/overview"
-    ]
+      "pages": ["workflows/overview"]
     },
-    
+
     {
       "group": "Deployment & Security",
       "pages": ["deployment-and-security/overview"]
@@ -292,8 +298,18 @@
           "icon": "bars",
           "pages": [
             "release-notes/2025",
-            "release-notes/January_2025",
-            "release-notes/Feb-2025"
+            "release-notes/2025/January-2025",
+            "release-notes/2025/Feb-2025",
+            "release-notes/2025/March-2025",
+            "release-notes/2025/April-2025",
+            "release-notes/2025/May-2025",
+            "release-notes/2025/June-2025",
+            "release-notes/2025/July-2025",
+            "release-notes/2025/August-2025",
+            "release-notes/2025/September-2025",
+            "release-notes/2025/October-2025",
+            "release-notes/2025/November-2025",
+            "release-notes/2025/December-2025"
           ]
         },
         {
@@ -301,14 +317,14 @@
           "icon": "bars",
           "pages": [
             "release-notes/2024",
-            "release-notes/May_2024",
-            "release-notes/June_2024",
-            "release-notes/July_2024",
-            "release-notes/August_2024",
-            "release-notes/September_2024",
-            "release-notes/October_2024",
-            "release-notes/November_2024",
-            "release-notes/December_2024"
+            "release-notes/2024/May-2024",
+            "release-notes/2024/June-2024",
+            "release-notes/2024/July-2024",
+            "release-notes/2024/August-2024",
+            "release-notes/2024/September-2024",
+            "release-notes/2024/October-2024",
+            "release-notes/2024/November-2024",
+            "release-notes/2024/December-2024"
           ]
         }
       ]
@@ -346,7 +362,6 @@
             "guides/sources/data-sources/google-drive"
           ]
         }
-        
       ]
     },
     {
