@@ -294,6 +294,14 @@
       "group": "Product Updates",
       "pages": [
         {
+          "group": "2026",
+          "icon": "bars",
+          "pages": [
+            "release-notes/2026",
+            "release-notes/2026/January-2026"
+          ]
+        },
+        {
           "group": "2025",
           "icon": "bars",
           "pages": [
